@@ -19,6 +19,6 @@ class Page extends Model
     * A page belongs to many page_contents
     */
     public function page_content() {
-        return $this->belongsToMany('App\Models\Page_Content');
+        return $this->hasMany('App\Models\Page_Content');
     }
 }

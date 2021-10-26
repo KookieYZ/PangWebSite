@@ -20,4 +20,12 @@ class Person extends Model
         'dbo_date',
         'parent_id',
     ];
+
+    public function child() {
+        return $this->hasMany('Person');
+    }
+
+    public function parent() {
+        return $this->belongsTo('Person');
+    }
 }

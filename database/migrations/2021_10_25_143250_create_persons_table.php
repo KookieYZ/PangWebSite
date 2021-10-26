@@ -23,8 +23,10 @@ class CreatePersonsTable extends Migration
             $table->string('state');
             $table->string('nationality');
             $table->date('dbo_date');
-            $table->string('parent_id');
+            $table->unsignedBigInteger('parent_id');
             $table->timestamps();
+
+            $table->foreign('parent_id')->references('id')->on('persons')->onDelete('cascade');
         });
     }
 
