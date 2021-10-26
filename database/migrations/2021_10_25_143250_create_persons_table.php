@@ -21,7 +21,6 @@ class CreatePersonsTable extends Migration
             $table->string('spouse_avatar');
             $table->string('gender');
             $table->string('state');
-            $table->string('gender');
 
             $table->timestamps();
         });
