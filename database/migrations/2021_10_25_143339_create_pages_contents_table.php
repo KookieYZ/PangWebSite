@@ -15,6 +15,11 @@ class CreatePagesContentsTable extends Migration
     {
         Schema::create('pages_contents', function (Blueprint $table) {
             $table->id();
+            $table->string('media_type');
+            $table->string('media_path');
+            $table->string('description');
+            $table->string('is_publish');
+            $table->string('page_id');
             $table->timestamps();
         });
     }
