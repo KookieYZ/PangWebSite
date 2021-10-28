@@ -21,8 +21,12 @@ class CreatePersonsTable extends Migration
             $table->string('spouse_avatar');
             $table->string('gender');
             $table->string('state');
-
+            $table->string('nationality');
+            $table->date('dbo_date');
+            $table->unsignedBigInteger('parent_id');
             $table->timestamps();
+
+            $table->foreign('parent_id')->references('id')->on('persons')->onDelete('cascade');
         });
     }
 

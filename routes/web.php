@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search', function () {
+Route::get('search', function () {
     return view('search');
 });
 
-Auth::routes();
+// Auth::routes();
+Route::group(['prefix' => 'admin'], function () {
+    Auth::routes();
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

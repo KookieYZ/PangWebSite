@@ -14,7 +14,8 @@ class CreateVariableTable extends Migration
     public function up()
     {
         Schema::create('variable', function (Blueprint $table) {
-            $table->id();
+            $table->string('key');
+            $table->string('value');
             $table->timestamps();
         });
     }

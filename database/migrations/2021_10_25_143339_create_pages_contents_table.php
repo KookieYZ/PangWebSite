@@ -15,7 +15,14 @@ class CreatePagesContentsTable extends Migration
     {
         Schema::create('pages_contents', function (Blueprint $table) {
             $table->id();
+            $table->string('media_type');
+            $table->string('media_path');
+            $table->string('description');
+            $table->string('is_publish');
+            $table->unsignedBigInteger('page_id');
             $table->timestamps();
+
+            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
         });
     }
 
