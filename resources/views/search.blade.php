@@ -23,8 +23,20 @@
         @for ($i = 0; $i < 20; $i++)
             <div class="col-md-3 col-sm-6 p-2">
                 <div class="card p-3 bg-danger text-white">
-                    <div class="image d-flex flex-column justify-content-center align-items-center"> <img src="{{asset('assests/images/profile.jpg')}}" height="100" width="100" /> <input type="text" class="form-control mt-3 text-center" id="name" value="彭子平" />
-                    <textarea class="form-control mt-3" id="desc" rows="5">性別 : 男 &#13;&#10;州屬 : 吉隆玻 </textarea>
+                    <div class="image d-flex flex-column justify-content-center align-items-center"> <img src="{{asset('assests/images/profile.jpg')}}" height="100" width="100" /> 
+                        <div class="container bg-white text-dark mt-2">
+                            <div class="row d-flex justify-content-center p-2">
+                            <div class=“col-3”>彭子平</div>
+                            </div>
+                        </div>                    
+                    </div>
+                    <div class="container bg-white text-dark mt-2">
+                        <div class=“row”>
+                        <div class=“col-3”><b>性别 :</b> 男</div>
+                        <div class=“col-3”><b>州属 :</b> 吉隆坡</div>
+                        <div class=“col-3”><b>描述 :</b> 聚集的祈愿将成为新生的闪耀之星，化作光芒闪耀的道路吧！同调召唤，飞翔吧，星尘龙！</div>
+                        <div class=“col-3”><b>描述2 :</b> 集（つど）いし愿（ねが）いが新（あら）たに辉（かがや）く星（ほし）となる。光（ひかり）差（さ）す道（みち）となれ！シンクロ召唤（しょうかん）！飞翔（ひしょう）せよ、スターダスト！</div>
+                        </div>
                     </div>
                 </div>
             </div>
