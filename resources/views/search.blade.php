@@ -1,17 +1,16 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/4.1.1/jquery.min.js"></script>
-<link rel="stylesheet" href="welcome.css">
 <!------ Include the above in your HEAD tag ---------->
 <section class="search-sec">
     <div class="container">
         <form action="#" method="post" novalidate="novalidate">
             <div class="row d-flex justify-content-center align-items-center p-3">          
-                <div class="col-lg-8 col-md-8 col-sm-8 search">
-                    <input type="text" class="search_text" placeholder="輸入名字">
+                <div class="col-9">
+                    <input type="text" class="form-control search-slt border border-dark" style="border-radius: 20px" placeholder="輸入名字">
                 </div>                    
-                <div class="col-lg-3 col-md-3 col-sm-3">
-                    <button type="button" class="search_button">搜索</button>
+                <div class="col-2">
+                    <button type="button" class="btn border border-dark text-black bg-white w-100" style="border-radius: 20px">搜索</button>
                 </div>
             </div>
         </form>
@@ -25,7 +24,7 @@
             <div class="col-md-3 col-sm-6 p-2">
                 <div class="card p-3 bg-danger text-white">
                     <div class="image d-flex flex-column justify-content-center align-items-center"> <img src="{{asset('assests/images/profile.jpg')}}" height="100" width="100" /> 
-                        <div class="container bg-white text-dark mt-2">
+                        <div class="container bg-white text-dark mt-2" style="border-radius: 20px">
                             <div class="row d-flex justify-content-center p-2">
                                 <div>彭子平</div>
                             </div>
