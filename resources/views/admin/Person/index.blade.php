@@ -319,7 +319,7 @@
                         @endif
                         <td>{{ $person->state }}</td>
                         <td>{{ $person->nationality }}</td>
-                        <td>{{ $person->dbo_date }}</td>
+                        <td>{{ $person->dob_date }}</td>
                       </tr>
                     </tbody>
                     @endforeach

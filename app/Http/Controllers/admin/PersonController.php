@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\Models\Person;
+use App\Models\People;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -36,7 +36,7 @@ class PersonController extends Controller
     // }
 
     public function index() {
-        $persons = DB::table('persons')->orderBy('created_at', 'DESC')->simplePaginate(10);
+        $persons = DB::table('people')->orderBy('created_at', 'DESC')->simplePaginate(10);
 
         return view('admin.person.index', compact('persons'))->with('persons',$persons);
     }
@@ -107,7 +107,10 @@ class PersonController extends Controller
         //     'parent_id' => Auth::id()
         // ]);
 
-        $person = new Person;
+        $dateTime = strtotime($request['dob_date']);
+        $convertedDate = date('Y-m-d',$dateTime);
+
+        $person = new People;
         $person->name = $request['name'];
         $person->avatar = $avatar;
         $person->spouse_name = $request['spouse_name'];
@@ -115,10 +118,10 @@ class PersonController extends Controller
         $person->gender = $request['gender'];
         $person->state = $request['state'];
         $person->nationality = $request['nationality'];
-        $person->dob_date = $request['dob_date'];
+        $person->dob_date = $convertedDate;
         $person->created_at = now();
-        $person->update_at = now();
-        $person->parent_id = Auth::id();
+        $person->updated_at = now();
+        // $person->parent_id = Auth::id();
         $person->save();
 
         return redirect('/admin/relationship/index')->with('success', 'Relationship created successfully!');
@@ -136,7 +139,7 @@ class PersonController extends Controller
 
     }
 
-    public function destroy(Person $person) {
+    public function destroy(People $person) {
         if(Auth::user()->cant('delete', $person)) {
             return redirect()->route('admin.person.index')->with('error', 'Unauthorized Page');
         }
