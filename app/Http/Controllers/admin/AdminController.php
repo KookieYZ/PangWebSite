@@ -36,7 +36,7 @@ class AdminController extends Controller
 
         $admin->save();
 
-        return redirect()->route('admin.user.index')->with('success', 'Admin created successfully!');
+        return redirect()->route('user.index')->with('success', 'Admin created successfully!');
     }
 
     public function show($id) {
@@ -55,19 +55,19 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
+        $user->password = Hash::make($request['password']);
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
 
 
-        return redirect()->route('admin.user.index')->with('success', "$user->name updated successfully!");
+        return redirect()->route('user.index')->with('success', "$user->name updated successfully!");
     }
 
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('admin.user.index')->with('success', "$user->name was deleted!");
+        return redirect()->route('user.index')->with('success', "$user->name was deleted!");
     }
 }

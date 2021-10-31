@@ -23,16 +23,16 @@ Route::get('search', function () {
 });
 
 // Auth::routes();
-// Route::group(['prefix' => 'admin'], function () {
-//     Auth::routes([
-//         'register' => false, // Registration Routes...
-//         'reset' => false, // Password Reset Routes...
-//         'verify' => false, // Email Verification Routes...
-//     ]);
-// });
 Route::group(['prefix' => 'admin'], function () {
-    Auth::routes();
+    Auth::routes([
+        'register' => false, // Registration Routes...
+        'reset' => false, // Password Reset Routes...
+        'verify' => false, // Email Verification Routes...
+    ]);
 });
+// Route::group(['prefix' => 'admin'], function () {
+//     Auth::routes();
+// });
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
@@ -46,11 +46,13 @@ Route::get('/admin/relationship/{id}/view', [App\Http\Controllers\Admin\PersonCo
 //     'as'	=> 'admin.person.store'
 // ]);
 
-Route::get('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.user.index');
-Route::get('/admin/user/create', [App\Http\Controllers\Admin\AdminController::class, 'create'])->name('admin.user.create');
-Route::post('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'store'])->name('admin.user.store');
-Route::get('/admin/user/view/{id}', [App\Http\Controllers\Admin\AdminController::class, 'show'])->name('admin.user.show');
-Route::get('/admin/user/edit/{id}', [App\Http\Controllers\Admin\AdminController::class, 'edit'])->name('admin.user.edit');
-Route::post('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'update'])->name('admin.user.update');
+Route::resource('admin/user', 'App\Http\Controllers\Admin\AdminController');
 
-Route::delete('/admin/user/remove/{id}', [App\Http\Controllers\Admin\AdminController::class, 'destroy'])->name('admin.user.destroy');
+// Route::get('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.user.index');
+// Route::get('/admin/user/create', [App\Http\Controllers\Admin\AdminController::class, 'create'])->name('admin.user.create');
+// Route::post('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'store'])->name('admin.user.store');
+// Route::get('/admin/user/view/{id}', [App\Http\Controllers\Admin\AdminController::class, 'show'])->name('admin.user.show');
+// Route::get('/admin/user/edit/{id}', [App\Http\Controllers\Admin\AdminController::class, 'edit'])->name('admin.user.edit');
+// Route::any('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'update'])->name('admin.user.update');
+
+// Route::delete('/admin/user/remove/{id}', [App\Http\Controllers\Admin\AdminController::class, 'destroy'])->name('admin.user.destroy');

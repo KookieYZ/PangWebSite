@@ -209,7 +209,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.user.index') }}"
+                href="{{ route('user.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-account-key"></i
                 ><span class="hide-menu">Admin</span></a
@@ -279,7 +279,7 @@
             <div class="col-md-12">
             <div class="card">
                 <form class="form-horizontal">
-                {{-- <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('admin.user.store') }}"> --}}
+                {{-- <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('user.store') }}"> --}}
                     {!! csrf_field() !!}
                 <div class="card-body">
                     <div class="form-group row">
@@ -348,7 +348,7 @@
                     <button type="submit" class="btn btn-primary" disabled>
                         Submit
                     </button>
-                    <a href="{{ route('admin.user.index') }}" class="btn btn-primary" id="back">{{ __('Back') }}</a>
+                    <a href="{{ route('user.index') }}" class="btn btn-primary" id="back">{{ __('Back') }}</a>
                     </div>
                 </div>
                 </form>

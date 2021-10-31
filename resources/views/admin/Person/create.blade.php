@@ -209,7 +209,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.user.index') }}"
+                href="{{ route('user.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-account-key"></i
                 ><span class="hide-menu">Admin</span></a

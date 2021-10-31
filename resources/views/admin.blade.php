@@ -203,7 +203,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.user.index') }}"
+                href="{{ route('user.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-account-key"></i
                 ><span class="hide-menu">Admin</span></a
@@ -287,7 +287,7 @@
             <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-warning text-center">
-                    <a href="{{ route('admin.user.index') }}">
+                    <a href="{{ route('user.index') }}">
                 <h1 class="font-light text-white">
                     <i class="mdi mdi-account-key"></i>
                 </h1>

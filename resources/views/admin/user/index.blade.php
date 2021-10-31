@@ -210,7 +210,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.user.index') }}"
+                href="{{ route('user.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-account-key"></i
                 ><span class="hide-menu">Admin</span></a
@@ -271,7 +271,7 @@
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <a href="{{ route("admin.user.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
+                    <a href="{{ route("user.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
                   </ol>
                 </nav>
               </div>
@@ -303,10 +303,10 @@
                     <tbody class="customtable">
                       <tr>
                         <th>
-                          <a href="{{ route('admin.user.edit', $admin) }}"><i class="far fa-edit" title="Edit Admin Details"></i></a>
-                            <a href="{{ route('admin.user.show', $admin) }}"><i class="fas fa-eye" title="View Admin Details"></i></a>
+                          <a href="{{ route('user.edit', $admin) }}"><i class="far fa-edit" title="Edit Admin Details"></i></a>
+                            <a href="{{ route('user.show', $admin) }}"><i class="fas fa-eye" title="View Admin Details"></i></a>
 
-                          <form method="POST" action="{{ route('admin.user.destroy', $admin->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Admin">
+                          <form method="POST" action="{{ route('user.destroy', $admin->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Admin">
                             {{ csrf_field() }}
                             @method('DELETE')
                             <button type="submit" style="background-color: transparent;
