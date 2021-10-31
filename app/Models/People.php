@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Person extends Model
+class People extends Model
 {
     use HasFactory;
 
@@ -22,10 +22,10 @@ class Person extends Model
     ];
 
     public function child() {
-        return $this->hasMany('Person');
+        return $this->hasMany('People', 'parent_id');
     }
 
     public function parent() {
-        return $this->belongsTo('Person');
+        return $this->belongsTo('People', 'parent_id');
     }
 }
