@@ -261,7 +261,7 @@
         <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Create New Relationship</h4>
+            <h4 class="page-title">Admin</h4>
             </div>
         </div>
         </div>
@@ -278,7 +278,8 @@
         <div class="row">
             <div class="col-md-12">
             <div class="card">
-                <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('admin.person.store') }}">
+                <form class="form-horizontal">
+                {{-- <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('admin.user.store') }}"> --}}
                     {!! csrf_field() !!}
                 <div class="card-body">
                     <div class="form-group row">
@@ -291,8 +292,8 @@
                         <input
                         type="text"
                         class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                        id="name" name="name" value="{{ old('name') }}"
-                        placeholder="Name" required
+                        id="name" name="name" value="{{ old('name') ? old('name') : $user->name }}"
+                        placeholder="Name" required disabled
                         />
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
@@ -302,138 +303,52 @@
                     </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 text-end control-label col-form-label">Avatar</label>
-                        <div class="col-md-9">
-                        <div class="custom-file">
-                            <input
-                            type="file"
-                            class="custom-file-input{{ $errors->has('avatar') ? ' is-invalid' : '' }}"
-                            id="avatar" name="avatar" required
-                            />
-                        </div>
-                        @if ($errors->has('avatar'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('avatar') }}</strong>
-                            </span>
-                        @endif
-                        </div>
-                    </div>
-                    <div class="form-group row">
                     <label
-                        for="spouse_name"
+                        for="email"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >Spouse Name</label
+                        >Email</label
                     >
                     <div class="col-sm-9">
                         <input
-                        type="text"
-                        class="form-control{{ $errors->has('spouse_name') ? ' is-invalid' : '' }}"
-                        id="spouse_name" name="spouse_name"
-                        placeholder="Spouse Name" value="{{ old('spouse_name') }}" required
+                        type="email"
+                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                        id="email" name="email"
+                        placeholder="Email" value="{{ old('email') ? old('email') : $user->email }}" required autocomplete="email" disabled
                         />
-                        @if ($errors->has('spouse_name'))
+                        @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('spouse_name') }}</strong>
+                            <strong>{{ $errors->first('email') }}</strong>
                         </span>
                         @endif
                     </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-end control-label col-form-label">Spouse Avatar</label>
-                        <div class="col-md-9">
-                        <div class="custom-file">
-                            <input
-                            type="file"
-                            class="custom-file-input{{ $errors->has('spouse_avatar') ? ' is-invalid' : '' }}"
-                            id="spouse_avatar" name="spouse_avatar" required
-                            />
-                        </div>
-                        @if ($errors->has('spouse_avatar'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('spouse_avatar') }}</strong>
-                        </span>
-                        @endif
-                        </div>
-                    </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row hidden">
                     <label
-                        for="gender"
+                        for="password"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >Gender</label
-                    >
-                    <div class="col-sm-9">
-                        <select class="form-select" aria-label="" id="gender" name="gender" required>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                        </select>
-                    </div>
-                    </div>
-                    <div class="form-group row">
-                    <label
-                        for="state"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >State</label
+                        >Password</label
                     >
                     <div class="col-sm-9">
                         <input
-                        type="text"
-                        class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
-                        id="state" name="state" value="{{ old('state') }}"
-                        placeholder="State" required
+                        type="password"
+                        class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                        id="password" name="password"
+                        placeholder="Password" required autocomplete="email"
                         />
-                        @if ($errors->has('state'))
+                        @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('state') }}</strong>
+                            <strong>{{ $errors->first('password') }}</strong>
                         </span>
                         @endif
                     </div>
-                    </div>
-                    <div class="form-group row">
-                        <label
-                        for="nationality"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >Nationality</label
-                        >
-                        <div class="col-sm-9">
-                        <input
-                            type="text"
-                            class="form-control{{ $errors->has('nationality') ? ' is-invalid' : '' }}"
-                            id="nationality" name="nationality" value="{{ old('nationality') }}"
-                            placeholder="Nationality" required
-                        />
-                        @if ($errors->has('nationality'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('nationality') }}</strong>
-                        </span>
-                        @endif
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label
-                        for="dob_date"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >Date of Birth</label
-                        >
-                        <div class="col-sm-9">
-                        <input
-                        type="text"
-                        class="form-control date-inputmask{{ $errors->has('dob_date') ? ' is-invalid' : '' }}"
-                        id="dob_date" name="dob_date" value="{{ old('dob_date') }}"
-                        placeholder="Enter Date of Birth" required
-                        />
-                        @if ($errors->has('dob_date'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('dob_date') }}</strong>
-                        </span>
-                        @endif
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="border-top">
                     <div class="card-body">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" disabled>
                         Submit
                     </button>
+                    <a href="{{ route('admin.user.index') }}" class="btn btn-primary" id="back">{{ __('Back') }}</a>
                     </div>
                 </div>
                 </form>

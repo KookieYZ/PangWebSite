@@ -167,7 +167,7 @@
                     ><i class="mdi mdi-account me-1 ms-1"></i> My Profile</a
                 >
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="javascript:void(0)"
+                <a class="dropdown-item" href="{{ url('/logout') }}"
                     ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
                 >
                 </ul>
@@ -203,7 +203,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="charts.html"
+                href="{{ route('admin.user.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-account-key"></i
                 ><span class="hide-menu">Admin</span></a
@@ -287,10 +287,12 @@
             <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-warning text-center">
+                    <a href="{{ route('admin.user.index') }}">
                 <h1 class="font-light text-white">
-                    <i class="mdi mdi-collage"></i>
+                    <i class="mdi mdi-account-key"></i>
                 </h1>
                 <h6 class="text-white">Admin</h6>
+                    </a>
                 </div>
             </div>
             </div>

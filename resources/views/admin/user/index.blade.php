@@ -271,7 +271,7 @@
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <a href="{{ route("admin.person.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
+                    <a href="{{ route("admin.user.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
                   </ol>
                 </nav>
               </div>
@@ -295,31 +295,33 @@
                         <th scope="col">Control
                         </th>
                         <th scope="col">Name</th>
-                        <th scope="col">Spouse Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">State</th>
-                        <th scope="col">Nationality</th>
-                        <th scope="col">Date of Birth</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Created At</th>
                       </tr>
                     </thead>
-                    @foreach($persons as $person)
+                    @foreach($admins as $admin)
                     <tbody class="customtable">
                       <tr>
                         <th>
-                          <a href=""><i class="far fa-edit"></i></a>
-                          <a href=""><i class="fas fa-eye"></i></a>
-                          <a href=""><i class="me-2 mdi mdi-delete"></i></a>
+                          <a href="{{ route('admin.user.edit', $admin) }}"><i class="far fa-edit" title="Edit Admin Details"></i></a>
+                            <a href="{{ route('admin.user.show', $admin) }}"><i class="fas fa-eye" title="View Admin Details"></i></a>
+
+                          <form method="POST" action="{{ route('admin.user.destroy', $admin->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Admin">
+                            {{ csrf_field() }}
+                            @method('DELETE')
+                            <button type="submit" style="background-color: transparent;
+                            background-repeat: no-repeat;
+                            border: none;
+                            cursor: pointer;
+                            overflow: hidden;
+                            outline: none;">
+                            <i class="me-2 mdi mdi-delete"></i>
+                            </button>
+                          </form>
                         </th>
-                        <td>{{ $person->name }}</td>
-                        <td>{{ $person->spouse_name }}</td>
-                        @if($person->gender == 1)
-                            <td>Male</td>
-                        @else
-                            <td>Female</td>
-                        @endif
-                        <td>{{ $person->state }}</td>
-                        <td>{{ $person->nationality }}</td>
-                        <td>{{ $person->dbo_date }}</td>
+                        <td>{{ $admin->name }}</td>
+                        <td>{{ $admin->email }}</td>
+                        <td>{{ $admin->created_at->format('Y-m-d') }}</td>
                       </tr>
                     </tbody>
                     @endforeach
@@ -327,7 +329,7 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-content-end">{{ $persons->links() }}</div>
+            <div class="d-flex justify-content-end">{{ $admins->links() }}</div>
           </div>
           <!-- ============================================================== -->
           <!-- End PAge Content -->
