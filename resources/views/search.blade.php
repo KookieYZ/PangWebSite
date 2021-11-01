@@ -10,7 +10,7 @@
                     <input type="text" class="form-control search-slt border border-dark" style="border-radius: 20px" placeholder="輸入名字">
                 </div>                    
                 <div class="col-2">
-                    <button type="button" class="btn border border-dark text-black bg-white w-100" style="border-radius: 20px">搜索</button>
+                    <button type="button" class="btn border border-dark text-black bg-white" style="border-radius: 20px">搜索</button>
                 </div>
             </div>
         </form>
@@ -18,12 +18,12 @@
 </section>
 
 <section class="content">   
-    <div class="container mt-3 mb-3 p-2 d-flex "> 
-        <div class="row d-flex justify-content-center">
+    <div class="container mt-3 mb-3 p-2 d-flex"> 
+        <div class="row d-flex justify-content-start">
         @for ($i = 0; $i < 20; $i++)
-            <div class="col-md-3 col-sm-6 p-2">
+            <div class="col-xl-2 col-md-3 col-6 p-2">
                 <div class="card p-3 bg-danger text-white">
-                    <div class="image d-flex flex-column justify-content-center align-items-center"> <img src="{{asset('assests/images/profile.jpg')}}" height="100" width="100" /> 
+                    <div class="image d-flex flex-column justify-content-center align-items-center"> <img src="{{asset('assets/images/profile.jpg')}}" height="100" width="100" /> 
                         <div class="container bg-white text-dark mt-2" style="border-radius: 20px">
                             <div class="row d-flex justify-content-center p-2">
                                 <div>彭子平</div>
