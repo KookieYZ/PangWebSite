@@ -131,24 +131,21 @@ nav.navbar-default .navbar-nav li a.active:hover {
     background-color: #FF0000;
 }
 
-.social{
-    padding-bottom: 20px;
-}
+
 /**** NAV END ****/
 /**** HEADER ****/
 .header {
     margin-top: 50px;
-    min-height: 37.9%;
-    width: 50%;
+    min-height: 100%;
     background-position: center center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 section {
-    min-height: 99.1%;
-    min-width: 50%;
+    min-height: 220%;
+    width: 100%;
     background-position: center top;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -389,20 +386,24 @@ section{
 /**** FOOTER ****/
 
 .search{
-    padding: 20px ;
+    padding: 10px ;
 }
 .search_button{
     margin-left: -150px;
     width: 150px;
     padding: 6px;
     border-radius: 20px;
-    border-color: #222;
+    border: 1px solid black;
+    height: 38px;
 }
 .search_text{
+    width: 230px;
+    height: 35px;
     margin-right: -150px;
     padding: 6px;
     border-radius: 20px;
-    border-color: #222;
+    border: none;
+    
 }
 footer{
     background: #FF0000;
@@ -413,7 +414,7 @@ footer{
 
 footer h3{
     font-size: 36px;
-    margin-bottom: 30px;
+    
     text-transform: capitalize;
     color: #fff;
     letter-spacing: 0.05em;
@@ -422,10 +423,10 @@ footer h3{
 footer h3:after {
     content: "";
     display: block;
-    width: 80px;
-    height: 3px;
-    margin: 20px auto 0;
-    background:#F05F40;
+    width: 140px;
+    height: 1px;
+    margin: 10px auto 0;
+    background:#ffffff;
 }
 
 footer p{
@@ -436,7 +437,7 @@ footer p{
 
 .gap{
     display: block;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 footer span.glyphicon{
@@ -447,7 +448,7 @@ footer span.glyphicon{
 }
 
 footer a{
-    color: #000;
+    color: #fff;
     
 }
 

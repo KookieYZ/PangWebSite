@@ -1,7 +1,11 @@
+
 <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/4.1.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+@extends('includes.footer')
+
+
 <section class="search-sec">
     <div class="container">
         <form action="#" method="post" novalidate="novalidate">
@@ -16,6 +20,8 @@
         </form>
     </div>
 </section>
+
+
 
 <section class="content">   
     <div class="container mt-3 mb-3 p-2 d-flex "> 
