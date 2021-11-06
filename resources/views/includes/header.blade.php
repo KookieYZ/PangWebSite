@@ -63,36 +63,36 @@
 </style>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-inverse navbar-default mobile-main-nav" style="background-color:#FF7777; height:52px;">
-    <a class="navbar-brand" href="#">彭氏公会</a>
-      <button class="navbar-toggler text-white bg-transparent border-0" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
-        <span class="navbar-toggler-icon text-white"></span>
-      </button>
-         <div id="navbar" class="collapse navbar-collapse" aria-expanded="true">
-             <ul class="nav navbar-nav ml-auto" style="background-color:#FF7777;">
-               <li class="nav-item">
-                 <a class="nav-link text-white" href="#">延年公家训</a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link text-white" href="#">彭姓来源</a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link text-white" href="#">彭祖简介</a>
-               </li> 
-               <li class="nav-item">
-                 <a class="nav-link text-white" href="#">彭氏会史</a>
-               </li>  
-               <li class="nav-item">
-                 <a class="nav-link text-white" href="#">活动</a>
-               </li>
-               <div class="col-12 col-sm-12 col-xs-12 text-center" style="">
-                <button class="navbar-togglers bg-transparent text-white border-white" style="border-radius: 30px; width:30px" aria-label="Close" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
-                  <span>X</span>
-                </button>
-              <div>
-             </ul>
-         </div>  
-</nav>
+  <a class="navbar-brand" href="#">彭氏公会</a>
+  <button class="navbar-toggler text-white bg-transparent border-0" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
+    <span class="navbar-toggler-icon text-white"></span>
+  </button>
 
+  <div id="navbar" class="collapse navbar-collapse" aria-expanded="true">
+    <ul class="nav navbar-nav ml-auto" style="background-color:#FF7777;">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">延年公家训</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">彭姓来源</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">彭祖简介</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">彭氏会史</a>
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">活动</a>
+      </li>
+      <div class="col-12 col-sm-12 col-xs-12 text-center" style="">
+        <button class="navbar-togglers bg-transparent text-white border-white" style="border-radius: 30px; width:30px" aria-label="Close" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
+          <span>X</span>
+        </button>
+      </div>
+    </ul>
+  </div>  
+</nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
