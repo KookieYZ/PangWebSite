@@ -218,7 +218,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.person.index') }}"
+                href="{{ route('relationship.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-face"></i
                 ><span class="hide-menu">Relationship</span></a

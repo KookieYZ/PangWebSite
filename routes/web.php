@@ -35,16 +35,16 @@ Route::group(['prefix' => 'admin'], function () {
 // });
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::resource('admin/relationship', 'App\Http\Controllers\Admin\PersonController');
+
 Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/relationship/index', [App\Http\Controllers\Admin\PersonController::class, 'index'])->name('admin.person.index');
-Route::get('/admin/relationship/create', [App\Http\Controllers\Admin\PersonController::class, 'create'])->name('admin.person.create');
-Route::post('/admin/relationship/index', [App\Http\Controllers\Admin\PersonController::class, 'store'])->name('admin.person.store');
-Route::get('/admin/relationship/{id}/edit', [App\Http\Controllers\Admin\PersonController::class, 'edit'])->name('admin.person.edit');
-Route::get('/admin/relationship/{id}/view', [App\Http\Controllers\Admin\PersonController::class, 'show'])->name('admin.person.show');
-// Route::post('admin/relationship/index', [
-//     'uses'	=> 'App\Http\Controllers\Admin\PersonController@store',
-//     'as'	=> 'admin.person.store'
-// ]);
+
+// Route::get('/admin/relationship/index', [App\Http\Controllers\Admin\PersonController::class, 'index'])->name('admin.person.index');
+// Route::get('/admin/relationship/create', [App\Http\Controllers\Admin\PersonController::class, 'create'])->name('admin.person.create');
+// Route::post('/admin/relationship/index', [App\Http\Controllers\Admin\PersonController::class, 'store'])->name('admin.person.store');
+// Route::get('/admin/relationship/{id}/edit', [App\Http\Controllers\Admin\PersonController::class, 'edit'])->name('admin.person.edit');
+// Route::get('/admin/relationship/{id}/view', [App\Http\Controllers\Admin\PersonController::class, 'show'])->name('admin.person.show');
+
 
 Route::resource('admin/user', 'App\Http\Controllers\Admin\AdminController');
 

@@ -219,7 +219,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.person.index') }}"
+                href="{{ route('relationship.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-face"></i
                 ><span class="hide-menu">Relationship</span></a
@@ -265,6 +265,11 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
+            @if(session()->has('error'))
+                <div class="alert alert-success">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
               <h4 class="page-title">Admin</h4>
@@ -292,11 +297,11 @@
                   <table class="table">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">Control
+                        <th scope="col"><b>Control</b>
                         </th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Created At</th>
+                        <th scope="col"><b>Name</b></th>
+                        <th scope="col"><b>Email</b></th>
+                        <th scope="col"><b>Created At</b></th>
                       </tr>
                     </thead>
                     @foreach($admins as $admin)

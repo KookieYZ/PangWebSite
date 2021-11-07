@@ -219,7 +219,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.person.index') }}"
+                href="{{ route('relationship.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-face"></i
                 ><span class="hide-menu">Relationship</span></a
@@ -267,11 +267,11 @@
             @endif
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Admin</h4>
+              <h4 class="page-title">Relationship</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <a href="{{ route("admin.person.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
+                    <a href="{{ route("relationship.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
                   </ol>
                 </nav>
               </div>
@@ -292,26 +292,43 @@
                   <table class="table">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">Control
+                        <th scope="col"><b>Control</b>
                         </th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Spouse Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">State</th>
-                        <th scope="col">Nationality</th>
-                        <th scope="col">Date of Birth</th>
+                        <th scope="col"><b>Name</b></th>
+                        <th scope="col"><b>Spouse Name</b></th>
+                        <th scope="col"><b>Gender</b></th>
+                        <th scope="col"><b>State</b></th>
+                        <th scope="col"><b>Nationality</b></th>
+                        <th scope="col"><b>Date of Birth</b></th>
                       </tr>
                     </thead>
                     @foreach($persons as $person)
                     <tbody class="customtable">
                       <tr>
                         <th>
-                          <a href=""><i class="far fa-edit"></i></a>
-                          <a href=""><i class="fas fa-eye"></i></a>
-                          <a href=""><i class="me-2 mdi mdi-delete"></i></a>
+                          <a href="{{ route('relationship.edit', $person) }}"><i class="far fa-edit" title="Edit Record"></i></a>
+                          <a href="{{ route('relationship.show', $person) }}"><i class="fas fa-eye" title="View Details"></i></a>
+                          <form method="POST" action="{{ route('relationship.destroy', $person->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Record">
+                            {{ csrf_field() }}
+                            @method('DELETE')
+                            <button type="submit" style="background-color: transparent;
+                            background-repeat: no-repeat;
+                            border: none;
+                            cursor: pointer;
+                            overflow: hidden;
+                            outline: none;">
+                            <i class="me-2 mdi mdi-delete"></i>
+                            </button>
+                          </form>
                         </th>
                         <td>{{ $person->name }}</td>
-                        <td>{{ $person->spouse_name }}</td>
+                        <td>
+                            @if ($person->spouse_name != null)
+                                {{ $person->spouse_name }}
+                            @else
+                                No spouse found
+                            @endif
+                        </td>
                         @if($person->gender == 1)
                             <td>Male</td>
                         @else

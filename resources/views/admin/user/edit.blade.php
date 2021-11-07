@@ -218,7 +218,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.person.index') }}"
+                href="{{ route('relationship.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-face"></i
                 ><span class="hide-menu">Relationship</span></a
@@ -333,8 +333,8 @@
                         <input
                         type="password"
                         class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                        id="password" name="password" value="{{ old('password') ? old('password') : $user->password }}"
-                        placeholder="Password" required autocomplete="email"
+                        id="password" name="password" value=""
+                        placeholder="Please type your password or new password" autocomplete="email"
                         />
                         @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">

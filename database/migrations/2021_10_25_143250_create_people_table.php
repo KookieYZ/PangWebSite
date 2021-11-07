@@ -22,11 +22,7 @@ class CreatePeopleTable extends Migration
             $table->string('gender');
             $table->string('state');
             $table->string('nationality');
-<<<<<<< HEAD:database/migrations/2021_10_25_143250_create_persons_table.php
-            $table->date('dbo_date');
-=======
             $table->date('dob_date');
->>>>>>> f3136e805a4cd683f7e6dba501abb33ca4b5e5e8:database/migrations/2021_10_25_143250_create_people_table.php
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
 
@@ -42,5 +38,6 @@ class CreatePeopleTable extends Migration
     public function down()
     {
         Schema::dropIfExists('people');
+        Schema::dropIfExists('persons');
     }
 }
