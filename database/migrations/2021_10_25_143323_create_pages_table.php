@@ -17,7 +17,10 @@ class CreatePagesTable extends Migration
             $table->id();
             $table->string('title');
             $table->integer('ranking');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('parent_id')->references('id')->on('pages')->onDelete('set null');
         });
     }
 
