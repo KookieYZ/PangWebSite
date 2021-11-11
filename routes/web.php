@@ -47,6 +47,8 @@ Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'ind
 
 
 Route::resource('admin/user', 'App\Http\Controllers\Admin\AdminController');
+// Route::resource('admin/theme', 'App\Http\Controllers\Admin\ThemeController');
+Route::get('/admin/theme', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('theme.index');
 
 // Route::get('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.user.index');
 // Route::get('/admin/user/create', [App\Http\Controllers\Admin\AdminController::class, 'create'])->name('admin.user.create');

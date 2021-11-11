@@ -304,14 +304,15 @@
                         <th scope="col"><b>Created At</b></th>
                       </tr>
                     </thead>
-                    @foreach($admins as $admin)
+
                     <tbody class="customtable">
                       <tr>
                         <th>
-                          <a href="{{ route('user.edit', $admin) }}"><i class="far fa-edit" title="Edit Admin Details"></i></a>
-                            <a href="{{ route('user.show', $admin) }}"><i class="fas fa-eye" title="View Admin Details"></i></a>
+                          <a href=""><i class="far fa-edit" title="Edit Theme Details"></i></a>
+                            <a href=""><i class="fas fa-eye" title="View Theme Details"></i></a>
 
-                          <form method="POST" action="{{ route('user.destroy', $admin->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Admin">
+                            <form>
+                          {{-- <form method="POST" action="{{ route('user.destroy', $admin->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Admin"> --}}
                             {{ csrf_field() }}
                             @method('DELETE')
                             <button type="submit" style="background-color: transparent;
@@ -324,17 +325,18 @@
                             </button>
                           </form>
                         </th>
-                        <td>{{ $admin->name }}</td>
-                        <td>{{ $admin->email }}</td>
-                        <td>{{ $admin->created_at->format('Y-m-d') }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                       </tr>
                     </tbody>
-                    @endforeach
+
                   </table>
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-content-end">{{ $admins->links() }}</div>
+            <div class="d-flex justify-content-end"></div>
+            {{-- <div class="d-flex justify-content-end">{{ $admins->links() }}</div> --}}
           </div>
           <!-- ============================================================== -->
           <!-- End PAge Content -->

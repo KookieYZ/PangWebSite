@@ -230,7 +230,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="tables.html"
+                href="{{ route('theme.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-border-inside"></i
                 ><span class="hide-menu">Theme</span></a
@@ -325,10 +325,12 @@
             <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-danger text-center">
+                <a href="{{ route('theme.index') }}">
                 <h1 class="font-light text-white">
                     <i class="mdi mdi-receipt"></i>
                 </h1>
                 <h6 class="text-white">Theme</h6>
+                </a>
                 </div>
             </div>
             </div>

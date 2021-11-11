@@ -236,7 +236,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="tables.html"
+                href="{{ route('theme.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-border-inside"></i
                 ><span class="hide-menu">Theme</span></a
