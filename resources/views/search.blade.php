@@ -1,8 +1,3 @@
-
-<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/4.1.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 @extends('includes.app')
 
 @section('content')
