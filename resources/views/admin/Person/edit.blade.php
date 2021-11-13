@@ -227,7 +227,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="javascript: void(0)"
+                href="{{ route('page.index') }}"
                 aria-expanded="false"
                 ><i class="me-2 mdi mdi-book-open-page-variant"></i
                 ><span class="hide-menu">Pages</span></a
@@ -236,7 +236,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="widgets.html"
+                href="{{ route('blog.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-receipt"></i
                 ><span class="hide-menu">Blog</span></a
@@ -451,6 +451,31 @@
                         @endif
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label
+                        for="parent_id"
+                        class="col-sm-3 text-end control-label col-form-label"
+                        >Parent</label
+                        >
+                        <div class="col-sm-9">
+                            <select class="form-select" aria-label="" id="parent_id" name="parent_id">
+                                <option value="">---Seleted---</option>
+                                @foreach ($persons as $per)
+                                    <option value="{{ $per->id }}">{{ $per->id }} - {{ $per->name }}</option>
+                                @endforeach
+                                @if ($person->parent_id)
+                                    <option value="{{ $person->parent_id }}" selected hidden>{{ $person->parent_id }} - {{ $person->parent->name }}</option>
+                                @endif
+
+                            </select>
+                        @if ($errors->has('parent_id'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('parent_id') }}</strong>
+                        </span>
+                        @endif
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <div class="border-top">
                     <div class="card-body">

@@ -29,6 +29,7 @@ class PersonController extends Controller
             'state'             => 'string|required',
             'nationality'       => 'string|required',
             'dob_date'          => 'required',
+            'parent_id'         => 'int|nullable'
         ]);
     }
 
@@ -39,7 +40,8 @@ class PersonController extends Controller
     }
 
     public function create() {
-        return view('admin.person.create');
+        $persons = People::orderBy('created_at', 'DESC')->get();
+        return view('admin.person.create', compact('persons'));
     }
 
     public function store(Request $request) {
@@ -102,9 +104,9 @@ class PersonController extends Controller
         $person->state = $request['state'];
         $person->nationality = $request['nationality'];
         $person->dob_date = $convertedDate;
+        $person->parent_id = $request->parent_id;
         $person->created_at = now();
         $person->updated_at = now();
-        // $person->parent_id = Auth::id();
         $person->save();
 
         return redirect()->route('relationship.index')->with('success', 'Relationship created successfully!');
@@ -117,7 +119,8 @@ class PersonController extends Controller
 
     public function edit($id) {
         $person = People::find($id);
-        return view('admin.person.edit', compact('person'));
+        $persons = People::orderBy('id', 'ASC')->get()->except($person->id);;
+        return view('admin.person.edit', compact('person', 'persons'));
     }
 
     public function update(Request $request, $id) {
@@ -129,6 +132,7 @@ class PersonController extends Controller
             'gender'            => 'string',
             'state'             => 'string',
             'nationality'       => 'string',
+            'parent_id'         => 'int'
         ]);
 
         date_default_timezone_set("Asia/Kuala_Lumpur");
@@ -177,6 +181,7 @@ class PersonController extends Controller
         $person->state = $request['state'];
         $person->nationality = $request['nationality'];
         $person->dob_date = $convertedDate;
+        $person->parent_id = $request->parent_id;
         $person->created_at = now();
         $person->updated_at = now();
         $person->save();

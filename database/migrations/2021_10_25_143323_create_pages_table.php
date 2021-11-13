@@ -16,6 +16,7 @@ class CreatePagesTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->longText('url');
             $table->integer('ranking');
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();

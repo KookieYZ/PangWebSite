@@ -227,7 +227,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="javascript: void(0)"
+                href="{{ route('page.index') }}"
                 aria-expanded="false"
                 ><i class="me-2 mdi mdi-book-open-page-variant"></i
                 ><span class="hide-menu">Pages</span></a
@@ -236,7 +236,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="widgets.html"
+                href="{{ route('blog.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-receipt"></i
                 ><span class="hide-menu">Blog</span></a

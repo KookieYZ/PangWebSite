@@ -221,7 +221,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="javascript: void(0)"
+                href="{{ route('page.index') }}"
                 aria-expanded="false"
                 ><i class="me-2 mdi mdi-book-open-page-variant"></i
                 ><span class="hide-menu">Pages</span></a
@@ -230,7 +230,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="widgets.html"
+                href="{{ route('blog.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-receipt"></i
                 ><span class="hide-menu">Blog</span></a
@@ -306,9 +306,9 @@
             </div>
             </div>
             <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
+            <div class="col-md-6 col-lg-4 col-xlg-3">
             <div class="card card-hover">
-                <div class="box bg-danger text-center">
+                <div class="box bg-secondary text-center">
                 <a href="{{ route('relationship.index') }}">
                 <h1 class="font-light text-white">
                     <i class="mdi mdi-border-outside"></i>
@@ -322,7 +322,7 @@
             <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-success text-center">
-                <a href="javascript: void(0)">
+                <a href="{{ route('page.index') }}">
                 <h1 class="font-light text-white">
                     <i class="me-2 mdi mdi-book-open-page-variant"></i>
                 </h1>
@@ -335,6 +335,7 @@
             <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-info text-center">
+                <a href="{{ route('blog.index') }}">
                 <h1 class="font-light text-white">
                     <i class="mdi mdi-arrow-all"></i>
                 </h1>

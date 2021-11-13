@@ -22,10 +22,10 @@ class People extends Model
     ];
 
     public function child() {
-        return $this->hasMany('People', 'parent_id');
+        return $this->hasMany('App\Models\People', 'parent_id');
     }
 
     public function parent() {
-        return $this->belongsTo('People', 'parent_id');
+        return $this->belongsTo('App\Models\People', 'parent_id');
     }
 }
