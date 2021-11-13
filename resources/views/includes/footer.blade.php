@@ -16,19 +16,19 @@
                     <h3 class="text-white text-left"><u>联系我们</u></h3>
                 </div>
                 <div class="col-sm-12 col-xs-12 col-md-12 text-left p-0">
-                    <img class="img-fluid" src="{{asset('assests/images/Instagram.png')}}">
+                    <img class="img-fluid" src="{{asset('assets/images/Instagram.png')}}">
                     <a class="text-white" href="">get@bootstrap.com</a>
                 </div>
                 <div class="col-sm-12 col-xs-12 text-left p-0">
-                    <img class="img-fluid" src="{{asset('assests/images/Facebook.png')}}">
+                    <img class="img-fluid" src="{{asset('assets/images/Facebook.png')}}">
                     <a class="text-white" href="">get@bootstrap.com</a>
                 </div>
                 <div class="col-sm-12 col-xs-12 text-left p-0">
-                    <img class="img-fluid" src="{{asset('assests/images/Message.png')}}">
+                    <img class="img-fluid" src="{{asset('assets/images/Message.png')}}">
                     <a class="text-white" href="">get@bootstrap.com</a>
                 </div>
                 <div class="col-sm-12 col-xs-12 text-left p-0">
-                    <img class="img-fluid" src="{{asset('assests/images/Whatapps.png')}}">
+                    <img class="img-fluid" src="{{asset('assets/images/Whatapps.png')}}">
                     <a class="text-white"href="">get@bootstrap.com</a>
                 </div>
             </div>

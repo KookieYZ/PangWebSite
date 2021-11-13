@@ -1,7 +1,10 @@
 <style>
-.nav-link:hover{
+.nav-link:hover ,.dropdown-item:hover{
   color: #ffffff;
   background-color: #FF0000;
+  }
+  .dropdown-menu{
+    margin-top: -5px;
   }
   .navbar{
     padding: 0  !important;
@@ -20,6 +23,10 @@
     .mobile-main-nav .navbar-togglers {  position: absolute;  left: 240px;  z-index: 10; visibility: hidden;}
 }
   @media (max-width: 991px)  {
+    .dropdown-menu{
+      margin-top: 10px !important;
+      margin-left: 50px;
+    }
     /**Menu**/
     .mobile-main-nav{ min-height: 0 }
     /* .mobile-main-nav .navbar-toggler{  position: absolute;  left: 240px;  z-index: 10;} */
@@ -77,13 +84,14 @@
         <a class="nav-link text-white" href="#">彭姓来源</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">彭祖简介</a>
-      </li> 
-      <li class="nav-item">
         <a class="nav-link text-white" href="#">彭氏会史</a>
       </li>  
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">活动</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
+        <div class="dropdown-menu border-0 w-100" aria-labelledby="navbarDropdown" style="background-color:#FF7777; border-radius: 0px;">
+          <a class="dropdown-item text-white w-100" href="#">商业</a>
+          <a class="dropdown-item text-white w-100" href="#">就业机会</a>
+        </div>
       </li>
       <div class="col-12 col-sm-12 col-xs-12 text-center" style="">
         <button class="navbar-togglers bg-transparent text-white border-white" style="border-radius: 30px; width:30px" aria-label="Close" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
