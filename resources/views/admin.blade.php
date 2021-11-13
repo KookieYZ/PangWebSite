@@ -221,6 +221,15 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="javascript: void(0)"
+                aria-expanded="false"
+                ><i class="me-2 mdi mdi-book-open-page-variant"></i
+                ><span class="hide-menu">Pages</span></a
+                >
+            </li>
+            <li class="sidebar-item">
+                <a
+                class="sidebar-link waves-effect waves-dark sidebar-link"
                 href="widgets.html"
                 aria-expanded="false"
                 ><i class="mdi mdi-receipt"></i
@@ -310,7 +319,20 @@
             </div>
             </div>
             <!-- Column -->
-            <div class="col-md-6 col-lg-4 col-xlg-3">
+            <div class="col-md-6 col-lg-2 col-xlg-3">
+            <div class="card card-hover">
+                <div class="box bg-success text-center">
+                <a href="javascript: void(0)">
+                <h1 class="font-light text-white">
+                    <i class="me-2 mdi mdi-book-open-page-variant"></i>
+                </h1>
+                <h6 class="text-white">Pages</h6>
+                </a>
+                </div>
+            </div>
+            </div>
+            <!-- Column -->
+            <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-info text-center">
                 <h1 class="font-light text-white">

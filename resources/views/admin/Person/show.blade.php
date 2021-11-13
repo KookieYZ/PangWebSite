@@ -227,6 +227,15 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="javascript: void(0)"
+                aria-expanded="false"
+                ><i class="me-2 mdi mdi-book-open-page-variant"></i
+                ><span class="hide-menu">Pages</span></a
+                >
+            </li>
+            <li class="sidebar-item">
+                <a
+                class="sidebar-link waves-effect waves-dark sidebar-link"
                 href="widgets.html"
                 aria-expanded="false"
                 ><i class="mdi mdi-receipt"></i
@@ -261,7 +270,7 @@
         <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">View Relationship</h4>
+            <h4 class="page-title">Relationship</h4>
             </div>
         </div>
         </div>

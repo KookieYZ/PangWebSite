@@ -228,6 +228,15 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="javascript: void(0)"
+                aria-expanded="false"
+                ><i class="me-2 mdi mdi-book-open-page-variant"></i
+                ><span class="hide-menu">Pages</span></a
+                >
+            </li>
+            <li class="sidebar-item">
+                <a
+                class="sidebar-link waves-effect waves-dark sidebar-link"
                 href="widgets.html"
                 aria-expanded="false"
                 ><i class="mdi mdi-receipt"></i
@@ -272,14 +281,7 @@
             @endif
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Admin</h4>
-              <div class="ms-auto text-end">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <a href="{{ route("user.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
-                  </ol>
-                </nav>
-              </div>
+              <h4 class="page-title">Theme</h4>
             </div>
           </div>
         </div>
@@ -299,38 +301,30 @@
                       <tr>
                         <th scope="col"><b>Control</b>
                         </th>
-                        <th scope="col"><b>Name</b></th>
-                        <th scope="col"><b>Email</b></th>
-                        <th scope="col"><b>Created At</b></th>
+                        <th scope="col"><b>Theme Setting</b></th>
+                        <th scope="col"><b>Setting</b></th>
                       </tr>
                     </thead>
-
+                    @foreach($themes as $theme)
                     <tbody class="customtable">
                       <tr>
                         <th>
-                          <a href=""><i class="far fa-edit" title="Edit Theme Details"></i></a>
-                            <a href=""><i class="fas fa-eye" title="View Theme Details"></i></a>
-
-                            <form>
-                          {{-- <form method="POST" action="{{ route('user.destroy', $admin->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Admin"> --}}
-                            {{ csrf_field() }}
-                            @method('DELETE')
-                            <button type="submit" style="background-color: transparent;
-                            background-repeat: no-repeat;
-                            border: none;
-                            cursor: pointer;
-                            overflow: hidden;
-                            outline: none;">
-                            <i class="me-2 mdi mdi-delete"></i>
-                            </button>
-                          </form>
+                          <a href="{{ route('theme.edit', $theme) }}"><i class="far fa-edit" title="Edit Theme Details"></i></a>
+                            <a href="{{ route('theme.show', $theme) }}"><i class="fas fa-eye" title="View Theme Details"></i></a>
+                        <form>
                         </th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $theme->key }}</td>
+                        <td>
+                            @if ($theme->id == 4 || $theme->id == 5)
+                                <img src=" {{ asset($theme->value) }}" height="100" width="100"
+                                style="border:solid">
+                            @else
+                                {{ $theme->value }}
+                            @endif
+                        </td>
                       </tr>
                     </tbody>
-
+                    @endforeach
                   </table>
                 </div>
               </div>
@@ -388,6 +382,8 @@
     <script src="{{ asset("assets/extra-libs/multicheck/datatable-checkbox-init.js") }}"></script>
     <script src="{{ asset("assets/extra-libs/multicheck/jquery.multicheck.js") }}"></script>
     <script src="{{ asset("assets/extra-libs/DataTables/datatables.min.js") }}"></script>
+    <script src="{{ asset("assets/libs/jquery-minicolors/jquery.minicolors.min.js") }}"></script>
+
     <script>
       /****************************************
        *       Basic Table                   *

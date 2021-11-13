@@ -39,22 +39,7 @@ Route::resource('admin/relationship', 'App\Http\Controllers\Admin\PersonControll
 
 Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
 
-// Route::get('/admin/relationship/index', [App\Http\Controllers\Admin\PersonController::class, 'index'])->name('admin.person.index');
-// Route::get('/admin/relationship/create', [App\Http\Controllers\Admin\PersonController::class, 'create'])->name('admin.person.create');
-// Route::post('/admin/relationship/index', [App\Http\Controllers\Admin\PersonController::class, 'store'])->name('admin.person.store');
-// Route::get('/admin/relationship/{id}/edit', [App\Http\Controllers\Admin\PersonController::class, 'edit'])->name('admin.person.edit');
-// Route::get('/admin/relationship/{id}/view', [App\Http\Controllers\Admin\PersonController::class, 'show'])->name('admin.person.show');
-
-
 Route::resource('admin/user', 'App\Http\Controllers\Admin\AdminController');
-// Route::resource('admin/theme', 'App\Http\Controllers\Admin\ThemeController');
-Route::get('/admin/theme', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('theme.index');
+Route::resource('admin/theme', 'App\Http\Controllers\Admin\ThemeController');
+Route::resource('admin/page', 'App\Http\Controllers\Admin\PageController');
 
-// Route::get('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.user.index');
-// Route::get('/admin/user/create', [App\Http\Controllers\Admin\AdminController::class, 'create'])->name('admin.user.create');
-// Route::post('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'store'])->name('admin.user.store');
-// Route::get('/admin/user/view/{id}', [App\Http\Controllers\Admin\AdminController::class, 'show'])->name('admin.user.show');
-// Route::get('/admin/user/edit/{id}', [App\Http\Controllers\Admin\AdminController::class, 'edit'])->name('admin.user.edit');
-// Route::any('/admin/user/index', [App\Http\Controllers\Admin\AdminController::class, 'update'])->name('admin.user.update');
-
-// Route::delete('/admin/user/remove/{id}', [App\Http\Controllers\Admin\AdminController::class, 'destroy'])->name('admin.user.destroy');
