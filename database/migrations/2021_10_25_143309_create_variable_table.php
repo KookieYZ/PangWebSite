@@ -13,7 +13,8 @@ class CreateVariableTable extends Migration
      */
     public function up()
     {
-        Schema::create('variable', function (Blueprint $table) {
+        Schema::create('variables', function (Blueprint $table) {
+            $table->id();
             $table->string('key');
             $table->string('value');
             $table->timestamps();
@@ -27,6 +28,6 @@ class CreateVariableTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variable');
+        Schema::dropIfExists('variables');
     }
 }

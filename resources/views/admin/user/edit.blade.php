@@ -209,7 +209,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.user.index') }}"
+                href="{{ route('user.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-account-key"></i
                 ><span class="hide-menu">Admin</span></a
@@ -218,10 +218,19 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.person.index') }}"
+                href="{{ route('relationship.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-face"></i
                 ><span class="hide-menu">Relationship</span></a
+                >
+            </li>
+            <li class="sidebar-item">
+                <a
+                class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="javascript: void(0)"
+                aria-expanded="false"
+                ><i class="me-2 mdi mdi-book-open-page-variant"></i
+                ><span class="hide-menu">Pages</span></a
                 >
             </li>
             <li class="sidebar-item">
@@ -236,7 +245,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="tables.html"
+                href="{{ route('theme.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-border-inside"></i
                 ><span class="hide-menu">Theme</span></a
@@ -279,8 +288,9 @@
             <div class="col-md-12">
             <div class="card">
                 {{-- <form class="form-horizontal"> --}}
-                <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('admin.user.update', $user->id) }}">
-                    {!! csrf_field() !!}
+                <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('user.update', $user->id) }}">
+                    @csrf
+                    @method('PATCH')
                 <div class="card-body">
                     <div class="form-group row">
                     <label
@@ -332,8 +342,8 @@
                         <input
                         type="password"
                         class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                        id="password" name="password" value="{{ old('password') ? old('password') : $user->password }}"
-                        placeholder="Password" required autocomplete="email"
+                        id="password" name="password" value=""
+                        placeholder="Please type your password or new password" autocomplete="email"
                         />
                         @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
@@ -348,7 +358,7 @@
                     <button type="submit" class="btn btn-primary">
                         Submit
                     </button>
-                    <a href="{{ route('admin.user.index') }}" class="btn btn-primary" id="back">{{ __('Back') }}</a>
+                    <a href="{{ route('user.index') }}" class="btn btn-primary" id="back">{{ __('Back') }}</a>
                     </div>
                 </div>
                 </form>

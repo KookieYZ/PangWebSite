@@ -34,6 +34,7 @@
         rel="stylesheet"
         />
         <link href="{{ asset("dist/css/style.min.css") }}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{{ asset("assets/libs/jquery-minicolors/jquery.minicolors.css") }}" />
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -270,7 +271,7 @@
         <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Admin</h4>
+            <h4 class="page-title">Edit Theme Setting</h4>
             </div>
         </div>
         </div>
@@ -287,77 +288,88 @@
         <div class="row">
             <div class="col-md-12">
             <div class="card">
-                <form class="form-horizontal">
-                {{-- <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('user.store') }}"> --}}
-                    {!! csrf_field() !!}
+                <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('theme.update', $themes->id) }}">
+                    @csrf
+                    @method('PATCH')
                 <div class="card-body">
                     <div class="form-group row">
-                    <label
-                        for="name"
+                        <label
+                        for="key"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >Name</label
+                        >Setting Name</label
                     >
                     <div class="col-sm-9">
                         <input
                         type="text"
-                        class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                        id="name" name="name" value="{{ old('name') ? old('name') : $user->name }}"
-                        placeholder="Name" required disabled
+                        class="form-control{{ $errors->has('key') ? ' is-invalid' : '' }}"
+                        id="key" name="key" value="{{ old('key') ? old('key') : $themes->key }}" required disabled
                         />
-                        @if ($errors->has('name'))
+                        @if ($errors->has('key'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
+                                <strong>{{ $errors->first('key') }}</strong>
                             </span>
                         @endif
                     </div>
                     </div>
                     <div class="form-group row">
                     <label
-                        for="email"
+                        for="value"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >Email</label
+                        >Setting</label
                     >
-                    <div class="col-sm-9">
-                        <input
-                        type="email"
-                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                        id="email" name="email"
-                        placeholder="Email" value="{{ old('email') ? old('email') : $user->email }}" required autocomplete="email" disabled
-                        />
-                        @if ($errors->has('email'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                        @endif
+                    @if ($themes->id == 1 || $themes->id == 2 || $themes->id == 3)
+                        <div class="col-sm-9">
+                            <input type="text" id="value" name="value" value="{{ old('value') ? old('value') : $themes->value }}" class="form-control color{{ $errors->has('value') ? ' is-invalid' : '' }}" data-control="hue" />
+
+                            @if ($errors->has('value'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('value') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    @endif
+                    @if ($themes->id == 4 || $themes->id == 5)
+                        <div class="col-md-9">
+                            <div class="custom-file">
+                                <input
+                                type="file"
+                                class="custom-file-input{{ $errors->has('value') ? ' is-invalid' : '' }}"
+                                id="value" name="value" onchange="show(this)"
+                                />
+                                <br />
+                                <br />
+                                <img src=" {{ asset($themes->value) }}" height="130" width="130"
+                                style="border:solid" id="display">
+                            </div>
+                            @if ($errors->has('value'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('value') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    @endif
+                    @if ($themes->id == 6 || $themes->id == 7 || $themes->id == 8 || $themes->id == 9)
+                        <div class="col-sm-9">
+                            <input
+                                type="text"
+                                class="form-control{{ $errors->has('value') ? ' is-invalid' : '' }}"
+                                id="value" name="value" value="{{ old('value') ? old('value') : $themes->value }}" required
+                            />
+                            @if ($errors->has('value'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('value') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    @endif
                     </div>
-                    </div>
-                    {{-- <div class="form-group row hidden">
-                    <label
-                        for="password"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >Password</label
-                    >
-                    <div class="col-sm-9">
-                        <input
-                        type="password"
-                        class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                        id="password" name="password"
-                        placeholder="Password" required autocomplete="email"
-                        />
-                        @if ($errors->has('password'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                    </div> --}}
                 </div>
                 <div class="border-top">
                     <div class="card-body">
-                    <button type="submit" class="btn btn-primary" disabled>
+                    <button type="submit" class="btn btn-primary">
                         Submit
                     </button>
-                    <a href="{{ route('user.index') }}" class="btn btn-primary" id="back">{{ __('Back') }}</a>
+                    <a href="{{ route('theme.index') }}" class="btn btn-primary" id="back">{{ __('Back') }}</a>
                     </div>
                 </div>
                 </form>
@@ -412,5 +424,59 @@
     <script src="{{ asset("dist/js/custom.min.js") }}"></script>
     <script src="{{ asset("assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js") }}"></script>
     <script src="{{ asset("dist/js/pages/mask/mask.init.js") }}"></script>
+    <script src="{{ asset("assets/libs/jquery-minicolors/jquery.minicolors.min.js") }}"></script>
+
+    <script>
+        /*colorpicker*/
+        $(".color").each(function () {
+        //
+        // Dear reader, it's actually very easy to initialize MiniColors. For example:
+        //
+        //  $(selector).minicolors();
+        //
+        // The way I've done it below is just for the demo, so don't get confused
+        // by it. Also, data- attributes aren't supported at this time...they're
+        // only used for this demo.
+        //
+        $(this).minicolors({
+          control: $(this).attr("data-control") || "hue",
+          position: $(this).attr("data-position") || "bottom left",
+
+          change: function (value, opacity) {
+            if (!value) return;
+            if (opacity) value += ", " + opacity;
+            if (typeof console === "object") {
+              console.log(value);
+            }
+          },
+          theme: "bootstrap",
+        });
+	});
+
+    function show(input) {
+            debugger;
+            var validExtensions = ['jpg','png','jpeg']; //array of valid extensions
+            var fileName = input.files[0].name;
+            var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+            if ($.inArray(fileNameExt, validExtensions) == -1) {
+                input.type = ''
+                input.type = 'file'
+                $('#value').attr('src',"");
+                // https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg
+                $('#display').attr('src', '{{ URL::asset('/image/avatar/noimage.jpg') }}');
+                alert("Only these file types are accepted : "+validExtensions.join(', '));
+            }
+            else
+            {
+                if (input.files && input.files[0]) {
+                    var filerdr = new FileReader();
+                    filerdr.onload = function (e) {
+                        $('#display').attr('src', e.target.result);
+                    }
+                    filerdr.readAsDataURL(input.files[0]);
+                }
+            }
+        }
+    </script>
 </body>
 </html>

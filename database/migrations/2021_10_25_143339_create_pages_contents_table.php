@@ -19,9 +19,10 @@ class CreatePagesContentsTable extends Migration
             $table->string('media_path');
             $table->string('description');
             $table->string('is_publish');
+            $table->integer('year');
             $table->unsignedBigInteger('page_id');
             $table->timestamps();
-
+            
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
         });
     }

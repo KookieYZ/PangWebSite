@@ -210,7 +210,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.user.index') }}"
+                href="{{ route('user.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-account-key"></i
                 ><span class="hide-menu">Admin</span></a
@@ -219,10 +219,19 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.person.index') }}"
+                href="{{ route('relationship.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-face"></i
                 ><span class="hide-menu">Relationship</span></a
+                >
+            </li>
+            <li class="sidebar-item">
+                <a
+                class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="javascript: void(0)"
+                aria-expanded="false"
+                ><i class="me-2 mdi mdi-book-open-page-variant"></i
+                ><span class="hide-menu">Pages</span></a
                 >
             </li>
             <li class="sidebar-item">
@@ -237,7 +246,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="tables.html"
+                href="{{ route('theme.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-border-inside"></i
                 ><span class="hide-menu">Theme</span></a
@@ -265,13 +274,18 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
+            @if(session()->has('error'))
+                <div class="alert alert-success">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
               <h4 class="page-title">Admin</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <a href="{{ route("admin.user.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
+                    <a href="{{ route("user.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
                   </ol>
                 </nav>
               </div>
@@ -292,21 +306,21 @@
                   <table class="table">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">Control
+                        <th scope="col"><b>Control</b>
                         </th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Created At</th>
+                        <th scope="col"><b>Name</b></th>
+                        <th scope="col"><b>Email</b></th>
+                        <th scope="col"><b>Created At</b></th>
                       </tr>
                     </thead>
                     @foreach($admins as $admin)
                     <tbody class="customtable">
                       <tr>
                         <th>
-                          <a href="{{ route('admin.user.edit', $admin) }}"><i class="far fa-edit" title="Edit Admin Details"></i></a>
-                            <a href="{{ route('admin.user.show', $admin) }}"><i class="fas fa-eye" title="View Admin Details"></i></a>
+                          <a href="{{ route('user.edit', $admin) }}"><i class="far fa-edit" title="Edit Admin Details"></i></a>
+                            <a href="{{ route('user.show', $admin) }}"><i class="fas fa-eye" title="View Admin Details"></i></a>
 
-                          <form method="POST" action="{{ route('admin.user.destroy', $admin->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Admin">
+                          <form method="POST" action="{{ route('user.destroy', $admin->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Admin">
                             {{ csrf_field() }}
                             @method('DELETE')
                             <button type="submit" style="background-color: transparent;

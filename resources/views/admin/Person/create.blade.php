@@ -209,7 +209,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.user.index') }}"
+                href="{{ route('user.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-account-key"></i
                 ><span class="hide-menu">Admin</span></a
@@ -218,10 +218,19 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.person.index') }}"
+                href="{{ route('relationship.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-face"></i
                 ><span class="hide-menu">Relationship</span></a
+                >
+            </li>
+            <li class="sidebar-item">
+                <a
+                class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="javascript: void(0)"
+                aria-expanded="false"
+                ><i class="me-2 mdi mdi-book-open-page-variant"></i
+                ><span class="hide-menu">Pages</span></a
                 >
             </li>
             <li class="sidebar-item">
@@ -236,7 +245,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="tables.html"
+                href="{{ route('theme.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-border-inside"></i
                 ><span class="hide-menu">Theme</span></a
@@ -278,8 +287,9 @@
         <div class="row">
             <div class="col-md-12">
             <div class="card">
-                <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('admin.person.store') }}">
-                    {!! csrf_field() !!}
+                <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('relationship.store') }}">
+                    @csrf
+                    {{-- {!! csrf_field() !!} --}}
                 <div class="card-body">
                     <div class="form-group row">
                     <label
@@ -308,8 +318,12 @@
                             <input
                             type="file"
                             class="custom-file-input{{ $errors->has('avatar') ? ' is-invalid' : '' }}"
-                            id="avatar" name="avatar" required
+                            id="avatar" name="avatar" onchange="show(this)"
                             />
+                            <br />
+                            <br />
+                            <img src="{{ asset('image/avatar/noimage.jpg') }}" id="display" height="130" width="130"
+                            style="border:solid">
                         </div>
                         @if ($errors->has('avatar'))
                             <span class="invalid-feedback" role="alert">
@@ -329,7 +343,7 @@
                         type="text"
                         class="form-control{{ $errors->has('spouse_name') ? ' is-invalid' : '' }}"
                         id="spouse_name" name="spouse_name"
-                        placeholder="Spouse Name" value="{{ old('spouse_name') }}" required
+                        placeholder="Spouse Name" value="{{ old('spouse_name') }}"
                         />
                         @if ($errors->has('spouse_name'))
                         <span class="invalid-feedback" role="alert">
@@ -345,8 +359,12 @@
                             <input
                             type="file"
                             class="custom-file-input{{ $errors->has('spouse_avatar') ? ' is-invalid' : '' }}"
-                            id="spouse_avatar" name="spouse_avatar" required
+                            id="spouse_avatar" name="spouse_avatar" onchange="spouse(this)"
                             />
+                            <br />
+                            <br />
+                            <img src="{{ asset('image/avatar/noimage.jpg') }}" id="spouse_display" height="130" width="130"
+                            style="border:solid">
                         </div>
                         @if ($errors->has('spouse_avatar'))
                         <span class="invalid-feedback" role="alert">
@@ -488,5 +506,57 @@
     <script src="{{ asset("dist/js/custom.min.js") }}"></script>
     <script src="{{ asset("assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js") }}"></script>
     <script src="{{ asset("dist/js/pages/mask/mask.init.js") }}"></script>
+
+    <script>
+        function show(input) {
+            debugger;
+            var validExtensions = ['jpg','png','jpeg']; //array of valid extensions
+            var fileName = input.files[0].name;
+            var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+            if ($.inArray(fileNameExt, validExtensions) == -1) {
+                input.type = ''
+                input.type = 'file'
+                $('#avatar').attr('src',"");
+                // https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg
+                $('#display').attr('src', '{{ URL::asset('/image/avatar/noimage.jpg') }}');
+                alert("Only these file types are accepted : "+validExtensions.join(', '));
+            }
+            else
+            {
+                if (input.files && input.files[0]) {
+                    var filerdr = new FileReader();
+                    filerdr.onload = function (e) {
+                        $('#display').attr('src', e.target.result);
+                    }
+                    filerdr.readAsDataURL(input.files[0]);
+                }
+            }
+        }
+
+        function spouse(input) {
+            debugger;
+            var validExtensions = ['jpg','png','jpeg']; //array of valid extensions
+            var fileName = input.files[0].name;
+            var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+            if ($.inArray(fileNameExt, validExtensions) == -1) {
+                input.type = ''
+                input.type = 'file'
+                $('#spouse_avatar').attr('src',"");
+                // https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg
+                $('#spouse_display').attr('src', '{{ URL::asset('/image/avatar/noimage.jpg') }}');
+                alert("Only these file types are accepted : "+validExtensions.join(', '));
+            }
+            else
+            {
+                if (input.files && input.files[0]) {
+                    var filerdr = new FileReader();
+                    filerdr.onload = function (e) {
+                        $('#spouse_display').attr('src', e.target.result);
+                    }
+                    filerdr.readAsDataURL(input.files[0]);
+                }
+            }
+        }
+    </script>
 </body>
 </html>

@@ -15,6 +15,19 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name'        => 'required|string|max:50',
+            'email'       => 'required|email',
+            'password'    => 'required|string',
+        ]);
+    }
+
     public function index() {
         $admins = User::orderBy('created_at', 'DESC')->simplePaginate(10);
         return view('admin.user.index', compact('admins'))->with('admins', $admins);
@@ -25,6 +38,8 @@ class AdminController extends Controller
     }
 
     public function store(Request $request) {
+        $this->validator($request->all())->validate();
+
         date_default_timezone_set("Asia/Kuala_Lumpur");
 
         $admin = new User;
@@ -36,7 +51,7 @@ class AdminController extends Controller
 
         $admin->save();
 
-        return redirect()->route('admin.user.index')->with('success', 'Admin created successfully!');
+        return redirect()->route('user.index')->with('success', 'Admin created successfully!');
     }
 
     public function show($id) {
@@ -50,24 +65,30 @@ class AdminController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $this->validate($request, [
+            'name'        => 'string|max:50',
+            'email'       => 'email',
+            'password'    => 'string',
+        ]);
+
         date_default_timezone_set("Asia/Kuala_Lumpur");
 
         $user = User::find($id);
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
+        $user->password = Hash::make($request['password']);
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
 
 
-        return redirect()->route('admin.user.index')->with('success', "$user->name updated successfully!");
+        return redirect()->route('user.index')->with('success', "$user->name updated successfully!");
     }
 
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('admin.user.index')->with('success', "$user->name was deleted!");
+        return redirect()->route('user.index')->with('success', "$user->name was deleted!");
     }
 }

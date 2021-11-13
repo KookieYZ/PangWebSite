@@ -274,16 +274,14 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
+            @if(session()->has('error'))
+                <div class="alert alert-success">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Relationship</h4>
-              <div class="ms-auto text-end">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <a href="{{ route("relationship.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
-                  </ol>
-                </nav>
-              </div>
+              <h4 class="page-title">Theme</h4>
             </div>
           </div>
         </div>
@@ -303,49 +301,27 @@
                       <tr>
                         <th scope="col"><b>Control</b>
                         </th>
-                        <th scope="col"><b>Name</b></th>
-                        <th scope="col"><b>Spouse Name</b></th>
-                        <th scope="col"><b>Gender</b></th>
-                        <th scope="col"><b>State</b></th>
-                        <th scope="col"><b>Nationality</b></th>
-                        <th scope="col"><b>Date of Birth</b></th>
+                        <th scope="col"><b>Theme Setting</b></th>
+                        <th scope="col"><b>Setting</b></th>
                       </tr>
                     </thead>
-                    @foreach($persons as $person)
+                    @foreach($themes as $theme)
                     <tbody class="customtable">
                       <tr>
                         <th>
-                          <a href="{{ route('relationship.edit', $person) }}"><i class="far fa-edit" title="Edit Record"></i></a>
-                          <a href="{{ route('relationship.show', $person) }}"><i class="fas fa-eye" title="View Details"></i></a>
-                          <form method="POST" action="{{ route('relationship.destroy', $person->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Record">
-                            {{ csrf_field() }}
-                            @method('DELETE')
-                            <button type="submit" style="background-color: transparent;
-                            background-repeat: no-repeat;
-                            border: none;
-                            cursor: pointer;
-                            overflow: hidden;
-                            outline: none;">
-                            <i class="me-2 mdi mdi-delete"></i>
-                            </button>
-                          </form>
+                          <a href="{{ route('theme.edit', $theme) }}"><i class="far fa-edit" title="Edit Theme Details"></i></a>
+                            <a href="{{ route('theme.show', $theme) }}"><i class="fas fa-eye" title="View Theme Details"></i></a>
+                        <form>
                         </th>
-                        <td>{{ $person->name }}</td>
+                        <td>{{ $theme->key }}</td>
                         <td>
-                            @if ($person->spouse_name != null)
-                                {{ $person->spouse_name }}
+                            @if ($theme->id == 4 || $theme->id == 5)
+                                <img src=" {{ asset($theme->value) }}" height="100" width="100"
+                                style="border:solid">
                             @else
-                                No spouse found
+                                {{ $theme->value }}
                             @endif
                         </td>
-                        @if($person->gender == 1)
-                            <td>Male</td>
-                        @else
-                            <td>Female</td>
-                        @endif
-                        <td>{{ $person->state }}</td>
-                        <td>{{ $person->nationality }}</td>
-                        <td>{{ $person->dob_date }}</td>
                       </tr>
                     </tbody>
                     @endforeach
@@ -353,7 +329,8 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-content-end">{{ $persons->links() }}</div>
+            <div class="d-flex justify-content-end"></div>
+            {{-- <div class="d-flex justify-content-end">{{ $admins->links() }}</div> --}}
           </div>
           <!-- ============================================================== -->
           <!-- End PAge Content -->
@@ -405,6 +382,8 @@
     <script src="{{ asset("assets/extra-libs/multicheck/datatable-checkbox-init.js") }}"></script>
     <script src="{{ asset("assets/extra-libs/multicheck/jquery.multicheck.js") }}"></script>
     <script src="{{ asset("assets/extra-libs/DataTables/datatables.min.js") }}"></script>
+    <script src="{{ asset("assets/libs/jquery-minicolors/jquery.minicolors.min.js") }}"></script>
+
     <script>
       /****************************************
        *       Basic Table                   *

@@ -14,47 +14,47 @@ class VariableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('variable')->insert([
+        DB::table('variables')->insert([
             'key' => 'primary-colour',
-            'value' => '#ffffff',
+            'value' => '#F08080',
         ]);
 
-        DB::table('variable')->insert([
+        DB::table('variables')->insert([
             'key' => 'second-colour',
-            'value' => '#000000',
+            'value' => '#FF0000',
         ]);
 
-        DB::table('variable')->insert([
+        DB::table('variables')->insert([
             'key' => 'background-colour',
-            'value' => '#ffffff',
+            'value' => '#FFFFFF',
         ]);
 
-        DB::table('variable')->insert([
+        DB::table('variables')->insert([
             'key' => 'top-banner-image',
             'value' => 'image/test.jpg',
         ]);
 
-        DB::table('variable')->insert([
+        DB::table('variables')->insert([
             'key' => 'main-background-image',
             'value' => 'image/test.jpg',
         ]);
 
-        DB::table('variable')->insert([
+        DB::table('variables')->insert([
             'key' => 'instagram-link',
             'value' => 'instagram.com/123',
         ]);
 
-        DB::table('variable')->insert([
+        DB::table('variables')->insert([
             'key' => 'facebook-link',
             'value' => 'facebook.com/123',
         ]);
 
-        DB::table('variable')->insert([
+        DB::table('variables')->insert([
             'key' => 'messager-link',
             'value' => 'messager.com/123',
         ]);
 
-        DB::table('variable')->insert([
+        DB::table('variables')->insert([
             'key' => 'whatsapp-link',
             'value' => 'whatsapp.com/123',
         ]);

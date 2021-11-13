@@ -203,7 +203,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.user.index') }}"
+                href="{{ route('user.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-account-key"></i
                 ><span class="hide-menu">Admin</span></a
@@ -212,10 +212,19 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="{{ route('admin.person.index') }}"
+                href="{{ route('relationship.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-face"></i
                 ><span class="hide-menu">Relationship</span></a
+                >
+            </li>
+            <li class="sidebar-item">
+                <a
+                class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="javascript: void(0)"
+                aria-expanded="false"
+                ><i class="me-2 mdi mdi-book-open-page-variant"></i
+                ><span class="hide-menu">Pages</span></a
                 >
             </li>
             <li class="sidebar-item">
@@ -230,7 +239,7 @@
             <li class="sidebar-item">
                 <a
                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                href="tables.html"
+                href="{{ route('theme.index') }}"
                 aria-expanded="false"
                 ><i class="mdi mdi-border-inside"></i
                 ><span class="hide-menu">Theme</span></a
@@ -287,7 +296,7 @@
             <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-warning text-center">
-                    <a href="{{ route('admin.user.index') }}">
+                    <a href="{{ route('user.index') }}">
                 <h1 class="font-light text-white">
                     <i class="mdi mdi-account-key"></i>
                 </h1>
@@ -300,7 +309,7 @@
             <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-danger text-center">
-                <a href="{{ route('admin.person.index') }}">
+                <a href="{{ route('relationship.index') }}">
                 <h1 class="font-light text-white">
                     <i class="mdi mdi-border-outside"></i>
                 </h1>
@@ -310,7 +319,20 @@
             </div>
             </div>
             <!-- Column -->
-            <div class="col-md-6 col-lg-4 col-xlg-3">
+            <div class="col-md-6 col-lg-2 col-xlg-3">
+            <div class="card card-hover">
+                <div class="box bg-success text-center">
+                <a href="javascript: void(0)">
+                <h1 class="font-light text-white">
+                    <i class="me-2 mdi mdi-book-open-page-variant"></i>
+                </h1>
+                <h6 class="text-white">Pages</h6>
+                </a>
+                </div>
+            </div>
+            </div>
+            <!-- Column -->
+            <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-info text-center">
                 <h1 class="font-light text-white">
@@ -325,10 +347,12 @@
             <div class="col-md-6 col-lg-2 col-xlg-3">
             <div class="card card-hover">
                 <div class="box bg-danger text-center">
+                <a href="{{ route('theme.index') }}">
                 <h1 class="font-light text-white">
                     <i class="mdi mdi-receipt"></i>
                 </h1>
                 <h6 class="text-white">Theme</h6>
+                </a>
                 </div>
             </div>
             </div>
