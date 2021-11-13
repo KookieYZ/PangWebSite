@@ -26,6 +26,15 @@ Route::get('chart', function () {
     return view('chart');
 });
 
+Route::get('blog', function () {
+    return view('blog');
+});
+
+//testing purpose
+Route::get('test', function () {
+    return view('test');
+});
+
 // Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes([
