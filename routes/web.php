@@ -22,6 +22,10 @@ Route::get('search', function () {
     return view('search');
 });
 
+Route::get('chart', function () {
+    return view('chart');
+});
+
 // Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes([
