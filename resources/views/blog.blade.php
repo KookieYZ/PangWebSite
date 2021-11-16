@@ -1,4 +1,3 @@
-<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 @extends('includes.app')
 
 @section('content')
@@ -30,4 +29,79 @@
         @endfor
         </div>      
 </section>
+
+<div class="section position-relative">
+    <div class="arrow arrow-left">
+        <img src="{{asset('assets/images/arrow-left.png')}}" />
+    </div>
+    <div class="arrow arrow-right">
+        <img src="{{asset('assets/images/arrow-right.png')}}" />
+    </div>
+    <div class="wrapper">
+        <div class="scrollmenu">
+            @for($year = 1971; $year <= 2021; $year++)
+                <a href="#{{ $year }}">{{ $year }}</a>
+            @endfor
+        </div>
+    </div>
+</div>
+
+<style>
+    .scrollmenu {
+        background-color: #f77;
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+    .scrollmenu a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 7px 21px;
+        width: 80;
+        text-decoration: none;
+    }
+
+    .scrollmenu a:hover {
+        background-color: #f00;
+        border-radius: 15px 15px 0px 0px
+    }
+
+    .arrow {
+        position: absolute;
+        height: 38px;
+        text-align: center;
+        padding: 7px;
+    }
+
+    .arrow-right {
+        right: 0;
+    }
+</style>
+
+<script>
+    $(".arrow-left").hide();
+
+    $(".scrollmenu").scroll(function() {
+        if ($(".scrollmenu").scrollLeft() == 0) {
+            $(".arrow-left").hide();
+        } else {
+            $(".arrow-left").show();
+        }
+
+        if (($(".scrollmenu").scrollLeft() + $(window).width()) == $(".scrollmenu").get(0).scrollWidth) {
+            $(".arrow-right").hide();
+        } else {
+            $(".arrow-right").show();
+        }
+    });
+
+    $(".arrow-left").click(function() {
+        $(".scrollmenu").scrollLeft( $(".scrollmenu").scrollLeft() - 84);
+    });
+
+    $(".arrow-right").click(function() {
+        $(".scrollmenu").scrollLeft( $(".scrollmenu").scrollLeft() + 84);
+    });
+</script>
 @endsection
