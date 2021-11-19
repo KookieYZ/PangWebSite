@@ -2,24 +2,21 @@
 
 @section('content')
 <style>
-.google-visualization-orgchart-node {
-    border: 2px solid #FF0000 !important;
-}   
-.google-visualization-orgchart-table {
-    width: 100%;
-}
-
+    .google-visualization-orgchart-node {
+        border: 2px solid #FF0000 !important;
+    }   
+    .google-visualization-orgchart-table {
+        width: 100%;
+    }
 </style>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-       <div id="chart_div" class="mt-5"></div>
-
-                
-                        
+<div class="container p-2">
+    <div id="chart_div" class="mt-5"></div>
+</div>
 
 <script>
-google.charts.load('current', {packages:["orgchart"]});
-google.charts.setOnLoadCallback(drawChart);
+    google.charts.load('current', {packages:["orgchart"]});
+    google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
         var data = new google.visualization.DataTable();

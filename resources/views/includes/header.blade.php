@@ -37,12 +37,11 @@
   
     .mobile-main-nav #navbar.show {  width: 100% !important; -webkit-transform: translateX(0px);  -webkit-transition: transform 280ms cubic-bezier(0.25,.8,0.25,1); transform: translateX(0px);  transition: transform 280ms cubic-bezier(0.25,.8,0.25,1); overflow-y:visible;   }
   
-  
     /* .mobile-main-nav #navbar.show:before,.mobile-main-nav #navbar.collapsing:before{position: fixed; display: block; background: rgba(0,0,0,0.2); left: 0; top: 0; width: 100vw; bottom: 0;   animation: show 2000ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 560ms forwards; z-index:-999;} */
 
     .mobile-main-nav .nav{margin-top: 50px}
     .mobile-main-nav .nav li {  display: block;  float: none; }
-   .mobile-main-nav  .navbar-nav>li>a:hover{color:#FFF}
+    .mobile-main-nav .navbar-nav>li>a:hover{color:#FFF}
 }
 
 .animate-show {
@@ -70,7 +69,7 @@
 </style>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-inverse navbar-default mobile-main-nav" style="background-color:#FF7777; height:52px;">
-  <a class="navbar-brand" href="#">彭氏公会</a>
+  <a class="navbar-brand" href="{{ route('site.home') }}">彭氏公会</a>
   <button class="navbar-toggler text-white bg-transparent border-0" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
     <span class="navbar-toggler-icon text-white"></span>
   </button>
@@ -78,19 +77,19 @@
   <div id="navbar" class="collapse navbar-collapse" aria-expanded="true">
     <ul class="nav navbar-nav ml-auto" style="background-color:#FF7777;">
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">延年公家训</a>
+        <a class="nav-link text-white" href="{{ route('site.blog') }}">延年公家训</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">彭姓来源</a>
+        <a class="nav-link text-white" href="{{ route('site.blog') }}">彭姓来源</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">彭氏会史</a>
+        <a class="nav-link text-white" href="{{ route('site.blog') }}">彭氏会史</a>
       </li>  
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
+        <a class="nav-link dropdown-toggle text-white" href="{{ route('site.blog') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
         <div class="dropdown-menu border-0 w-100" aria-labelledby="navbarDropdown" style="background-color:#FF7777; border-radius: 0px;">
-          <a class="dropdown-item text-white w-100" href="#">商业</a>
-          <a class="dropdown-item text-white w-100" href="#">就业机会</a>
+          <a class="dropdown-item text-white w-100" href="{{ route('site.blog') }}">商业</a>
+          <a class="dropdown-item text-white w-100" href="{{ route('site.blog') }}">就业机会</a>
         </div>
       </li>
       <div class="col-12 col-sm-12 col-xs-12 text-center" style="">

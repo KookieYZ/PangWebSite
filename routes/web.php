@@ -16,24 +16,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('site.home');
 
 Route::get('search', function () {
     return view('search');
-});
+})->name('site.search');
 
 Route::get('chart', function () {
     return view('chart');
-});
+})->name('site.chart');
 
 Route::get('blog', function () {
     return view('blog');
-});
+})->name('site.blog');
 
 //testing purpose
 Route::get('test', function () {
     return view('test');
-});
+})->name('site.test');
 
 // Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
@@ -56,4 +56,3 @@ Route::resource('admin/user', 'App\Http\Controllers\Admin\AdminController');
 Route::resource('admin/theme', 'App\Http\Controllers\Admin\ThemeController');
 Route::resource('admin/page', 'App\Http\Controllers\Admin\PageController');
 Route::resource('admin/blog', 'App\Http\Controllers\Admin\BlogController');
-
