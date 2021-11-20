@@ -19,7 +19,7 @@
             @else
             <div class="col-xl-5 col-md-5 col-12 p-4 d-flex justify-content-center">
                 <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" width="560" height="315" src="{{asset('assets/video/dota.mp4')}}" title="URL video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" width="560" height="315" src="{{asset('assets/videos/doremon.mp4')}}" title="URL video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div> 
             <div class="col-xl-7 col-md-7 col-12 p-1 mt-3">

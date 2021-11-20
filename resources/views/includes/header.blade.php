@@ -1,7 +1,7 @@
 <style>
-.nav-link:hover ,.dropdown-item:hover{
-  color: #ffffff;
-  background-color: #FF0000;
+  .nav-link:hover ,.dropdown-item:hover{
+    color: #ffffff;
+    background-color: #FF0000;
   }
   .dropdown-menu{
     margin-top: -5px;
@@ -49,7 +49,6 @@
     /*opacity: 0;*/
 }
 
-
 @keyframes hide{
     0%{ opacity: 1; z-index: 9;  }
     99% { opacity: 0; top:-100px;  }
@@ -60,6 +59,7 @@
     0%{ opacity: 0 ;  }
     100% { opacity: 1;transform: none; }
 }
+
 .navbar-togglers{
   border: 2px solid #ffffff;
 }
