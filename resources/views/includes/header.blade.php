@@ -1,5 +1,5 @@
 <style>
-  .nav-link:hover ,.dropdown-item:hover{
+  .nav-link:hover ,.dropdown-item:hover, .btn_hover:hover{
     color: #ffffff;
     background-color: #FF0000;
   }
@@ -91,6 +91,13 @@
           <a class="dropdown-item text-white w-100" href="{{ route('site.blog') }}">商业</a>
           <a class="dropdown-item text-white w-100" href="{{ route('site.blog') }}">就业机会</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white btn_hover" href="{{ route('site.search') }}" >        
+          <button class="btn text-white btn_hover pb-0" type="button" style="background:none; border-radius: 0px; border:none; display:block;">
+            <i class="fa fa-search btn_hover pb-0" style="background:none; border-radius: 0px; border:none;"></i>
+          </button>
+        </a> 
       </li>
       <div class="col-12 col-sm-12 col-xs-12 text-center" style="">
         <button class="navbar-togglers bg-transparent text-white border-white" style="border-radius: 30px; width:30px" aria-label="Close" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
