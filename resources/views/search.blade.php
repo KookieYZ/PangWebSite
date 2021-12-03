@@ -41,7 +41,7 @@
                                     <div><b>描述 :</b> 聚集的祈愿将成为新生的闪耀之星，化作光芒闪耀的道路吧！同调召唤，飞翔吧，星尘龙！</div>
                                 </div>
                                 <div class="row text-justify p-2">
-                                    <div><b>描述2 :</b> 集（つど）いし愿（ねが）いが新（あら）たに辉（かがや）く星（ほし）となる。光（ひかり）差（さ）す道（みち）となれ！シンクロ召唤（しょうかん）！飞翔（ひしょう）せよ、スターダスト！</div>
+                                    <div><b>描述2 :</b> I wanna dance, the music's got me going Ain't nothing that can stop how we move, yeah Let's break our plans and live just like we're golden And roll in like we're dancing fools We don't need to worry 'Cause when we fall, we know how to land Don't need to talk the talk, just walk the walk tonight 'Cause we don't need permission to dance</div>
                                 </div>            
                             </div>
                         </div>
@@ -51,4 +51,10 @@
             </div>      
         </div>    
     </section>
+
+<style>
+    a:hover {
+    text-decoration: none;
+    }
+</style>
 @endsection

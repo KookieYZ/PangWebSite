@@ -30,6 +30,14 @@ Route::get('blog', function () {
     return view('blog');
 })->name('site.blog');
 
+Route::get('rules', function () {
+    return view('rules');
+})->name('site.rules');
+
+Route::get('job', function () {
+    return view('job');
+})->name('site.job');
+
 //testing purpose
 Route::get('test', function () {
     return view('test');
