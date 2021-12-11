@@ -2,7 +2,8 @@
 
 @section('content')
 <section class="title">
-    <div class="text-center h1 p-auto mt-5"><b><ins>延年公家訓</ins></b></div>
+    <div><br/></div>
+    <div class="text-center h1 p-auto mt-5"><b><ins>彭姓来源</ins></b></div>
 </section>
 
 <section class="content">
@@ -10,7 +11,7 @@
     @for ($i = 0; $i < 4; $i++)
         @if ($i < 2)
         <div class="w-auto p-2 ml-3 d-flex justify-content-start">
-            <image src="{{asset('assets/images/profile.jpg')}}" height="400" width="600">
+            <image src="{{asset('assets/images/profile.jpg')}}" height="315" width="400">
         </div>        
         @else
         <div class="w-auto p-2 ml-3 d-flex justify-content-start">                
