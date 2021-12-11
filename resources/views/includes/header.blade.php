@@ -93,7 +93,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white btn_hover" href="{{ route('site.search') }}" >        
+        <a class="nav-link text-white btn_hover" href="{{ route('search.index') }}" >        
           <button class="btn text-white btn_hover pb-0" type="button" style="background:none; border-radius: 0px; border:none; display:block;">
             <i class="fa fa-search btn_hover pb-0" style="background:none; border-radius: 0px; border:none;"></i>
           </button>

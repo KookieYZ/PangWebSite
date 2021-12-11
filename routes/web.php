@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('site.home');
 
-Route::get('search', function () {
-    return view('search');
-})->name('site.search');
+// Route::get('search', function () {
+//     return view('search');
+// })->name('site.search');
 
 Route::get('chart', function () {
     return view('chart');
@@ -68,3 +68,7 @@ Route::resource('admin/user', 'App\Http\Controllers\Admin\AdminController');
 Route::resource('admin/theme', 'App\Http\Controllers\Admin\ThemeController');
 Route::resource('admin/page', 'App\Http\Controllers\Admin\PageController');
 Route::resource('admin/blog', 'App\Http\Controllers\Admin\BlogController');
+
+
+Route::resource('/search', 'App\Http\Controllers\user\SearchController');
+// Route::get('/chart', [App\Http\Controllers\HomeController::class, 'index'])->name('chart');
