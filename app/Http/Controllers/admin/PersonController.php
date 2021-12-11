@@ -29,7 +29,7 @@ class PersonController extends Controller
             'state'             => 'string|required',
             'nationality'       => 'string|required',
             'dob_date'          => 'required',
-            'parent_id'         => 'int|nullable'
+            'parent_id'         => 'integer|nullable'
         ]);
     }
 

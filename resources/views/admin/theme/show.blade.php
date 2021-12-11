@@ -20,9 +20,8 @@
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="{{ asset("assets/images/favicon.png") }}"
+        href="{{ asset("image/PANG_CLAN_LOGO.png") }}"/>
 
-        />
         <!-- Custom CSS -->
         <link
         rel="stylesheet"
@@ -79,21 +78,17 @@
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
                 <img
-                src="{{ asset("assets/images/logo-icon.png") }}"
+                src="{{ asset("image/PANG_CLAN_LOGO.png") }}"
                 alt="homepage"
                 class="light-logo"
-                width="25"
+                width="40"
                 />
             </b>
             <!--End Logo icon -->
             <!-- Logo text -->
             <span class="logo-text ms-2">
                 <!-- dark Logo text -->
-                <img
-                src="{{ asset("assets/images/logo-text.png") }}"
-                alt="homepage"
-                class="light-logo"
-                />
+                <span style="vertical-align: middle; font-size: 25px">彭氏公会</span>
             </span>
             <!-- Logo icon -->
             <!-- <b class="logo-icon"> -->
@@ -327,7 +322,20 @@
                             @endif
                         </div>
                     @endif
-                    @if ($themes->id == 4 || $themes->id == 5)
+                    @if ($themes->id == 4)
+                        <div class="col-md-9">
+                            <div class="custom-file">
+                                <img src=" {{ asset($themes->value) }}" height="130" width="350"
+                                style="border:solid">
+                            </div>
+                            @if ($errors->has('avatar'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('avatar') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    @endif
+                    @if ($themes->id == 5)
                         <div class="col-md-9">
                             <div class="custom-file">
                                 <img src=" {{ asset($themes->value) }}" height="130" width="130"

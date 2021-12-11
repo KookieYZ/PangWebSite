@@ -11,7 +11,9 @@ class Page extends Model
 
     protected $fillable = [
         'title',
+        'url',
         'ranking',
+        'parent_id',
     ];
 
     /**
@@ -20,5 +22,13 @@ class Page extends Model
     */
     public function page_content() {
         return $this->hasMany('App\Models\Page_Content');
+    }
+
+    public function child() {
+        return $this->hasMany('App\Models\Page', 'parent_id');
+    }
+
+    public function parent() {
+        return $this->belongsTo('App\Models\Page', 'parent_id');
     }
 }

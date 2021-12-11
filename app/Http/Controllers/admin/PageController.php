@@ -14,31 +14,88 @@ use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'title'        => 'required|string|max:50',
+            // 'url'          => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'url'          => 'required|url',
+            'ranking'      => 'required|integer',
+            'parent_id'    => 'nullable|integer'
+        ]);
+    }
+
     public function index() {
-        return view('admin.page.index');
+        $pages = Page::orderBy('created_at', 'DESC')->simplePaginate(10);
+        return view('admin.page.index', compact('pages'));
     }
 
     public function create() {
-        return view('admin.page.create');
+        $pages = Page::orderBy('created_at', 'DESC')->get();
+        return view('admin.page.create', compact('pages'));
     }
 
-    public function store() {
+    public function store(Request $request) {
+        $this->validator($request->all())->validate();
+
+        date_default_timezone_set("Asia/Kuala_Lumpur");
+
+        $page = new Page;
+        $page->title = $request['title'];
+        $page->url = $request['url'];
+        $page->ranking = $request['ranking'];
+        $page->parent_id = $request['parent_id'];
+        $page->created_at = now();
+        $page->updated_at = now();
+
+        $page->save();
+
+        return redirect()->route('page.index')->with('success', 'Page created successfully!');
+    }
+
+    public function show($id) {
+        $page = Page::find($id);
+        return view('admin.page.show', compact('page'));
+    }
+
+    public function edit($id) {
+        $page = Page::find($id);
+        $pages = Page::orderBy('id', 'ASC')->get()->except($page->id);;
+        return view('admin.page.edit', compact('page', 'pages'));
+    }
+
+    public function update(Request $request, $id) {
+        $this->validate($request, [
+            'title'        => 'string|max:50|required',
+            'url'          => 'string|url|required',
+            'ranking'      => 'integer|required',
+            'parent_id'    => 'integer|nullable'
+        ]);
+
+        date_default_timezone_set("Asia/Kuala_Lumpur");
+
+        $page = Page::find($id);
+        $page->title = $request['title'];
+        $page->url = $request['url'];
+        $page->ranking = $request['ranking'];
+        $page->parent_id = $request->parent_id;
+        $page->created_at = now();
+        $page->updated_at = now();
+
+        $page->save();
+
+        return redirect()->route('page.index')->with('success', "$page->title updated successfully!");
 
     }
 
-    public function show() {
-        return view('admin.page.show');
-    }
+    public function destroy($id) {
+        $page = Page::find($id);
+        $page->delete();
 
-    public function edit() {
-        return view('admin.page.edit');
-    }
-
-    public function update() {
-
-    }
-
-    public function destroy() {
-
+        return redirect()->route('page.index')->with('success', "$page->title was deleted!");
     }
 }

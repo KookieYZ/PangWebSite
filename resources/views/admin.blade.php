@@ -20,8 +20,7 @@
     rel="icon"
     type="image/png"
     sizes="16x16"
-    href="../assets/images/favicon.png"
-    />
+    href="{{ asset("image/PANG_CLAN_LOGO.png") }}"/>
     <!-- Custom CSS -->
     <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet" />
     <!-- Custom CSS -->
@@ -71,21 +70,17 @@
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
                 <img
-                src="../assets/images/logo-icon.png"
+                src="{{ asset("image/PANG_CLAN_LOGO.png") }}"
                 alt="homepage"
                 class="light-logo"
-                width="25"
+                width="40"
                 />
             </b>
             <!--End Logo icon -->
             <!-- Logo text -->
             <span class="logo-text ms-2">
                 <!-- dark Logo text -->
-                <img
-                src="../assets/images/logo-text.png"
-                alt="homepage"
-                class="light-logo"
-                />
+                <span style="vertical-align: middle; font-size: 25px">彭氏公会</span>
             </span>
             <!-- Logo icon -->
             <!-- <b class="logo-icon"> -->

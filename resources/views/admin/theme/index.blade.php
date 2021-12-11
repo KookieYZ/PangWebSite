@@ -17,12 +17,11 @@
     <title>彭氏公会</title>
     <!-- Favicon icon -->
     <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="{{ asset("assets/images/favicon.png") }}"
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="{{ asset("image/PANG_CLAN_LOGO.png") }}"/>
 
-    />
     <!-- Custom CSS -->
     <link
       rel="stylesheet"
@@ -79,21 +78,17 @@
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
                 <img
-                  src="{{ asset("assets/images/logo-icon.png") }}"
-                  alt="homepage"
-                  class="light-logo"
-                  width="25"
+                src="{{ asset("image/PANG_CLAN_LOGO.png") }}"
+                alt="homepage"
+                class="light-logo"
+                width="40"
                 />
               </b>
               <!--End Logo icon -->
               <!-- Logo text -->
               <span class="logo-text ms-2">
                 <!-- dark Logo text -->
-                <img
-                  src="{{ asset("assets/images/logo-text.png") }}"
-                  alt="homepage"
-                  class="light-logo"
-                />
+                <span style="vertical-align: middle; font-size: 25px">彭氏公会</span>
               </span>
               <!-- Logo icon -->
               <!-- <b class="logo-icon"> -->
@@ -315,7 +310,10 @@
                         </th>
                         <td>{{ $theme->key }}</td>
                         <td>
-                            @if ($theme->id == 4 || $theme->id == 5)
+                            @if ($theme->id == 4)
+                                <img src=" {{ asset($theme->value) }}" height="100" width="300"
+                                style="border:solid">
+                            @elseif ($theme->id == 5)
                                 <img src=" {{ asset($theme->value) }}" height="100" width="100"
                                 style="border:solid">
                             @else

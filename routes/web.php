@@ -37,6 +37,10 @@ Route::get('test', function () {
 
 // Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', function() {
+        return redirect('/admin/login');
+    });
+
     Auth::routes([
         'register' => false, // Registration Routes...
         'reset' => false, // Password Reset Routes...

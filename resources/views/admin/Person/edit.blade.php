@@ -20,9 +20,8 @@
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="{{ asset("assets/images/favicon.png") }}"
+        href="{{ asset("image/PANG_CLAN_LOGO.png") }}"/>
 
-        />
         <!-- Custom CSS -->
         <link
         rel="stylesheet"
@@ -78,21 +77,17 @@
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
                 <img
-                src="{{ asset("assets/images/logo-icon.png") }}"
+                src="{{ asset("image/PANG_CLAN_LOGO.png") }}"
                 alt="homepage"
                 class="light-logo"
-                width="25"
+                width="40"
                 />
             </b>
             <!--End Logo icon -->
             <!-- Logo text -->
             <span class="logo-text ms-2">
                 <!-- dark Logo text -->
-                <img
-                src="{{ asset("assets/images/logo-text.png") }}"
-                alt="homepage"
-                class="light-logo"
-                />
+                <span style="vertical-align: middle; font-size: 25px">彭氏公会</span>
             </span>
             <!-- Logo icon -->
             <!-- <b class="logo-icon"> -->
@@ -541,9 +536,10 @@
     <script>
         function show(input) {
             debugger;
-            var validExtensions = ['jpg','png','jpeg']; //array of valid extensions
+            var validExtensions = ['jpg','png','jpeg', 'PNG', 'JPG', 'JPEG']; //array of valid extensions
             var fileName = input.files[0].name;
             var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+            var maxSize = 3145728;
             if ($.inArray(fileNameExt, validExtensions) == -1) {
                 input.type = ''
                 input.type = 'file'
@@ -554,21 +550,29 @@
             }
             else
             {
-                if (input.files && input.files[0]) {
+                if (input.files && input.files[0] && input.files.size < maxSize || input.files[0].size < maxSize) {
                     var filerdr = new FileReader();
                     filerdr.onload = function (e) {
                         $('#display').attr('src', e.target.result);
                     }
                     filerdr.readAsDataURL(input.files[0]);
                 }
+                else {
+                    input.type = ''
+                    input.type = 'file'
+                    $('#avatar').attr('src',"");
+                    $('#display').attr('src', '{{ URL::asset('/image/avatar/noimage.jpg') }}');
+                    alert("Maximum file size is 3MB.");
+                }
             }
         }
 
         function spouse(input) {
             debugger;
-            var validExtensions = ['jpg','png','jpeg']; //array of valid extensions
+            var validExtensions = ['jpg','png','jpeg', 'PNG', 'JPG', 'JPEG']; //array of valid extensions
             var fileName = input.files[0].name;
             var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+            var maxSize = 3145728;
             if ($.inArray(fileNameExt, validExtensions) == -1) {
                 input.type = ''
                 input.type = 'file'
@@ -579,12 +583,19 @@
             }
             else
             {
-                if (input.files && input.files[0]) {
+                if (input.files && input.files[0] && input.files.size < maxSize || input.files[0].size < maxSize) {
                     var filerdr = new FileReader();
                     filerdr.onload = function (e) {
                         $('#spouse_display').attr('src', e.target.result);
                     }
                     filerdr.readAsDataURL(input.files[0]);
+                }
+                else {
+                    input.type = ''
+                    input.type = 'file'
+                    $('#spouse_avatar').attr('src',"");
+                    $('#spouse_display').attr('src', '{{ URL::asset('/image/avatar/noimage.jpg') }}');
+                    alert("Maximum file size is 3MB.");
                 }
             }
         }
