@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Page_Content extends Model
 {
     use HasFactory;
+    protected $table = 'page_contents';
 
     protected $fillable = [
         'media_type',
