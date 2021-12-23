@@ -83,7 +83,7 @@ class PageController extends Controller
         $page->url = $request['url'];
         $page->ranking = $request['ranking'];
         $page->parent_id = $request->parent_id;
-        $page->created_at = now();
+        // $page->created_at = now();
         $page->updated_at = now();
 
         $page->save();

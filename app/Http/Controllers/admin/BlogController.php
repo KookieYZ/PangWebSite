@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page_Content;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use DateTime;
 use Auth;
@@ -23,20 +24,21 @@ class BlogController extends Controller
         return Validator::make($data, [
             'media_type'    => 'required|string',
             'media_path'    => 'required|string',
-            'description'   => 'string|max:5000',
-            'is_publish'    => 'string',
-            'year'          => 'required|integer|max:10',
+            'description'   => 'string|max:5000|required',
+            'is_publish'    => 'string|nullable',
+            'year'          => 'required|integer|min:1900|max:'.date('Y'),
             'page_id'       => 'nullable|string'
         ]);
     }
 
     public function index() {
         $blogs = Page_Content::orderBy('created_at', 'DESC')->simplePaginate(10);
+
         return view('admin.blog.index', compact('blogs'));
     }
 
     public function create() {
-        $blogs = Page_Content::orderBy('created_at', 'DESC')->get();
+        $blogs = Page::orderBy('created_at', 'DESC')->get();
         return view('admin.blog.create', compact('blogs'));
     }
 
@@ -46,22 +48,67 @@ class BlogController extends Controller
 
         date_default_timezone_set("Asia/Kuala_Lumpur");
 
+        $blog = new Page_Content();
+        $blog->media_type = $request['media_type'];
+        $blog->media_path = $request['media_path'];
+        $blog->description = $request['description'];
+        $blog->is_publish = $request->get('is_publish');
+        $blog->year = $request->get('year');
+        $blog->page_id = $request->get('page_id');
+        $blog->created_at = now();
+        $blog->updated_at = now();
 
+        $blog->save();
+
+        return redirect()->route('blog.index')->with('success', 'Blog created successfully!');
     }
 
-    public function show() {
-
+    public function show($id) {
+        $blog = Page_Content::find($id);
+        $blogs = DB::table('pages')->where('id', $blog->page_id)->get();
+        return view('admin.blog.show', compact('blog', 'blogs'));
     }
 
-    public function edit() {
+    public function edit($id) {
+        $blog = Page_Content::find($id);
+        $blogs = DB::table('pages')->where('id', $blog->page_id)->get();
 
+        $page_id = Page::orderBy('id', 'ASC')->get()->except($blog->page_id);
+
+        return view('admin.blog.edit', compact('blog', 'blogs', 'page_id'));
     }
 
-    public function update() {
+    public function update(Request $request, $id) {
+        $this->validate($request, [
+            'media_type'    => 'string',
+            'media_path'    => 'string',
+            'description'   => 'string|max:5000',
+            'is_publish'    => 'string',
+            'year'          => 'integer|min:1900|max:'.date('Y'),
+            'page_id'       => 'nullable|string'
+        ]);
 
+        date_default_timezone_set("Asia/Kuala_Lumpur");
+
+        $blog = Page_Content::find($id);
+        $blog->media_type = $request['media_type'];
+        $blog->media_path = $request['media_path'];
+        $blog->description = $request['description'];
+        $blog->is_publish = $request['is_publish'];
+        $blog->year = $request->get('year');
+        $blog->page_id = $request->get('page_id');
+        // $blog->created_at = now();
+        $blog->updated_at = now();
+
+        $blog->save();
+
+        return redirect()->route('blog.index')->with('success', "Blog updated successfully!");
     }
 
-    public function destroy() {
+    public function destroy($id) {
+        $blog = Page_Content::find($id);
+        $blog->delete();
 
+        return redirect()->route('blog.index')->with('success', "$blog->id was deleted!");
     }
 }

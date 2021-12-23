@@ -18,9 +18,9 @@ class CreatePageContentsTable extends Migration
             $table->string('media_type');
             $table->string('media_path');
             $table->string('description');
-            $table->string('is_publish');
+            $table->string('is_publish')->nullable();
             $table->integer('year');
-            $table->unsignedBigInteger('page_id');
+            $table->unsignedBigInteger('page_id')->nullable();
             $table->timestamps();
 
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');

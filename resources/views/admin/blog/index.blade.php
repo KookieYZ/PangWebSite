@@ -280,7 +280,7 @@
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <a href=""><button type="button" class="btn btn-primary">Create New</button></a>
+                    <a href="{{ route("blog.create") }}"><button type="button" class="btn btn-primary">Create New</button></a>
                   </ol>
                 </nav>
               </div>
@@ -316,10 +316,10 @@
                     <tbody class="customtable">
                       <tr>
                         <th>
-                          <a href=""><i class="far fa-edit" title="Edit Page Details"></i></a>
-                            <a href=""><i class="fas fa-eye" title="View Page Details"></i></a>
+                          <a href="{{ route('blog.edit', $blog) }}"><i class="far fa-edit" title="Edit Page Details"></i></a>
+                            <a href="{{ route('blog.show', $blog) }}"><i class="fas fa-eye" title="View Page Details"></i></a>
 
-                            <form method="POST" action="" accept-charset="UTF-8" style="display:inline;" title="Delete Blog">
+                            <form method="POST" action="{{ route('blog.destroy', $blog->id) }}" accept-charset="UTF-8" style="display:inline;" title="Delete Blog">
                             {{ csrf_field() }}
                             @method('DELETE')
                             <button type="submit" style="background-color: transparent;
@@ -335,7 +335,11 @@
                         <td>{{ $blog->media_type }}</td>
                         <td>{{ $blog->media_path }}</td>
                         <td>{{ $blog->description }}</td>
-                        <td>{{ $blog->is_publish }}</td>
+                        @if ($blog->is_publish == 1)
+                            <td>Yes</td>
+                        @else
+                            <td>No</td>
+                        @endif
                         <td>{{ $blog->year }}</td>
                         <td>{{ $blog->page_id }}</td>
                         <td>{{ $blog->created_at->format('Y-m-d') }}</td>
@@ -346,7 +350,7 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-content-end"></div>
+            <div class="d-flex justify-content-end">{{ $blogs->links() }}</div>
           </div>
           <!-- ============================================================== -->
           <!-- End PAge Content -->
