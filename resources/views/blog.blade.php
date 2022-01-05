@@ -15,7 +15,7 @@
         </div>        
         @else
         <div class="w-auto p-2 ml-3 d-flex justify-content-start">                
-            <iframe class="embed-responsive-item" width="400" height="315" src="{{asset('assets/videos/doremon.mp4')}}" title="URL video player" frameborder="0" allow="accelerometer; autoplay='false'; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>             
+            <iframe class="embed-responsive-item" width="400" height="315" src="{{asset('assets/videos/doremon.mp4')}}" title="URL video player" frameborder="0" allow="accelerometer; autoplay=0; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>             
         </div>
         @endif 
         <div class="col-xl-6 col-md-6 col-12 p-1 mt-1 ml-3">

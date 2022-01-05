@@ -77,7 +77,7 @@ class AdminController extends Controller
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->password = Hash::make($request['password']);
-        $user->created_at = now();
+        // $user->created_at = now();
         $user->updated_at = now();
         $user->save();
 

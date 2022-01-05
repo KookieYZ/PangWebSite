@@ -11,17 +11,18 @@
                     </a> 
                     <!-- </h3> -->
                 </div>
+                @inject('theme', 'App\Http\Controllers\User\ThemeController')
                 <div class="col-sm-12 col-xs-12 text-left p-0">
-                    <img class="img-fluid" src="{{asset('assets/images/Facebook.png')}}">
-                    <a class="text-white" href="">get@bootstrap.com</a>
+                    <img class="img-fluid" src="{{ asset('assets/images/Facebook.png') }}">
+                    <a class="text-white" href="">{{ $theme::facebook()->value }}</a>
                 </div>
                 <div class="col-sm-12 col-xs-12 text-left p-0">
-                    <img class="img-fluid" src="{{asset('assets/images/Message.png')}}">
-                    <a class="text-white" href="">get@bootstrap.com</a>
+                    <img class="img-fluid" src="{{ asset('assets/images/Message.png') }}">
+                    <a class="text-white" href="">{{ $theme::message()->value }}</a>
                 </div>
                 <div class="col-sm-12 col-xs-12 text-left p-0 pb-2">
-                    <img class="img-fluid" src="{{asset('assets/images/Whatapps.png')}}">
-                    <a class="text-white"href="">get@bootstrap.com</a>
+                    <img class="img-fluid" src="{{ asset('assets/images/Whatapps.png') }}">
+                    <a class="text-white"href="">{{ $theme::whatapps()->value }}</a>
                 </div>
             </div>
         </div>

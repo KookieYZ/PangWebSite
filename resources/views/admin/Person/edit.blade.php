@@ -455,12 +455,12 @@
                         <div class="col-sm-9">
                             <select class="form-select" aria-label="" id="parent_id" name="parent_id">
                                 <option value="">---Seleted---</option>
+                                @if ($person->parent_id)
+                                    <option value="{{ $person->parent_id }}" selected >{{ $person->parent_id }} - {{ $person->parent->name }}</option>
+                                @endif
                                 @foreach ($persons as $per)
                                     <option value="{{ $per->id }}">{{ $per->id }} - {{ $per->name }}</option>
                                 @endforeach
-                                @if ($person->parent_id)
-                                    <option value="{{ $person->parent_id }}" selected hidden>{{ $person->parent_id }} - {{ $person->parent->name }}</option>
-                                @endif
 
                             </select>
                         @if ($errors->has('parent_id'))

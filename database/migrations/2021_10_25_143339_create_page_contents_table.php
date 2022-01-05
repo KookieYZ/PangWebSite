@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagesContentsTable extends Migration
+class CreatePageContentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreatePagesContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages_contents', function (Blueprint $table) {
+        Schema::create('page_contents', function (Blueprint $table) {
             $table->id();
             $table->string('media_type');
             $table->string('media_path');
             $table->string('description');
-            $table->string('is_publish');
+            $table->string('is_publish')->nullable();
             $table->integer('year');
-            $table->unsignedBigInteger('page_id');
+            $table->unsignedBigInteger('page_id')->nullable();
             $table->timestamps();
-            
+
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
         });
     }
@@ -34,6 +34,6 @@ class CreatePagesContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages_contents');
+        Schema::dropIfExists('page_contents');
     }
 }

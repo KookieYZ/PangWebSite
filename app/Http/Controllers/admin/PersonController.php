@@ -119,7 +119,7 @@ class PersonController extends Controller
 
     public function edit($id) {
         $person = People::find($id);
-        $persons = People::orderBy('id', 'ASC')->get()->except($person->id);;
+        $persons = People::orderBy('id', 'ASC')->get()->except($person->parent_id);
         return view('admin.person.edit', compact('person', 'persons'));
     }
 
