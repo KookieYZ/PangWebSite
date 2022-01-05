@@ -295,7 +295,10 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -320,7 +323,11 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -346,7 +353,11 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -372,7 +383,11 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -394,7 +409,7 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -419,7 +434,11 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -441,7 +460,7 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -466,7 +485,11 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -491,7 +514,11 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -516,7 +543,11 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+
@@ -541,7 +572,11 @@
                                 '<div class="image d-flex flex-column justify-content-center align-items-center">'+ 
                                     '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">'+
                                         '<div class="row d-flex justify-content-center p-2">'+
-                                            '<div class="mr-5">彭子平 （第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平<br/>（第一代）</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
+                                            '<div style="width: 100px;" class="m-auto">彭子平</div>'+
                                         '</div>'+
                                     '</div>'+                   
                                 '</div>'+

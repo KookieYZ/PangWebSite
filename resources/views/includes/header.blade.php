@@ -77,14 +77,8 @@
   <div id="navbar" class="collapse navbar-collapse" aria-expanded="true">
     <ul class="nav navbar-nav ml-auto" style="background-color:#FF7777;">
       <li class="nav-item">
-        <a class="nav-link text-white" href="{{ route('site.blog') }}">延年公家训</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link text-white" href="{{ route('site.blog') }}">彭姓来源</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="{{ route('site.blog') }}">彭氏会史</a>
-      </li>  
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="{{ route('site.blog') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
         <div class="dropdown-menu border-0 w-100" aria-labelledby="navbarDropdown" style="background-color:#FF7777; border-radius: 0px;">
@@ -92,13 +86,13 @@
           <a class="dropdown-item text-white w-100" href="{{ route('site.blog') }}">就业机会</a>
         </div>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link text-white btn_hover" href="{{ route('search.index') }}" >        
           <button class="btn text-white btn_hover pb-0" type="button" style="background:none; border-radius: 0px; border:none; display:block;">
             <i class="fa fa-search btn_hover pb-0" style="background:none; border-radius: 0px; border:none;"></i>
           </button>
         </a> 
-      </li>
+      </li> -->
       <div class="col-12 col-sm-12 col-xs-12 text-center" style="">
         <button class="navbar-togglers bg-transparent text-white border-white" style="border-radius: 30px; width:30px" aria-label="Close" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
           <span>X</span>
