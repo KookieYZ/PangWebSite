@@ -14,6 +14,15 @@
         position: relative;
         overflow: auto;
     }
+    .google-visualization-orgchart-linebottom {
+        border-bottom: 5px solid #3388dd !important;
+    }
+    .google-visualization-orgchart-lineleft {
+        border-left: 5px solid #3388dd;
+    }
+    .google-visualization-orgchart-lineright {
+        border-right: 5px solid #3388dd;
+    }
 
     
 
