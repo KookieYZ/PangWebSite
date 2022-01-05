@@ -21,7 +21,7 @@
         <div class="container mt-3 mb-3 p-2 d-flex"> 
             <div class="row d-flex justify-content-start">
             @foreach($search_persons as $search_person)
-                <div class="col-xl-2 col-md-3 col-6 p-2">
+                <div class="col-xl-3 col-md-4 col-12 p-2">
                     <a href="{{ route('site.chart') }}">
                         <div class="card p-3 bg-danger text-white">
                             <div class="image d-flex flex-column justify-content-center align-items-center"> <img src="{{ asset('image/avatar/'.$search_person->avatar) }}" height="100" width="100" /> 
