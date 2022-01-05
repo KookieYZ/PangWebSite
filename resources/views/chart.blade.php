@@ -6,12 +6,10 @@
     .google-visualization-orgchart-node {
         border: 2px solid #FF0000 !important;
     }   
-    body, html{
-        overflow: hidden;
-    }
+
 	.wrapper {
         width: 100%;
-        height: 100%;
+        height: 790px;
         margin: 50px auto 0 auto;
         position: relative;
         overflow: auto;
@@ -32,7 +30,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div id="scroll_container">
     <div class="wrapper">
-        <div id="chart_div" class="mt-5 mb-5" style="margin-bottom: 100px !important;"></div>
+        <div id="chart_div" class="mt-5"></div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
