@@ -9,15 +9,15 @@ use App\Models\Variable;
 class ThemeController extends Controller
 {
     public function facebook() {
-        $facebook = Variable::where('id', '=', 7)->first();
+        $facebook = Variable::where('key', 'facebook-link')->first();
         return $facebook;
     }
     public function message() {
-        $facebook = Variable::where('id', '=', 8)->first();
+        $facebook = Variable::where('key', 'message-link')->first();
         return $facebook;
     }
     public function whatapps() {
-        $facebook = Variable::where('id', '=', 9)->first();
+        $facebook = Variable::where('key', 'whatsapp-link')->first();
         return $facebook;
     }
 }
