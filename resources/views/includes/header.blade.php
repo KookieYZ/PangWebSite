@@ -1,7 +1,8 @@
+@inject('theme', 'App\Http\Controllers\User\ThemeController')
 <style>
   .nav-link:hover ,.dropdown-item:hover, .btn_hover:hover{
     color: #ffffff;
-    background-color: #FF0000;
+    background-color: {{ $theme->secondColor()->value }};
   }
   .dropdown-menu{
     margin-top: -5px;
@@ -31,7 +32,7 @@
     .mobile-main-nav{ min-height: 0 }
     /* .mobile-main-nav .navbar-toggler{  position: absolute;  left: 240px;  z-index: 10;} */
     .mobile-main-nav .navbar-togglers { z-index: 10; visibility: visible; margin-top: 200px;}
-    .mobile-main-nav #navbar{position: fixed;left: 0;  top: 0px; bottom: 0;  z-index: 9; background: #FF7777;  margin: 0px; padding: 0 0px; height: auto !important; width: 200px !important; -webkit-transform: translateX(-300px);  -webkit-transition: transform 280ms cubic-bezier(0.25,.8,0.25,1); transform: translateX(-300px);  transition: transform 280ms cubic-bezier(0.25,.8,0.25,1);  }
+    .mobile-main-nav #navbar{position: fixed;left: 0;  top: 0px; bottom: 0;  z-index: 9;  margin: 0px; padding: 0 0px; height: auto !important; width: 200px !important; -webkit-transform: translateX(-300px);  -webkit-transition: transform 280ms cubic-bezier(0.25,.8,0.25,1); transform: translateX(-300px);  transition: transform 280ms cubic-bezier(0.25,.8,0.25,1); background: {{ $theme->primaryColor()->value }}; }
     .mobile-main-nav #navbar.collapsing{   }
     .mobile-main-nav #navbar:before{ opacity: 0;}
   
@@ -67,7 +68,7 @@
 }
 
 </style>
-@inject('theme', 'App\Http\Controllers\User\ThemeController')
+
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-inverse navbar-default mobile-main-nav" style="background-color:{{ $theme->primaryColor()->value }}; height:52px;">
   <a class="navbar-brand" href="{{ route('site.home') }}">彭氏公会</a>
   <button class="navbar-toggler text-white bg-transparent border-0" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >

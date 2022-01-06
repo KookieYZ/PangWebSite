@@ -57,7 +57,7 @@
     }
 
     .scrollmenu a:hover {
-        background-color: #f00;
+        background-color: {{ $theme->secondColor()->value }};
         border-radius: 15px 15px 0px 0px
     }
 
