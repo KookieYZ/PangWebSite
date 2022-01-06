@@ -67,21 +67,21 @@
 }
 
 </style>
-
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-inverse navbar-default mobile-main-nav" style="background-color:#FF7777; height:52px;">
+@inject('theme', 'App\Http\Controllers\User\ThemeController')
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-inverse navbar-default mobile-main-nav" style="background-color:{{ $theme->primaryColor()->value }}; height:52px;">
   <a class="navbar-brand" href="{{ route('site.home') }}">彭氏公会</a>
   <button class="navbar-toggler text-white bg-transparent border-0" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
     <span class="navbar-toggler-icon text-white"></span>
   </button>
 
   <div id="navbar" class="collapse navbar-collapse" aria-expanded="true">
-    <ul class="nav navbar-nav ml-auto" style="background-color:#FF7777;">
+    <ul class="nav navbar-nav ml-auto" style="background-color:{{ $theme->primaryColor()->value }};">
       <li class="nav-item">
         <a class="nav-link text-white" href="{{ route('site.blog') }}">彭姓来源</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="{{ route('site.blog') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
-        <div class="dropdown-menu border-0 w-100" aria-labelledby="navbarDropdown" style="background-color:#FF7777; border-radius: 0px;">
+        <div class="dropdown-menu border-0 w-100" aria-labelledby="navbarDropdown" style="background-color:{{ $theme->primaryColor()->value }}; border-radius: 0px;">
           <a class="dropdown-item text-white w-100" href="{{ route('site.blog') }}">商业</a>
           <a class="dropdown-item text-white w-100" href="{{ route('site.blog') }}">就业机会</a>
         </div>

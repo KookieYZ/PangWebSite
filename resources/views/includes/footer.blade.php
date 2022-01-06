@@ -1,5 +1,6 @@
+@inject('theme', 'App\Http\Controllers\User\ThemeController')
 <footer id="contact" class="">
-    <div class="container-fluid" style="background-color:#FF0000">
+    <div class="container-fluid" style="background-color:{{ $theme->SecondColor()->value }}">
         <div class="row m-0">
             <div class="col-md-6 col-md-offset-2 col-sm-offset-2 col-xl-4 col-12">
                 <div class="col-sm-12 col-xs-12 pt-2 pb-2">

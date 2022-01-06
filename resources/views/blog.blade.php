@@ -5,7 +5,7 @@
     <div><br/></div>
     <div class="text-center h1 p-auto mt-5"><b><ins>彭姓来源</ins></b></div>
 </section>
-
+@inject('theme', 'App\Http\Controllers\User\ThemeController')
 <section class="content">
     <div class="row" style="margin-right: 0px !important; margin-left: 0px !important;">
     @for ($i = 0; $i < 4; $i++)
@@ -33,7 +33,7 @@
         <img src="{{asset('assets/images/arrow-right.png')}}" />
     </div>
     <div class="wrapper">
-        <div class="scrollmenu">
+        <div class="scrollmenu" style="background-color: {{ $theme->primaryColor()->value }};">
             @for($year = 1971; $year <= 2021; $year++)
                 <a href="#{{ $year }}">{{ $year }}</a>
             @endfor
@@ -43,7 +43,6 @@
 
 <style>
     .scrollmenu {
-        background-color: #f77;
         overflow: auto;
         white-space: nowrap;
     }
