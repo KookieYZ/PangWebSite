@@ -29,15 +29,15 @@ class ThemeController extends Controller
         return $bgImage;
     }
     public function facebook() {
-        $facebook = Variable::where('id','=', 7)->first();
+        $facebook = Variable::where('id','=', 6)->first();
         return $facebook;
     }
     public function message() {
-        $message = Variable::where('id','=', 8)->first();
+        $message = Variable::where('id','=', 7)->first();
         return $message;
     }
     public function whatapps() {
-        $whatapps = Variable::where('id','=', 9)->first();
+        $whatapps = Variable::where('id','=', 8)->first();
         return $whatapps;
     }
     
