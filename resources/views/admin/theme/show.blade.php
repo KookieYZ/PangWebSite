@@ -348,7 +348,7 @@
                             @endif
                         </div>
                     @endif
-                    @if ($themes->id == 6 || $themes->id == 7 || $themes->id == 8 || $themes->id == 9)
+                    @if ($themes->id == 6 || $themes->id == 7 || $themes->id == 8)
                         <div class="col-md-9">
                             <input type="text" class="form-control{{ $errors->has('value') ? ' is-invalid' : '' }}" id="value" name="value" value="{{ old('value') ? old('value') : $themes->value }}" required disabled />
                             @if ($errors->has('value'))

@@ -93,7 +93,7 @@ class ThemeController extends Controller
 
             return redirect()->route('theme.index')->with('success', "$theme->key updated successfully!");
         }
-        elseif($id == 6 || $id == 7 || $id == 8 || $id == 9) {
+        elseif($id == 6 || $id == 7 || $id == 8) {
             $this->validate($request, [
                 'value'              => 'string',
             ]);

@@ -40,11 +40,6 @@ class VariableSeeder extends Seeder
         ]);
 
         DB::table('variables')->insert([
-            'key' => 'instagram-link',
-            'value' => 'instagram.com/123',
-        ]);
-
-        DB::table('variables')->insert([
             'key' => 'facebook-link',
             'value' => 'facebook.com/123',
         ]);

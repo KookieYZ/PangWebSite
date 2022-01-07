@@ -363,7 +363,7 @@
                             @endif
                         </div>
                     @endif
-                    @if ($themes->id == 6 || $themes->id == 7 || $themes->id == 8 || $themes->id == 9)
+                    @if ($themes->id == 6 || $themes->id == 7 || $themes->id == 8)
                         <div class="col-sm-9">
                             <input
                                 type="text"
