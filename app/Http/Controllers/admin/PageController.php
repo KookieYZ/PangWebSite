@@ -54,7 +54,7 @@ class PageController extends Controller
 
         $page->save();
 
-        return redirect()->route('page.index')->with('success', 'Page created successfully!');
+        return redirect()->route('page.index')->with('success', '页面创建成功!');
     }
 
     public function show($id) {
@@ -88,7 +88,7 @@ class PageController extends Controller
 
         $page->save();
 
-        return redirect()->route('page.index')->with('success', "$page->title updated successfully!");
+        return redirect()->route('page.index')->with('success', "$page->title 页面更改成功!");
 
     }
 
@@ -96,6 +96,6 @@ class PageController extends Controller
         $page = Page::find($id);
         $page->delete();
 
-        return redirect()->route('page.index')->with('success', "$page->title was deleted!");
+        return redirect()->route('page.index')->with('success', "$page->title 页面删除成功!");
     }
 }

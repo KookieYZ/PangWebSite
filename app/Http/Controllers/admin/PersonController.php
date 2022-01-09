@@ -109,7 +109,7 @@ class PersonController extends Controller
         $person->updated_at = now();
         $person->save();
 
-        return redirect()->route('relationship.index')->with('success', 'Relationship created successfully!');
+        return redirect()->route('relationship.index')->with('success', '人际关系创建成功!');
     }
 
     public function show($id) {
@@ -186,13 +186,13 @@ class PersonController extends Controller
         $person->updated_at = now();
         $person->save();
 
-        return redirect()->route('relationship.index')->with('success', "$person->name updated successfully!");
+        return redirect()->route('relationship.index')->with('success', "$person->name 资料更改成功!");
     }
 
     public function destroy($id) {
         $person = People::find($id);
         $person->delete();
 
-        return redirect()->route('relationship.index')->with('success', "$person->name was deleted");
+        return redirect()->route('relationship.index')->with('success', "$person->name 资料删除成功");
     }
 }

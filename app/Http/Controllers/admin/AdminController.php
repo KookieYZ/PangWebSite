@@ -51,7 +51,7 @@ class AdminController extends Controller
 
         $admin->save();
 
-        return redirect()->route('user.index')->with('success', 'Admin created successfully!');
+        return redirect()->route('user.index')->with('success', '管理员创建成功!');
     }
 
     public function show($id) {
@@ -82,13 +82,13 @@ class AdminController extends Controller
         $user->save();
 
 
-        return redirect()->route('user.index')->with('success', "$user->name updated successfully!");
+        return redirect()->route('user.index')->with('success', "$user->name 管理员更改成功!");
     }
 
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('user.index')->with('success', "$user->name was deleted!");
+        return redirect()->route('user.index')->with('success', "$user->name 管理员删除成功!");
     }
 }

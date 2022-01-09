@@ -60,7 +60,7 @@ class BlogController extends Controller
 
         $blog->save();
 
-        return redirect()->route('blog.index')->with('success', 'Blog created successfully!');
+        return redirect()->route('blog.index')->with('success', '彭氏来源资料创建成功!');
     }
 
     public function show($id) {
@@ -102,13 +102,13 @@ class BlogController extends Controller
 
         $blog->save();
 
-        return redirect()->route('blog.index')->with('success', "Blog updated successfully!");
+        return redirect()->route('blog.index')->with('success', "彭氏来源资料更改成功!");
     }
 
     public function destroy($id) {
         $blog = Page_Content::find($id);
         $blog->delete();
 
-        return redirect()->route('blog.index')->with('success', "$blog->id was deleted!");
+        return redirect()->route('blog.index')->with('success', "$blog->id 资料删除成功!");
     }
 }

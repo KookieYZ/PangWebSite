@@ -45,7 +45,7 @@ class ThemeController extends Controller
             $theme->updated_at = now();
             $theme->save();
 
-            return redirect()->route('theme.index')->with('success', "$theme->key updated successfully!");
+            return redirect()->route('theme.index')->with('success', "$theme->key 主题更改成功!");
         }
         elseif($id == 4) {
             if($request->hasFile('value')) {
@@ -68,7 +68,7 @@ class ThemeController extends Controller
             $theme->updated_at = now();
             $theme->save();
 
-            return redirect()->route('theme.index')->with('success', "$theme->key updated successfully!");
+            return redirect()->route('theme.index')->with('success', "$theme->key 主题更改成功!");
         }
         elseif($id == 5) {
             if($request->hasFile('value')) {
@@ -91,7 +91,7 @@ class ThemeController extends Controller
             $theme->updated_at = now();
             $theme->save();
 
-            return redirect()->route('theme.index')->with('success', "$theme->key updated successfully!");
+            return redirect()->route('theme.index')->with('success', "$theme->key 主题更改成功!");
         }
         elseif($id == 6 || $id == 7 || $id == 8) {
             $this->validate($request, [
@@ -103,7 +103,7 @@ class ThemeController extends Controller
             $theme->updated_at = now();
             $theme->save();
 
-            return redirect()->route('theme.index')->with('success', "$theme->key updated successfully!");
+            return redirect()->route('theme.index')->with('success', "$theme->key 主题更改成功!");
         }
     }
 }
