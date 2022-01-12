@@ -80,12 +80,6 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="{{ route('site.blog') }}">彭姓来源</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="{{ route('site.blog') }}">活动</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="{{ route('site.blog') }}">通告</a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="{{ route('site.blog') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
         <div class="dropdown-menu border-0 w-100" aria-labelledby="navbarDropdown" style="background-color:{{ $theme->primaryColor()->value }}; border-radius: 0px;">
