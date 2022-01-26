@@ -101,7 +101,7 @@
         </a> 
       </li> -->
       <div class="col-12 col-sm-12 col-xs-12 text-center">
-        <button class="navbar-togglers bg-transparent text-white border-white" style="border-radius:30px;" aria-label="Close" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
+        <button class="navbar-togglers bg-transparent text-white border-white" style="border-radius:30px; width:30px !important; text-align:center !important;" aria-label="Close" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
           <span>X</span>
         </button>
       </div>
