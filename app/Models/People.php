@@ -18,7 +18,7 @@ class People extends Model
         'gender',
         'state',
         'nationality',
-        'dbo_date',
+        'dob_date',
         'parent_id',
     ];
 

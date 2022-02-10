@@ -275,7 +275,9 @@
                                                 <td>{{ $person->state }}</td>
                                                 <td>{{ $person->nationality }}</td>
                                                 <td>{{ $person->dob_date }}</td>
-                                                <td>{{ $person->parent_id }} - {{ $person->parent->name }}</td>
+                                                @if ($person->parent_id != null)
+                                                    <td>{{ $person->parent_id }} - {{ $person->parent->name }}</td>
+                                                @endif
                                             </tr>
                                         </tbody>
                                     @endforeach

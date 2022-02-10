@@ -84,7 +84,7 @@ class PersonController extends Controller
         //     'gender' => $request->get('gender'),
         //     'state' => $request->get('state'),
         //     'nationality' => $request->get('nationality'),
-        //     'dbo_date' => $dob_date,
+        //     'dob_date' => $dob_date,
         //     'parent_id' => Auth::id(),
         //     'created_at' => now(),
         //     'updated_at' => now()
@@ -171,6 +171,7 @@ class PersonController extends Controller
 
         $date = $request->get('dob_date');
         $convertedDate = DateTime::createFromFormat('d/m/Y', $date)->format('Y-m-d');
+        dd($convertedDate);
 
         $person = People::find($id);
         $person->name = $request['name'];
