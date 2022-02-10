@@ -132,7 +132,7 @@ class PersonController extends Controller
             'gender'            => 'string',
             'state'             => 'string',
             'nationality'       => 'string',
-            'parent_id'         => 'int'
+            'parent_id'         => 'integer|nullable'
         ]);
 
         date_default_timezone_set("Asia/Kuala_Lumpur");
