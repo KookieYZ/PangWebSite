@@ -24,24 +24,24 @@ function googleOrgChartInitialization(familiylist){
         data.addColumn('string', 'ParentName'); // Current record Parent Name
         data.addColumn('string', 'ToolTip'); // when you cursor hover to it, display the value
      //Mapping value
-      mappingValue(data,familiylist);  
+      mappingValue(data, familiylist);  
     }  
      
 }
 
-function mappingValue(data,arr){
+function mappingValue(data, arr){
     $.each(arr, function( key, value ) {
         data.addRows([
         [{
              v:value.name, 
             'f': '<div class="image d-flex flex-row justify-content-center align-items-center">' +
-                '<img class="mr-3" src='+value.avatar+ 'height="100" width="100" />' +
-                '<img class="mr-3" src='+value.spouse_avatar+ 'height="100" width="100" />' +
+                '<img class="mr-3" src="image/avatar/'+value.avatar+ '" height="100" width="100" />' +
+                '<img class="mr-3" src="image/avatar/'+value.spouse_avatar+ '" height="100" width="100" />' +
                 '</div>' +
                 '<div class="image d-flex flex-column justify-content-center align-items-center">' +
                 '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">' +
                 '<div class="row d-flex justify-content-center p-2">' +
-                '<div style="width: 100px;" class="mr-1">彭子平<br/>（第'+(key+1)+'代）</div>' +
+                '<div style="width: 100px;" class="mr-1">'+value.name+'<br/>（第'+(key+1)+'代）</div>' +
                 '<div style="width: 100px;" class="mr-1">'+value.spouse_name+'</div>' +
                 '</div>' +            
                 '</div>' +
