@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class People extends Model
 {
@@ -27,5 +28,9 @@ class People extends Model
 
     public function parent() {
         return $this->belongsTo('App\Models\People', 'parent_id');
+    }
+
+    public function returnParentName($parentID){       
+        return DB::table('People')->where('parent_id', $parentID)->value('name');
     }
 }

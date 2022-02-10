@@ -58,6 +58,7 @@
 
     </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/orgChart.js') }}"></script>
     <div id="scroll_container">
         <div id="wrapper" class="wrapper">
             <div id="chart_div" class="mt-5 mb-5" style="margin-bottom: 100px !important;"></div>
@@ -305,7 +306,7 @@
         $('.wrapper').perfectScrollbar();
     </script>
 
-    <script>
+    {{-- <script>
         google.charts.load('current', {
             packages: ["orgchart"]
         });
@@ -675,7 +676,7 @@
             });
 
         }
-    </script>
+    </script> --}}
     <script>
         function resize() {
             if ($(window).width() <= 991) {
