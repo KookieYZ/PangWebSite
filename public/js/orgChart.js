@@ -36,11 +36,14 @@ function mappingValue(data,arr){
              v:value.name, 
             'f': '<div class="image d-flex flex-row justify-content-center align-items-center">' +
                 '<img class="mr-3" src='+value.avatar+ 'height="100" width="100" />' +
+                '<img class="mr-3" src='+value.spouse_avatar+ 'height="100" width="100" />' +
                 '</div>' +
                 '<div class="image d-flex flex-column justify-content-center align-items-center">' +
                 '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">' +
                 '<div class="row d-flex justify-content-center p-2">' +
-                '<div style="width: 100px;" class="mr-1">彭子平<br/>（第一代）'+value.id+'</div>' +
+                '<div style="width: 100px;" class="mr-1">彭子平<br/>（第'+(key+1)+'代）</div>' +
+                '<div style="width: 100px;" class="mr-1">'+value.spouse_name+'</div>' +
+                '</div>' +            
                 '</div>' +
                 '</div>' +
                 '</div>' +
@@ -56,14 +59,7 @@ function mappingValue(data,arr){
                 '</div>' +
                 '<div class="row text-justify p-2">' +
                 '<div><b>年份 :</b>'+ value.dob_date+'</div>' +
-                '</div>' +
-                '<div class="row text-justify p-2">' +
-                '<div><b>配偶 :</b>'+value.spouse_name + '</div>' +
-                '</div>' +
-                '<div class="image d-flex flex-row justify-content-center align-items-center">' +
-                '<img class="mr-3" src='+value.spouse_avatar+ 'height="100" width="100" />' +
-                '</div>' +
-                '</div>'
+                '</div>'                 
         }, value.parent_id, value.name]
     ]);
           createChart(data);
@@ -74,5 +70,10 @@ function mappingValue(data,arr){
 function createChart(data){    
     var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
     // Draw the chart, setting the allowHtml option to true for the tooltips.
-     chart.draw(data, {'allowHtml':true});
+    chart.draw(data, {
+        'allowHtml': true,
+        'allowCollapse': true,
+        'size': 'medium',
+        'color': '#FF0000'
+    });
 }
