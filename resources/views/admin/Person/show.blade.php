@@ -339,7 +339,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="parent_id"
-                                            class="col-sm-3 text-end control-label col-form-label">家人</label>
+                                            class="col-sm-3 text-end control-label col-form-label">父母</label>
                                         <div class="col-sm-9">
                                             <select class="form-select" aria-label="" id="parent_id"
                                                 name="parent_id" disabled>

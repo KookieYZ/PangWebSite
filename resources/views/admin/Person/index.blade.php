@@ -232,7 +232,7 @@
                                             <th scope="col"><b>州属</b></th>
                                             <th scope="col"><b>国籍</b></th>
                                             <th scope="col"><b>出生日期</b></th>
-                                            <th scope="col"><b>家人</b></th>
+                                            <th scope="col"><b>父母</b></th>
                                         </tr>
                                     </thead>
                                     @foreach ($persons as $person)
