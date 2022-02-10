@@ -31,6 +31,6 @@ class People extends Model
     }
 
     public function returnParentName($parentID){       
-        return DB::table('People')->where('parent_id', $parentID)->value('name');
+        return DB::table('People')->where('id', $parentID)->value('name');
     }
 }
