@@ -1,6 +1,19 @@
 <!DOCTYPE html>
+<link href="{{ public_path('css/app.css') }}"  rel="stylesheet">
+<link href="{{ public_path('css/bootstrap.css') }}"  rel="stylesheet">
+ {{-- <link href="{{ public_path('css/responsive.css') }}"  rel="stylesheet"> --}}
+{{-- <link href="{{ public_path('css/welcome.css') }}"  rel="stylesheet">  --}}
 
 <style>
+@font-face{
+    font-family:chinise;
+    src: url('{{ public_path('font/XiaolaiSC-Regular.ttf') }}');
+} 
+body {
+    font-family:chinise;
+    font-size: small;
+} 
+
 
 
   @media (min-width: 991px) {
@@ -60,6 +73,7 @@
 </style>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>
 
         </title>
@@ -72,3 +86,4 @@
              
         </body>
 </html>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

@@ -88,5 +88,15 @@ return array (
   'open sans' => array(
     'normal' => $fontDir . '/open_sans_normal_bf11512877ef2223afd06e89358ef2fc',
   ),
+  'droid' => array(
+    'normal' => $fontDir . '/droid_normal_181c993c0d48792521d5177b6989b926',
+  ),
+  'chinise' => array(
+    'normal' => $fontDir . '/chinise_normal_1133eb37980639873cdb270ded6fa5a4',
+    'bold' => $fontDir . '/chinise_normal_1133eb37980639873cdb270ded6fa5a4',
+  ),
+  'nunito' => array(
+    'normal' => $fontDir . '/nunito_normal_51ab6e3e316a21ef3af811c849f34cc6',
+  ),
 );
 }; ?>

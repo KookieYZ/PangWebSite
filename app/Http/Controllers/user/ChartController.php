@@ -22,12 +22,10 @@ class ChartController extends Controller
     public function downloadPDF(Request $request){   
       
          $data = $request->chartData;  
-        //  dd($data); 
-         $options = new Options();
-        //  $options->set('defaultFont', 'SimHei');
-         $dompdf = new Dompdf( $options);
+        
          $dompdf = PDF::loadView('pdf',compact('data'));
          $dompdf->setPaper('A4', 'landscape');
+        //  $dompdf -> setWarnings(true);
          $dompdf->render();     
          return $dompdf->download('族谱.pdf');
     }

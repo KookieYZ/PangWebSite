@@ -70,9 +70,7 @@ function mappingValue(data, arr){
     createChart(data);
     fixedFirstRowCss();
     fixedImgCss();
-    setTimeout(function(){
-        $("#chartInputData").val($("#chart_div").html());
-    },1000);
+    $("#chartInputData").val($("#chart_div").html());
 }
 
 
