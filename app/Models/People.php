@@ -20,6 +20,7 @@ class People extends Model
         'nationality',
         'dob_date',
         'parent_id',
+        'era',
     ];
 
     public function child() {
@@ -30,7 +31,7 @@ class People extends Model
         return $this->belongsTo('App\Models\People', 'parent_id');
     }
 
-    public function returnParentName($parentID){       
+    public function returnParentName($parentID){
         return DB::table('People')->where('id', $parentID)->value('name');
     }
 }

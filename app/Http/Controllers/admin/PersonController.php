@@ -23,13 +23,14 @@ class PersonController extends Controller
         return Validator::make($data, [
             'name'              => 'required|string|max:50',
             // 'avatar'            => 'image|mimes:jpeg,png,jpg|max:6000',
-            'spouse_name'       => 'string|max:50|nullable',
+            'spouse_name'       => 'max:50|nullable',
             // 'spouse_avatar'     => 'image|mimes:jpeg,png,jpg|max:6000',
             'gender'            => 'required|string',
             'state'             => 'string|required',
             'nationality'       => 'string|required',
             'dob_date'          => 'required',
-            'parent_id'         => 'integer|nullable'
+            'parent_id'         => 'integer|nullable',
+            'era'               => 'string|required'
         ]);
     }
 
@@ -61,12 +62,38 @@ class PersonController extends Controller
             $avatar = 'noimage.jpg';
         }
 
+        // $test1 = [];
+        // $test2 = [];
+        // $test3 = [];
+        // $test4 = [];
+        // $test = $request->file('spouse_avatar');
+        // foreach ($test as $key => $value) {
+        //     $test1[] = $test[$key]->getClientOriginalName();
+        //     $test2[] = pathinfo($test1[$key], PATHINFO_FILENAME);
+        //     $test3[] = $test[$key]->getClientOriginalExtension();
+        //     $test4[] = $test2[$key].'_'.time().'.'.$test3[$key];
+        //     $test5 = $test[$key]->move('image/avatar', $test4[$key]);
+        // }
+        // dd($test1, $test2, $test3, $test4);
         if($request->hasFile('spouse_avatar')) {
-            $fileNameUploaded2 = $request->file('spouse_avatar')->getClientOriginalName();
-            $fileName2 = pathinfo($fileNameUploaded2, PATHINFO_FILENAME);
-            $extension2 = $request->file('spouse_avatar')->getClientOriginalExtension();
-            $spouse_avatar = $fileName2.'_'.time().'.'.$extension2;
-            $path2 = $request->file('spouse_avatar')->move('image/avatar', $spouse_avatar);
+            $spouseavatar1 = [];
+            $spouseavatar2 = [];
+            $spouseavatar3 = [];
+            $spouseavatar4 = [];
+            $filerequest = $request->file('spouse_avatar');
+            foreach ($filerequest as $key => $value) {
+                $spouseavatar1[] = $filerequest[$key]->getClientOriginalName();
+                $spouseavatar2[] = pathinfo($spouseavatar1[$key], PATHINFO_FILENAME);
+                $spouseavatar3[] = $filerequest[$key]->getClientOriginalExtension();
+                $spouseavatar4[] = $spouseavatar2[$key].'_'.time().'.'.$spouseavatar3[$key];
+                $spouseavatar5 = $filerequest[$key]->move('image/avatar', $spouseavatar4[$key]);
+            }
+            $spouse_avatar = implode('|', $spouseavatar4);
+            // $fileNameUploaded2 = $request->file('spouse_avatar')->getClientOriginalName();
+            // $fileName2 = pathinfo($fileNameUploaded2, PATHINFO_FILENAME);
+            // $extension2 = $request->file('spouse_avatar')->getClientOriginalExtension();
+            // $spouse_avatar = $fileName2.'_'.time().'.'.$extension2;
+            // $path2 = $request->file('spouse_avatar')->move('image/avatar', $spouse_avatar);
         }
         else {
             $spouse_avatar = 'noimage.jpg';
@@ -95,10 +122,30 @@ class PersonController extends Controller
         $date = $request->get('dob_date');
         $convertedDate = DateTime::createFromFormat('d/m/Y', $date)->format('Y-m-d');
 
+        $spousename = $request->get('spouse_name');
+        $spousename = implode('|', $spousename);
+
+        // for($i=0;$i<count($spousename);$i++){
+        //     $person = new People([
+        //         'name' => $request['name'],
+        //         'avatar' => $avatar,
+        //         'spouse_name' => $spousename[$i],
+        //         'spouse_avatar' => $spouse_avatar,
+        //         'gender' => $request['gender'],
+        //         'state' => $request['state'],
+        //         'nationality' => $request['nationality'],
+        //         'dob_date' => $convertedDate,
+        //         'parent_id' => $request->parent_id,
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //     ]);
+        //     $person->save();
+        // }
         $person = new People;
         $person->name = $request['name'];
         $person->avatar = $avatar;
-        $person->spouse_name = $request['spouse_name'];
+        // $person->spouse_name = $request['spouse_name'];
+        $person->spouse_name = $spousename;
         $person->spouse_avatar = $spouse_avatar;
         $person->gender = $request['gender'];
         $person->state = $request['state'];
@@ -132,7 +179,8 @@ class PersonController extends Controller
             'gender'            => 'string',
             'state'             => 'string',
             'nationality'       => 'string',
-            'parent_id'         => 'integer|nullable'
+            'parent_id'         => 'integer|nullable',
+            'era'               => 'string'
         ]);
 
         date_default_timezone_set("Asia/Kuala_Lumpur");
