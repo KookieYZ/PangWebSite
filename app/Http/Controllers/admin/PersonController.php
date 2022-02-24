@@ -23,7 +23,7 @@ class PersonController extends Controller
         return Validator::make($data, [
             'name'              => 'required|string|max:50',
             // 'avatar'            => 'image|mimes:jpeg,png,jpg|max:6000',
-            'spouse_name'       => 'string|max:50|nullable',
+            // 'spouse_name'       => 'string|max:50|nullable',
             // 'spouse_avatar'     => 'image|mimes:jpeg,png,jpg|max:6000',
             'gender'            => 'required|string',
             'state'             => 'string|required',
@@ -35,6 +35,7 @@ class PersonController extends Controller
 
     public function index() {
         $persons = People::orderBy('created_at', 'DESC')->simplePaginate(10);
+        $persons->spouse_name = explode('|',$persons->spouse_name);
 
         return view('admin.person.index', compact('persons'))->with('persons',$persons);
     }
@@ -47,6 +48,9 @@ class PersonController extends Controller
     public function store(Request $request) {
 
         $this->validator($request->all())->validate();
+        $request->validate([
+            'spouse_name.*.spouse_name' => 'required'
+        ]);
 
         date_default_timezone_set("Asia/Kuala_Lumpur");
 
@@ -98,7 +102,7 @@ class PersonController extends Controller
         $person = new People;
         $person->name = $request['name'];
         $person->avatar = $avatar;
-        $person->spouse_name = $request['spouse_name'];
+        $person->spouse_name = $person->convertArraysToString($request->spouse_name,'|');
         $person->spouse_avatar = $spouse_avatar;
         $person->gender = $request['gender'];
         $person->state = $request['state'];
@@ -195,4 +199,5 @@ class PersonController extends Controller
 
         return redirect()->route('relationship.index')->with('success', "$person->name 资料删除成功");
     }
+
 }
