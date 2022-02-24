@@ -252,7 +252,7 @@
                                     <div class="form-group row">
                                         <label for="spouse_name"
                                             class="col-sm-3 text-end control-label col-form-label">配偶名称</label>
-                                        <div class="col-sm-9">
+                                        <div class="col-sm-9" id="dynamicAddRemove">
                                             <input type="text"
                                                 class="form-control{{ $errors->has('spouse_name') ? ' is-invalid' : '' }}"
                                                 id="spouse_name" name="spouse_name[]" placeholder="配偶名称"
@@ -263,6 +263,7 @@
                                                 </span>
                                             @endif
                                         </div>
+                                        <td><button type="button" name="add" id="dynamic-ar" class="btn btn-primary">Add Spouse</button></td>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-3 text-end control-label col-form-label">配偶头像</label>

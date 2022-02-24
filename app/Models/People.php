@@ -34,4 +34,13 @@ class People extends Model
     public function returnParentName($parentID){
         return DB::table('People')->where('id', $parentID)->value('name');
     }
+
+      // function to convert arrays to string
+    public function convertArraysToString($array, $separator) {
+        $array = array_column($array, 'spouse_name');// Covert to Normal Array
+        $str = implode($separator, $array);
+        return $str;
+    }
+
 }
+
