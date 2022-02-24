@@ -252,10 +252,10 @@
                                     <div class="form-group row">
                                         <label for="spouse_name"
                                             class="col-sm-3 text-end control-label col-form-label">配偶名称</label>
-                                        <div class="col-sm-9">
+                                        <div class="col-sm-9" id="dynamicAddRemove">
                                             <input type="text"
                                                 class="form-control{{ $errors->has('spouse_name') ? ' is-invalid' : '' }}"
-                                                id="spouse_name" name="spouse_name" placeholder="配偶名称"
+                                                id="spouse_name" name="spouse_name[0][spouse_name]" placeholder="配偶名称"
                                                 value="{{ old('spouse_name') }}" />
                                             @if ($errors->has('spouse_name'))
                                                 <span class="invalid-feedback" role="alert">
@@ -263,6 +263,7 @@
                                                 </span>
                                             @endif
                                         </div>
+                                        <td><button type="button" name="add" id="dynamic-ar" class="btn btn-primary">Add Spouse</button></td>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-3 text-end control-label col-form-label">配偶头像</label>
@@ -479,6 +480,16 @@
                 }
             }
         }
+    var i = 0;
+    $("#dynamic-ar").click(function () {
+        ++i;
+        $("#dynamicAddRemove").append('<div class="col-sm-9" id="addedField"><input type="text" name="spouse_name[' + i +
+            '][spouse_name]" placeholder="Enter spouse name" class="form-control spousename" /><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></div>'
+            );
+    });
+    $(document).on('click', '.remove-input-field', function () {
+        $(this).parents('div#addedField').remove();
+    });
     </script>
 </body>
 
