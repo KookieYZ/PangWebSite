@@ -308,10 +308,6 @@
         });
     </script>
 
-    <script>
-        $('.wrapper').perfectScrollbar();
-    </script>
-
     {{-- <script>
         google.charts.load('current', {
             packages: ["orgchart"]

@@ -14,29 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('site.home');
+
 
 // Route::get('search', function () {
 //     return view('search');
 // })->name('site.search');
-
-Route::get('chart', function () {
-    return view('chart');
-})->name('site.chart');
-
-Route::get('blog', function () {
-    return view('blog');
-})->name('site.blog');
-
-Route::get('rules', function () {
-    return view('rules');
-})->name('site.rules');
-
-Route::get('job', function () {
-    return view('job');
-})->name('site.job');
 
 // testing purpose
 Route::get('test', function () {
@@ -48,6 +30,27 @@ Route::group(['namespace' => 'user'], function () {
     Route::get('summernote', function () {
         return view('user.summernote');
     });
+    Route::get('chart', function () {
+        return view('user.chart');
+    })->name('user.chart');
+    Route::get('blog', function () {
+        return view('user.blog');
+    })->name('user.blog');
+    Route::get('rules', function () {
+        return view('user.rules');
+    })->name('user.rules');
+    Route::get('job', function () {
+        return view('user.job');
+    })->name('user.job');
+    Route::get('notice', function () {
+        return view('user.notice');
+    })->name('user.notice');
+    Route::get('event', function () {
+        return view('user.event');
+    })->name('user.event');
+    Route::get('/', function () {
+        return view('user.home');
+    })->name('user.home');
 });
 
 // Auth::routes();

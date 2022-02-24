@@ -70,7 +70,7 @@
 </style>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-inverse navbar-default mobile-main-nav" style="background-color:{{ $theme->primaryColor()->value }}; height:52px;">
-  <a class="navbar-brand" href="{{ route('site.home') }}">彭氏公会</a>
+  <a class="navbar-brand" href="{{ route('user.home') }}">彭氏公会</a>
   <button class="navbar-toggler text-white bg-transparent border-0" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
     <span class="navbar-toggler-icon text-white"></span>
   </button>
@@ -78,19 +78,19 @@
   <div id="navbar" class="collapse navbar-collapse" aria-expanded="true">
     <ul class="nav navbar-nav ml-auto" style="background-color:{{ $theme->primaryColor()->value }};">
       <li class="nav-item">
-        <a class="nav-link text-white" href="{{ route('site.blog') }}">彭姓来源</a>
+        <a class="nav-link text-white" href="{{ route('user.blog') }}">彭姓来源</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="{{ route('site.blog') }}">活动</a>
+        <a class="nav-link text-white" href="{{ route('user.event') }}">活动</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="{{ route('site.blog') }}">通告</a>
+        <a class="nav-link text-white" href="{{ route('user.notice') }}">通告</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="{{ route('site.blog') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
+        <a class="nav-link dropdown-toggle text-white" href="{{ route('user.blog') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
         <div class="dropdown-menu border-0 w-100" aria-labelledby="navbarDropdown" style="background-color:{{ $theme->primaryColor()->value }}; border-radius: 0px;">
-          <a class="dropdown-item text-white w-100" href="{{ route('site.blog') }}">商业</a>
-          <a class="dropdown-item text-white w-100" href="{{ route('site.blog') }}">就业机会</a>
+          <a class="dropdown-item text-white w-100" href="{{ route('user.job') }}">商业</a>
+          <a class="dropdown-item text-white w-100" href="{{ route('user.job') }}">就业机会</a>
         </div>
       </li>
       <!-- <li class="nav-item">
