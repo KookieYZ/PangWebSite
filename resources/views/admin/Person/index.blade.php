@@ -228,11 +228,12 @@
                                             </th>
                                             <th scope="col"><b>名称</b></th>
                                             <th scope="col"><b>配偶名称</b></th>
-                                            <th scope="col"><b>性别</b></th>
+                                            {{-- <th scope="col"><b>性别</b></th> --}}
                                             <th scope="col"><b>州属</b></th>
                                             <th scope="col"><b>国籍</b></th>
-                                            <th scope="col"><b>出生日期</b></th>
+                                            {{-- <th scope="col"><b>出生日期</b></th> --}}
                                             <th scope="col"><b>父母</b></th>
+                                            <th scope="col"><b>年代</b></th>
                                         </tr>
                                     </thead>
                                     @foreach ($persons as $person)
@@ -267,17 +268,20 @@
                                                         No spouse found
                                                     @endif
                                                 </td>
-                                                @if ($person->gender == 1)
+                                                {{-- @if ($person->gender == 1)
                                                     <td>男</td>
                                                 @else
                                                     <td>女</td>
-                                                @endif
+                                                @endif --}}
                                                 <td>{{ $person->state }}</td>
                                                 <td>{{ $person->nationality }}</td>
-                                                <td>{{ $person->dob_date }}</td>
+                                                {{-- <td>{{ $person->dob_date }}</td> --}}
                                                 @if ($person->parent_id != null)
                                                     <td>{{ $person->parent_id }} - {{ $person->parent->name }}</td>
+                                                @else
+                                                    <td>No parents found</td>
                                                 @endif
+                                                <td>{{ $person->era }}</td>
                                             </tr>
                                         </tbody>
                                     @endforeach

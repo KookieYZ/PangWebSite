@@ -255,7 +255,7 @@
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control{{ $errors->has('spouse_name') ? ' is-invalid' : '' }}"
-                                                id="spouse_name" name="spouse_name" placeholder="配偶名称"
+                                                id="spouse_name" name="spouse_name[]" placeholder="配偶名称"
                                                 value="{{ old('spouse_name') }}" />
                                             @if ($errors->has('spouse_name'))
                                                 <span class="invalid-feedback" role="alert">
@@ -270,17 +270,31 @@
                                             <div class="custom-file">
                                                 <input type="file"
                                                     class="custom-file-input{{ $errors->has('spouse_avatar') ? ' is-invalid' : '' }}"
-                                                    id="spouse_avatar" name="spouse_avatar" onchange="spouse(this)" />
-                                                <br />
-                                                <br />
-                                                <img src="{{ asset('image/avatar/noimage.jpg') }}"
-                                                    id="spouse_display" height="130" width="130" style="border:solid">
+                                                    id="spouse_avatar" name="spouse_avatar[]" onchange="spouse(this)" />
+                                                    {{-- <br/>
+                                                    <br/>
+                                                    <img src="{{ asset('image/avatar/noimage.jpg') }}" id="spouse_display" height="130" width="130" style="border:solid">
+                                                    <br />
+                                                    <a href="" id="addmorespouse" name="addmorespouse" class="link-primary" title="添加更多配偶">{{ __('添加更多配偶') }}</a> --}}
                                             </div>
                                             @if ($errors->has('spouse_avatar'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('spouse_avatar') }}</strong>
                                                 </span>
                                             @endif
+                                        </div>
+                                    </div>
+                                    <div id="displayaddmorespouse" class="form-group row">
+                                    </div>
+                                    <div id="displayaddmorespouse_avatar" class="form-group row">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 text-end control-label col-form-label hidden"></label>
+                                        <div class="col-md-9">
+                                            <img src="{{ asset('image/avatar/noimage.jpg') }}"
+                                            id="spouse_display" height="130" width="130" style="border:solid">
+                                            <br/>
+                                            <a href="" id="addmorespouse" name="addmorespouse" class="link-primary" title="添加更多配偶">{{ __('添加更多配偶') }}</a>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -315,7 +329,7 @@
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control{{ $errors->has('nationality') ? ' is-invalid' : '' }}"
-                                                id="nationality" name="nationality" value="{{ old('nationality') }}"
+                                                id="nationality" name="nationality" value="马来西亚"
                                                 placeholder="国籍" required />
                                             @if ($errors->has('nationality'))
                                                 <span class="invalid-feedback" role="alert">
@@ -356,6 +370,21 @@
                                                 <strong>{{ $errors->first('parent_id') }}</strong>
                                             </span>
                                         @endif
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="era"
+                                            class="col-sm-3 text-end control-label col-form-label">年代</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control{{ $errors->has('era') ? ' is-invalid' : '' }}"
+                                                id="era" name="era" value="{{ old('era') }}" placeholder="年代"
+                                                required />
+                                            @if ($errors->has('era'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('era') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                         </div>
@@ -479,6 +508,21 @@
                 }
             }
         }
+        $(document).ready(function() {
+            var counter = 1;
+            $("#addmorespouse").on("click", function(e) {
+                e.preventDefault();
+                console.log("addmorespouse clicked");
+                counter = counter + 1;
+                console.log(counter);
+                if (counter >= 6) {
+                    console.log('cannot click more than 5');
+                    alert('配偶不能添加超过5个');
+                    return ($(this).attr('disabled')) ? false : true;
+                }
+                $('#displayaddmorespouse').append("<label for='spouse_name' class='col-sm-3 text-end control-label col-form-label'>配偶名称"+counter+"</label> <div class='col-sm-9'> <input name='spouse_name[]' type='text' class='form-control' id='spouse_name' placeholder='配偶名称'></div><br/><br/><label class='col-sm-3 text-end control-label col-form-label'>配偶头像"+counter+"</label> <div class='col-md-9'> <div class='custom-file'> <input type='file' class='custom-file-input' id='spouse_avatar' name='spouse_avatar[]' onchange='spouse(this)'/>");
+            });
+        });
     </script>
 </body>
 
