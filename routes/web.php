@@ -38,10 +38,17 @@ Route::get('job', function () {
     return view('job');
 })->name('site.job');
 
-//testing purpose
+// testing purpose
 Route::get('test', function () {
     return view('test');
 })->name('site.test');
+
+// user route
+Route::group(['namespace' => 'user'], function () {
+    Route::get('summernote', function () {
+        return view('user.summernote');
+    });
+});
 
 // Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
