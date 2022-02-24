@@ -372,6 +372,22 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label for="era"
+                                            class="col-sm-3 text-end control-label col-form-label">年代</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control{{ $errors->has('era') ? ' is-invalid' : '' }}"
+                                                id="era" name="era"
+                                                value="{{ old('era') ? old('era') : $person->era }}"
+                                                placeholder="年代" required/>
+                                            @if ($errors->has('era'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('era') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                         </div>
                         <div class="border-top">

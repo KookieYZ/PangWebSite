@@ -36,6 +36,7 @@ class PersonController extends Controller
 
     public function index() {
         $persons = People::orderBy('created_at', 'DESC')->simplePaginate(10);
+        $persons->spouse_name = explode('|',$persons->spouse_name);
 
         return view('admin.person.index', compact('persons'))->with('persons',$persons);
     }
@@ -48,6 +49,9 @@ class PersonController extends Controller
     public function store(Request $request) {
 
         $this->validator($request->all())->validate();
+        $request->validate([
+            'spouse_name.*.spouse_name' => 'required'
+        ]);
 
         date_default_timezone_set("Asia/Kuala_Lumpur");
 
@@ -243,4 +247,5 @@ class PersonController extends Controller
 
         return redirect()->route('relationship.index')->with('success', "$person->name 资料删除成功");
     }
+
 }

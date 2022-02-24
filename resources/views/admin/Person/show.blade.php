@@ -245,27 +245,36 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="spouse_name"
-                                            class="col-sm-3 text-end control-label col-form-label">配偶名称</label>
-                                        <div class="col-sm-9">
-                                            <input type="text"
+                                        @php
+                                            $exploded_spouse = explode('|', $person->spouse_name);
+                                        @endphp
+                                        @foreach($exploded_spouse as $key => $value)
+                                            <label for="spouse_name"
+                                                class="col-sm-3 text-end control-label col-form-label">配偶名称{{$key+1}}</label>
+                                            <div class="col-sm-9">
+                                                <input type="text"
                                                 class="form-control{{ $errors->has('spouse_name') ? ' is-invalid' : '' }}"
                                                 id="spouse_name" name="spouse_name" placeholder="未有配偶"
-                                                value="{{ old('spouse_name') ? old('spouse_name') : $person->spouse_name }}"
-                                                disabled />
-                                            @if ($errors->has('spouse_name'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('spouse_name') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
+                                                value="{{ old('spouse_name') ? old('spouse_name') : $value }}"
+                                                disabled /><br/>
+                                                @if ($errors->has('spouse_name'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('spouse_name') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-3 text-end control-label col-form-label">配偶头像</label>
                                         <div class="col-md-9">
                                             <div class="custom-file">
-                                                <img src=" {{ asset('image/avatar/' . $person->spouse_avatar) }}"
-                                                    height="130" width="130" style="border:solid">
+                                                @php
+                                                    $exploded_spouse_ava = explode('|', $person->spouse_avatar);
+                                                @endphp
+                                                @foreach($exploded_spouse_ava as $key => $value)
+                                                    <img src=" {{ asset('image/avatar/' . $value) }}" height="130"width="130"style="border:solid;"> <br/><br/>
+                                                @endforeach
                                             </div>
                                             @if ($errors->has('spouse_avatar'))
                                                 <span class="invalid-feedback" role="alert">
@@ -352,6 +361,22 @@
                                             @if ($errors->has('parent_id'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('parent_id') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="era"
+                                            class="col-sm-3 text-end control-label col-form-label">年代</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control{{ $errors->has('era') ? ' is-invalid' : '' }}"
+                                                id="era" name="era"
+                                                value="{{ old('era') ? old('era') : $person->era }}"
+                                                placeholder="年代" required disabled />
+                                            @if ($errors->has('era'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('era') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
