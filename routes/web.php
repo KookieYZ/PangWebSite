@@ -73,5 +73,4 @@ Route::resource('admin/blog', 'App\Http\Controllers\Admin\BlogController');
 Route::resource('/search', 'App\Http\Controllers\user\SearchController');
 
 Route::get('fetch-family-list','App\Http\Controllers\user\ChartController@fetchfamilylist');
-Route::POST('downloadPDF','App\Http\Controllers\user\ChartController@downloadPDF');
 // Route::get('/chart', [App\Http\Controllers\HomeController::class, 'index'])->name('chart');

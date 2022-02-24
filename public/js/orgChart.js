@@ -6,7 +6,7 @@ $( document ).ready(function() {
 function fetchFamiliyList(){
     $.ajax({
         type:'GET',
-        url:"/fetch-family-list",         
+         url:"/fetch-family-list",         
         datatype: "json",
         success:function(response){
             console.log(response.familiylist);
@@ -31,23 +31,19 @@ function googleOrgChartInitialization(familiylist){
 
 function mappingValue(data, arr){
     $.each(arr, function( key, value ) {
-        var spouse_avatar = value.spouse_avatar =='noimage.jpg' && value.spouse_name == null ? "display:none" :value.spouse_avatar;
-        var spouse_name = value.spouse_name == null ? "" :value.spouse_name;
         data.addRows([
         [{
              v:value.name, 
-            'f':'<div id = "referUsage">'+
-                '<div class="image d-flex flex-row justify-content-center align-items-center" id="firstRow">' +
-                '<img class="mr-3" id="parent_avatar"src="image/avatar/'+value.avatar+ '" height="100" width="100" />' +  
-                '<img class="mr-3" id="spouse_avatar" src="image/avatar/'+value.spouse_avatar+ '" height="100" width="100" style="'+spouse_avatar+'">' +
+            'f': '<div class="image d-flex flex-row justify-content-center align-items-center">' +
+                '<img class="mr-3" src="image/avatar/'+value.avatar+ '" height="100" width="100" />' +
+                '<img class="mr-3" src="image/avatar/'+value.spouse_avatar+ '" height="100" width="100" />' +
                 '</div>' +
                 '<div class="image d-flex flex-column justify-content-center align-items-center">' +
                 '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">' +
                 '<div class="row d-flex justify-content-center p-2">' +
                 '<div style="width: 100px;" class="mr-1">'+value.name+'<br/>（第'+(key+1)+'代）</div>' +
-                '<div style="width: 100px;" id="spouse_name" class="mr-1"><p>'+spouse_name+'</p></div>'+
+                '<div style="width: 100px;" class="mr-1">'+value.spouse_name+'</div>' +
                 '</div>' +            
-                '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
@@ -65,12 +61,9 @@ function mappingValue(data, arr){
                 '<div><b>年份 :</b>'+ value.dob_date+'</div>' +
                 '</div>'                 
         }, value.parent_id, value.name]
-    ]);      
+    ]);
+          createChart(data);
     });
-    createChart(data);
-    fixedFirstRowCss();
-    fixedImgCss();
-    $("#chartInputData").val($("#chart_div").html());
 }
 
 
@@ -80,51 +73,7 @@ function createChart(data){
     chart.draw(data, {
         'allowHtml': true,
         'allowCollapse': true,
-         'size': 'medium',
+        'size': 'medium',
         'color': '#FF0000'
-    });
-}
-
-
-function fixedFirstRowCss(){
-    $('div#firstRow').each(function () {
-        $(this).css('height','104');
-        $(this).css('width','236');
-        $(this).parent().css('width','240');
-        $(this).parent().css('height','180');
-    });
-}
-
-    function fixedImgCss(){
-        $('img#spouse_avatar').each(function () { 
-            if($(this).attr('src') == 'image/avatar/noimage.jpg' && $(this).parent().parent().find('div#spouse_name >p').text() == '')          
-                $(this).parent().find('img#parent_avatar').removeClass('mr-3');
-            });    
-}
-
-
-
-// $( "#printPDFBtn" ).click(function() {
-//     getData();
-//   });
-
-// function getData(){
-//     let chartsData = $("#chart_div").html();
-//     $("#chartInputData").val(chartsData);
-// }  
-
-
-
-function downLoadPDF(){
-    $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      });
-    $.ajax({
-        type:'GET',
-        url:"/downloadPDF",         
-        datatype: "json",
-        data:$("#chart_div").html()
     });
 }

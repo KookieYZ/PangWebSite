@@ -59,17 +59,11 @@
     </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="{{ URL::asset('js/orgChart.js') }}"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div id="scroll_container">
         <div id="wrapper" class="wrapper">
             <div id="chart_div" class="mt-5 mb-5" style="margin-bottom: 100px !important;"></div>
         </div>
     </div>
-    <form action="downloadPDF" method="post" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="chartData" id="chartInputData">
-        <input type="submit" value="Download As PDF">
-    </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         (function(factory) {
