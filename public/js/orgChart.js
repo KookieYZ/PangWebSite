@@ -9,7 +9,6 @@ function fetchFamiliyList(){
         url:"/fetch-family-list",         
         datatype: "json",
         success:function(response){
-            console.log(response.familiylist);
             googleOrgChartInitialization(response.familiylist);  
         } 
     });
@@ -32,7 +31,6 @@ function googleOrgChartInitialization(familiylist){
 function mappingValue(data, arr){
     $.each(arr, function( key, value ) {
         var spouse_avatar = value.spouse_avatar =='noimage.jpg' && value.spouse_name == null ? "display:none" :value.spouse_avatar;
-        var spouse_name = value.spouse_name == null ? "" :value.spouse_name;
         data.addRows([
         [{
              v:value.name, 
@@ -41,11 +39,11 @@ function mappingValue(data, arr){
                 '<img class="mr-3" id="parent_avatar"src="image/avatar/'+value.avatar+ '" height="100" width="100" />' +  
                 '<img class="mr-3" id="spouse_avatar" src="image/avatar/'+value.spouse_avatar+ '" height="100" width="100" style="'+spouse_avatar+'">' +
                 '</div>' +
-                '<div class="image d-flex flex-column justify-content-center align-items-center">' +
+                '<div class="image d-flex flex-column justify-content-center align-items-center" id="'+value.name.replace(/\s/g, '')+'">' +
                 '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">' +
                 '<div class="row d-flex justify-content-center p-2">' +
-                '<div style="width: 100px;" class="mr-1">'+value.name+'<br/>（第'+(key+1)+'代）</div>' +
-                '<div style="width: 100px;" id="spouse_name" class="mr-1"><p>'+spouse_name+'</p></div>'+
+                '<div style="width: 100px;" class="mr-1" id="name">'+value.name+'<br/>（第'+value.era+'代）</div>' +
+                '<div style="width: 100px;" class="mr-1" id="spouse_name'+0+'"><p></p></div>' +
                 '</div>' +            
                 '</div>' +
                 '</div>' +
@@ -65,11 +63,14 @@ function mappingValue(data, arr){
                 '<div><b>年份 :</b>'+ value.dob_date+'</div>' +
                 '</div>'                 
         }, value.parent_id, value.name]
-    ]);      
-    });
+    ]);    
+    })
     createChart(data);
-    fixedFirstRowCss();
-    fixedImgCss();
+    loopSpouseName(arr);  
+    // fixedFirstRowCss();
+    // fixedImgCss();
+      
+   
     $("#chartInputData").val($("#chart_div").html());
 }
 
@@ -86,7 +87,7 @@ function createChart(data){
 }
 
 
-function fixedFirstRowCss(){
+function fixedFirstRowCss(){ // No use Anymore, So i did not call this function
     $('div#firstRow').each(function () {
         $(this).css('height','104');
         $(this).css('width','236');
@@ -95,14 +96,12 @@ function fixedFirstRowCss(){
     });
 }
 
-    function fixedImgCss(){
+    function fixedImgCss(){ // No use Anymore, So i did not call this function
         $('img#spouse_avatar').each(function () { 
             if($(this).attr('src') == 'image/avatar/noimage.jpg' && $(this).parent().parent().find('div#spouse_name >p').text() == '')          
                 $(this).parent().find('img#parent_avatar').removeClass('mr-3');
             });    
 }
-
-
 
 // $( "#printPDFBtn" ).click(function() {
 //     getData();
@@ -127,4 +126,31 @@ function downLoadPDF(){
         datatype: "json",
         data:$("#chart_div").html()
     });
+}
+
+function loopSpouseName(arr){ // Passing in as Object
+    var spouseNameArr = [];
+    for(var i = 0; i < arr.length; i++ ){
+        spouseNameArr[i] = {
+            "Name" : arr[i].name,
+            "Spouse_Name" : arr[i].spouse_name != null ? arr[i].spouse_name.split('|') : ""
+        }
+    }
+    appendSpouseName(spouseNameArr);   
+}
+   //Loop to html page
+function appendSpouseName(spouseNameArr){
+    for(var i = 0; i < spouseNameArr.length; i++ ){
+        $( 'div#'+spouseNameArr[i].Name.replace(/\s/g, '')).each(function( index ) {
+            var currentContainer= $(this);
+            for(var j = 0; j < spouseNameArr[i].Spouse_Name.length; j++  ){
+                if(j>=1){
+                    currentContainer.find('div#spouse_name'+(j-1)+'> p').after('<div style="width: 100px;" id="spouse_name'+j+'" class="mr-1"><p></p></div>');
+                    // currentContainer.find('div#spouse_name'+j+'> p').text(spouseNameArr[i].Spouse_Name[j]);
+                }              
+                    currentContainer.find('div#spouse_name'+j+'> p').text(spouseNameArr[i].Spouse_Name[j]);                
+                // currentContainer.find('div#name').after('<div style="width: 100px;" id="spouse_name'+j+'" class="mr-1"><p></p></div>');  
+            }
+    });
+}
 }
