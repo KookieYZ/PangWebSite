@@ -20,10 +20,8 @@ class ChartController extends Controller
     }
     
     public function downloadPDF(Request $request){   
-      
-         $data = $request->chartData;  
-        
-         $dompdf = PDF::loadView('pdf',compact('data'));
+         $data = $request->chartData;
+         $dompdf = PDF::loadView('user.pdf',compact('data'));
          $dompdf->setPaper('A4', 'landscape');
         //  $dompdf -> setWarnings(true);
          $dompdf->render();     

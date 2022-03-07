@@ -65,10 +65,11 @@
             <div id="chart_div" class="mt-5 mb-5" style="margin-bottom: 100px !important;"></div>
         </div>
     </div>
+    <div id="hiddenDiv"  class="mt-5 mb-5" style="display: none;"></div>
     <form action="downloadPDF" method="post" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="chartData" id="chartInputData">
-        <input type="submit" value="Download As PDF">
+        <button onclick="downLoadPDF()">Download As PDF</button>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
