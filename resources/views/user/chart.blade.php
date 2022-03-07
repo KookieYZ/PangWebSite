@@ -69,7 +69,7 @@
     <form action="downloadPDF" method="post" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="chartData" id="chartInputData">
-        <button onclick="downLoadPDF()">Download As PDF</button>
+        <input type="submit" value="下载PDF">
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
