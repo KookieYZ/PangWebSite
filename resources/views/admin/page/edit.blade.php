@@ -12,6 +12,7 @@
         content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
     <meta name="robots" content="noindex,nofollow" />
     <title>彭氏公会</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('image/PANG_CLAN_LOGO.png') }}" />
 
@@ -270,27 +271,12 @@
 
                                     <div class="form-group row">
                                         <label for="parent_id"
-                                            class="col-sm-3 text-end control-label col-form-label">亲属</label>
+                                            class="col-sm-3 text-end control-label col-form-label">内容</label>
                                         <div class="col-sm-9">
-                                            <select class="form-select" aria-label="" id="parent_id"
-                                                name="parent_id">
-                                                <option value="">---未选择---</option>
-                                                @foreach ($pages as $page2)
-                                                    <option value="{{ $page2->id }}">{{ $page2->id }} -
-                                                        {{ $page2->title }}</option>
-                                                @endforeach
-                                                @if ($page->parent_id)
-                                                    <option value="{{ $page->parent_id }}" selected hidden>
-                                                        {{ $page->parent_id }} - {{ $page->parent->title }}
-                                                    </option>
-                                                @endif
-
-                                            </select>
-                                            @if ($errors->has('parent_id'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('parent_id') }}</strong>
-                                                </span>
-                                            @endif
+                                            <div class="col-sm-9">                                         
+                                                    <textarea id="summernote" class="summernote" name="description"></textarea> 
+                                                    <input type="hidden" id="hiddenFieldForDesc"value="{{ $page->description }}">                                            
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -355,6 +341,30 @@
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
     <script src="{{ asset('assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
     <script src="{{ asset('dist/js/pages/mask/mask.init.js') }}"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/lang/summernote-zh-CN.min.js"></script> //Translate summernote toolbar to chinise
 </body>
 
 </html>
+
+<script>
+    var SummernoteDemo={init:function(){$(".summernote").summernote({
+            placeholder:'内容在此输入......',
+            height: 200,
+            spellCheck:true,
+            codeviewFilter: false,
+            codeviewIframeFilter: true,
+            lang:'zh-CN',
+            
+})}};
+
+    jQuery(document).ready(function(){
+        SummernoteDemo.init();
+        var markupStr  = $("#hiddenFieldForDesc").val();
+        $('#summernote').summernote('code', markupStr);
+      
+    });
+</script>

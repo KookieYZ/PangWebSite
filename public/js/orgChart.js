@@ -43,7 +43,7 @@ function mappingValue(data, arr){
                         '<div class="image d-flex flex-column justify-content-center align-items-center" id="'+value.name.replace(/\s/g, '')+'">' +
                         '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">' +
                         '<div class="row d-flex justify-content-center p-2">' +
-                        '<div style="width: 100px;" class="mr-1" id="name">'+value.name+'<br/>（第'+value.era+'代）</div>' +
+                        '<div style="width: 100px;" class="mr-1" id="name">'+value.name+'<br/> '+value.era+' </div>' +
                         '<div style="width: 100px;" class="mr-1" id="spouse_name'+0+'"><p></p></div>' +
                         '</div>' +            
                         '</div>' +

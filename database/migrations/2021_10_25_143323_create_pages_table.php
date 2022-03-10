@@ -18,10 +18,10 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->longText('url');
             $table->integer('ranking');
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->longText('description');
+            $table->char('is_publish')->nullable();
+            $table->integer('year')->nullable();
             $table->timestamps();
-
-            $table->foreign('parent_id')->references('id')->on('pages')->onDelete('set null');
         });
     }
 

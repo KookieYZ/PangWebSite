@@ -234,7 +234,10 @@
                                             <th scope="col"><b>标题</b></th>
                                             <th scope="col"><b>网站</b></th>
                                             <th scope="col"><b>排行</b></th>
-                                            <th scope="col"><b>亲属</b></th>
+                                            <th scope="col"><b>内容</b></th>
+                                            <th scope="col"><b>Publish(Yes/No)</b></th>
+                                            <th scope="col"><b>Year</b></th>
+
                                         </tr>
                                     </thead>
                                     @foreach ($pages as $page)
@@ -263,9 +266,13 @@
                                                     </form>
                                                 </th>
                                                 <td>{{ $page->title }}</td>
-                                                <td>{{ $page->url }}</td>
+                                                <td><a href="{{ $page->url }}">{{ $page->url }}</a></td>
                                                 <td>{{ $page->ranking }}</td>
-                                                <td>{{ $page->parent_id }} - {{ $page->parent->title }}</td>
+                                                {{-- <td>{{ $page->parent_id }} - {{ $page->parent->title }}</td> --}}
+                                                <td>{!! $page->description !!}</td>
+                                                <td>{{ $page->is_publish }}</td>
+                                                <td>{{ $page->year }}</td>
+                                
                                             </tr>
                                         </tbody>
                                     @endforeach
@@ -329,7 +336,7 @@
         /****************************************
          *       Basic Table                   *
          ****************************************/
-        $("#zero_config").DataTable();
+        $("#zero_config").DataTable(); 
     </script>
 </body>
 

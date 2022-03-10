@@ -20,7 +20,9 @@ class PageSeeder extends Seeder
                 'title' => Str::random(10),
                 'url' => 'www.google.com',
                 'ranking' => 1,
-                'parent_id' => 1,
+                'is_publish' => 'y',
+                'description' =>'Summer Note',
+                'year' => 2022,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

@@ -14,6 +14,9 @@ class Page extends Model
         'url',
         'ranking',
         'parent_id',
+        'description',
+        'is_publish',
+        'year',
     ];
 
     /**

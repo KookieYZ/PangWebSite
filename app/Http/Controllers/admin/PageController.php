@@ -25,7 +25,8 @@ class PageController extends Controller
             // 'url'          => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
             'url'          => 'required|url',
             'ranking'      => 'required|integer',
-            'parent_id'    => 'nullable|integer'
+            'parent_id'    => 'nullable|integer',
+            'description'  =>'required'
         ]);
     }
 
@@ -48,7 +49,7 @@ class PageController extends Controller
         $page->title = $request['title'];
         $page->url = $request['url'];
         $page->ranking = $request['ranking'];
-        $page->parent_id = $request['parent_id'];
+        $page->description = $request['description'];
         $page->created_at = now();
         $page->updated_at = now();
 
@@ -73,7 +74,8 @@ class PageController extends Controller
             'title'        => 'string|max:50|required',
             'url'          => 'string|url|required',
             'ranking'      => 'integer|required',
-            'parent_id'    => 'integer|nullable'
+            // 'parent_id'    => 'integer|nullable',
+            'description'  => 'required'
         ]);
 
         date_default_timezone_set("Asia/Kuala_Lumpur");
@@ -82,7 +84,8 @@ class PageController extends Controller
         $page->title = $request['title'];
         $page->url = $request['url'];
         $page->ranking = $request['ranking'];
-        $page->parent_id = $request->parent_id;
+        // $page->parent_id = $request->parent_id;
+        $page->description = $request['description'];
         // $page->created_at = now();
         $page->updated_at = now();
 
