@@ -36,8 +36,6 @@ class PersonController extends Controller
 
     public function index() {
         $persons = People::orderBy('created_at', 'DESC')->simplePaginate(10);
-        $persons->spouse_name = explode('|',$persons->spouse_name);
-
         return view('admin.person.index', compact('persons'))->with('persons',$persons);
     }
 
