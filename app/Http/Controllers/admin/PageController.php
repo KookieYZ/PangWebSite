@@ -25,7 +25,7 @@ class PageController extends Controller
             // 'url'          => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
             'url'          => 'required|url',
             'ranking'      => 'required|integer',
-            'parent_id'    => 'nullable|integer',
+            // 'parent_id'    => 'nullable|integer',
             'description'  =>'required'
         ]);
     }
