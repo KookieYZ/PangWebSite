@@ -21,6 +21,7 @@ class CreatePagesTable extends Migration
             $table->longText('description');
             $table->char('is_publish')->nullable();
             $table->integer('year')->nullable();
+            $table->string('img_path')->nullable();
             $table->timestamps();
         });
     }

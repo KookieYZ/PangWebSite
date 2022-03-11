@@ -23,6 +23,7 @@ class PageSeeder extends Seeder
                 'is_publish' => 'y',
                 'description' =>'Summer Note',
                 'year' => 2022,
+                'img_path'=>'img',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
