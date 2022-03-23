@@ -22,7 +22,7 @@
             <div class="row d-flex justify-content-start">
             @foreach($search_persons as $search_person)
                 <div class="col-xl-3 col-md-4 col-12 p-2">
-                    <a href="{{ route('site.chart') }}">
+                    <a href="{{ route('user.chart') }}">
                         <div class="card p-3 text-white" style="background-color:  {{ $theme->secondColor()->value }};">
                             <div class="image d-flex flex-column justify-content-center align-items-center"> <img src="{{ asset('image/avatar/'.$search_person->avatar) }}" height="100" width="100" /> 
                                 <div class="container bg-white text-dark mt-2" style="border-radius: 20px">

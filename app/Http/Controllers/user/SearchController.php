@@ -27,7 +27,7 @@ class SearchController extends Controller
         ->get();
 
 
-        return view('search', compact('search_persons'));
+        return view('user.search', compact('search_persons'));
     }
     
 
@@ -42,7 +42,7 @@ class SearchController extends Controller
     public function show($id) {
         $chart_persons = People::find($id);
 
-        return view('chart', compact('chart_persons'));
+        return view('user.chart', compact('chart_persons'));
     }
 
     public function edit() {

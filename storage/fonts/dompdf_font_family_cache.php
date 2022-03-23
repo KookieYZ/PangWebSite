@@ -92,7 +92,7 @@ return array (
     'normal' => $fontDir . '/droid_normal_181c993c0d48792521d5177b6989b926',
   ),
   'chinise' => array(
-    'normal' => $fontDir . '/chinise_normal_1133eb37980639873cdb270ded6fa5a4',
+    'normal' => $fontDir . '/chinise_normal_2dd40bb51ebd6ac3b1754cd2f47e165c',
     'bold' => $fontDir . '/chinise_normal_1133eb37980639873cdb270ded6fa5a4',
   ),
   'nunito' => array(

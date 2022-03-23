@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,9 @@ Route::group(['namespace' => 'user'], function () {
     Route::get('chart', function () {
         return view('user.chart');
     })->name('user.chart');
-    Route::get('blog', function () {
-        return view('user.blog');
-    })->name('user.blog');
+    Route::get('background', function () {
+        return view('user.background');
+    })->name('user.background');
     Route::get('rules', function () {
         return view('user.rules');
     })->name('user.rules');
@@ -51,11 +52,14 @@ Route::group(['namespace' => 'user'], function () {
     Route::get('/', function () {
         return view('user.home');
     })->name('user.home');
+    Route::get('business', function () {
+        return view('user.business');
+    })->name('user.business');
 });
 
 // Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', function() {
+    Route::get('/', function () {
         return redirect('/admin/login');
     });
 
@@ -81,8 +85,8 @@ Route::resource('admin/blog', 'App\Http\Controllers\Admin\BlogController');
 Route::resource('admin/job', 'App\Http\Controllers\Admin\JobController');
 
 
-Route::resource('/search', 'App\Http\Controllers\user\SearchController');
+Route::resource('search', 'App\Http\Controllers\user\SearchController');
 
-Route::get('fetch-family-list','App\Http\Controllers\user\ChartController@fetchfamilylist');
-Route::POST('downloadPDF','App\Http\Controllers\user\ChartController@downloadPDF');
+Route::get('fetch-family-list', 'App\Http\Controllers\user\ChartController@fetchfamilylist');
+Route::POST('downloadPDF', 'App\Http\Controllers\user\ChartController@downloadPDF');
 // Route::get('/chart', [App\Http\Controllers\HomeController::class, 'index'])->name('chart');
