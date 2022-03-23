@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="form-group row">
                                 <label for="title" class="col-sm-3 text-end control-label col-form-label">工作名称</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                     <input type="text"
                                         class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="title"
                                         name="title" value="{{ old('name') ? old('name') : $job->name }}"
@@ -32,7 +32,7 @@
 
                             <div class="form-group row">
                                 <label for="title" class="col-sm-3 text-end control-label col-form-label">工作种类</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                 <select class="form-select" aria-label="" id="category"
                                                 name="category" disabled>                                                
                                                     <option value="{{$jobCatName}}">
@@ -55,7 +55,7 @@
                                 
                             <div class="form-group row">
                                 <label for="title" class="col-sm-3 text-end control-label col-form-label">薪水</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                     <input type="text"
                                         class="form-control{{ $errors->has('salary') ? ' is-invalid' : '' }}" id="salary"
                                         titlle="salary" value="{{ old('salary') ? old('salary') : $job->salary }}"
@@ -86,7 +86,7 @@
 
                             <div class="form-group row">
                                 <label for="title" class="col-sm-3 text-end control-label col-form-label">发布于</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                     <input type="date"
                                         class="form-control{{ $errors->has('posted_on') ? ' is-invalid' : '' }}" id="posted_on"
                                         title="posted_on" value="{{ old('posted_on') ? old('posted_on') : $job->posted_on }}"
@@ -102,7 +102,7 @@
                     
                             <div class="form-group row">
                                 <label for="title" class="col-sm-3 text-end control-label col-form-label">状态</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                             <select class="form-select" aria-label="" id="status"
                                                 name="status" disabled>
                                                 @if ($job->status == 1)

@@ -27,7 +27,7 @@
                         <div class="card-body">
                             <div class="form-group row">
                                 <label for="name" class="col-sm-3 text-end control-label col-form-label">工作名称</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                     <input type="text"
                                         class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name"
                                         name="name" value="{{ old('name') }}" placeholder="在此输出工作名称" required />
@@ -41,7 +41,7 @@
 
                             <div class="form-group row">
                                 <label for="category" class="col-sm-3 text-end control-label col-form-label">工作种类</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                 <select class="form-select" aria-label="" id="category"
                                                 name="category">
                                                 <option value="" selected>---未选择---</option> 
@@ -60,7 +60,7 @@
                               
                             <div class="form-group row">
                                 <label for="salary" class="col-sm-3 text-end control-label col-form-label">薪水(RM)</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                     <input type="text"
                                         class="form-control{{ $errors->has('salary') ? ' is-invalid' : '' }}"
                                         id="salary" name="salary" class=" col-sm-6" value="{{ old('salary') }}" placeholder="薪水"
@@ -95,11 +95,11 @@
 
                                     <div class="form-group row">
                                 <label for="posted_on" class="col-sm-3 text-end control-label col-form-label">发布于</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                     <input type="date"
                                         class="form-control{{ $errors->has('posted_on') ? ' is-invalid' : '' }}"
                                         id="posted_on" name="posted_on" value="{{ old('posted_on') }}" placeholder="发布于"
-                                        required />
+                                        required max="9999-12-31"/>
                                     @if ($errors->has('posted_on'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('posted_on') }}</strong>
@@ -110,7 +110,7 @@
 
                             <div class="form-group row">
                                 <label for="status" class="col-sm-3 text-end control-label col-form-label">状态</label>
-                                        <div class="col-sm-9">
+                                        <div class="col-sm-2">
                                             <select class="form-select" aria-label="" id="status"
                                                 name="status">
                                                 <option value="" selected>---未选择---</option>                                              
