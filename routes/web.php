@@ -78,6 +78,7 @@ Route::resource('admin/user', 'App\Http\Controllers\Admin\AdminController');
 Route::resource('admin/theme', 'App\Http\Controllers\Admin\ThemeController');
 Route::resource('admin/page', 'App\Http\Controllers\Admin\PageController');
 Route::resource('admin/blog', 'App\Http\Controllers\Admin\BlogController');
+Route::resource('admin/job', 'App\Http\Controllers\Admin\JobController');
 
 
 Route::resource('/search', 'App\Http\Controllers\user\SearchController');
