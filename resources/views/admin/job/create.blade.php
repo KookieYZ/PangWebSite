@@ -190,6 +190,8 @@
                         <button type="submit" class="btn btn-primary">
                             提交
                         </button>
+                        <a href="{{ route('job.index') }}" class="btn btn-primary"
+                                    id="back">{{ __('返回') }}</a>
                     </div>
                 </div>
                 </form>
