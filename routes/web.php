@@ -85,8 +85,8 @@ Route::resource('admin/blog', 'App\Http\Controllers\Admin\BlogController');
 Route::resource('admin/job', 'App\Http\Controllers\Admin\JobController');
 
 
-Route::resource('search', 'App\Http\Controllers\user\SearchController');
+Route::resource('search', 'App\Http\Controllers\User\SearchController');
 
-Route::get('fetch-family-list', 'App\Http\Controllers\user\ChartController@fetchfamilylist');
-Route::POST('downloadPDF', 'App\Http\Controllers\user\ChartController@downloadPDF');
+Route::get('fetch-family-list', 'App\Http\Controllers\User\ChartController@fetchfamilylist');
+Route::POST('downloadPDF', 'App\Http\Controllers\User\ChartController@downloadPDF');
 // Route::get('/chart', [App\Http\Controllers\HomeController::class, 'index'])->name('chart');
