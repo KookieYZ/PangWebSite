@@ -32,7 +32,7 @@ class People extends Model
     }
 
     public function returnParentName($parentID){
-        return DB::table('People')->where('id', $parentID)->value('name');
+        return $this->where('id', $parentID)->value('name');
     }
 
       // function to convert arrays to string

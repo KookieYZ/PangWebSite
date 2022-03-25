@@ -9,6 +9,7 @@ use App\Models\People;
 use PDF;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+
 class ChartController extends Controller
 {
 
