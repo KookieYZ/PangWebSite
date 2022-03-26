@@ -32,12 +32,10 @@
     <div class="arrow arrow-right">
         <img src="{{asset('assets/images/arrow-right.png')}}" />
     </div>
-    <div class="wrapper">
-        <div class="scrollmenu" style="background-color: {{ $theme->primaryColor()->value }};">
-            @for($year = 1971; $year <= 2021; $year++)
-                <a href="#{{ $year }}">{{ $year }}</a>
-            @endfor
-        </div>
+    <div class="scrollmenu" style="background-color: {{ $theme->primaryColor()->value }};">
+        @for($year = 1971; $year <= 2021; $year++)
+            <a href="#{{ $year }}">{{ $year }}</a>
+        @endfor
     </div>
 </div>
 
