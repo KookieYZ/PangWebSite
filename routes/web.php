@@ -55,6 +55,11 @@ Route::group(['namespace' => 'user'], function () {
     Route::get('business', function () {
         return view('user.business');
     })->name('user.business');
+    Route::resource('search', 'SearchController');
+    
+    Route::get('fetch-family-list', 'ChartController@fetchfamilylist');
+    Route::POST('downloadPDF', 'ChartController@downloadPDF');
+    Route::get('history/{id}', 'PeopleController@getPeople')->name('user.history');
 });
 
 // Auth::routes();
@@ -84,9 +89,4 @@ Route::resource('admin/page', 'App\Http\Controllers\Admin\PageController');
 Route::resource('admin/blog', 'App\Http\Controllers\Admin\BlogController');
 Route::resource('admin/job', 'App\Http\Controllers\Admin\JobController');
 
-
-Route::resource('search', 'App\Http\Controllers\User\SearchController');
-
-Route::get('fetch-family-list', 'App\Http\Controllers\User\ChartController@fetchfamilylist');
-Route::POST('downloadPDF', 'App\Http\Controllers\User\ChartController@downloadPDF');
 // Route::get('/chart', [App\Http\Controllers\HomeController::class, 'index'])->name('chart');

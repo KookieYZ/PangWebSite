@@ -35,7 +35,8 @@ function mappingValue(data, arr){
             data.addRows([
                 [{
                      v:value.name, 
-                    'f':'<div id = "referUsage">'+
+                    'f':'<a href="/history/'+value.id+'">'+
+                        '<div id = "referUsage">'+
                         '<div class="image d-flex flex-row justify-content-center align-items-center" id="firstRow">' +
                         '<img class="mr-3" id="parent_avatar"src="image/avatar/'+value.avatar+ '" height="100" width="100" />' +  
                         '<img class="mr-3" id="spouse_avatar" src="image/avatar/'+value.spouse_avatar+ '" height="100" width="100" style="'+spouse_avatar+'">' +
@@ -62,7 +63,8 @@ function mappingValue(data, arr){
                         '</div>' +
                         '<div class="row text-justify p-2">' +
                         '<div><b>年份 :</b>'+ value.dob_date+'</div>' +
-                        '</div>'                 
+                        '</div>' +
+                        '</a>'               
                 }, value.parent_id, value.name]
             ]);
     })
