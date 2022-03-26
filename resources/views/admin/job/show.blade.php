@@ -59,7 +59,7 @@
                                     <input type="text"
                                         class="form-control{{ $errors->has('salary') ? ' is-invalid' : '' }}" id="salary"
                                         titlle="salary" value="{{ old('salary') ? old('salary') : $job->salary }}"
-                                        placeholder="工作标题" required disabled />
+                                        placeholder="" required disabled />
                                     @if ($errors->has('salary'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('salary') }}</strong>

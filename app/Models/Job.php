@@ -24,6 +24,7 @@ class Job extends Model
     ]; 
 
     protected $jobCategoryList = array(
+        'DEF'=>'--未选择--',
         'AF' => '会计与金融',
         'HR' => '行政/人力资源',
         'SM' => '销售与市场营销',
@@ -47,7 +48,5 @@ class Job extends Model
     public function getFullCategoryName($catCode){
         return $this->jobCategoryList[$catCode];
     }
-
- 
 }
 

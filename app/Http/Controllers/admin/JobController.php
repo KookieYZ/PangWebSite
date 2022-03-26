@@ -44,7 +44,8 @@ class JobController extends Controller
     { 
         $job = new Job();
         $jobCatList = $this->model->getCatList();
-        return view('admin.job.create',compact('jobCatList'));
+        $selectedCode = "DEF";
+        return view('admin.job.create',compact('jobCatList','selectedCode'));
  
     }
 
@@ -66,7 +67,7 @@ class JobController extends Controller
         $job->background = $request['background'];
         $job->address = $request['address'];
         $job->posted_on = $request['posted_on'];
-        $job->status = $request['status'];;       
+        $job->status = $request['status'] == null ? 1 : $request['status'];
         $job->created_at = now();
         $job->updated_at = now();
         $isCreated = $job->save();
@@ -108,7 +109,7 @@ class JobController extends Controller
         $job->background = $request['background'];
         $job->address = $request['address'];
         $job->posted_on = $request['posted_on'];
-        $job->status = $request['status'];;       
+        $job->status = $request['status'] == null ? 1 : $request['status'];       
         $job->created_at = now();
         $job->updated_at = now();
         $isUpdated = $job->save();

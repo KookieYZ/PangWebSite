@@ -44,10 +44,9 @@
                                 <div class="col-sm-2">
                                 <select class="form-select" aria-label="" id="category"
                                                 name="category">
-                                                <option value="" selected>---未选择---</option> 
-                                                @foreach ($jobCatList as $key => $value)                                                                                       
-                                                <option value="{{$key}}">{{$value}}</option>
-                                                @endforeach      
+                                                @foreach ($jobCatList as $key => $value)
+                                                    <option value="{{ $key }}" {{($key == $selectedCode) ? 'selected' : ''}}>{{ $value }}</option>
+                                                    @endforeach
                                             </select>
                                     @if ($errors->has('category'))
                                         <span class="invalid-feedback" role="alert">
@@ -64,7 +63,7 @@
                                     <input type="text"
                                         class="form-control{{ $errors->has('salary') ? ' is-invalid' : '' }}"
                                         id="salary" name="salary" class=" col-sm-6" value="{{ old('salary') }}" placeholder="薪水"
-                                        required />
+                                         />
                                     @if ($errors->has('salary'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('salary') }}</strong>
@@ -99,7 +98,7 @@
                                     <input type="date"
                                         class="form-control{{ $errors->has('posted_on') ? ' is-invalid' : '' }}"
                                         id="posted_on" name="posted_on" value="{{ old('posted_on') }}" placeholder="发布于"
-                                        required max="9999-12-31"/>
+                                        max="9999-12-31"/>
                                     @if ($errors->has('posted_on'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('posted_on') }}</strong>
@@ -131,7 +130,7 @@
                                 <div class="col-sm-9">
                                     <textarea type="text"
                                         class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="description"
-                                        name="description" value="{{ old('description') }}" placeholder="工作内容" required
+                                        name="description" value="{{ old('description') }}" placeholder="工作内容" 
                                         style="max-height:300px" rows="4" cols="50" ></textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" role="alert">
@@ -159,7 +158,7 @@
                                 <div class="col-sm-9">
                                         <textarea type="text"
                                         class="form-control{{ $errors->has('background') ? ' is-invalid' : '' }}" id="background"
-                                        name="background" value="{{ old('background') }}" placeholder="公司背景" required
+                                        name="background" value="{{ old('background') }}" placeholder="公司背景" 
                                         style="max-height:300px" rows="4" cols="50" ></textarea>
                                     @if ($errors->has('background'))
                                         <span class="invalid-feedback" role="alert">
@@ -173,7 +172,7 @@
                                 <div class="col-sm-9">
                                 <textarea type="text"
                                         class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" id="address"
-                                        name="address" value="{{ old('address') }}" placeholder="公司地址" required
+                                        name="address" value="{{ old('address') }}" placeholder="公司地址" 
                                         style="max-height:300px" rows="4" cols="50" ></textarea>
                                    
                                     @if ($errors->has('address'))

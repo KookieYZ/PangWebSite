@@ -62,7 +62,7 @@
                                     <input type="text"
                                         class="form-control{{ $errors->has('salary') ? ' is-invalid' : '' }}"
                                         id="salary" name="salary" value="{{ old('salary') ? old('salary') : $job->salary }}" placeholder="薪水"
-                                        required />
+                                         />
                                     @if ($errors->has('salary'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('salary') }}</strong>
@@ -97,7 +97,7 @@
                                     <input type="date"
                                         class="form-control{{ $errors->has('posted_on') ? ' is-invalid' : '' }}"
                                         id="posted_on" name="posted_on" value="{{ old('posted_on') ? old('posted_on') : $job->posted_on }}" placeholder="发布于"
-                                        required max="9999-12-31"/>
+                                         max="9999-12-31"/>
                                     @if ($errors->has('posted_on'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('posted_on') }}</strong>
@@ -124,7 +124,7 @@
                                 <div class="col-sm-9">
                                         <textarea type="text"
                                         class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="description"
-                                        name="description" placeholder="工作内容" required
+                                        name="description" placeholder="工作内容" 
                                         style="max-height:300px" rows="4" cols="50" >{{ old('description') ? old('description') : $job->description }}</textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" role="alert">
@@ -151,7 +151,7 @@
                                 <div class="col-sm-9">
                                         <textarea type="text"
                                         class="form-control{{ $errors->has('background') ? ' is-invalid' : '' }}" id="background"
-                                        name="background" placeholder="公司背景" required
+                                        name="background" placeholder="公司背景" 
                                         style="max-height:300px" rows="4" cols="50" >{{ old('background') ? old('background') : $job->background }}</textarea>
                                     @if ($errors->has('background'))
                                         <span class="invalid-feedback" role="alert">
@@ -165,7 +165,7 @@
                                 <div class="col-sm-9">
                                         <textarea type="text"
                                         class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" id="address"
-                                        name="address" placeholder="公司地址" required
+                                        name="address" placeholder="公司地址" 
                                         style="max-height:300px" rows="4" cols="50" >{{ old('address') ? old('address') : $job->address }}</textarea>
                                         
                                     @if ($errors->has('address'))
