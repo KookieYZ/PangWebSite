@@ -29,7 +29,7 @@
         <section class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
             <div class="wrapper">
                 <!-- Main Sidebar Container -->
-                <aside class="main-sidebar" style="width: 400px; z-index: 1">
+                <aside class="main-sidebar" style="width: 250px; z-index: 1">
                     <!-- Sidebar -->
                     <div class="sidebar">
                         <!-- Sidebar Menu -->
@@ -39,11 +39,13 @@
                                 @for ($i = 0; $i < 20; $i++)
                                     <li class="nav-item">
                                         <a href="#" class="nav-link">
-                                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                                            <p>
-                                                Dashboard
-                                                <i class="right fas fa-angle-left"></i>
-                                            </p>
+                                            <div class="row d-flex align-items-center">
+                                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                                <p class="w-75">
+                                                    Dashboard 
+                                                </p>
+                                                <i class="fas fa-angle-right m-auto"></i>
+                                            </div>
                                         </a>
                                     </li>
                                 @endfor
