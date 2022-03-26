@@ -73,20 +73,24 @@ Route::group(['prefix' => 'admin'], function () {
         'reset' => false, // Password Reset Routes...
         'verify' => false, // Email Verification Routes...
     ]);
+
+    Route::group(['namespace' => 'Admin'], function () {
+        Route::resource('relationship', 'PersonController');
+        Route::resource('user', 'AdminController');
+        Route::resource('theme', 'ThemeController');
+        Route::resource('page', 'PageController');
+        Route::resource('blog', 'BlogController');
+        Route::resource('job', 'JobController');
+    });
 });
 // Route::group(['prefix' => 'admin'], function () {
 //     Auth::routes();
 // });
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-Route::resource('admin/relationship', 'App\Http\Controllers\Admin\PersonController');
+Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
 
-Route::resource('admin/user', 'App\Http\Controllers\Admin\AdminController');
-Route::resource('admin/theme', 'App\Http\Controllers\Admin\ThemeController');
-Route::resource('admin/page', 'App\Http\Controllers\Admin\PageController');
-Route::resource('admin/blog', 'App\Http\Controllers\Admin\BlogController');
-Route::resource('admin/job', 'App\Http\Controllers\Admin\JobController');
+
+
 
 // Route::get('/chart', [App\Http\Controllers\HomeController::class, 'index'])->name('chart');
