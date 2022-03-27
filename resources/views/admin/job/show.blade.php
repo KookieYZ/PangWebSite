@@ -217,7 +217,7 @@
         var SummernoteDemo = {
             init: function() {
                 $(".summernote").summernote({
-                    placeholder: '内容在此输入......',
+                    // placeholder: '内容在此输入......',
                     height: 200,
                     spellCheck: true,
                     codeviewFilter: false,
