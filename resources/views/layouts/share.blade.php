@@ -170,11 +170,17 @@
                                 href="{{ route('job.index') }}" aria-expanded="false"><i
                                     class="me-2 mdi mdi-tie"></i><span class="hide-menu">工作管理</span></a>
                         </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('people_history.index') }}" aria-expanded="false"><i
+                                    class="mdi mdi-history"></i><span class="hide-menu">人物历史管理</span></a>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('blog.index') }}" aria-expanded="false"><i
                                     class="mdi mdi-receipt"></i><span class="hide-menu">彭氏来源管理</span></a>
                         </li>
+                        
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('theme.index') }}" aria-expanded="false"><i

@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VariableSeeder::class);
         $this->call(PageSeeder::class);
         $this->call(JobSeeder::class);
+        $this->call(PeopleHistory::class);
     }
 }

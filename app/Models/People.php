@@ -35,6 +35,11 @@ class People extends Model
         return $this->where('id', $parentID)->value('name');
     }
 
+    public function people_history(){
+        return $this->hasMany('App\Models\people_history');
+    }
+
+
       // function to convert arrays to string
     public function convertArraysToString($array, $separator) {
         $array = array_column($array, 'spouse_name');// Covert to Normal Array

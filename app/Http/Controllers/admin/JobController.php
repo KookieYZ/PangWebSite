@@ -103,14 +103,13 @@ class JobController extends Controller
         $job->name = $request['name'];
         $job->description = $request['description'];
         $job->note = $request['note'];
-        $job->image_path = $this->ImgMng->updateImage($request,$id,'job');
+        $job->image_path = $this->ImgMng->updateImage($request,$id,'job','jobs');
         $job->category = $request['category'];
         $job->salary = $request['salary'];
         $job->background = $request['background'];
         $job->address = $request['address'];
         $job->posted_on = $request['posted_on'];
         $job->status = $request['status'] == null ? 1 : $request['status'];       
-        $job->created_at = now();
         $job->updated_at = now();
         $isUpdated = $job->save();
         if($isUpdated){

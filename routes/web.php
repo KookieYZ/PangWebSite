@@ -59,7 +59,7 @@ Route::group(['namespace' => 'user'], function () {
     
     Route::get('fetch-family-list', 'ChartController@fetchfamilylist');
     Route::POST('downloadPDF', 'ChartController@downloadPDF');
-    Route::get('history/{id}', 'PeopleController@getPeople')->name('user.history');
+    Route::get('history/{id}', 'PeopleHistoryController@getPeople')->name('user.history');
 });
 
 // Auth::routes();
@@ -81,6 +81,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('page', 'PageController');
         Route::resource('blog', 'BlogController');
         Route::resource('job', 'JobController');
+        Route::resource('people_history', 'PeopleHistoryController');
     });
 });
 // Route::group(['prefix' => 'admin'], function () {

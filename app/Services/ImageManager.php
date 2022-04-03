@@ -2,6 +2,7 @@
 
 namespace App\Services;
 use App\Models\Job;
+use Illuminate\Support\Facades\DB;
 
 class ImageManager
 {
@@ -16,14 +17,14 @@ class ImageManager
     }
 
 
-    public function updateImage($request,$id,$folder){
+    public function updateImage($request,$id,$folder,$table_name){
         if($id && $request->hasFile('image_path')){        
          $filename = $this->saveToFolder($request,$folder);
         return $filename;
         }
         else{
-        $currentJob = Job::find($id);
-        return $currentJob->image_path;                     
+        $currentRecord = DB::table($table_name)->where('id', $id)->first();
+        return $currentRecord->image_path;                         
         }
     }
 
