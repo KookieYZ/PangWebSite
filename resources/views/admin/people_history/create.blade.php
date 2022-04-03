@@ -30,7 +30,7 @@
                                 <div class="col-sm-2">
                                     <input type="text"
                                         class="form-control{{ $errors->has('history_name') ? ' is-invalid' : '' }}" id="history_name"
-                                        name="history_name" value="{{ old('history_name') }}" placeholder="在此输出工作名称" required />
+                                        name="history_name" value="{{ old('history_name') }}" placeholder="在此输出事件名称" required />
                                     @if ($errors->has('history_name'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('history_name') }}</strong>
