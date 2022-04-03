@@ -33,7 +33,7 @@ class People_History extends Model
           $people_history->updated_at = now();
           $people_history->image_path = $imgService->updateImage($request,$id,'people_history','people_history');
           $people_history->media_path = $mediaService->updateVideo($request,$id,'people_history','people_history');
-          return $this->toDTO($people_history,$request,$imgService)->save();
+          return $this->toDTO($people_history,$request)->save();
          }
         //Create
         $people_history = new People_History;
@@ -41,7 +41,7 @@ class People_History extends Model
         $people_history->updated_at = now();
         $people_history->image_path = $imgService->insertImage($request,'people_history');
         $people_history->media_path = $mediaService->insertVideo($request,'people_history');
-        return $this->toDTO($people_history,$request,$imgService)->save();
+        return $this->toDTO($people_history,$request)->save();
     }
 
     public function toDTO($currentRecord, $usrInput){
