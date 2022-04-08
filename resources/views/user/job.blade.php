@@ -2,6 +2,10 @@
 
 <style>
     @media (min-width: 991px) {
+        li {
+            cursor: pointer;
+        }
+
         #wrapper {
             width: 100%;
             height: 100%;
@@ -23,7 +27,6 @@
 
 </style>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="{{ URL::asset('js/orgChart.js') }}"></script>
 @section('content')
     <section class="title">
         <section class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -37,24 +40,22 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 @foreach ($jobList as $job)
-                                    <li class="nav-item" style="padding: 40px">
-                                        <a href="#" class="">
-                                            <div class="row d-flex align-items-center"
-                                                style="width: 350px; height: 350px; border-width: 2px; border-style: solid; padding: 20px">
-                                                <p class="w-75">
-                                                    {{ $job->name }}
-                                                </p>
-                                                <p class="w-75">
-                                                    {{ $job->address }}
-                                                </p>
-                                                <p class="w-75">
-                                                    {{ $job->salary }}
-                                                </p>
-                                                <p class="w-75">
-                                                    {{ $job->posted_on }}
-                                                </p>
-                                            </div>
-                                        </a>
+                                    <li class="nav-item" style="padding: 40px" id="{{ $job->id }}">
+                                        <div class="row d-flex align-items-center"
+                                            style="width: 350px; height: 350px; border-width: 2px; border-style: solid; padding: 20px">
+                                            <p class="w-75">
+                                                {{ $job->name }}
+                                            </p>
+                                            <p class="w-75">
+                                                {{ $job->address }}
+                                            </p>
+                                            <p class="w-75">
+                                                {{ $job->salary }}
+                                            </p>
+                                            <p class="w-75">
+                                                {{ $job->posted_on }}
+                                            </p>
+                                        </div>
                                     </li>
                                 @endforeach
                             </ul>
@@ -67,33 +68,36 @@
                     <div id="wrapper">
                         <br />
                         <div class="h1 mt-5" style="margin-left: 30%;"><b><ins>就业机会</ins></b></div>
-
-                        <div class=""
-                            style="width: 1000px; height: 400px; padding: 20px">
-                            <image class="image-blog" src="{{ asset('assets/images/profile.jpg') }}" height="200"
-                                width="200" />
-                            <p class="w-75">
-                                Job Name
-                            </p>
-                            <p class="w-75">
-                                Job Company
-                            </p>
-                            <p class="w-75">
-                                Job Address
-                            </p>
-                            <p class="w-75">
-                                Job Salary
-                            </p>
-                            <p class="w-75">
-                               Job Posted_on
-                            </p>
-                        </div>
-                        <div class=""
-                            style="width: 1000px; height: 800px; padding: 20px">
-                            <p class="w-75">
-                                Job Description
-                            </p>
-                        </div>
+                        @foreach ($jobList as $job)
+                            <div class="jobRefer" style="display:none" id="jobDetails{{ $job->id }}">
+                                <div class=""
+                                    style="width: 1000px; height: 400px; padding: 20px;">
+                                    <image class="image-blog" src="{{ asset('assets/images/profile.jpg') }}"
+                                        height="200" width="200" />
+                                    <p class="w-75">
+                                        {{ $job->name }}
+                                    </p>
+                                    <p class="w-75">
+                                        {{ $job->status }}
+                                    </p>
+                                    <p class="w-75">
+                                        {{ $job->address }}
+                                    </p>
+                                    <p class="w-75">
+                                        {{ $job->salary }}
+                                    </p>
+                                    <p class="w-75">
+                                        {{ $job->posted_on }}
+                                    </p>
+                                </div>
+                                <div class=""
+                                    style="width: 1000px; height: 800px; padding: 20px;">
+                                    <p class="w-75">
+                                        {{ $job->description }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -337,5 +341,6 @@
 
             });
         </script>
-
+        <script type="text/javascript" src="{{ URL::asset('js/job.js') }}"></script>
     </section>
+@endsection
