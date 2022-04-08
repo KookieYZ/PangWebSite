@@ -40,9 +40,9 @@ Route::group(['namespace' => 'user'], function () {
     Route::get('rules', function () {
         return view('user.rules');
     })->name('user.rules');
-    Route::get('job', function () {
-        return view('user.job');
-    })->name('user.job');
+    // Route::get('job', function () {
+    //     return view('user.job');
+    // })->name('user.job');
     Route::get('notice', function () {
         return view('user.notice');
     })->name('user.notice');
@@ -93,5 +93,7 @@ Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'ind
 
 
 
+Route::resource('search', 'App\Http\Controllers\User\SearchController');
+Route::resource('jobList', 'App\Http\Controllers\User\JobListController');
 
 // Route::get('/chart', [App\Http\Controllers\HomeController::class, 'index'])->name('chart');

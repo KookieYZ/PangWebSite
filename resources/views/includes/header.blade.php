@@ -90,7 +90,7 @@
         <a class="nav-link dropdown-toggle text-white" href="{{ route('user.business') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
         <div class="dropdown-menu border-0 w-100" aria-labelledby="navbarDropdown" style="background-color:{{ $theme->primaryColor()->value }}; border-radius: 0px;">
           <a class="dropdown-item text-white w-100" href="{{ route('user.business') }}">商业</a>
-          <a class="dropdown-item text-white w-100" href="{{ route('user.job') }}">就业机会</a>
+          <a class="dropdown-item text-white w-100" href="{{ route('jobList.index') }}">就业机会</a>
         </div>
       </li>
       <!-- <li class="nav-item">
