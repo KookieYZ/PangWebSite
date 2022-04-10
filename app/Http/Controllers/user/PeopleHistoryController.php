@@ -14,15 +14,10 @@ class PeopleHistoryController extends Controller
     {
         $currentPerson = People::find($id);
         $currentPersonHistory = $currentPerson->people_history;
-        foreach($currentPersonHistory as $cph){
-            $cph->onlyIncidentYear = $this->getYearOnly($cph->incident_date);
+        foreach ($currentPersonHistory as $cph) {
+            $cph->onlyIncidentYear = DateCovertor::parse($cph->incident_date)->year;
         }
         $numOfHistory  = count($currentPersonHistory);
-        return view('user.history', compact('currentPerson','currentPersonHistory','numOfHistory'));
+        return view('user.history', compact('currentPerson', 'currentPersonHistory', 'numOfHistory'));
     }
-
-    public function getYearOnly($date){
-        return DateCovertor::parse($date)->year;
-    }
-
 }
