@@ -96,6 +96,6 @@ Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'ind
 
 Route::resource('search', 'User\SearchController');
 Route::resource('jobList', 'User\JobListController');
-Route::resource('business', 'User\JobListController');
+Route::resource('business', 'User\BusinessListController');
 
 // Route::get('/chart', [App\Http\Controllers\HomeController::class, 'index'])->name('chart');

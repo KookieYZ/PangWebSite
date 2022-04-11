@@ -70,30 +70,39 @@
                         <div class="h1 mt-5" style="margin-left: 30%;"><b><ins>就业机会</ins></b></div>
                         @foreach ($jobList as $job)
                             <div class="jobRefer" style="display:none" id="jobDetails{{ $job->id }}">
-                                <div class=""
-                                    style="width: 1000px; height: 400px; padding: 20px;">
-                                    <image class="image-blog" src="{{ asset('assets/images/profile.jpg') }}"
+                                <div class="" style="width: 1000px; height: 400px; padding: 20px;">
+                                    <image class="image-blog" src="{{$job->image_path}}"
                                         height="200" width="200" />
-                                    <p class="w-75">
+
+                                    <h1 class="w-75">
+                                        <h3><u>工作名称:</u></h3>
                                         {{ $job->name }}
+                                    </h1>
+                                    <p class="w-75">
+                                        <h3><u>工作种类:</u></h3>
+                                        {{ $job->category }}
                                     </p>
                                     <p class="w-75">
-                                        {{ $job->status }}
-                                    </p>
-                                    <p class="w-75">
+                                        <h3><u>公司地址:</u></h3>
                                         {{ $job->address }}
                                     </p>
                                     <p class="w-75">
+                                        <h3><u>薪水:</u></h3>
                                         {{ $job->salary }}
                                     </p>
                                     <p class="w-75">
+                                        <h3><u>发布于:</u></h3>
                                         {{ $job->posted_on }}
                                     </p>
                                 </div>
-                                <div class=""
-                                    style="width: 1000px; height: 800px; padding: 20px;">
+                                <div class="" style="width: 1000px; height: 1000px; padding: 20px; margin-top:300px">
                                     <p class="w-75">
+                                        <h3><u>工作内容:</u></h3>
                                         {{ $job->description }}
+                                    </p>
+                                    <p class="w-75">
+                                        <h3><u>注意事项:</u></h3>
+                                        {{ $job->note }}
                                     </p>
                                 </div>
                             </div>
