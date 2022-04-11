@@ -16,6 +16,7 @@ class PeopleHistoryController extends Controller
         $currentPersonHistory = $currentPerson->people_history;
         foreach ($currentPersonHistory as $cph) {
             $cph->onlyIncidentYear = DateCovertor::parse($cph->incident_date)->year;
+            $cph->people_id = $currentPerson->name;
         }
         $numOfHistory  = count($currentPersonHistory);
         return view('user.history', compact('currentPerson', 'currentPersonHistory', 'numOfHistory'));
