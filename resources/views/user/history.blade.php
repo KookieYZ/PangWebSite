@@ -41,8 +41,12 @@
                     <div class="h1 mt-5" id="history_name"><b><ins>事迹</ins></b></div>
                     <div class="w-auto d-flex justify-content-start m-2">
                         <p id="numOfHistory">
+                            @if ($numOfHistory === 0)
+                            此人没有任何事迹
+                            @else
                             此人拥有{{$numOfHistory}}个事迹
                             选择一个事迹以查看详情
+                            @endif
                         </p>
                     </div>
                 </div>
