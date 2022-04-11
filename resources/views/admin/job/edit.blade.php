@@ -1,26 +1,26 @@
 @extends('layouts.share')
 @section('content')
 <div class="page-breadcrumb">
-        <div class="row">
-            <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">更改工作资料</h4>
-            </div>
+    <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">更改工作资料</h4>
         </div>
     </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid">
     <!-- ============================================================== -->
-    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- Start Page Content -->
     <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Container fluid  -->
-    <!-- ============================================================== -->
-    <div class="container-fluid">
-        <!-- ============================================================== -->
-        <!-- Start Page Content -->
-        <!-- ============================================================== -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    {{-- <form class="form-horizontal"> --}}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                {{-- <form class="form-horizontal"> --}}
                     <form class="form-horizontal" method="POST" enctype="multipart/form-data"
                         action="{{ route('job.update', $job->id) }}">
                         @csrf
@@ -31,105 +31,110 @@
                                 <div class="col-sm-2">
                                     <input type="text"
                                         class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name"
-                                        name="name" value="{{ old('name') ? old('name') : $job->name }}" placeholder="在此输出工作名称" required />
+                                        name="name" value="{{ old('name') ? old('name') : $job->name }}"
+                                        placeholder="在此输出工作名称" required />
                                     @if ($errors->has('name'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="category" class="col-sm-3 text-end control-label col-form-label">工作种类</label>
+                                <label for="category"
+                                    class="col-sm-3 text-end control-label col-form-label">工作种类</label>
                                 <div class="col-sm-2">
-                                <select class="form-select" aria-label="" id="category"
-                                                name="category">     
-                                                @foreach ($jobCatList as $key => $value)                                                                                       
-                                                <option value="{{$key}}" {{$job->category == $key  ? 'selected' : ''}}>{{$value}}</option>
-                                                @endforeach      
+                                    <select class="form-select" aria-label="" id="category" name="category">
+                                        @foreach ($jobCatList as $key => $value)
+                                        <option value="{{$key}}" {{$job->category == $key ? 'selected' : ''}}>{{$value}}
+                                        </option>
+                                        @endforeach
 
-                                </select>
+                                    </select>
                                     @if ($errors->has('category'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('category') }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('category') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="salary" class="col-sm-3 text-end control-label col-form-label">薪水</label>
+                                <label for="salary"
+                                    class="col-sm-3 text-end control-label col-form-label">薪水(RM)</label>
                                 <div class="col-sm-2">
                                     <input type="text"
                                         class="form-control{{ $errors->has('salary') ? ' is-invalid' : '' }}"
-                                        id="salary" name="salary" value="{{ old('salary') ? old('salary') : $job->salary }}" placeholder="薪水"
-                                         />
+                                        id="salary" name="salary"
+                                        value="{{ old('salary') ? old('salary') : $job->salary }}" placeholder="薪水" />
                                     @if ($errors->has('salary'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('salary') }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('salary') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group row">
-                                        <label class="col-sm-3 text-end control-label col-form-label">公司照片</label>
-                                        <div class="col-md-9">
-                                            <div class="custom-file">
-                                                <input type="file"
-                                                    class="custom-file-input{{ $errors->has('image_path') ? ' is-invalid' : '' }}"
-                                                    id="image_path" name="image_path" accept="image/*" />
-                                                <br />
-                                                <br />
-                                                <!-- <img src="{{ asset('image/avatar/noimage.jpg') }}" id="display"
+                                <label class="col-sm-3 text-end control-label col-form-label">公司照片</label>
+                                <div class="col-md-9">
+                                    <div class="custom-file">
+                                        <input type="file"
+                                            class="custom-file-input{{ $errors->has('image_path') ? ' is-invalid' : '' }}"
+                                            id="image_path" name="image_path" accept="image/*" />
+                                        <br />
+                                        <br />
+                                        <!-- <img src="{{ asset('image/avatar/noimage.jpg') }}" id="display"
                                                     height="130" width="130" style="border:solid"> -->
-                                                    <img src=" {{ asset('image/job/' . $job->image_path) }}" height="130"
-                                                    width="130" style="border:solid" id="display">
-                                            </div>
-                                            @if ($errors->has('image_path'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('image_path') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
+                                        <img src=" {{ asset('image/job/' . $job->image_path) }}" height="130"
+                                            width="130" style="border:solid" id="display">
+                                    </div>
+                                    @if ($errors->has('image_path'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('image_path') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
                             </div>
                             <div class="form-group row">
-                                <label for="posted_on" class="col-sm-3 text-end control-label col-form-label">发布于</label>
+                                <label for="posted_on"
+                                    class="col-sm-3 text-end control-label col-form-label">发布于</label>
                                 <div class="col-sm-2">
                                     <input type="date"
                                         class="form-control{{ $errors->has('posted_on') ? ' is-invalid' : '' }}"
-                                        id="posted_on" name="posted_on" value="{{ old('posted_on') ? old('posted_on') : $job->posted_on }}" placeholder="发布于"
-                                         max="9999-12-31"/>
+                                        id="posted_on" name="posted_on"
+                                        value="{{ old('posted_on') ? old('posted_on') : $job->posted_on }}"
+                                        placeholder="发布于" max="9999-12-31" />
                                     @if ($errors->has('posted_on'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('posted_on') }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('posted_on') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group row">
-                                        <label for="status"
-                                            class="col-sm-3 text-end control-label col-form-label">状态</label>
-                                        <div class="col-sm-2">
-                                            <select class="form-select" aria-label="" id="status" name="status">
-                                                <option @if (old('status', $job->status) == 1) selected @endif value=1>
-                                                     已发布
-                                                </option>
-                                                <option @if (old('status', $job->status) == 2) selected @endif value=2>
-                                                   未发布
-                                                </option>
-                                            </select>
-                                        </div>
+                                <label for="status" class="col-sm-3 text-end control-label col-form-label">状态</label>
+                                <div class="col-sm-2">
+                                    <select class="form-select" aria-label="" id="status" name="status">
+                                        <option @if (old('status', $job->status) == 1) selected @endif value=1>
+                                            已发布
+                                        </option>
+                                        <option @if (old('status', $job->status) == 2) selected @endif value=2>
+                                            未发布
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <label for="url" class="col-sm-3 text-end control-label col-form-label">工作内容</label>
                                 <div class="col-sm-9">
-                                        <textarea type="text"
-                                        class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="description"
-                                        name="description" placeholder="工作内容" 
-                                        style="max-height:300px" rows="4" cols="50" >{{ old('description') ? old('description') : $job->description }}</textarea>
+                                    <textarea type="text"
+                                        class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}"
+                                        id="description" name="description" placeholder="工作内容" style="max-height:300px"
+                                        rows="4"
+                                        cols="50">{{ old('description') ? old('description') : $job->description }}</textarea>
                                     @if ($errors->has('description'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('description') }}</strong>
-                                        </span>                                                                                                                                                                       
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
@@ -137,74 +142,76 @@
                             <div class="form-group row">
                                 <label for="note" class="col-sm-3 text-end control-label col-form-label">注意事项</label>
                                 <div class="col-sm-9">
-                                        <textarea id="summernote" class="summernote" name="note"></textarea>
-                                        <input type="hidden" id="hiddenFieldForDesc" value="{{ $job->note }}">
+                                    <textarea id="summernote" class="summernote" name="note"></textarea>
+                                    <input type="hidden" id="hiddenFieldForDesc" value="{{ $job->note }}">
                                     @if ($errors->has('note'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('note') }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('note') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="background" class="col-sm-3 text-end control-label col-form-label">公司背景</label>
+                                <label for="background"
+                                    class="col-sm-3 text-end control-label col-form-label">公司背景</label>
                                 <div class="col-sm-9">
-                                        <textarea type="text"
-                                        class="form-control{{ $errors->has('background') ? ' is-invalid' : '' }}" id="background"
-                                        name="background" placeholder="公司背景" 
-                                        style="max-height:300px" rows="4" cols="50" >{{ old('background') ? old('background') : $job->background }}</textarea>
+                                    <textarea type="text"
+                                        class="form-control{{ $errors->has('background') ? ' is-invalid' : '' }}"
+                                        id="background" name="background" placeholder="公司背景" style="max-height:300px"
+                                        rows="4"
+                                        cols="50">{{ old('background') ? old('background') : $job->background }}</textarea>
                                     @if ($errors->has('background'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('background') }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('background') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="address" class="col-sm-3 text-end control-label col-form-label">公司地址</label>
                                 <div class="col-sm-9">
-                                        <textarea type="text"
-                                        class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" id="address"
-                                        name="address" placeholder="公司地址" 
-                                        style="max-height:300px" rows="4" cols="50" >{{ old('address') ? old('address') : $job->address }}</textarea>
-                                        
+                                    <textarea type="text"
+                                        class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"
+                                        id="address" name="address" placeholder="公司地址" style="max-height:300px" rows="4"
+                                        cols="50">{{ old('address') ? old('address') : $job->address }}</textarea>
+
                                     @if ($errors->has('address'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('address') }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
-                            
-                            
-                           
-                </div>
-                <div class="border-top">
-                    <div class="card-body">
-                        <button type="submit" class="btn btn-primary">
-                            提交
-                        </button>
-                        <a href="{{ route('job.index') }}" class="btn btn-primary"
-                                    id="back">{{ __('返回') }}</a>
-                    </div>
-                </div>
-                </form>
+
+
+
+                        </div>
+                        <div class="border-top">
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-primary">
+                                    提交
+                                </button>
+                                <a href="{{ route('job.index') }}" class="btn btn-primary" id="back">{{ __('返回') }}</a>
+                            </div>
+                        </div>
+                    </form>
             </div>
         </div>
     </div>
-@endsection
+    @endsection
 
-@section('scriptfile')
+    @section('scriptfile')
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/lang/summernote-zh-CN.min.js"></script> //Translate summernote toolbar to chinise
-@endsection
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/lang/summernote-zh-CN.min.js"></script>
+    //Translate summernote toolbar to chinise
+    @endsection
 
-@section('js')
-<script>
-// Image Preview Usage
+    @section('js')
+    <script>
+        // Image Preview Usage
 image_path.onchange = evt => {
     var ext = $('#image_path').val().split('.').pop().toLowerCase();
      if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
@@ -249,7 +256,8 @@ posted_on.onclick = evt => {
             SummernoteDemo.init();
             var markupStr = $("#hiddenFieldForDesc").val();
             $('#summernote').summernote('code', markupStr);
+            $("#salary").inputmask('Regex', {regex: "^[0-9]{1,6}(\\.\\d{1,2})?$"}); // Salary Field only allow enter numeric
 
         });
-</script>
-@endsection
+    </script>
+    @endsection
