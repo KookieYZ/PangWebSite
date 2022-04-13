@@ -68,7 +68,7 @@
                         <div>
                             此事件发生于：{{$history->incident_date}} <br>
                             人物：{{$history->people_id}}<br>
-                            {{$history->description}}
+                            事件内容: {{$history->description}}
                         </div>
                     </div>
                 </div>
