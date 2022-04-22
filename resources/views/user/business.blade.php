@@ -72,7 +72,7 @@
                         @foreach ($businessList as $business)
                             <div class="jobRefer" style="display:none" id="jobDetails{{ $business->id }}">
                                 <div class="" style="width: 1000px; height: 400px; padding: 20px;">
-                                    <image class="image-blog" src="{{$business->image_path}}"
+                                    <image class="image-blog" src="{{ asset('image/job/' . $business->image_path) }}"
                                         height="200" width="200" />
 
                                     <h1 class="w-75">

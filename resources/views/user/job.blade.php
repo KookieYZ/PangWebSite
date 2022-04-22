@@ -71,7 +71,7 @@
                         @foreach ($jobList as $job)
                             <div class="jobRefer" style="display:none" id="jobDetails{{ $job->id }}">
                                 <div class="" style="width: 1000px; height: 400px; padding: 20px;">
-                                    <image class="image-blog" src="{{$job->image_path}}"
+                                    <image class="image-blog" src="{{ asset('image/job/' . $job->image_path) }}"
                                         height="200" width="200" />
 
                                     <h1 class="w-75">
