@@ -95,10 +95,10 @@
                                             <source
                                                 src="{{ asset('assets/videos/people_history/' . $people_history->media_path)}}"
                                                 type="video/mp4"> --}}
-                                            <iframe class="embed-responsive-item  video-blog" width="400" height="300"
+                                            <video class="embed-responsive-item  video-blog" width="400" height="300"
                                                 src="{{ asset('assets/videos/people_history/' . $people_history->media_path)}}"
                                                 title="URL video player" allowfullscreen="" controls="0" autoplay="0"
-                                                sandbox="" frameborder="0" scrolling="no"></iframe>
+                                                sandbox="" frameborder="0" scrolling="no"></video>
                                             {{--
                                         </video> --}}
                                     </div>

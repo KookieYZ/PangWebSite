@@ -59,10 +59,10 @@
                     </div>
                     <input type="hidden" id="hiddenHistoryName" value="{{$history->history_name}}">
                     <div class="w-auto d-flex justify-content-center m-2">
-                        <iframe class="embed-responsive-item  video-blog" width="800" height="300"
+                        <video class="embed-responsive-item  video-blog" width="800" height="300"
                             src="{{ asset('assets/videos/people_history/' . $history->media_path)}}"
                             title="URL video player" allowfullscreen="" controls="0" autoplay="0" sandbox=""
-                            frameborder="0" scrolling="no"></iframe>
+                            frameborder="0" scrolling="no"></video>
                     </div>
                     <div class="d-flex col-xl-8 col-md-8 col-12 p-1 mt-1 ">
                         <div>
