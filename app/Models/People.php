@@ -36,7 +36,7 @@ class People extends Model
     }
 
     public function people_history(){
-        return $this->hasMany('App\Models\people_history');
+        return $this->hasMany('App\Models\People_History');
     }
 
 
