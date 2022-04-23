@@ -15,7 +15,7 @@
         </div>        
         @else
         <div class="w-auto d-flex justify-content-start m-2">                             
-            <iframe class="embed-responsive-item  video-blog" width="400" height="300" src="{{asset('assets/videos/video.mp4')}}" title="URL video player" allowfullscreen="" controls="0" autoplay="0" sandbox="" frameborder="0" scrolling="no"></iframe>                                                    
+            <video class="embed-responsive-item  video-blog" width="400" height="300" src="{{asset('assets/videos/video.mp4')}}" title="URL video player" allowfullscreen="" controls="0" autoplay="0" sandbox="" frameborder="0" scrolling="no"></video>                                                    
         </div>
         @endif 
         <div class="d-flex col-xl-8 col-md-8 col-12 p-1 mt-1 ">
