@@ -1,16 +1,19 @@
 
-$( document ).ready(function() {
-    fetchFamiliyList();
-    downLoadPDF();
+$(document).ready(function () {
+    const seperateURL = location.href.split('/');
+    const id = seperateURL[4];
+    fetchFamiliyList(id);
+    downLoadPDF(id);      
 });
 
-function fetchFamiliyList(){
+function fetchFamiliyList(id) {
+    const url = "/fetch-family-list/"+ id 
     $.ajax({
         type:'GET',
-        url:"/fetch-family-list",         
+        url:url,         
         datatype: "json",
-        success:function(response){
-            googleOrgChartInitialization(response.familiylist);
+        success: function (response) {
+            googleOrgChartInitialization(response.familiylist);          
         } 
     });    
 }
@@ -36,7 +39,7 @@ function mappingValue(data, arr){
                 [{
                      v:value.name, 
                     'f':'<a href="/history/'+value.id+'">'+
-                        '<div id = "referUsage">'+
+                        '<div id = "referUsage" class="scrollTo'+value.id+'">'+
                         '<div class="image d-flex flex-row justify-content-center align-items-center" id="firstRow">' +
                         '<img class="mr-3" id="parent_avatar"src="image/avatar/'+value.avatar+ '" height="100" width="100" />' +  
                         '<img class="mr-3" id="spouse_avatar" src="image/avatar/'+value.spouse_avatar+ '" height="100" width="100" style="'+spouse_avatar+'">' +
@@ -147,10 +150,11 @@ function appendSpouseName(spouseNameArr){
 }
 }
 
-function downLoadPDF(){
+function downLoadPDF(id) {
+    const url = "/fetch-family-list/"+ id 
     $.ajax({
         type:'GET',
-        url:"/fetch-family-list",         
+        url:url,         
         datatype: "json",
         success:function(response){
             google.charts.load('current', {packages:["orgchart"]});
@@ -185,7 +189,8 @@ function downLoadPDF(){
                 });
                     loopSpouseName(response.familiylist,true);
                       
-                  $("#chartInputData").val($("#hiddenDiv").html());
+                $("#chartInputData").val($("#hiddenDiv").html());
+                $('div.scrollto' + id)[0].scrollIntoView();// scroll to the current user                         
             }                 
     }
 });

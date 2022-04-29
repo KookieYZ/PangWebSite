@@ -56,10 +56,13 @@ Route::group(['namespace' => 'user'], function () {
     //     return view('user.business');
     // })->name('user.business');
     Route::resource('search', 'SearchController');
-    
-    Route::get('fetch-family-list', 'ChartController@fetchfamilylist');
+
+    Route::get('fetch-family-list/{id}', 'ChartController@fetchfamilylist');
     Route::POST('downloadPDF', 'ChartController@downloadPDF');
     Route::get('history/{id}', 'PeopleHistoryController@getPeople')->name('user.history');
+    Route::get('chart/{id}', function () {
+        return view('user.chart');
+    });
 });
 
 // Auth::routes();
@@ -83,7 +86,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('job', 'JobController');
         Route::resource('people_history', 'PeopleHistoryController');
     });
-    
 });
 // Route::group(['prefix' => 'admin'], function () {
 //     Auth::routes();
