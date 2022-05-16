@@ -11,239 +11,176 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use App\Services\ImageManager;
 
 class PersonController extends Controller
 {
-    public function __construct() {
+    private $ImgMng;
+    public function __construct(ImageManager $imgObj)
+    {
         $this->middleware('auth');
+        $this->ImgMng = $imgObj;
     }
 
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name'              => 'required|string|max:50',
-            // 'avatar'            => 'image|mimes:jpeg,png,jpg|max:6000',
+            'avatar'            => 'image|mimes:jpeg,png,jpg|max:6000',
             'spouse_name'       => 'max:50|nullable',
-            // 'spouse_avatar'     => 'image|mimes:jpeg,png,jpg|max:6000',
+            'spouse_avatar.*'     => 'image|mimes:jpeg,png,jpg|max:6000',
             'gender'            => 'required|string',
             'state'             => 'string|required',
             'nationality'       => 'string|required',
             'dob_date'          => 'required',
             'parent_id'         => 'integer|nullable',
-            'era'               => 'string|required'
+            'era'               => 'string|required',
+            'family'            => 'string|nullable'
         ]);
     }
 
-    public function index() {
+    public function index()
+    {
         $persons = People::orderBy('created_at', 'DESC')->simplePaginate(10);
-        return view('admin.person.index', compact('persons'))->with('persons',$persons);
+        return view('admin.person.index', compact('persons'))->with('persons', $persons);
     }
 
-    public function create() {
+    public function create()
+    {
         $persons = People::orderBy('created_at', 'DESC')->get();
+
         return view('admin.person.create', compact('persons'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $this->validator($request->all())->validate();
-        $request->validate([
-            'spouse_name.*.spouse_name' => 'required'
-        ]);
-
         date_default_timezone_set("Asia/Kuala_Lumpur");
-
-        if($request->hasFile('avatar')) {
-            $fileNameUploaded = $request->file('avatar')->getClientOriginalName();
-            $fileName = pathinfo($fileNameUploaded, PATHINFO_FILENAME);
-            $extension = $request->file('avatar')->getClientOriginalExtension();
-            $avatar = $fileName.'_'.time().'.'.$extension;
-            $path = $request->file('avatar')->move('image/avatar', $avatar);
-        }
-        else {
-            $avatar = 'noimage.jpg';
-        }
-
-        // $test1 = [];
-        // $test2 = [];
-        // $test3 = [];
-        // $test4 = [];
-        // $test = $request->file('spouse_avatar');
-        // foreach ($test as $key => $value) {
-        //     $test1[] = $test[$key]->getClientOriginalName();
-        //     $test2[] = pathinfo($test1[$key], PATHINFO_FILENAME);
-        //     $test3[] = $test[$key]->getClientOriginalExtension();
-        //     $test4[] = $test2[$key].'_'.time().'.'.$test3[$key];
-        //     $test5 = $test[$key]->move('image/avatar', $test4[$key]);
-        // }
-        // dd($test1, $test2, $test3, $test4);
-        if($request->hasFile('spouse_avatar')) {
-            $spouseavatar1 = [];
-            $spouseavatar2 = [];
-            $spouseavatar3 = [];
-            $spouseavatar4 = [];
-            $filerequest = $request->file('spouse_avatar');
-            foreach ($filerequest as $key => $value) {
-                $spouseavatar1[] = $filerequest[$key]->getClientOriginalName();
-                $spouseavatar2[] = pathinfo($spouseavatar1[$key], PATHINFO_FILENAME);
-                $spouseavatar3[] = $filerequest[$key]->getClientOriginalExtension();
-                $spouseavatar4[] = $spouseavatar2[$key].'_'.time().'.'.$spouseavatar3[$key];
-                $spouseavatar5 = $filerequest[$key]->move('image/avatar', $spouseavatar4[$key]);
-            }
-            $spouse_avatar = implode('|', $spouseavatar4);
-            // $fileNameUploaded2 = $request->file('spouse_avatar')->getClientOriginalName();
-            // $fileName2 = pathinfo($fileNameUploaded2, PATHINFO_FILENAME);
-            // $extension2 = $request->file('spouse_avatar')->getClientOriginalExtension();
-            // $spouse_avatar = $fileName2.'_'.time().'.'.$extension2;
-            // $path2 = $request->file('spouse_avatar')->move('image/avatar', $spouse_avatar);
-        }
-        else {
-            $spouse_avatar = 'noimage.jpg';
-        }
-
-        // $dob_date = $request->get('dob_date');
-        // $dob_date =  Carbon::parse($dob_date);
-        // $dob_date = $dob_date->format('Y-m-d');
-
-        // DB::table('persons')->insert([
-        //     'name' => $request->get('name'),
-        //     'avatar' => $avatar,
-        //     'spouse_name' => $request->get('spouse_name'),
-        //     'spouse_avatar' => $spouse_avatar,
-        //     'gender' => $request->get('gender'),
-        //     'state' => $request->get('state'),
-        //     'nationality' => $request->get('nationality'),
-        //     'dob_date' => $dob_date,
-        //     'parent_id' => Auth::id(),
-        //     'created_at' => now(),
-        //     'updated_at' => now()
-        // ]);
-
-        // $dateTime = strtotime($request['dob_date']);
-        // $convertedDate = date('Y-m-d',$dateTime);
-        $date = $request->get('dob_date');
-        $convertedDate = DateTime::createFromFormat('d/m/Y', $date)->format('Y-m-d');
-
-        $spousename = $request->get('spouse_name');
-        $spousename = implode('|', $spousename);
-
-        // for($i=0;$i<count($spousename);$i++){
-        //     $person = new People([
-        //         'name' => $request['name'],
-        //         'avatar' => $avatar,
-        //         'spouse_name' => $spousename[$i],
-        //         'spouse_avatar' => $spouse_avatar,
-        //         'gender' => $request['gender'],
-        //         'state' => $request['state'],
-        //         'nationality' => $request['nationality'],
-        //         'dob_date' => $convertedDate,
-        //         'parent_id' => $request->parent_id,
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ]);
-        //     $person->save();
-        // }
         $person = new People;
+        // $request->request->add(['image_path' => $request->file('avatar')]);
+        $person->avatar = $this->ImgMng->insertImage($request, 'avatar', 'avatar');
         $person->name = $request['name'];
-        $person->avatar = $avatar;
-        // $person->spouse_name = $request['spouse_name'];
-        $person->spouse_name = $spousename;
-        $person->spouse_avatar = $spouse_avatar;
         $person->gender = $request['gender'];
         $person->state = $request['state'];
         $person->nationality = $request['nationality'];
-        $person->dob_date = $convertedDate;
+        $person->dob_date = DateTime::createFromFormat('d/m/Y', $request->get('dob_date'))->format('Y-m-d');
         $person->parent_id = $request->parent_id;
         $person->created_at = now();
         $person->updated_at = now();
-        $person->save();
+        $person->era = $request['era'];
+        $person->family = !is_null($request->parent_id) ? $person->getFamily($request->parent_id) : "F" . $request['name'];
+        $currentTime = time(); // ensure  time wont affect by code performance.
 
-        return redirect()->route('relationship.index')->with('success', '人际关系创建成功!');
+        //Spouse
+        $person->spouse_name = implode('|', $request->get('spouse_name'));
+        $spouseImgArr = explode(',', $request->storeSpouseImgSrc);
+        foreach ($spouseImgArr as $value) {
+            if ($value == 'noimage.jpg') {
+                $imageNameArray[] = 'noimage.jpg';
+            } else {
+                $file = explode('.', $value);
+                $fileName = $file[0];
+                $extension = $file[1];
+                $filenameSaved = $fileName . '_' . $currentTime . '.' . $extension;
+                $imageNameArray[] = $filenameSaved;
+            }
+        }
+        $person->spouse_avatar = implode('|', $imageNameArray);
+
+        if ($request->hasFile('spouse_avatar')) {
+            foreach ($request->file('spouse_avatar') as $image) {
+                $destinationPath = 'image/avatar';
+                $fileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $extension = $image->getClientOriginalExtension();
+                $filenameSaved = $fileName . '_' . $currentTime . '.' . $extension;
+                $image->move($destinationPath, $filenameSaved);
+            }
+        }
+
+        if ($person->save()) {
+            return redirect()->route('relationship.index')->with('success', '人际关系创建成功!');
+        }
+        return redirect()->route('job.index')->with('error', "Somethings went wrong");
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $person = People::find($id);
         return view('admin.person.show', compact('person'));
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $person = People::find($id);
         $persons = People::orderBy('id', 'ASC')->get()->except($person->parent_id);
-        return view('admin.person.edit', compact('person', 'persons'));
+        $family = People::get()->pluck('family')->unique();
+
+        return view('admin.person.edit', compact('person', 'persons', 'family'));
     }
 
-    public function update(Request $request, $id) {
-        $this->validate($request, [
-            'name'              => 'string|max:50',
-            // 'avatar'            => 'image|mimes:jpeg,png,jpg|max:6000',
-            'spouse_name'       => 'string|max:50|nullable',
-            // 'spouse_avatar'     => 'image|mimes:jpeg,png,jpg|max:6000',
-            'gender'            => 'string',
-            'state'             => 'string',
-            'nationality'       => 'string',
-            'parent_id'         => 'integer|nullable',
-            'era'               => 'string'
-        ]);
-
+    public function update(Request $request, $id)
+    {
+        $this->validator($request->all())->validate();
         date_default_timezone_set("Asia/Kuala_Lumpur");
-
-        if($request->hasFile('avatar')) {
-            $fileNameUploaded = $request->file('avatar')->getClientOriginalName();
-            $fileName = pathinfo($fileNameUploaded, PATHINFO_FILENAME);
-            $extension = $request->file('avatar')->getClientOriginalExtension();
-            $avatar = $fileName.'_'.time().'.'.$extension;
-            $path = $request->file('avatar')->move('image/avatar', $avatar);
-        }
-        else {
-            $avatar = DB::table('people')
-                ->where('id', $id)
-                ->pluck('avatar')
-                ->toArray();
-
-            $avatar = implode("",$avatar);
-        }
-
-        if($request->hasFile('spouse_avatar')) {
-            $fileNameUploaded2 = $request->file('spouse_avatar')->getClientOriginalName();
-            $fileName2 = pathinfo($fileNameUploaded2, PATHINFO_FILENAME);
-            $extension2 = $request->file('spouse_avatar')->getClientOriginalExtension();
-            $spouse_avatar = $fileName2.'_'.time().'.'.$extension2;
-            $path2 = $request->file('spouse_avatar')->move('image/avatar', $spouse_avatar);
-        }
-        else {
-            $spouse_avatar = DB::table('people')
-                ->where('id', $id)
-                ->pluck('spouse_avatar')
-                ->toArray();
-
-            $spouse_avatar = implode("",$spouse_avatar);
-        }
-
-        $date = $request->get('dob_date');
-        $convertedDate = DateTime::createFromFormat('d/m/Y', $date)->format('Y-m-d');
-
         $person = People::find($id);
         $person->name = $request['name'];
-        $person->avatar = $avatar;
-        $person->spouse_name = $request['spouse_name'];
-        $person->spouse_avatar = $spouse_avatar;
+        $person->avatar = $this->ImgMng->updateImage($request, $id, 'avatar', 'avatar', 'People');
         $person->gender = $request['gender'];
         $person->state = $request['state'];
         $person->nationality = $request['nationality'];
-        $person->dob_date = $convertedDate;
+        $person->dob_date = DateTime::createFromFormat('d/m/Y', $request->get('dob_date'))->format('Y-m-d');;
         $person->parent_id = $request->parent_id;
-        $person->created_at = now();
         $person->updated_at = now();
-        $person->save();
+        $person->family = !is_null($request->parent_id) ? $person->getFamily($request->parent_id) : "F" . $request['name'];
+        $currentTime = time(); // ensure  time wont affect by code performance.
 
-        return redirect()->route('relationship.index')->with('success', "$person->name 资料更改成功!");
+        //Spouse
+        $person->spouse_name = implode('|', $request->get('spouse_name'));
+        //current record image
+        $currentRecordImg = explode("|", $person->spouse_avatar);
+        $spouseImgArr = explode(',', $request->storeSpouseImgSrc);
+        $i = 0;
+        foreach ($spouseImgArr as $value) {
+            if ($value == '' && $i < $request->numofSpouse) {
+                $imageNameArray[] = $currentRecordImg[$i];
+                $i++;
+            } else {
+                if ($value != '') {
+                    $file = explode('.', $value);
+                    $fileName = $file[0];
+                    $extension = $file[1];
+                    $filenameSaved = $fileName . '_' . $currentTime . '.' . $extension;
+                    $imageNameArray[] = $filenameSaved;
+                } else {
+                    $imageNameArray[] = 'noimage.jpg';
+                }
+            }
+        }
+        $person->spouse_avatar = implode('|', $imageNameArray);
+
+        if ($request->hasFile('spouse_avatar')) {
+            foreach ($request->file('spouse_avatar') as $image) {
+                $destinationPath = 'image/avatar';
+                $fileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $extension = $image->getClientOriginalExtension();
+                $filenameSaved = $fileName . '_' . $currentTime . '.' . $extension;
+                $image->move($destinationPath, $filenameSaved);
+            }
+        }
+
+        if ($person->save()) {
+            return redirect()->route('relationship.index')->with('success', '人际关系创建成功!');
+        }
+        return redirect()->route('job.index')->with('error', "Somethings went wrong");
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $person = People::find($id);
-        $person->delete();
-
-        return redirect()->route('relationship.index')->with('success', "$person->name 资料删除成功");
+        if ($person->delete()) {
+            return redirect()->route('relationship.index')->with('success', "$person->name 资料删除成功");
+        }
+        return redirect()->route('job.index')->with('error', "Somethings went wrong");
     }
-
 }

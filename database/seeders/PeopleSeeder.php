@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\Type\NullType;
 
 class PeopleSeeder extends Seeder
 {
@@ -16,8 +17,8 @@ class PeopleSeeder extends Seeder
      */
     public function run()
     {
-        for ($parent_id=0; $parent_id<3; $parent_id++) {
-            for ($i=0; $i <= $parent_id * 2 ; $i++) {
+        for ($parent_id = 0; $parent_id < 3; $parent_id++) {
+            for ($i = 0; $i <= $parent_id * 2; $i++) {
                 DB::table('people')->insert([
                     'name' => Str::random(10),
                     'avatar' => 'noimage.jpg',
@@ -31,6 +32,7 @@ class PeopleSeeder extends Seeder
                     'era' => '第一代',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
+                    'family' => null
                 ]);
             }
         }

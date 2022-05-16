@@ -13,7 +13,7 @@ function fetchFamiliyList(id) {
         url:url,         
         datatype: "json",
         success: function (response) {
-            googleOrgChartInitialization(response.familiylist);          
+            googleOrgChartInitialization(response.familiylist);
         } 
     });    
 }
@@ -33,21 +33,26 @@ function googleOrgChartInitialization(familiylist){
 }
 
 function mappingValue(data, arr){
-    $.each(arr, function( key, value ) {
-        var spouse_avatar = value.spouse_avatar =='noimage.jpg' && value.spouse_name == null ? "display:none" :value.spouse_avatar;
+    $.each(arr, function (key, value) {
+        var spouse_avatar = value.spouse_avatar == 'noimage.jpg' && value.spouse_name == null ? "display:none" : value.spouse_avatar;
+        var seperateURL = location.href.split('/');
+        var correctUrl = seperateURL[0] + '//' + seperateURL[1] + seperateURL[2] + '/' + 'image/avatar/';
+        var avatar = correctUrl + value.avatar;
+        var spouseImg = correctUrl + value.spouse_avatar;
+
             data.addRows([
                 [{
                      v:value.name, 
                     'f':'<a href="/history/'+value.id+'">'+
                         '<div id = "referUsage" class="scrollTo'+value.id+'">'+
                         '<div class="image d-flex flex-row justify-content-center align-items-center" id="firstRow">' +
-                        '<img class="mr-3" id="parent_avatar"src="image/avatar/'+value.avatar+ '" height="100" width="100" />' +  
-                        '<img class="mr-3" id="spouse_avatar" src="image/avatar/'+value.spouse_avatar+ '" height="100" width="100" style="'+spouse_avatar+'">' +
+                        '<img class="mr-3" id="parent_avatar"src="'+avatar+'" height="100" width="100" />' +  
+                        '<img class="mr-3" id="spouse_avatar" src="'+spouseImg+'" height="100" width="100" style="'+spouse_avatar+'">' +
                         '</div>' +
                         '<div class="image d-flex flex-column justify-content-center align-items-center" id="'+value.name.replace(/\s/g, '')+'">' +
                         '<div class="container bg-white text-dark mt-2" style="border-radius: 20px">' +
                         '<div class="row d-flex justify-content-center p-2">' +
-                        '<div style="width: 100px;" class="mr-1" id="name">'+value.name+'<br/> '+value.era+' </div>' +
+                        '<div style="width: 100px;" class="mr-1" id="name">'+value.name+'<br/> ('+value.era+') </div>' +
                         '<div style="width: 100px;" class="mr-1" id="spouse_name'+0+'"><p></p></div>' +
                         '</div>' +            
                         '</div>' +
@@ -72,7 +77,7 @@ function mappingValue(data, arr){
             ]);
     })
     createChart(data);
-    loopSpouseName(arr,false);  
+    loopSpouseName(arr, false);
     // fixedFirstRowCss();
     // fixedImgCss();
       
@@ -116,7 +121,8 @@ function fixedFirstRowCss(){ // No use Anymore, So i did not call this function
 // function getData(){
 //     let chartsData = $("#chart_div").html();
 //     $("#chartInputData").val(chartsData);
-// }  
+// }
+
 
 
 function loopSpouseName(arr,isDownloadPDF){ // Passing in as Object

@@ -4,14 +4,20 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use PDO;
 use App\Models\People;
+use App\Models\Job;
 use PDF;
-use Dompdf\Dompdf;
-use Dompdf\Options;
 
 class ChartController extends Controller
 {
+
+    private $model;
+
+
+    public function __construct(People $pplObj)
+    {
+        $this->model = $pplObj;
+    }
 
     public function fetchfamilylist($id)
     {
@@ -32,12 +38,13 @@ class ChartController extends Controller
 
     public function getList($id)
     {
-        //create instance of object to call the function
-        $model =  new People();
-        $familylist = $model->where('parent_id', $id)->get();
+        $currentUserRecord = $this->model->where('id', $id)->first();
+        $familylist = $this->model->where('family', $currentUserRecord->family)->get();
         foreach ($familylist as $family) {
-            $family->parent_id = $model->returnParentName($family->parent_id); // store all parent Name to parent ID filed
+            $family->parent_id = !is_null($family->parent_id) ? $this->model->returnParentName($family->parent_id) : null; // store all parent Name to parent ID filed
             $family->gender = "1" ? "男" : "女";
+            $spouse_avatar = explode('|', $family->spouse_avatar);
+            $family->spouse_avatar = $spouse_avatar[0]; // only get <f></f>irst wife avatar
         }
         return $familylist;
     }
