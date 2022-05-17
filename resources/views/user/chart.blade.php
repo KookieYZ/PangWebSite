@@ -1,79 +1,78 @@
 @extends('includes.app')
 
 @section('content')
-    <style>
-        @media (min-width: 991px) {
-            .google-visualization-orgchart-node {
-                border: 2px solid #FF0000 !important;
-            }
-
-            .wrapper {
-                width: 100%;
-                height: 100%;
-                margin: 50px auto 0 auto;
-                position: relative;
-                overflow: auto;
-            }
-
-            .google-visualization-orgchart-linebottom {
-                border-bottom: 5px solid #3388dd !important;
-            }
-
-            .google-visualization-orgchart-lineleft {
-                border-left: 5px solid #3388dd;
-                height: 50px;
-            }
-
-            .google-visualization-orgchart-lineright {
-                border-right: 5px solid #3388dd;
-                height: 50px;
-            }
+<style>
+    @media (min-width: 991px) {
+        .google-visualization-orgchart-node {
+            border: 2px solid #FF0000 !important;
         }
 
-        @media (max-width: 991px) {
-            .google-visualization-orgchart-node {
-                border: 2px solid #FF0000 !important;
-            }
-
-            .wrapper {
-                width: 100%;
-                height: 100%;
-                margin: 50px auto 0 auto;
-                position: relative;
-                overflow: auto;
-            }
-
-            .google-visualization-orgchart-linebottom {
-                border-bottom: 5px solid #3388dd !important;
-            }
-
-            .google-visualization-orgchart-lineleft {
-                border-left: 5px solid #3388dd;
-            }
-
-            .google-visualization-orgchart-lineright {
-                border-right: 5px solid #3388dd;
-            }
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            margin: 50px auto 0 auto;
+            position: relative;
+            overflow: auto;
         }
 
-    </style>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/orgChart.js') }}"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <div id="scroll_container">
-        <div id="wrapper" class="wrapper">
-            <div id="chart_div" class="mt-5 mb-5" style="margin-bottom: 100px !important;"></div>
-        </div>
+        .google-visualization-orgchart-linebottom {
+            border-bottom: 5px solid #3388dd !important;
+        }
+
+        .google-visualization-orgchart-lineleft {
+            border-left: 5px solid #3388dd;
+            height: 50px;
+        }
+
+        .google-visualization-orgchart-lineright {
+            border-right: 5px solid #3388dd;
+            height: 50px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .google-visualization-orgchart-node {
+            border: 2px solid #FF0000 !important;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            margin: 50px auto 0 auto;
+            position: relative;
+            overflow: auto;
+        }
+
+        .google-visualization-orgchart-linebottom {
+            border-bottom: 5px solid #3388dd !important;
+        }
+
+        .google-visualization-orgchart-lineleft {
+            border-left: 5px solid #3388dd;
+        }
+
+        .google-visualization-orgchart-lineright {
+            border-right: 5px solid #3388dd;
+        }
+    }
+</style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="{{ URL::asset('js/orgChart.js') }}"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<div id="scroll_container">
+    <div id="wrapper" class="wrapper">
+        <div id="chart_div" class="mt-5 mb-5" style="margin-bottom: 100px !important;"></div>
     </div>
-    <div id="hiddenDiv"  class="mt-5 mb-5" style="display: none;"></div>
-    <form action="downloadPDF" method="post" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="chartData" id="chartInputData">
-        <input type="submit" value="下载PDF">
-    </form>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        (function(factory) {
+</div>
+<div id="hiddenDiv" class="mt-5 mb-5" style="display: none;"></div>
+<form action="/downloadPDF" method="POST" enctype="multipart/form-data">
+    @csrf
+    <input type="hidden" name="chartData" id="chartInputData">
+    <input type="submit" value="下载PDF">
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    (function(factory) {
             if (typeof define === "function" && define.amd) {
 
                 // AMD. Register as an anonymous module.
@@ -307,10 +306,10 @@
             }
 
         });
-    </script>
+</script>
 
-    {{-- <script>
-        google.charts.load('current', {
+{{-- <script>
+    google.charts.load('current', {
             packages: ["orgchart"]
         });
         google.charts.setOnLoadCallback(drawChart);
@@ -679,9 +678,9 @@
             });
 
         }
-    </script> --}}
-    <script>
-        function resize() {
+</script> --}}
+<script>
+    function resize() {
             if ($(window).width() <= 991) {
                 $('.google-visualization-orgchart-node').addClass('google-visualization-orgchart-nodesel');
             } else {
@@ -692,5 +691,5 @@
         $(window).on('resize', function() {
             resize()
         });
-    </script>
+</script>
 @endsection
