@@ -107,7 +107,13 @@ class PersonController extends Controller
     public function show($id)
     {
         $person = People::find($id);
-        return view('admin.person.show', compact('person'));
+        $spouseNameArr = explode('|', $person->spouse_name);
+        $spouseImgArr = explode('|', $person->spouse_avatar);
+        $spouseAttrList = collect();
+        for ($i = 0; $i < count($spouseNameArr); $i++) {
+            $spouseAttrList->push(['index' => $i, 'spouse_name' => $spouseNameArr[$i], 'spouse_avatar' => $spouseImgArr[$i]]);
+        }
+        return view('admin.person.show', compact('person', 'spouseAttrList'));
     }
 
     public function edit($id)
@@ -115,8 +121,14 @@ class PersonController extends Controller
         $person = People::find($id);
         $persons = People::orderBy('id', 'ASC')->get()->except($person->parent_id);
         $family = People::get()->pluck('family')->unique();
+        $spouseNameArr = explode('|', $person->spouse_name);
+        $spouseImgArr = explode('|', $person->spouse_avatar);
+        $spouseAttrList = collect();
+        for ($i = 0; $i < count($spouseNameArr); $i++) {
+            $spouseAttrList->push(['index' => $i, 'spouse_name' => $spouseNameArr[$i], 'spouse_avatar' => $spouseImgArr[$i]]);
+        }
 
-        return view('admin.person.edit', compact('person', 'persons', 'family'));
+        return view('admin.person.edit', compact('person', 'persons', 'family', 'spouseAttrList'));
     }
 
     public function update(Request $request, $id)

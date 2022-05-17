@@ -63,7 +63,7 @@
                             </div>
 
 
-                            <x-spouse-update :person="$person" />
+                            <x-spouse-update :person="$spouseAttrList" />
                             <x-add-more-spouse-button />
 
 
