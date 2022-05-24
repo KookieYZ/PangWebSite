@@ -138,7 +138,7 @@ class PersonController extends Controller
         date_default_timezone_set("Asia/Kuala_Lumpur");
         $person = People::find($id);
         $person->name = $request['name'];
-        $person->avatar = $this->ImgMng->updateImage($request, $id, 'avatar', 'avatar', 'People');
+        $person->avatar = $this->ImgMng->updateImage($request, $id, 'avatar', 'avatar', 'people');
         $person->gender = $request['gender'];
         $person->state = $request['state'];
         $person->nationality = $request['nationality'];
