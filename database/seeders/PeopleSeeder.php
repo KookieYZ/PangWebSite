@@ -38,7 +38,7 @@ class PeopleSeeder extends Seeder
                     'era' => '第'.($parent_id+1).'代',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
-                    'family' => $familyID
+                    'family' => '彭某1的家族'
                 ]);
             }
         }
@@ -61,7 +61,7 @@ class PeopleSeeder extends Seeder
                     'era' => '第'.($parent_id+1).'代',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
-                    'family' => $familyID
+                    'family' => '彭某10的家族'
                 ]);
             }
         }
