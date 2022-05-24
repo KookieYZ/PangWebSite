@@ -15,7 +15,7 @@ class AddFamilyInPeopleTable extends Migration
     {
         Schema::table('people', function (Blueprint $table) {
             Schema::table('people', function (Blueprint $table) {
-                $table->string('family')->nullable();
+                $table->integer('family')->nullable();
             });
         });
     }

@@ -17,22 +17,51 @@ class PeopleSeeder extends Seeder
      */
     public function run()
     {
+        $state = ['柔佛', '马六甲', '吉隆坡'];
+        $era = '一';
+        $count = 0;
+        $familyID = 1;
+
         for ($parent_id = 0; $parent_id < 3; $parent_id++) {
             for ($i = 0; $i <= $parent_id * 2; $i++) {
+                $count++;
                 DB::table('people')->insert([
-                    'name' => Str::random(10),
+                    'name' => '彭某'.$count,
                     'avatar' => 'noimage.jpg',
-                    'spouse_name' => Str::random(10),
+                    'spouse_name' => '彭某'.$count.'妻子',
                     'spouse_avatar' => 'noimage.jpg',
-                    'gender' => 1,
-                    'state' => Str::random(10),
-                    'nationality' => Str::random(10),
+                    'gender' => $i % 2 == 0 ? '男' : '女',
+                    'state' => $state[$parent_id],
+                    'nationality' => '马来西亚',
                     'dob_date' => '2000-01-01',
                     'parent_id' => $parent_id == 0 ? null : $parent_id,
-                    'era' => '第一代',
+                    'era' => '第'.($parent_id+1).'代',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
-                    'family' => null
+                    'family' => $familyID
+                ]);
+            }
+        }
+
+        $familyID = $count + 1;
+
+        for ($parent_id = 0; $parent_id < 3; $parent_id++) {
+            for ($i = 0; $i <= $parent_id * 2; $i++) {
+                $count++;
+                DB::table('people')->insert([
+                    'name' => '彭某'.$count,
+                    'avatar' => 'noimage.jpg',
+                    'spouse_name' => '彭某'.$count.'妻子',
+                    'spouse_avatar' => 'noimage.jpg',
+                    'gender' => $i % 2 == 0 ? '男' : '女',
+                    'state' => $state[$parent_id],
+                    'nationality' => '马来西亚',
+                    'dob_date' => '2000-01-01',
+                    'parent_id' => $parent_id == 0 ? null : $parent_id,
+                    'era' => '第'.($parent_id+1).'代',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                    'family' => $familyID
                 ]);
             }
         }
