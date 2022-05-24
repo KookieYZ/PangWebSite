@@ -103,7 +103,7 @@ class JobController extends Controller
         $job->name = $request['name'];
         $job->description = $request['description'];
         $job->note = $request['note'];
-        $job->image_path = $this->ImgMng->updateImage($request, $id, 'image_path', 'job', 'Job');
+        $job->image_path = $this->ImgMng->updateImage($request, $id, 'image_path', 'job', 'jobs');
         $job->category = $request['category'];
         $job->salary = $request['salary'];
         $job->background = $request['background'];
