@@ -2,7 +2,7 @@
 @php
 $numofRecord = count($person);
 @endphp
-@for ($i = 0; $i < count($person); $i++) <div class="form-group row">
+@for ($i = 0; $i < count($person); $i++) <div class="form-group row" id="spouse{{$person[$i]['index']+1}}">
     <label for="spouse_name"
         class="col-sm-3 text-end control-label col-form-label">配偶名称{{$person[$i]['index']+1}}</label>
     <div class="col-sm-9">
@@ -15,32 +15,42 @@ $numofRecord = count($person);
         </span>
         @endif
     </div>
+
+
+
+    <label class="col-sm-3 text-end control-label col-form-label">配偶头像 {{$person[$i]['index']+1}}</label>
+    <div class="col-md-9">
+        <input type="hidden" id='numofRecord' value="{{$numofRecord}}" style="display:none">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input{{ $errors->has('spouse_avatar') ? ' is-invalid' : '' }}"
+                id="spouse_avatar{{$person[$i]['index']+1}}" name="spouse_avatar[]"
+                onchange="previewImage(event,{{$person[$i]['index']+1}});" accept="image/*" />
+            <br /><br />
+            <img src=" {{ asset('image/avatar/' . $person[$i]['spouse_avatar']) }}"
+                id="display{{$person[$i]['index']+1}}" height="130" width="130" style="border:solid;">
+        </div>
+        <br />
+        @if ($errors->has('spouse_avatar'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('spouse_avatar') }}</strong>
+        </span>
+        @endif
     </div>
 
+
+
     <div class="form-group row">
-        <label class="col-sm-3 text-end control-label col-form-label">配偶头像 {{$person[$i]['index']+1}}</label>
+        <label class="col-sm-3 text-end control-label col-form-label hidden"></label>
         <div class="col-md-9">
-            <input type="hidden" id='numofRecord' value="{{$numofRecord}}" style="display:none">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input{{ $errors->has('spouse_avatar') ? ' is-invalid' : '' }}"
-                    id="spouse_avatar{{$person[$i]['index']+1}}" name="spouse_avatar[]"
-                    onchange="previewImage(event,{{$person[$i]['index']+1}});" accept="image/*" />
-                <br /><br />
-                <img src=" {{ asset('image/avatar/' . $person[$i]['spouse_avatar']) }}"
-                    id="display{{$person[$i]['index']+1}}" height="130" width="130" style="border:solid;">
-            </div>
-            <br />
-            @if ($errors->has('spouse_avatar'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('spouse_avatar') }}</strong>
-            </span>
-            @endif
+            <button type="button" id="{{$person[$i]['index']+1}}" name="cancelCurrentSpouse" class="btn btn-primary"
+                onClick="deleteCurrentSpouse(this.id)" title="取消当前配偶">{{
+                __('取消当前配偶') }}</button>
         </div>
-        <input type='hidden' id="numofSpouse" name="numofSpouse" value={{$numofRecord}}>
+    </div>
     </div>
     @endfor
 
     <input type='hidden' id="storeSpouseImgSrc" name="storeSpouseImgSrc">
-    <div id="addMoreSpouseName" class="form-group row">
+    <div id="addMoreSpouseName">
     </div>
-    <div id="addMoreSpouseAvatar" class="form-group row">
+    <div id="addMoreSpouseAvatar">

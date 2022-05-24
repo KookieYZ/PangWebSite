@@ -121,6 +121,7 @@ class PersonController extends Controller
         $person = People::find($id);
         $persons = People::orderBy('id', 'ASC')->get()->except($person->parent_id);
         $family = People::get()->pluck('family')->unique();
+
         $spouseNameArr = explode('|', $person->spouse_name);
         $spouseImgArr = explode('|', $person->spouse_avatar);
         $spouseAttrList = collect();
@@ -147,29 +148,35 @@ class PersonController extends Controller
         $person->family = !is_null($request->parent_id) ? $person->getFamily($request->parent_id) : "F" . $request['name'];
         $currentTime = time(); // ensure  time wont affect by code performance.
 
-        //Spouse
-        $person->spouse_name = implode('|', $request->get('spouse_name'));
-        //current record image
-        $currentRecordImg = explode("|", $person->spouse_avatar);
-        $spouseImgArr = explode(',', $request->storeSpouseImgSrc);
-        $i = 0;
-        foreach ($spouseImgArr as $value) {
-            if ($value == '' && $i < $request->numofSpouse) {
-                $imageNameArray[] = $currentRecordImg[$i];
-                $i++;
-            } else {
-                if ($value != '') {
-                    $file = explode('.', $value);
-                    $fileName = $file[0];
-                    $extension = $file[1];
-                    $filenameSaved = $fileName . '_' . $currentTime . '.' . $extension;
-                    $imageNameArray[] = $filenameSaved;
+        // Check Spouse Array Empty or not
+        if ($request->has('spouse_name') && $request->has('storeSpouseImgSrc')) {
+            $person->spouse_name = implode('|', $request->get('spouse_name'));
+            $spouseImgArr = explode(',', $request->storeSpouseImgSrc);
+            //current record image
+            $currentRecordImg = explode("|", $person->spouse_avatar);
+            $i = 0;
+            foreach ($spouseImgArr as $value) {
+                if ($value == '' && $i < $request->numofSpouse) {
+                    $imageNameArray[] = $currentRecordImg[$i];
+                    $i++;
                 } else {
-                    $imageNameArray[] = 'noimage.jpg';
+                    if ($value != '') {
+                        $file = explode('.', $value);
+                        $fileName = $file[0];
+                        $extension = $file[1];
+                        $filenameSaved = $fileName . '_' . $currentTime . '.' . $extension;
+                        $imageNameArray[] = $filenameSaved;
+                    } else {
+                        $imageNameArray[] = 'noimage.jpg';
+                    }
                 }
             }
+            $person->spouse_avatar = implode('|', $imageNameArray);
+        } else {
+            $person->spouse_name = null;
+            $person->spouse_avatar = null;
+            $spouseImgArr = '';
         }
-        $person->spouse_avatar = implode('|', $imageNameArray);
 
         if ($request->hasFile('spouse_avatar')) {
             foreach ($request->file('spouse_avatar') as $image) {

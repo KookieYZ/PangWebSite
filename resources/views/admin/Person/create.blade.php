@@ -97,9 +97,9 @@
                         {{-- for extra spouse usage --}}
                         <input type='hidden' id="numofSpouse" name="numofSpouse" value='2'>
                         <input type='hidden' id="storeSpouseImgSrc" name="storeSpouseImgSrc">
-                        <div id="addMoreSpouseName" class="form-group row">
+                        <div id="addMoreSpouseName">
                         </div>
-                        <div id="addMoreSpouseAvatar" class="form-group row">
+                        <div id="addMoreSpouseAvatar">
 
                             <div class="form-group row">
                                 <label class="col-sm-3 text-end control-label col-form-label hidden"></label>
@@ -108,6 +108,18 @@
                                         title="添加更多配偶">{{ __('添加更多配偶') }}</a>
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-end control-label col-form-label hidden"></label>
+                                <div class="col-md-9">
+                                    <a href="" id="cancelCurrentSpouse" name="cancelCurrentSpouse"
+                                        class="link-primary disabled" style="pointer-events: none; color:grey;"
+                                        title="取消当前配偶">{{
+                                        __('取消当前配偶') }}</a>
+                                </div>
+                            </div>
+
+
                             <div class="form-group row">
                                 <label for="gender" class="col-sm-3 text-end control-label col-form-label">性别</label>
                                 <div class="col-sm-9">
@@ -207,7 +219,8 @@
     <script>
         var spouseImgArr = [];
         $(document).ready(function() {
-var counter = 2;
+        var counter = 1;     
+
 $("#btnSubmit").on("click", function() {
     //Pass back to controller
         var imgSrcArr = $('input[id*="spouse_avatar"]');
@@ -222,13 +235,28 @@ $("#btnSubmit").on("click", function() {
 
 });
 
+//Add more spouse
 $("#addmorespouse").on("click", function(e) {
 e.preventDefault();
-$('#addMoreSpouseName').append("<label for='spouse_name'class='col-sm-3 text-end control-label col-form-label'>配偶名称"+counter+"</label><div class='col-sm-9'> <input name='spouse_name[]' type='text' class='form-control' id='spouse_name' placeholder='配偶名称'></div><br /><br /><label class='col-sm-3 text-end control-label col-form-label'>配偶头像"+counter+"</label><div class='col-md-9'><div class='custom-file'> <input type='file' class='custom-file-input' id='spouse_avatar"+counter+"' name='spouse_avatar[]' onchange='previewImage(event,"+counter+")' accept='image/*''/><br /><br /><img id='display"+counter+"' height='130'width='130' style='border:solid;' src='{{URL::asset('image/avatar/noimage.jpg') }}' />");
 counter = counter +1;
-$('#numofSpouse').val(counter);   
-});  
+$('#numofSpouse').val(counter);
+$('#addMoreSpouseName').append("<div id='spouse"+counter+"' class='form-group row'><label for='spouse_name'class='col-sm-3 text-end control-label col-form-label'>配偶名称"+counter+"</label><div class='col-sm-9'> <input name='spouse_name[]' type='text' class='form-control' id='spouse_name' placeholder='配偶名称'></div><br /><br /><label class='col-sm-3 text-end control-label col-form-label'>配偶头像"+counter+"</label><div class='col-md-9'><div class='custom-file'> <input type='file' class='custom-file-input' id='spouse_avatar"+counter+"' name='spouse_avatar[]' onchange='previewImage(event,"+counter+")' accept='image/*''/><br /><br /><img id='display"+counter+"' height='130'width='130' style='border:solid;' src='{{URL::asset('image/avatar/noimage.jpg') }}' /></div>");
+document.getElementById("cancelCurrentSpouse").style.pointerEvents = "auto";
+$('#cancelCurrentSpouse').css('color','#7460ee');
+}); 
+
+
+// Cancel Spouse
+$("#cancelCurrentSpouse").on("click", function(e) {
+e.preventDefault();
+var containner = 'spouse' + counter;
+$('#'+containner).remove();
+counter = counter - 1 ;
+disabledChecking(counter);
+});
 });   
+
+
         // Image Preview Usage
         function previewImage(event,key) {
         var control = 'display'+ key;
@@ -243,10 +271,16 @@ $('#numofSpouse').val(counter);
         var src = URL.createObjectURL(event.target.files[0]);
         var preview = document.getElementById(control);
         preview.src = src;
-        preview.style.display = "block";
-
-    
+        preview.style.display = "block";    
     }
+
+        //disbale link when only 1 spouse left
+        function disabledChecking(counter){
+           if(counter == 1){
+               document.getElementById("cancelCurrentSpouse").style.pointerEvents = "none";
+               $('#cancelCurrentSpouse').css('color','grey');
+           }
+        }
     </script>
 
     @endsection

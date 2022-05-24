@@ -65,6 +65,10 @@
 
                             <x-spouse-update :person="$spouseAttrList" />
                             <x-add-more-spouse-button />
+                            @php
+                            $numofRecord = count($spouseAttrList);
+                            @endphp
+                            <input type='hidden' id="numofSpouse" name="numofSpouse" value={{$numofRecord}}>
 
 
 
@@ -231,12 +235,16 @@
     $('#storeSpouseImgSrc').val(spouseImgArr); 
 });
 
+
+//Add spouse
     $("#addmorespouse").on("click", function(e) {
     e.preventDefault();   
-    $('#addMoreSpouseName').append("<label for='spouse_name'class='col-sm-3 text-end control-label col-form-label'>配偶名称"+counter+"</label><div class='col-sm-9'> <input name='spouse_name[]' type='text' class='form-control' id='spouse_name' placeholder='配偶名称'></div><br /><br /><label class='col-sm-3 text-end control-label col-form-label'>配偶头像"+counter+"</label><div class='col-md-9'><div class='custom-file'> <input type='file' class='custom-file-input' id='spouse_avatar' name='spouse_avatar[]' onchange='previewImage(event,"+counter+")' accept='image/''/><br /><br /><img id='display"+counter+"' height='130' width='130' style='border:solid;' src='{{URL::asset('/image/avatar/noimage.jpg') }}'/>");
+    $('#addMoreSpouseName').append("<div id='spouse"+counter+"' class='form-group row'><label for='spouse_name'class='col-sm-3 text-end control-label col-form-label'>配偶名称"+counter+"</label><div class='col-sm-9'> <input name='spouse_name[]' type='text' class='form-control' id='spouse_name' placeholder='配偶名称'></div><br /><br /><label class='col-sm-3 text-end control-label col-form-label'>配偶头像"+counter+"</label><div class='col-md-9'><div class='custom-file'> <input type='file' class='custom-file-input' id='spouse_avatar' name='spouse_avatar[]' onchange='previewImage(event,"+counter+")' accept='image/''/><br /><br /><img id='display"+counter+"' height='130' width='130' style='border:solid;' src='{{URL::asset('/image/avatar/noimage.jpg') }}'/></div>");
            counter = counter +1;
-     });      
+     });    
  });    
+
+
 
             // Image Preview Usage
             function previewImage(event,key) {
@@ -254,6 +262,16 @@
             preview.src = src;
             preview.style.display = "block";
             }
+
+            //disbale link when only 1 spouse left
+                //delete current Spouse
+                function deleteCurrentSpouse(clicked_id)
+                {
+                    var containner = 'spouse' + clicked_id;
+                    $('div#'+containner).remove();
+                    counter = counter - 1 ;
+                   
+                }
           
 </script>
 @endsection
