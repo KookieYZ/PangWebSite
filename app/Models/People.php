@@ -65,6 +65,6 @@ class People extends Model
 
     public function getFamily($parentId)
     {
-        return $this->where('id', $parentId)->value('family');
+        return $this->where('id', $parentId)->value('Family');
     }
 }
