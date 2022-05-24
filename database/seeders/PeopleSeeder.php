@@ -57,7 +57,7 @@ class PeopleSeeder extends Seeder
                     'state' => $state[$parent_id],
                     'nationality' => '马来西亚',
                     'dob_date' => '2000-01-01',
-                    'parent_id' => $parent_id == 0 ? null : $parent_id,
+                    'parent_id' => $parent_id == 0 ? null : $parent_id + $familyID - 1,
                     'era' => '第'.($parent_id+1).'代',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
