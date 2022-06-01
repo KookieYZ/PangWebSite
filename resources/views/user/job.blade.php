@@ -13,6 +13,10 @@
             position: relative;
             overflow: auto;
         }
+
+        .mobile-view{
+            display: none
+        }
     }
 
     @media (max-width: 991px) {
@@ -22,6 +26,23 @@
             margin: 50px auto 0 auto;
             position: relative;
             overflow: auto;
+        }
+
+        #scroll_container,
+        .desktop-view {
+            display: none
+        }
+
+        .main-sidebar {
+            margin-top: 50px;
+            width: 600px !important;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            margin-left: 210px;
+            width: 500px !important;
+            overflow: hidden;
         }
     }
 
@@ -40,7 +61,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 @foreach ($jobList as $job)
-                                    <li class="nav-item" style="padding: 40px" id="{{ $job->id }}">
+                                    <li class="nav-item desktop-view" style="padding: 40px" id="{{ $job->id }}">
                                         <div class="row d-flex align-items-center"
                                             style="width: 350px; height: 350px; border-width: 2px; border-style: solid; padding: 20px">
                                             <p class="w-75">
@@ -57,6 +78,28 @@
                                             </p>
                                         </div>
                                     </li>
+                                @endforeach
+
+                                @foreach ($jobList as $jobDetail)
+                                    <a href="{{ route('user.jobDetail' , $jobDetail) }}" style="color: black">
+                                        <li class="nav-item mobile-view" style="padding: 40px" id="{{ $jobDetail->id }}">
+                                            <div class="row d-flex align-items-center"
+                                                style="width: 350px; height: 350px; border-width: 2px; border-style: solid; padding: 20px">
+                                                <p class="w-75">
+                                                    {{ $jobDetail->name }}
+                                                </p>
+                                                <p class="w-75">
+                                                    {{ $jobDetail->address }}
+                                                </p>
+                                                <p class="w-75">
+                                                    {{ $jobDetail->salary }}
+                                                </p>
+                                                <p class="w-75">
+                                                    {{ $jobDetail->posted_on }}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </a>
                                 @endforeach
                             </ul>
                         </nav>

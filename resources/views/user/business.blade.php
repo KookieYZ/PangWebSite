@@ -13,6 +13,10 @@
             position: relative;
             overflow: auto;
         }
+
+        .mobile-view{
+            display: none
+        }
     }
 
     @media (max-width: 991px) {
@@ -23,6 +27,23 @@
             position: relative;
             overflow: auto;
         }
+
+        #scroll_container,
+        .desktop-view {
+            display: none
+        }
+
+        .main-sidebar {
+            margin-top: 50px;
+            width: 600px !important;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            margin-left: 210px;
+            width: 500px !important;
+            overflow: hidden;
+        }
     }
 
 </style>
@@ -31,7 +52,7 @@
     <section class="title">
         <section class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
             <div class="wrapper">
-                
+
                 <!-- Main Sidebar Container -->
                 <aside class="main-sidebar" style="width: 500px; z-index: 1">
                     <!-- Sidebar -->
@@ -41,7 +62,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                                 data-accordion="false">
                                 @foreach ($businessList as $business)
-                                    <li class="nav-item" style="padding: 40px" id="{{ $business->id }}">
+                                    <li class="nav-item desktop-view" style="padding: 40px" id="{{ $business->id }}">
                                         <div class="row d-flex align-items-center"
                                             style="width: 350px; height: 350px; border-width: 2px; border-style: solid; padding: 20px">
                                             <p class="w-75">
@@ -59,7 +80,31 @@
                                         </div>
                                     </li>
                                 @endforeach
+
+
+                                @foreach ($businessList as $businessDetail)
+                                    <a href="{{ route('user.businessDetail' , $businessDetail) }}" style="color: black">
+                                        <li class="nav-item mobile-view" style="padding: 40px" id="{{ $businessDetail->id }}">
+                                            <div class="row d-flex align-items-center"
+                                                style="width: 350px; height: 350px; border-width: 2px; border-style: solid; padding: 20px">
+                                                <p class="w-75">
+                                                    {{ $businessDetail->name }}
+                                                </p>
+                                                <p class="w-75">
+                                                    {{ $businessDetail->address }}
+                                                </p>
+                                                <p class="w-75">
+                                                    {{ $businessDetail->salary }}
+                                                </p>
+                                                <p class="w-75">
+                                                    {{ $businessDetail->posted_on }}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </a>
+                                @endforeach
                             </ul>
+
                         </nav>
                     </div>
                 </aside>
@@ -80,34 +125,36 @@
                                         {{ $business->name }}
                                     </h1>
                                     <p class="w-75">
-                                        <h3><u>工作种类:</u></h3>
-                                        {{ $business->category }}
+                                    <h3><u>工作种类:</u></h3>
+                                    {{ $business->category }}
                                     </p>
                                     <p class="w-75">
-                                        <h3><u>公司地址:</u></h3>
-                                        {{ $business->address }}
+                                    <h3><u>公司地址:</u></h3>
+                                    {{ $business->address }}
                                     </p>
                                     <p class="w-75">
-                                        <h3><u>薪水:</u></h3>
-                                        {{ $business->salary }}
+                                    <h3><u>薪水:</u></h3>
+                                    {{ $business->salary }}
                                     </p>
                                     <p class="w-75">
-                                        <h3><u>发布于:</u></h3>
-                                        {{ $business->posted_on }}
+                                    <h3><u>发布于:</u></h3>
+                                    {{ $business->posted_on }}
                                     </p>
                                 </div>
-                                <div class="" style="width: 1000px; height: 1000px; padding: 20px; margin-top:300px">
+                                <div class=""
+                                    style="width: 1000px; height: 1000px; padding: 20px; margin-top:300px">
                                     <p class="w-75">
-                                        <h3><u>工作内容:</u></h3>
-                                        {{ $business->description }}
+                                    <h3><u>工作内容:</u></h3>
+                                    {{ $business->description }}
                                     </p>
                                     <p class="w-75">
-                                        <h3><u>注意事项:</u></h3>
-                                        {{ $business->note }}
+                                    <h3><u>注意事项:</u></h3>
+                                    {{ $business->note }}
                                     </p>
                                 </div>
                             </div>
                         @endforeach
+
                     </div>
                 </div>
 

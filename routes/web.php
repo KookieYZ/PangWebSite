@@ -86,7 +86,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('job', 'JobController');
         Route::resource('people_history', 'PeopleHistoryController');
     });
-});
+}); 
 // Route::group(['prefix' => 'admin'], function () {
 //     Auth::routes();
 // });
@@ -99,5 +99,9 @@ Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'ind
 Route::resource('search', 'User\SearchController');
 Route::resource('jobList', 'User\JobListController');
 Route::resource('business', 'User\BusinessListController');
+
+Route::get('businessDetail/{id}', 'User\BusinessDetailController@getBusinessDetail')->name('user.businessDetail');
+Route::get('jobDetail/{id}', 'User\JobDetailController@getJobDetail')->name('user.jobDetail');
+
 
 // Route::get('/chart', [App\Http\Controllers\HomeController::class, 'index'])->name('chart');
