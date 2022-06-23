@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     const seperateURL = location.href.split('/');
     const id = seperateURL[4];
@@ -113,17 +112,6 @@ function fixedFirstRowCss(){ // No use Anymore, So i did not call this function
                 $(this).parent().find('img#parent_avatar').removeClass('mr-3');
             });    
 }
-
-// $( "#printPDFBtn" ).click(function() {
-//     getData();
-//   });
-
-// function getData(){
-//     let chartsData = $("#chart_div").html();
-//     $("#chartInputData").val(chartsData);
-// }
-
-
 
 function loopSpouseName(arr,isDownloadPDF){ // Passing in as Object
     var spouseNameArr = [];

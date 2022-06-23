@@ -47,6 +47,8 @@
     }
 
 </style>
+<!-- Theme style -->
+<link rel="stylesheet" href="assets/css/adminlte.min.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 @section('content')
     <section class="title">
