@@ -12,7 +12,7 @@
     rel="icon"
     type="image/png"
     sizes="16x16"
-    href="{{ asset("image/PANG_CLAN_LOGO.png") }}"/>
+    href="{{ asset('image/PANG_CLAN_LOGO.png') }}"/>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -29,7 +29,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img
-                src="{{ asset("image/PANG_CLAN_LOGO.png") }}"
+                src="{{ asset('image/PANG_CLAN_LOGO.png') }}"
                 alt="homepage"
                 class="light-logo"
                 width="30"
