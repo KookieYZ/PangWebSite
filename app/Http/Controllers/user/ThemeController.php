@@ -22,11 +22,17 @@ class ThemeController extends Controller
     }
     public function bannerImage() {
         $bannerImage = Variable::where('id','=', 4)->first();
-        return $bannerImage;
+        if (!file_exists($bannerImage->value)) {
+            return 'assets/images/MainPageBanner.png';
+        };
+        return $bannerImage->value;
     }
     public function bgImage() {
         $bgImage = Variable::where('id','=', 5)->first();
-        return $bgImage;
+        if (!file_exists($bgImage->value)) {
+            return 'assets/images/MainPageBackground.png';
+        };
+        return $bgImage->value;
     }
     public function facebook() {
         $facebook = Variable::where('id','=', 6)->first();
