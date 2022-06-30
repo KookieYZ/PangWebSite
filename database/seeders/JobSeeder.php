@@ -15,14 +15,22 @@ class JobSeeder extends Seeder
      */
     public function run()
     {
+        $jobCategory = [
+            'consumer', 'industrial', 'construction',
+            'finance', 'technology', 'properties',
+            'plantation', 'healthcare', 'transportation',
+            'reits', 'telecommunications', 'utilities',
+            'energy' 
+        ];
+
         for ($i=0; $i < 30; $i++) {
             DB::table('jobs')->insert([
-                'name' => Str::random(10),
+                'name' => '工作 '.$i,
                 'description' => 'This field is description',
                 'note' => 'This field is note',
                 'image_path' => 'noimage.jpg',
-                'category' => 'HR',
-                'salary' => 'RM3',
+                'category' => $jobCategory[random_int(0, 12)],
+                'salary' => 'RM 1500',
                 'background' => 'Sample background data',
                 'address' => 'No 1, Address 3. Taman bangsar',
                 'posted_on' => date('Y-m-d H:i:s'),
