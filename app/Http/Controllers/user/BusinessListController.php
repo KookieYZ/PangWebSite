@@ -8,11 +8,21 @@ use App\Models\Job;
 
 class BusinessListController extends Controller
 {
+    private $model;
+
+    public function __construct(Job $jobObj)
+    {
+        $this->model = $jobObj;
+    }
+
     public function index()
     {
         $businessList = Job::orderBy('created_at', 'DESC')->where('status', 1)->get();    
         foreach($businessList as $business){$business->category = $business->getFullCategoryName($business->category);}
-        return view('user.business', compact('businessList'));  
+        $job = new Job();
+        $jobCatList = $this->model->getCatList();
+        $selectedCode = "DEF";
+        return view('user.business', compact('businessList', 'jobCatList', 'job'));  
     }
 
     public function show($id) {

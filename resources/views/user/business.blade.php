@@ -6,43 +6,16 @@
             cursor: pointer;
         }
 
-        #wrapper {
-            width: 100%;
-            height: 100%;
-            margin: 50px auto 0 auto;
-            position: relative;
-            overflow: auto;
-        }
-
         .mobile-view{
             display: none
         }
     }
 
     @media (max-width: 991px) {
-        #wrapper {
-            width: 100%;
-            height: 100%;
-            margin: 50px auto 0 auto;
-            position: relative;
-            overflow: auto;
-        }
 
         #scroll_container,
         .desktop-view {
-            display: none
-        }
-
-        .main-sidebar {
-            margin-top: 50px;
-            width: 600px !important;
-            overflow: hidden;
-        }
-
-        .sidebar {
-            margin-left: 210px;
-            width: 500px !important;
-            overflow: hidden;
+            display: none !important
         }
     }
 
@@ -53,12 +26,23 @@
 @section('content')
     <section class="title">
         <section class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
-            <div class="wrapper">
-
+            <div class="wrapper d-flex flex-column h-100">
+                <div class="d-flex flex-row gap-3 p-3 border-bottom" style="margin-top: 51px;">
+                    <div>
+                        <select class="form-select" aria-label="" id="category" name="category">
+                            @foreach ($jobCatList as $key => $value)
+                                <option value="{{$key}}" {{$job->category == $key ? 'selected' : ''}}>{{$value}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" id="search" name="search" placeholder="在此输出工作名称" required />
+                    </div>
+                </div>
                 <!-- Main Sidebar Container -->
-                <aside class="main-sidebar" style="width: 500px; z-index: 1">
-                    <!-- Sidebar -->
-                    <div class="sidebar" style="height: 100%">
+                <div class="d-flex flex-row gap-2 flex-fill" style="height: 100">
+                    <div class="d-flex flex-column" style="overflow: auto">
                         <!-- Sidebar Menu -->
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -83,7 +67,6 @@
                                     </li>
                                 @endforeach
 
-
                                 @foreach ($businessList as $businessDetail)
                                     <a href="{{ route('user.businessDetail' , $businessDetail) }}" style="color: black">
                                         <li class="nav-item mobile-view" style="padding: 40px" id="{{ $businessDetail->id }}">
@@ -106,60 +89,57 @@
                                     </a>
                                 @endforeach
                             </ul>
-
                         </nav>
                     </div>
-                </aside>
-
-                <!-- Content Wrapper. Contains page content -->
-                <div id="scroll_container" style="margin-left:35%">
-                    <div id="wrapper">
-                        <br />
-                        <div class="h1 mt-5" style="margin-left: 30%;"><b><ins>商业</ins></b></div>
-                        @foreach ($businessList as $business)
-                            <div class="jobRefer" style="display:none" id="jobDetails{{ $business->id }}">
-                                <div class="" style="width: 1000px; height: 400px; padding: 20px;">
-                                    <image class="image-blog" src="{{ asset('image/job/' . $business->image_path) }}"
-                                        height="200" width="200" />
-                                    <h1 class="w-75">
-                                        <h3><u>工作名称:</u></h3>
-                                        {{ $business->name }}
-                                    </h1>
-                                    <p class="w-75">
-                                    <h3><u>工作种类:</u></h3>
-                                    {{ $business->category }}
-                                    </p>
-                                    <p class="w-75">
-                                    <h3><u>公司地址:</u></h3>
-                                    {{ $business->address }}
-                                    </p>
-                                    <p class="w-75">
-                                    <h3><u>薪水:</u></h3>
-                                    {{ $business->salary }}
-                                    </p>
-                                    <p class="w-75">
-                                    <h3><u>发布于:</u></h3>
-                                    {{ $business->posted_on }}
-                                    </p>
-                                </div>
-                                <div class=""
-                                    style="width: 1000px; padding: 20px; margin-top:300px">
-                                    <p class="w-75">
-                                    <h3><u>工作内容:</u></h3>
-                                    {{ $business->description }}
-                                    </p>
-                                    <p class="w-75">
-                                    <h3><u>注意事项:</u></h3>
-                                    {{ $business->note }}
-                                    </p>
-                                </div>
+    
+                    <!-- Content Wrapper. Contains page content -->
+                    <div class="d-flex flex-column gap-3 flex-fill" id="scroll_container" style="width: 100">
+                        <div style="overflow: auto">
+                            <div class="h1 mt-5 d-flex flex-row justify-content-center align-self-stretch">
+                                <b><ins>商业</ins></b>
                             </div>
-                        @endforeach
-
+                            @foreach ($businessList as $business)
+                                <div class="jobRefer" style="display:none" id="jobDetails{{ $business->id }}">
+                                    <div style="padding: 20px;">
+                                        <image class="image-blog" src="{{ asset('image/job/' . $business->image_path) }}"
+                                            height="200" width="200" />
+                                        <h1 class="w-75">
+                                            <h3><u>工作名称:</u></h3>
+                                            {{ $business->name }}
+                                        </h1>
+                                        <p class="w-75">
+                                        <h3><u>工作种类:</u></h3>
+                                        {{ $business->category }}
+                                        </p>
+                                        <p class="w-75">
+                                        <h3><u>公司地址:</u></h3>
+                                        {{ $business->address }}
+                                        </p>
+                                        <p class="w-75">
+                                        <h3><u>薪水:</u></h3>
+                                        {{ $business->salary }}
+                                        </p>
+                                        <p class="w-75">
+                                        <h3><u>发布于:</u></h3>
+                                        {{ $business->posted_on }}
+                                        </p>
+                                    </div>
+                                    <div class=""
+                                        style="width: 1000px; padding: 20px; margin-top:300px">
+                                        <p class="w-75">
+                                        <h3><u>工作内容:</u></h3>
+                                        {{ $business->description }}
+                                        </p>
+                                        <p class="w-75">
+                                        <h3><u>注意事项:</u></h3>
+                                        {{ $business->note }}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-
-
             </div>
         </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
