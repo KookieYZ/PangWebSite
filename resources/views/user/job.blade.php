@@ -57,7 +57,7 @@
                 <!-- Main Sidebar Container -->
                 <aside class="main-sidebar" style="width: 500px; z-index: 1">
                     <!-- Sidebar -->
-                    <div class="sidebar">
+                    <div class="sidebar" style="height: 100%">
                         <!-- Sidebar Menu -->
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -140,7 +140,7 @@
                                         {{ $job->posted_on }}
                                     </p>
                                 </div>
-                                <div class="" style="width: 1000px; height: 1000px; padding: 20px; margin-top:300px">
+                                <div class="" style="width: 1000px; padding: 20px; margin-top:300px">
                                     <p class="w-75">
                                         <h3><u>工作内容:</u></h3>
                                         {{ $job->description }}
@@ -154,8 +154,6 @@
                         @endforeach
                     </div>
                 </div>
-
-
             </div>
         </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
