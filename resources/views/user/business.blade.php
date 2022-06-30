@@ -58,7 +58,7 @@
                 <!-- Main Sidebar Container -->
                 <aside class="main-sidebar" style="width: 500px; z-index: 1">
                     <!-- Sidebar -->
-                    <div class="sidebar">
+                    <div class="sidebar" style="height: 100%">
                         <!-- Sidebar Menu -->
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -121,7 +121,6 @@
                                 <div class="" style="width: 1000px; height: 400px; padding: 20px;">
                                     <image class="image-blog" src="{{ asset('image/job/' . $business->image_path) }}"
                                         height="200" width="200" />
-
                                     <h1 class="w-75">
                                         <h3><u>工作名称:</u></h3>
                                         {{ $business->name }}
@@ -144,7 +143,7 @@
                                     </p>
                                 </div>
                                 <div class=""
-                                    style="width: 1000px; height: 1000px; padding: 20px; margin-top:300px">
+                                    style="width: 1000px; padding: 20px; margin-top:300px">
                                     <p class="w-75">
                                     <h3><u>工作内容:</u></h3>
                                     {{ $business->description }}
