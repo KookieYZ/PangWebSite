@@ -71,7 +71,7 @@
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-inverse navbar-default mobile-main-nav" style="background-color:{{ $theme->primaryColor()->value }}; height:52px;">
   <a class="navbar-brand" href="{{ route('user.home') }}">彭氏公会</a>
-  <button class="navbar-toggler text-white bg-transparent border-0" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
+  <button class="navbar-toggler text-white bg-transparent border-0" data-bs-toggle="collapse" data-bs-target="#navbar"  aria-expanded="true" aria-controls="navbar" >
     <span class="navbar-toggler-icon text-white"></span>
   </button>
 
@@ -101,10 +101,19 @@
         </a> 
       </li> -->
       <div class="col-12 col-sm-12 col-xs-12 d-flex justify-content-center">
-        <button class="navbar-togglers bg-transparent text-white border-white" style="border-radius:30px; width:30px !important;" aria-label="Close" data-toggle="collapse" data-target="#navbar"  aria-expanded="true" >
+        <button onclick="test()" class="navbar-togglers bg-transparent text-white border-white" style="border-radius:30px; width:30px !important;"  >
           <span class="text-center">X</span>
         </button>
       </div>
     </ul>
   </div>  
 </nav>
+
+<script>
+  function test() {
+    var myCollapse = document.getElementById('navbar')
+    var bsCollapse = new bootstrap.Collapse(myCollapse, {
+      toggle: true
+    })
+  }
+</script>
