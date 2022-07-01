@@ -29,7 +29,7 @@
             <div class="wrapper d-flex flex-column h-100">
                 <div class="d-flex flex-row gap-3 p-3 border-bottom" style="margin-top: 51px;">
                     <div>
-                        <select class="form-select" aria-label="" id="category" name="category">
+                        <select id="filterCat" class="form-select" aria-label="" id="category" name="category">
                             @foreach ($jobCatList as $key => $value)
                                 <option value="{{$key}}" {{$job->category == $key ? 'selected' : ''}}>{{$value}}
                                 </option>
@@ -45,13 +45,13 @@
                     <div class="d-flex flex-column" style="overflow: auto">
                         <!-- Sidebar Menu -->
                         <nav class="mt-2">
-                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" id="filter"
                                 data-accordion="false">
                                 @foreach ($businessList as $business)
                                     <li class="nav-item desktop-view" style="padding: 40px" id="{{ $business->id }}">
                                         <div class="row d-flex align-items-center"
                                             style="width: 350px; height: 350px; border-width: 2px; border-style: solid; padding: 20px">
-                                            <p class="w-75">
+                                            <p class="w-75" id="businessName">
                                                 {{ $business->name }}
                                             </p>
                                             <p class="w-75">
@@ -62,6 +62,9 @@
                                             </p>
                                             <p class="w-75">
                                                 {{ $business->posted_on }}
+                                            </p>
+                                            <p class="w-75" id="businessCat">
+                                                {{ $business->category }}
                                             </p>
                                         </div>
                                     </li>
