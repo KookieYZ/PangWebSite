@@ -44,8 +44,8 @@
                                 <th scope="col"><b>国籍</b></th>
                                 {{-- <th scope="col"><b>出生日期</b></th> --}}
                                 <th scope="col"><b>父母</b></th>
-                                <th scope="col"><b>年代</b></th>
-                                <th scope="col"><b>家庭</b></th>
+                                <th scope="col"><b>代序</b></th>
+                                <!-- <th scope="col"><b>家庭</b></th> -->
                             </tr>
                         </thead>
                         @foreach ($persons as $person)
@@ -90,12 +90,12 @@
                                 <td>{{ $person->nationality }}</td>
                                 {{-- <td>{{ $person->dob_date }}</td> --}}
                                 @if ($person->parent_id != null)
-                                <td>{{ $person->parent_id }} - {{ $person->parent->name }}</td>
+                                <td>{{ $person->parent->name }}</td>
                                 @else
-                                <td>No parents found</td>
+                                <td><i>查无记录</i></td>
                                 @endif
                                 <td>{{$person->era}}</td>
-                                <td>{{$person->family}}</td>
+                                <!-- <td>{{$person->family}}</td> -->
                             </tr>
                         </tbody>
                         @endforeach

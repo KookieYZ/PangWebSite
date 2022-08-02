@@ -84,6 +84,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('page', 'PageController');
         Route::resource('blog', 'BlogController');
         Route::resource('job', 'JobController');
+        Route::resource('business', 'BusinessController');
         Route::resource('people_history', 'PeopleHistoryController');
     });
 }); 
@@ -94,11 +95,9 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
 
-
-
 Route::resource('search', 'User\SearchController');
 Route::resource('jobList', 'User\JobListController');
-Route::resource('business', 'User\BusinessListController');
+Route::resource('businessList', 'User\BusinessListController');
 
 Route::get('businessDetail/{id}', 'User\BusinessDetailController@getBusinessDetail')->name('user.businessDetail');
 Route::get('jobDetail/{id}', 'User\JobDetailController@getJobDetail')->name('user.jobDetail');

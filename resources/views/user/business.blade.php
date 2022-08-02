@@ -26,24 +26,36 @@
 @section('content')
     <section class="title">
         <section class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
-            <div class="wrapper d-flex flex-column h-100">
+            <div class="wrapper d-flex flex-column min-h-100">
                 <div class="d-flex flex-row gap-3 p-3 border-bottom" style="margin-top: 51px;">
                     <div>
                         <select id="filterCat" class="form-select" aria-label="" id="category" name="category">
-                            @foreach ($jobCatList as $key => $value)
-                                <option value="{{$key}}" {{$job->category == $key ? 'selected' : ''}}>{{$value}}
+                            @foreach ($businessCatList as $key => $value)
+                                <option value="{{$key}}" {{$business->category == $key ? 'selected' : ''}}>{{$value}}
                                 </option>
                             @endforeach
                         </select>
                     </div>
-                    <div>
+                    <!-- <div>
                         <input type="text" class="form-control" id="search" name="search" placeholder="在此输出工作名称" required />
-                    </div>
+                    </div> -->
                 </div>
                 <!-- Main Sidebar Container -->
-                <div class="d-flex flex-row gap-2 flex-fill" style="height: 100">
-                    <div class="d-flex flex-column" style="overflow: auto">
-                        <!-- Sidebar Menu -->
+                <div class="d-flex flex-wrap gap-3 p-3 justify-content-center">
+                    @foreach ($businessList as $business)
+                    <div class="card d-flex flex-column gap-3 align-items-center p-3">
+                        <div>
+                            <img class="image-blog" src="{{ asset('image/business/' . $business->image_path) }}"
+                                            height="200" width="200" />
+                        </div>
+                        <div class="d-flex flex-column gap-2 align-items-start">
+                            <div>{{ $business->name }}</div>
+                            <div>{{ $business->address }}</div>
+                            <div>{{ $business->category }}</div>
+                        </div>
+                    </div>
+                    @endforeach
+                    <!-- <div class="d-flex flex-column" style="overflow: auto">
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" id="filter"
                                 data-accordion="false">
@@ -95,16 +107,15 @@
                         </nav>
                     </div>
     
-                    <!-- Content Wrapper. Contains page content -->
                     <div class="d-flex flex-column gap-3 flex-fill" id="scroll_container" style="width: 100">
                         <div style="overflow: auto">
                             <div class="h1 mt-5 d-flex flex-row justify-content-center align-self-stretch">
                                 <b><ins>商业</ins></b>
                             </div>
                             @foreach ($businessList as $business)
-                                <div class="jobRefer" style="display:none" id="jobDetails{{ $business->id }}">
+                                <div class="businessRefer" style="display:none" id="businessDetails{{ $business->id }}">
                                     <div style="padding: 20px;">
-                                        <image class="image-blog" src="{{ asset('image/job/' . $business->image_path) }}"
+                                        <image class="image-blog" src="{{ asset('image/business/' . $business->image_path) }}"
                                             height="200" width="200" />
                                         <h1 class="w-75">
                                             <h3><u>工作名称:</u></h3>
@@ -141,7 +152,7 @@
                                 </div>
                             @endforeach
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -149,20 +160,17 @@
         <script>
             (function(factory) {
                 if (typeof define === "function" && define.amd) {
-
                     // AMD. Register as an anonymous module.
                     define(["jquery"], factory);
                 } else if (typeof exports === "object") {
-
                     // Node/CommonJS style for Browserify
                     module.exports = factory;
                 } else {
-
                     // Browser globals
                     factory(jQuery);
                 }
-            })(function($) {
-
+            })
+            (function($) {
                 var toFix = ["wheel", "mousewheel", "DOMMouseScroll", "MozMousePixelScroll"],
                     toBind = ("onwheel" in window.document || window.document.documentMode >= 9) ? ["wheel"] : [
                         "mousewheel", "DomMouseScroll", "MozMousePixelScroll"
@@ -178,7 +186,6 @@
 
                 var special = $.event.special.mousewheel = {
                     version: "3.1.12",
-
                     setup: function() {
                         if (this.addEventListener) {
                             for (var i = toBind.length; i;) {
@@ -382,6 +389,6 @@
 
             });
         </script>
-        <script type="text/javascript" src="{{ URL::asset('js/job.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::asset('js/business.js') }}"></script>
     </section>
 @endsection

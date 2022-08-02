@@ -3,7 +3,7 @@
 @section('content')
 <section class="title">
     <div><br/></div>
-    <div class="text-center h1 p-auto mt-5"><b><ins>彭姓来源</ins></b></div>
+    <div class="text-center h1 p-auto mt-5"><b><ins>彭姓渊源</ins></b></div>
 </section>
 @inject('theme', 'App\Http\Controllers\User\ThemeController')
 <section class="content">

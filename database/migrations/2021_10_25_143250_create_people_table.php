@@ -20,9 +20,11 @@ class CreatePeopleTable extends Migration
             $table->string('spouse_name')->nullable();
             $table->string('spouse_avatar')->nullable();
             $table->string('gender');
-            $table->string('state');
+            $table->string('negeri');
+            $table->string('state')->nullable();
             $table->string('nationality');
             $table->date('dob_date');
+            $table->date('dead_date')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
 

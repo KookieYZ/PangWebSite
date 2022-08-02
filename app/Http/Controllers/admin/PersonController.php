@@ -28,11 +28,12 @@ class PersonController extends Controller
             'name'              => 'required|string|max:50',
             'avatar'            => 'image|mimes:jpeg,png,jpg|max:6000',
             'spouse_name'       => 'max:50|nullable',
-            'spouse_avatar.*'     => 'image|mimes:jpeg,png,jpg|max:6000',
+            'spouse_avatar.*'   => 'image|mimes:jpeg,png,jpg|max:6000',
             'gender'            => 'required|string',
             'state'             => 'string|required',
             'nationality'       => 'string|required',
             'dob_date'          => 'required',
+            'dead_date'         => 'nullable',
             'parent_id'         => 'integer|nullable',
             'era'               => 'string|required',
             'family'            => 'string|nullable'
@@ -62,9 +63,12 @@ class PersonController extends Controller
         $person->avatar = $this->ImgMng->insertImage($request, 'avatar', 'avatar');
         $person->name = $request['name'];
         $person->gender = $request['gender'];
+        $person->negeri = $request['negeri'];
         $person->state = $request['state'];
         $person->nationality = $request['nationality'];
-        $person->dob_date = DateTime::createFromFormat('d/m/Y', $request->get('dob_date'))->format('Y-m-d');
+        // $person->dob_date = DateTime::createFromFormat('d/m/Y', $request->get('dob_date'))->format('Y-m-d');
+        $person->dob_date = $request->dob_date;
+        $person->dead_date = $request->dead_date;
         $person->parent_id = $request->parent_id;
         $person->created_at = now();
         $person->updated_at = now();

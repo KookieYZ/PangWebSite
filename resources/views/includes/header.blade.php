@@ -70,15 +70,29 @@
 </style>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-inverse navbar-default mobile-main-nav" style="background-color:{{ $theme->primaryColor()->value }}; height:52px;">
-  <a class="navbar-brand" href="{{ route('user.home') }}">彭氏公会</a>
+  <a class="navbar-brand" href="{{ route('user.home') }}">主页</a>
   <button class="navbar-toggler text-white bg-transparent border-0" data-bs-toggle="collapse" data-bs-target="#navbar"  aria-expanded="true" aria-controls="navbar" >
     <span class="navbar-toggler-icon text-white"></span>
   </button>
 
-  <div id="navbar" class="collapse navbar-collapse" aria-expanded="true">
-    <ul class="nav navbar-nav ml-auto" style="background-color:{{ $theme->primaryColor()->value }};">
+  <div id="navbar" class="collapse navbar-collapse justify-content-end" aria-expanded="true">
+    <form action="{{ route('search.index') }}" method="GET" class="m-0">
+      {{ csrf_field() }}
+      <div class="d-flex flex-row gap-3 justify-content-center align-items-center p-3">
+        <div>
+          <input type="text" id="search_text" name="search_text"
+              class="form-control search-slt border border-dark" value="{{ request('search_text') }}"
+              style="border-radius: 20px" placeholder="輸入名字">
+        </div>
+        <div>
+          <button type="submit" class="btn border border-dark text-black bg-white"
+              style="border-radius: 20px">搜索</button>
+        </div>
+      </div>
+    </form>
+    <ul class="nav navbar-nav" style="background-color:{{ $theme->primaryColor()->value }};">
       <li class="nav-item">
-        <a class="nav-link text-white" href="{{ route('user.background') }}">彭姓来源</a>
+        <a class="nav-link text-white" href="{{ route('user.background') }}">彭姓渊源</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="{{ route('user.event') }}">活动</a>
@@ -86,13 +100,16 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="{{ route('user.notice') }}">通告</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="{{ route('business.index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{{ route('businessList.index') }}">商业与就业机会</a>
+      </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="{{ route('businessList.index') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商业与就业机会</a>
         <div class="dropdown-menu border-0 w-100" aria-labelledby="navbarDropdown" style="background-color:{{ $theme->primaryColor()->value }}; border-radius: 0px;">
-          <a class="dropdown-item text-white w-100" href="{{ route('business.index') }}">商业</a>
+          <a class="dropdown-item text-white w-100" href="{{ route('businessList.index') }}">商业</a>
           <a class="dropdown-item text-white w-100" href="{{ route('jobList.index') }}">就业机会</a>
         </div>
-      </li>
+      </li> -->
       <!-- <li class="nav-item">
         <a class="nav-link text-white btn_hover" href="" >        
           <button class="btn text-white btn_hover pb-0" type="button" style="background:none; border-radius: 0px; border:none; display:block;">

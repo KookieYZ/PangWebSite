@@ -167,6 +167,11 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('business.index') }}" aria-expanded="false"><i
+                                    class="me-2 mdi mdi-home-modern"></i><span class="hide-menu">商业管理</span></a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('job.index') }}" aria-expanded="false"><i
                                     class="me-2 mdi mdi-tie"></i><span class="hide-menu">工作管理</span></a>
                         </li>

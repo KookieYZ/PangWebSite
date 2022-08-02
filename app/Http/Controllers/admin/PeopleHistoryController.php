@@ -17,18 +17,18 @@ class PeopleHistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-        public $model;
-        public $imgService;
-        public $mediaService;
+    public $model;
+    public $imgService;
+    public $mediaService;
 
-       public function __construct(People_History $obj, ImageManager $imgObj, MediaManager $medObj) {
+    public function __construct(People_History $obj, ImageManager $imgObj, MediaManager $medObj) {
         $this->middleware('auth');
         $this->model = $obj;  
         $this->imgService = $imgObj;
         $this->mediaService = $medObj;
     }
 
-       protected function validator(array $data)
+    protected function validator(array $data)
     {
         return Validator::make($data, [
             'history_name'=> 'required',

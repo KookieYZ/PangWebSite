@@ -1,7 +1,7 @@
 @extends('includes.app')
 
 @section('content')
-<section class="search-sec pt-5">
+<!-- <section class="search-sec pt-5">
     <div class="container">
         <form action="{{ route('search.index') }}" method="GET">
             {{ csrf_field() }}
@@ -18,14 +18,14 @@
             </div>
         </form>
     </div>
-</section>
+</section> -->
 @inject('theme', 'App\Http\Controllers\User\ThemeController')
-<section class="content">
+<section class="content pt-5">
     <div class="container mt-3 mb-3 p-2 d-flex">
         <div class="row d-flex justify-content-start">
             @foreach($search_persons as $search_person)
             <div class="col-xl-3 col-md-4 col-12 p-2">
-                <a href="/chart/{{$search_person->id}}">
+                <a href="/chart/{{$search_person->id}}" class="text-decoration-none">
                     <div class="card p-3 text-white" style="background-color:  {{ $theme->secondColor()->value }};">
                         <div class="image d-flex flex-column justify-content-center align-items-center"> <img
                                 src="{{ asset('image/avatar/'.$search_person->avatar) }}" height="100" width="100" />
@@ -47,10 +47,13 @@
                             @endif
                         </div>
                         <div class="row text-justify p-2">
+                            <div><b>代序 :</b> {{ $search_person->era }}</div>
+                        </div>
+                        <div class="row text-justify p-2">
                             <div><b>州属 :</b> {{ $search_person->state }}</div>
                         </div>
                         <div class="row text-justify p-2">
-                            <div><b>年份 :</b> {{ $search_person->dob_date }}</div>
+                            <div><b>年份 :</b> {{ $search_person->dob_date }} ～ {{ $search_person->dead_date }}</div>
                         </div>
                     </div>
             </div>

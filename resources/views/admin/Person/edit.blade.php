@@ -62,18 +62,12 @@
                                 </div>
                             </div>
 
-
                             <x-spouse-update :person="$spouseAttrList" />
                             <x-add-more-spouse-button />
                             @php
                             $numofRecord = count($spouseAttrList);
                             @endphp
                             <input type='hidden' id="numofSpouse" name="numofSpouse" value={{$numofRecord}}>
-
-
-
-
-
                             <div class="form-group row">
                                 <label for="gender" class="col-sm-3 text-end control-label col-form-label">性别</label>
                                 <div class="col-sm-9">
@@ -87,8 +81,35 @@
                                     </select>
                                 </div>
                             </div>
+                            <!-- <div class="form-group row">
+                                <label for="negeri" class="col-sm-3 text-end control-label col-form-label">州属</label>
+                                <div class="col-sm-9">
+                                    <select class="form-select" aria-label="" id="negeri" name="negeri">
+                                        <option @if (old('negeri', $person->negeri) == 1) selected @endif value="1">
+                                            男
+                                        </option>
+                                        <option @if (old('negeri', $person->negeri) == 2) selected @endif value="2">
+                                            女
+                                        </option>
+                                    </select>
+                                </div>
+                            </div> -->
                             <div class="form-group row">
-                                <label for="state" class="col-sm-3 text-end control-label col-form-label">州属</label>
+                                <label for="negeri" class="col-sm-3 text-end control-label col-form-label">州属</label>
+                                <div class="col-sm-9">
+                                    <input type="text"
+                                        class="form-control{{ $errors->has('negeri') ? ' is-invalid' : '' }}" id="negeri"
+                                        name="negeri" value="{{ old('negeri') ? old('negeri') : $person->negeri }}"
+                                        placeholder="州属" required />
+                                    @if ($errors->has('state'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('negeri') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="state" class="col-sm-3 text-end control-label col-form-label">区域</label>
                                 <div class="col-sm-9">
                                     <input type="text"
                                         class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" id="state"
@@ -120,15 +141,31 @@
                             <div class="form-group row">
                                 <label for="dob_date"
                                     class="col-sm-3 text-end control-label col-form-label">出生日期</label>
-                                <div class="col-sm-9">
-                                    <input type="text"
+                                <div class="col-sm-2">
+                                    <input type="date"
                                         class="form-control date-inputmask {{ $errors->has('dob_date') ? ' is-invalid' : '' }}"
                                         id="dob_date" name="dob_date"
-                                        value="{{ old('dob_date') ? old('dob_date') : date('d/m/Y', strtotime($person->dob_date)) }}"
+                                        value="{{ old('dob_date') ? old('dob_date') : $person->dob_date }}"
                                         placeholder="出生日期" required />
                                     @if ($errors->has('dob_date'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('dob_date') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="dead_date"
+                                    class="col-sm-3 text-end control-label col-form-label">往生日期</label>
+                                <div class="col-sm-2">
+                                    <input type="date"
+                                        class="form-control date-inputmask {{ $errors->has('dead_date') ? ' is-invalid' : '' }}"
+                                        id="dead_date" name="dead_date"
+                                        value="{{ old('dead_date') ? old('dead_date') : $person->dead_date }}"
+                                        placeholder="出生日期" />
+                                    @if ($errors->has('dead_date'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('dead_date') }}</strong>
                                     </span>
                                     @endif
                                 </div>

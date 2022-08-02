@@ -105,7 +105,7 @@
                                 <label class="col-sm-3 text-end control-label col-form-label hidden"></label>
                                 <div class="col-md-9">
                                     <a href="" id="addmorespouse" name="addmorespouse" class="link-primary"
-                                        title="添加更多配偶">{{ __('添加更多配偶') }}</a>
+                                        title="添加配偶">{{ __('添加配偶') }}</a>
                                 </div>
                             </div>
 
@@ -159,14 +159,29 @@
                             <div class="form-group row">
                                 <label for="dob_date"
                                     class="col-sm-3 text-end control-label col-form-label">出生日期</label>
-                                <div class="col-sm-9">
-                                    <input type="text"
+                                <div class="col-sm-2">
+                                    <input type="date"
                                         class="form-control date-inputmask{{ $errors->has('dob_date') ? ' is-invalid' : '' }}"
                                         id="dob_date" name="dob_date" value="{{ old('dob_date') }}" placeholder="出生日期"
                                         required />
                                     @if ($errors->has('dob_date'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('dob_date') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="dead_date"
+                                    class="col-sm-3 text-end control-label col-form-label">往生日期</label>
+                                <div class="col-sm-2">
+                                    <input type="date"
+                                        class="form-control date-inputmask{{ $errors->has('dead_date') ? ' is-invalid' : '' }}"
+                                        id="dead_date" name="dead_date" value="{{ old('dead_date') }}" placeholder="往生日期"
+                                        required />
+                                    @if ($errors->has('dead_date'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('dead_date') }}</strong>
                                     </span>
                                     @endif
                                 </div>
