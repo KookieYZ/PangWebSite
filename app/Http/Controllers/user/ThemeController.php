@@ -36,15 +36,21 @@ class ThemeController extends Controller
     }
     public function facebook() {
         $facebook = Variable::where('id','=', 6)->first();
-        return $facebook;
+        $params['label'] = explode(",", trim($facebook->value))[0];
+        $params['link'] = explode(",", trim($facebook->value))[1];
+        return $params;
     }
     public function message() {
         $message = Variable::where('id','=', 7)->first();
-        return $message;
+        $params['label'] = explode(",", trim($message->value))[0];
+        $params['link'] = explode(",", trim($message->value))[1];
+        return $params;
     }
     public function whatapps() {
         $whatapps = Variable::where('id','=', 8)->first();
-        return $whatapps;
+        $params['label'] = explode(",", trim($whatapps->value))[0];
+        $params['link'] = explode(",", trim($whatapps->value))[1];
+        return $params;
     }
     
 }

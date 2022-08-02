@@ -13,15 +13,15 @@
                 @inject('theme', 'App\Http\Controllers\User\ThemeController')
                 <div class="col-sm-12 col-xs-12 text-left p-0">
                     <img class="img-fluid" src="{{ asset('assets/images/Facebook.png') }}">
-                    <a class="text-white" href="">{{ $theme->facebook()->value }}</a>
+                    <a class="text-white" href="{{ $theme->facebook()['link'] }}">{{ $theme->facebook()['label'] }}</a>
                 </div>
                 <div class="col-sm-12 col-xs-12 text-left p-0">
                     <img class="img-fluid" src="{{ asset('assets/images/Message.png') }}">
-                    <a class="text-white" href="">{{ $theme->message()->value }}</a>
+                    <a class="text-white" href="{{ $theme->message()['link'] }}">{{ $theme->message()['label'] }}</a>
                 </div>
                 <div class="col-sm-12 col-xs-12 text-left p-0 pb-2">
                     <img class="img-fluid" src="{{ asset('assets/images/Whatapps.png') }}">
-                    <a class="text-white"href="">{{ $theme->whatapps()->value }}</a>
+                    <a class="text-white" href="{{ $theme->whatapps()['link'] }}">{{ $theme->whatapps()['label'] }}</a>
                 </div>
             </div>
         </div>
