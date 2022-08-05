@@ -18,8 +18,7 @@
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <a href="{{ route('job.create') }}"><button type="button"
-                                    class="btn btn-primary">新建</button></a>
+                            <a href="{{ route('job.create') }}"><button type="button" class="btn btn-primary">新建</button></a>
                         </ol>
                     </nav>
                 </div>
@@ -35,8 +34,6 @@
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col"><b>控制选项</b>
-                                    </th>
                                     <th scope="col"><b>工作名称</b></th>
                                     <!-- <th scope="col"><b>概述</b></th>
                                     <th scope="col"><b>注意事项</b></th>
@@ -47,12 +44,23 @@
                                     <th scope="col"><b>公司地址</b></th>
                                     <th scope="col"><b>发表于</b></th>
                                     <!-- <th scope="col"><b>状态</b></th> -->
+                                    <th scope="col"><b>控制选项</b></th>
                                 </tr>
                             </thead>
                             @foreach ($jobs as $job)
                                 <tbody class="customtable">
                                     <tr>
-                                        <th>
+                                        <td>{{ $job->name }}</td>
+                                        <!-- <td>{{ $job->description }}</a></td> -->
+                                        <!-- <td>{{ $job->note }}</td> -->
+                                        <!-- <td><img src="{{$job->image_path}}"></td> -->
+                                        <!-- <td>{{ $job->category }}</td> -->
+                                        <td>{{ $job->salary }}</td>
+                                        <!-- <td>{{ $job->background }}</td> -->
+                                        <td>{{ $job->address }}</td>
+                                        <td>{{ $job->posted_on }}</td>
+                                        <!-- <td>{{ $job->status }}</td> -->
+                                        <td>
                                             <a href="{{ route('job.edit', $job) }}"><i class="far fa-edit"
                                                     title="更改工作资料"></i></a>
                                             <a href="{{ route('job.show', $job) }}"><i class="fas fa-eye"
@@ -63,26 +71,15 @@
                                                 {{ csrf_field() }}
                                                 @method('DELETE')
                                                 <button type="submit" style="background-color: transparent;
-                                background-repeat: no-repeat;
-                                border: none;
-                                cursor: pointer;
-                                overflow: hidden;
-                                outline: none;">
+                                                                            background-repeat: no-repeat;
+                                                                            border: none;
+                                                                            cursor: pointer;
+                                                                            overflow: hidden;
+                                                                            outline: none;">
                                                     <i class="me-2 mdi mdi-delete"></i>
                                                 </button>
                                             </form>
-                                        </th>
-                                        <td>{{ $job->name }}</td>
-                                        <!-- <td>{{ $job->description }}</a></td> -->
-                                        <!-- <td>{{ $job->note }}</td> -->
-                                        <!-- <td><img src="{{$job->image_path}}"></td> -->
-                                        <!-- <td>{{ $job->category }}</td> -->
-                                        <td>{{ $job->salary }}</td>
-                                        <!-- <td>{{ $job->background }}</td> -->
-                                        <td>{{ $job->address }}</td>
-                                        <td>{{ $job->posted_on }}</td>
-                                        <!-- <td>{{ $job->status }}</td>                 -->
-
+                                        </td>
                                     </tr>
                                 </tbody>
                             @endforeach

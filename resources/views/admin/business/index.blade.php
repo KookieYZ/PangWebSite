@@ -35,8 +35,6 @@
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col"><b>控制选项</b>
-                                    </th>
                                     <th scope="col"><b>商业名称</b></th>
                                     <!-- <th scope="col"><b>概述</b></th>
                                     <th scope="col"><b>照片</b></th>
@@ -44,12 +42,21 @@
                                     <!-- <th scope="col"><b>商业背景</b></th> -->
                                     <th scope="col"><b>商业地址</b></th>
                                     <th scope="col"><b>状态</b></th>
+                                    <th scope="col"><b>控制选项</b></th>
                                 </tr>
                             </thead>
                             @foreach ($business as $item)
                                 <tbody class="customtable">
                                     <tr>
-                                        <th>
+                                        <td>{{ $item->name }}</td>
+                                        <!-- <td>{{ $item->description }}</a></td> -->
+                                        <!-- <td><img src="{{$item->image_path}}"></td> -->
+                                        <!-- <td>{{ $item->category }}</td> -->
+                                        <!-- <td>{{ $item->background }}</td> -->
+                                        <td>{{ $item->address }}</td>
+                                        <td>{{ $item->status }}</td>   
+                                        <td>
+                                            
                                             <a href="{{ route('business.edit', $item) }}"><i class="far fa-edit"
                                                     title="更改商业资料"></i></a>
                                             <a href="{{ route('business.show', $item) }}"><i class="fas fa-eye"
@@ -60,23 +67,15 @@
                                                 {{ csrf_field() }}
                                                 @method('DELETE')
                                                 <button type="submit" style="background-color: transparent;
-                                background-repeat: no-repeat;
-                                border: none;
-                                cursor: pointer;
-                                overflow: hidden;
-                                outline: none;">
+                                                                                background-repeat: no-repeat;
+                                                                                border: none;
+                                                                                cursor: pointer;
+                                                                                overflow: hidden;
+                                                                                outline: none;">
                                                     <i class="me-2 mdi mdi-delete"></i>
                                                 </button>
                                             </form>
-                                        </th>
-                                        <td>{{ $item->name }}</td>
-                                        <!-- <td>{{ $item->description }}</a></td> -->
-                                        <!-- <td><img src="{{$item->image_path}}"></td> -->
-                                        <!-- <td>{{ $item->category }}</td> -->
-                                        <!-- <td>{{ $item->background }}</td> -->
-                                        <td>{{ $item->address }}</td>
-                                        <td>{{ $item->status }}</td>                
-
+                                        </td>
                                     </tr>
                                 </tbody>
                             @endforeach

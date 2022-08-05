@@ -17,8 +17,7 @@
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <a href="{{ route('page.create') }}"><button type="button"
-                                    class="btn btn-primary">新建</button></a>
+                            <a href="{{ route('page.create') }}"><button type="button" class="btn btn-primary">新建</button></a>
                         </ol>
                     </nav>
                 </div>
@@ -34,21 +33,26 @@
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col"><b>控制选项</b>
-                                    </th>
                                     <th scope="col"><b>标题</b></th>
                                     <th scope="col"><b>网站</b></th>
                                     <th scope="col"><b>排行</b></th>
                                     <th scope="col"><b>内容</b></th>
                                     <th scope="col"><b>Publish(Yes/No)</b></th>
                                     <th scope="col"><b>Year</b></th>
-
+                                    <th scope="col"><b>控制选项</b></th>
                                 </tr>
                             </thead>
                             @foreach ($pages as $page)
                                 <tbody class="customtable">
                                     <tr>
-                                        <th>
+                                        <td>{{ $page->title }}</td>
+                                        <td><a href="{{ $page->url }}">{{ $page->url }}</a></td>
+                                        <td>{{ $page->ranking }}</td>
+                                        {{-- <td>{{ $page->parent_id }} - {{ $page->parent->title }}</td> --}}
+                                        <td>{!! $page->description !!}</td>
+                                        <td>{{ $page->is_publish }}</td>
+                                        <td>{{ $page->year }}</td>
+                                        <td>
                                             <a href="{{ route('page.edit', $page) }}"><i class="far fa-edit"
                                                     title="更改页面资料"></i></a>
                                             <a href="{{ route('page.show', $page) }}"><i class="fas fa-eye"
@@ -59,23 +63,15 @@
                                                 {{ csrf_field() }}
                                                 @method('DELETE')
                                                 <button type="submit" style="background-color: transparent;
-                                background-repeat: no-repeat;
-                                border: none;
-                                cursor: pointer;
-                                overflow: hidden;
-                                outline: none;">
+                                                                            background-repeat: no-repeat;
+                                                                            border: none;
+                                                                            cursor: pointer;
+                                                                            overflow: hidden;
+                                                                            outline: none;">
                                                     <i class="me-2 mdi mdi-delete"></i>
                                                 </button>
                                             </form>
-                                        </th>
-                                        <td>{{ $page->title }}</td>
-                                        <td><a href="{{ $page->url }}">{{ $page->url }}</a></td>
-                                        <td>{{ $page->ranking }}</td>
-                                        {{-- <td>{{ $page->parent_id }} - {{ $page->parent->title }}</td> --}}
-                                        <td>{!! $page->description !!}</td>
-                                        <td>{{ $page->is_publish }}</td>
-                                        <td>{{ $page->year }}</td>
-
+                                        </td>
                                     </tr>
                                 </tbody>
                             @endforeach

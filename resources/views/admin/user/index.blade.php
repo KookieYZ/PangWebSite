@@ -42,17 +42,19 @@
                                 <table class="table">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col"><b>控制选项</b>
-                                            </th>
                                             <th scope="col"><b>名称</b></th>
                                             <th scope="col"><b>电子邮件</b></th>
                                             <th scope="col"><b>创建时间</b></th>
+                                            <th scope="col"><b>控制选项</b></th>
                                         </tr>
                                     </thead>
                                     @foreach ($admins as $admin)
                                         <tbody class="customtable">
                                             <tr>
-                                                <th>
+                                                <td>{{ $admin->name }}</td>
+                                                <td>{{ $admin->email }}</td>
+                                                <td>{{ $admin->created_at->format('Y-m-d') }}</td>
+                                                <td>
                                                     <a href="{{ route('user.edit', $admin) }}"><i
                                                             class="far fa-edit" title="更改管理员资料"></i></a>
                                                     <a href="{{ route('user.show', $admin) }}"><i
@@ -65,18 +67,15 @@
                                                         {{ csrf_field() }}
                                                         @method('DELETE')
                                                         <button type="submit" style="background-color: transparent;
-                            background-repeat: no-repeat;
-                            border: none;
-                            cursor: pointer;
-                            overflow: hidden;
-                            outline: none;">
+                                                            background-repeat: no-repeat;
+                                                            border: none;
+                                                            cursor: pointer;
+                                                            overflow: hidden;
+                                                            outline: none;">
                                                             <i class="me-2 mdi mdi-delete"></i>
                                                         </button>
                                                     </form>
-                                                </th>
-                                                <td>{{ $admin->name }}</td>
-                                                <td>{{ $admin->email }}</td>
-                                                <td>{{ $admin->created_at->format('Y-m-d') }}</td>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     @endforeach

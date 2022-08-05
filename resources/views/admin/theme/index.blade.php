@@ -34,33 +34,32 @@
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col"><b>控制选项</b>
-                                    </th>
                                     <th scope="col"><b>主要设置</b></th>
                                     <th scope="col"><b>设置内容</b></th>
+                                    <th scope="col"><b>控制选项</b></th>
                                 </tr>
                             </thead>
                             @foreach ($themes as $theme)
                                 <tbody class="customtable">
                                     <tr>
-                                        <th>
+                                        <td>{{ $theme->key }}</td>
+                                        <td>
+                                            @if ($theme->id == 4)
+                                            <img src=" {{ asset($theme->value) }}" height="100" width="300"
+                                            style="border:solid">
+                                            @elseif ($theme->id == 5)
+                                            <img src=" {{ asset($theme->value) }}" height="100" width="100"
+                                            style="border:solid">
+                                            @else
+                                            {{ $theme->value }}
+                                            @endif
+                                        </td>
+                                        <td>
                                             <a href="{{ route('theme.edit', $theme) }}"><i class="far fa-edit"
                                                     title="更改资料"></i></a>
                                             <a href="{{ route('theme.show', $theme) }}"><i class="fas fa-eye"
                                                     title="查看资料"></i></a>
                                             <form>
-                                        </th>
-                                        <td>{{ $theme->key }}</td>
-                                        <td>
-                                            @if ($theme->id == 4)
-                                                <img src=" {{ asset($theme->value) }}" height="100" width="300"
-                                                    style="border:solid">
-                                            @elseif ($theme->id == 5)
-                                                <img src=" {{ asset($theme->value) }}" height="100" width="100"
-                                                    style="border:solid">
-                                            @else
-                                                {{ $theme->value }}
-                                            @endif
                                         </td>
                                     </tr>
                                 </tbody>

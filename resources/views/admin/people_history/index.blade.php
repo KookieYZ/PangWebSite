@@ -35,18 +35,19 @@
                     <table class="table">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col"><b>控制选项</b>
-                                </th>
                                 <th scope="col"><b>事件名称</b></th>
                                 <th scope="col"><b>事件人物</b></th>
                                 <th scope="col"><b>发生于</b></th>
-
+                                <th scope="col"><b>控制选项</b></th>
                             </tr>
                         </thead>
                         @foreach ($people_history as $history)
                         <tbody class="customtable">
                             <tr>
-                                <th>
+                                <td>{{ $history->history_name }}</td>
+                                <td>{{ $history->people_id}}</td>
+                                <td>{{ $history->incident_date }}</td>
+                                <td>
                                     <a href="{{ route('people_history.edit', $history) }}"><i class="far fa-edit"
                                             title="更改历史事件"></i></a>
                                     <a href="{{ route('people_history.show', $history) }}"><i class="fas fa-eye"
@@ -65,10 +66,7 @@
                                             <i class="me-2 mdi mdi-delete"></i>
                                         </button>
                                     </form>
-                                </th>
-                                <td>{{ $history->history_name }}</td>
-                                <td>{{ $history->people_id}}</td>
-                                <td>{{ $history->incident_date }}</td>
+                                </td>
                             </tr>
                         </tbody>
                         @endforeach

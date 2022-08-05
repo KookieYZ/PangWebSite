@@ -20,8 +20,7 @@
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <a href="{{ route('blog.create') }}"><button type="button"
-                                            class="btn btn-primary">新建</button></a>
+                                    <a href="{{ route('blog.create') }}"><button type="button" class="btn btn-primary">新建</button></a>
                                 </ol>
                             </nav>
                         </div>
@@ -42,8 +41,6 @@
                                 <table class="table">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col"><b>控制选项</b>
-                                            </th>
                                             <th scope="col"><b>媒体类型</b></th>
                                             <th scope="col"><b>媒体路径</b></th>
                                             <th scope="col"><b>说明</b></th>
@@ -51,12 +48,24 @@
                                             <th scope="col"><b>年份</b></th>
                                             <th scope="col"><b>页面</b></th>
                                             <th scope="col"><b>创建时间</b></th>
+                                            <th scope="col"><b>控制选项</b></th>
                                         </tr>
                                     </thead>
                                     @foreach ($blogs as $blog)
                                         <tbody class="customtable">
                                             <tr>
-                                                <th>
+                                                <td>{{ $blog->media_type }}</td>
+                                                <td>{{ $blog->media_path }}</td>
+                                                <td>{{ $blog->description }}</td>
+                                                @if ($blog->is_publish == 1)
+                                                    <td>Yes</td>
+                                                @else
+                                                    <td>No</td>
+                                                @endif
+                                                <td>{{ $blog->year }}</td>
+                                                <td>{{ $blog->page_id }}</td>
+                                                <td>{{ $blog->created_at->format('Y-m-d') }}</td>
+                                                <td>
                                                     <a href="{{ route('blog.edit', $blog) }}"><i
                                                             class="far fa-edit" title="更改资料"></i></a>
                                                     <a href="{{ route('blog.show', $blog) }}"><i
@@ -69,26 +78,15 @@
                                                         {{ csrf_field() }}
                                                         @method('DELETE')
                                                         <button type="submit" style="background-color: transparent;
-                            background-repeat: no-repeat;
-                            border: none;
-                            cursor: pointer;
-                            overflow: hidden;
-                            outline: none;">
+                                                                                        background-repeat: no-repeat;
+                                                                                        border: none;
+                                                                                        cursor: pointer;
+                                                                                        overflow: hidden;
+                                                                                        outline: none;">
                                                             <i class="me-2 mdi mdi-delete"></i>
                                                         </button>
                                                     </form>
-                                                </th>
-                                                <td>{{ $blog->media_type }}</td>
-                                                <td>{{ $blog->media_path }}</td>
-                                                <td>{{ $blog->description }}</td>
-                                                @if ($blog->is_publish == 1)
-                                                    <td>Yes</td>
-                                                @else
-                                                    <td>No</td>
-                                                @endif
-                                                <td>{{ $blog->year }}</td>
-                                                <td>{{ $blog->page_id }}</td>
-                                                <td>{{ $blog->created_at->format('Y-m-d') }}</td>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     @endforeach

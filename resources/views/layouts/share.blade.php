@@ -160,11 +160,11 @@
                                 href="{{ route('relationship.index') }}" aria-expanded="false"><i
                                     class="mdi mdi-face"></i><span class="hide-menu">人际关系管理</span></a>
                         </li>
-                        <li class="sidebar-item">
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('page.index') }}" aria-expanded="false"><i
                                     class="me-2 mdi mdi-calendar-text"></i><span class="hide-menu">页面管理</span></a>
-                        </li>
+                        </li> -->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('business.index') }}" aria-expanded="false"><i
@@ -180,12 +180,11 @@
                                 href="{{ route('people_history.index') }}" aria-expanded="false"><i
                                     class="mdi mdi-history"></i><span class="hide-menu">人物历史管理</span></a>
                         </li>
-                        <li class="sidebar-item">
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('blog.index') }}" aria-expanded="false"><i
                                     class="mdi mdi-receipt"></i><span class="hide-menu">彭氏来源管理</span></a>
-                        </li>
-                        
+                        </li> -->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('theme.index') }}" aria-expanded="false"><i

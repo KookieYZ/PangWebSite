@@ -35,8 +35,6 @@
                     <table class="table">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col"><b>控制选项</b>
-                                </th>
                                 <th scope="col"><b>名称</b></th>
                                 <th scope="col"><b>配偶名称</b></th>
                                 {{-- <th scope="col"><b>性别</b></th> --}}
@@ -46,30 +44,12 @@
                                 <th scope="col"><b>父母</b></th>
                                 <th scope="col"><b>代序</b></th>
                                 <!-- <th scope="col"><b>家庭</b></th> -->
+                                <th scope="col"><b>控制选项</b></th>
                             </tr>
                         </thead>
                         @foreach ($persons as $person)
                         <tbody class="customtable">
                             <tr>
-                                <th>
-                                    <a href="{{ route('relationship.edit', $person) }}"><i class="far fa-edit"
-                                            title="更改资料"></i></a>
-                                    <a href="{{ route('relationship.show', $person) }}"><i class="fas fa-eye"
-                                            title="查看详细资料"></i></a>
-                                    <form method="POST" action="{{ route('relationship.destroy', $person->id) }}"
-                                        accept-charset="UTF-8" style="display:inline;" title="删除资料">
-                                        {{ csrf_field() }}
-                                        @method('DELETE')
-                                        <button type="submit" style="background-color: transparent;
-                            background-repeat: no-repeat;
-                            border: none;
-                            cursor: pointer;
-                            overflow: hidden;
-                            outline: none;">
-                                            <i class="me-2 mdi mdi-delete"></i>
-                                        </button>
-                                    </form>
-                                </th>
                                 <td>{{ $person->name }}</td>
                                 <td>
                                     @if ($person->spouse_name != null)
@@ -96,6 +76,25 @@
                                 @endif
                                 <td>{{$person->era}}</td>
                                 <!-- <td>{{$person->family}}</td> -->
+                                <td>
+                                    <a href="{{ route('relationship.edit', $person) }}"><i class="far fa-edit"
+                                            title="更改资料"></i></a>
+                                    <a href="{{ route('relationship.show', $person) }}"><i class="fas fa-eye"
+                                            title="查看详细资料"></i></a>
+                                    <form method="POST" action="{{ route('relationship.destroy', $person->id) }}"
+                                        accept-charset="UTF-8" style="display:inline;" title="删除资料">
+                                        {{ csrf_field() }}
+                                        @method('DELETE')
+                                        <button type="submit" style="background-color: transparent;
+                                            background-repeat: no-repeat;
+                                            border: none;
+                                            cursor: pointer;
+                                            overflow: hidden;
+                                            outline: none;">
+                                            <i class="me-2 mdi mdi-delete"></i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         </tbody>
                         @endforeach
