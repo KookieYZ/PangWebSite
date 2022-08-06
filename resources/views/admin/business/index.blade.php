@@ -19,7 +19,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <a href="{{ route('business.create') }}"><button type="button"
-                                    class="btn btn-primary">新建</button></a>
+                                    class="btn btn-primary">添加</button></a>
                         </ol>
                     </nav>
                 </div>
@@ -35,6 +35,7 @@
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
+                                    <th scope="col"><b>状态</b></th>
                                     <th scope="col"><b>商业名称</b></th>
                                     <!-- <th scope="col"><b>概述</b></th>
                                     <th scope="col"><b>照片</b></th>
@@ -48,6 +49,7 @@
                             @foreach ($business as $item)
                                 <tbody class="customtable">
                                     <tr>
+                                        <td>{{ $item->status == 'pending' ? '待定' : '确认' }}</td>
                                         <td>{{ $item->name }}</td>
                                         <!-- <td>{{ $item->description }}</a></td> -->
                                         <!-- <td><img src="{{$item->image_path}}"></td> -->
@@ -56,12 +58,12 @@
                                         <td>{{ $item->address }}</td>
                                         <td>{{ $item->status }}</td>   
                                         <td>
-                                            
                                             <a href="{{ route('business.edit', $item) }}"><i class="far fa-edit"
                                                     title="更改商业资料"></i></a>
                                             <a href="{{ route('business.show', $item) }}"><i class="fas fa-eye"
                                                     title="查看详细资料"></i></a>
 
+                                            @if (Auth::user()->role == 'superadmin')
                                             <form method="POST" action="{{ route('business.destroy', $item->id) }}"
                                                 accept-charset="UTF-8" style="display:inline;" title="删除商业">
                                                 {{ csrf_field() }}
@@ -75,6 +77,7 @@
                                                     <i class="me-2 mdi mdi-delete"></i>
                                                 </button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 </tbody>

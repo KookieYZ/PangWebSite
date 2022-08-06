@@ -31,7 +31,7 @@ class BusinessSeeder extends Seeder
                 'category' => $jobCategory[random_int(0, 12)],
                 'background' => 'Sample background data',
                 'address' => 'No 1, Address 3. Taman bangsar',
-                'status' => true,
+                'is_publish' => true,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);

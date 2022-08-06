@@ -17,7 +17,6 @@ class JobController extends Controller
     private $ImgMng;
     private $model;
 
-
     public function __construct(ImageManager $imgObj, Job $jobObj)
     {
         $this->middleware('auth');
@@ -40,7 +39,6 @@ class JobController extends Controller
         return view('admin.job.index', compact('jobs'))->with('jobs', $jobs);
     }
 
-
     public function create()
     {
         $job = new Job();
@@ -49,11 +47,9 @@ class JobController extends Controller
         return view('admin.job.create', compact('jobCatList', 'selectedCode'));
     }
 
-
     public function store(Request $request)
     {
         $this->validator($request->all())->validate();
-
 
         date_default_timezone_set("Asia/Kuala_Lumpur");
 
@@ -85,15 +81,12 @@ class JobController extends Controller
         return view('admin.job.show', compact('job', 'jobCatName'));
     }
 
-
-
     public function edit($id)
     {
         $job = Job::find($id);
         $jobCatList = $this->model->getCatList();
         return view('admin.job.edit', compact('job', 'jobCatList'));
     }
-
 
     public function update(Request $request, $id)
     {

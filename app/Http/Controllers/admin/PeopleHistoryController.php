@@ -70,7 +70,7 @@ class PeopleHistoryController extends Controller
          $this->validator($request->all())->validate();    
          $isCreated = $this->model->create_update($request,null,$this->imgService,$this->mediaService);
          if($isCreated){
-             return redirect()->route('people_history.index')->with('success', '人物历史创建成功!');
+             return redirect()->route('people_history.index')->with('success', '事迹创建成功!');
          }
             return redirect()->route('people_history.index')->with('error', "Somethings went wrong");
     }
@@ -113,7 +113,7 @@ class PeopleHistoryController extends Controller
          $this->validator($request->all())->validate();
          $isUpdated = $this->model->create_update($request,$id,$this->imgService,$this->mediaService);
          if($isUpdated){
-             return redirect()->route('people_history.index')->with('success', '人物历史更改成功!');
+             return redirect()->route('people_history.index')->with('success', '事迹更改成功!');
          }
             return redirect()->route('people_history.index')->with('error', "Somethings went wrong");
             

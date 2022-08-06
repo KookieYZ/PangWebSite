@@ -43,8 +43,8 @@ $numofRecord = count($person);
         <label class="col-sm-3 text-end control-label col-form-label hidden"></label>
         <div class="col-md-9">
             <button type="button" id="{{$person[$i]['index']+1}}" name="cancelCurrentSpouse" class="btn btn-primary"
-                onClick="deleteCurrentSpouse(this.id)" title="取消当前配偶">{{
-                __('取消当前配偶') }}</button>
+                onClick="deleteCurrentSpouse(this.id)" title="移除配偶">{{
+                __('移除配偶') }}</button>
         </div>
     </div>
     </div>

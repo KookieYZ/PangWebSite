@@ -14,7 +14,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <a href="{{ route('relationship.create') }}"><button type="button"
-                                class="btn btn-primary">新建</button></a>
+                                class="btn btn-primary">添加</button></a>
                     </ol>
                 </nav>
             </div>
@@ -35,10 +35,12 @@
                     <table class="table">
                         <thead class="thead-light">
                             <tr>
+                                <th scope="col"><b>状态</b></th>
                                 <th scope="col"><b>名称</b></th>
                                 <th scope="col"><b>配偶名称</b></th>
                                 {{-- <th scope="col"><b>性别</b></th> --}}
                                 <th scope="col"><b>州属</b></th>
+                                <!-- <th scope="col"><b>区域</b></th> -->
                                 <th scope="col"><b>国籍</b></th>
                                 {{-- <th scope="col"><b>出生日期</b></th> --}}
                                 <th scope="col"><b>父母</b></th>
@@ -50,6 +52,7 @@
                         @foreach ($persons as $person)
                         <tbody class="customtable">
                             <tr>
+                                <td>{{ $person->status == 'pending' ? '待定' : '确认' }}</td>
                                 <td>{{ $person->name }}</td>
                                 <td>
                                     @if ($person->spouse_name != null)
@@ -66,7 +69,8 @@
                                 @else
                                 <td>女</td>
                                 @endif --}}
-                                <td>{{ $person->state }}</td>
+                                <td>{{ $negeriList[$person->negeri] }}</td>
+                                <!-- <td>{{ $person->state }}</td> -->
                                 <td>{{ $person->nationality }}</td>
                                 {{-- <td>{{ $person->dob_date }}</td> --}}
                                 @if ($person->parent_id != null)
@@ -81,6 +85,7 @@
                                             title="更改资料"></i></a>
                                     <a href="{{ route('relationship.show', $person) }}"><i class="fas fa-eye"
                                             title="查看详细资料"></i></a>
+                                    @if (Auth::user()->role == 'superadmin')
                                     <form method="POST" action="{{ route('relationship.destroy', $person->id) }}"
                                         accept-charset="UTF-8" style="display:inline;" title="删除资料">
                                         {{ csrf_field() }}
@@ -94,6 +99,7 @@
                                             <i class="me-2 mdi mdi-delete"></i>
                                         </button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                         </tbody>

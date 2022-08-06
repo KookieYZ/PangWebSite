@@ -21,7 +21,8 @@ class CreateBusinessesTable extends Migration
             $table->string('category')->nullable();
             $table->string('background')->nullable();
             $table->string('address')->nullable();
-            $table->boolean('status')->default(1);
+            $table->boolean('is_publish')->default(1);
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

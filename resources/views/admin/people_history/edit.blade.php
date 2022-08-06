@@ -3,7 +3,7 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">更改人物历史资料</h4>
+            <h4 class="page-title">更改事迹资料</h4>
         </div>
     </div>
 </div>

@@ -28,8 +28,7 @@
                                 {!! csrf_field() !!}
                                 <div class="card-body">
                                     <div class="form-group row">
-                                        <label for="name"
-                                            class="col-sm-3 text-end control-label col-form-label">名称</label>
+                                        <label for="name" class="col-sm-3 text-end control-label col-form-label">名称</label>
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
@@ -39,6 +38,21 @@
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="username" class="col-sm-3 text-end control-label col-form-label">用户名</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                                id="username" name="username"
+                                                value="{{ old('username') ? old('username') : $user->username }}"
+                                                placeholder="名称" required disabled />
+                                            @if ($errors->has('username'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('username') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
@@ -59,26 +73,33 @@
                                             @endif
                                         </div>
                                     </div>
-                                    {{-- <div class="form-group row hidden">
-                    <label
-                        for="password"
-                        class="col-sm-3 text-end control-label col-form-label"
-                        >Password</label
-                    >
-                    <div class="col-sm-9">
-                        <input
-                        type="password"
-                        class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                        id="password" name="password"
-                        placeholder="Password" required autocomplete="email"
-                        />
-                        @if ($errors->has('password'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                    </div> --}}
+                                    <div class="form-group row">
+                                        <label for="role"
+                                            class="col-sm-3 text-end control-label col-form-label">权限</label>
+                                        <div class="col-sm-9">
+                                            <input type="role"
+                                                class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}"
+                                                id="role" name="role" placeholder="电子邮件"
+                                                value="{{ $user->role == 'staff' ? '管理员' : '超管' }}" required
+                                                autocomplete="role" disabled />
+                                        </div>
+                                    </div>
+                                {{-- <div class="form-group row hidden">
+                                        <label for="password" class="col-sm-3 text-end control-label col-form-label">Password</label>
+                                        <div class="col-sm-9">
+                                            <input
+                                            type="password"
+                                            class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                            id="password" name="password"
+                                            placeholder="Password" required autocomplete="email"
+                                            />
+                                            @if ($errors->has('password'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div> --}}
                                 </div>
                                 <div class="border-top">
                                     <div class="card-body">

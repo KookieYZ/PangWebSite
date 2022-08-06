@@ -17,7 +17,7 @@ class PeopleSeeder extends Seeder
      */
     public function run()
     {
-        $state = ['柔佛', '马六甲', '吉隆坡'];
+        $state = ['johor', 'malacca', 'selangor'];
         $era = '一';
         $count = 0;
         $familyID = 1;
@@ -35,6 +35,7 @@ class PeopleSeeder extends Seeder
                     'state' => null,
                     'nationality' => '马来西亚',
                     'dob_date' => '2000-01-01',
+                    'dead_date' => null,
                     'parent_id' => $parent_id == 0 ? null : $parent_id,
                     'era' => '第'.($parent_id+1).'代',
                     'created_at' => date('Y-m-d H:i:s'),

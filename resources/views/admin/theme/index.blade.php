@@ -45,21 +45,22 @@
                                         <td>{{ $theme->key }}</td>
                                         <td>
                                             @if ($theme->id == 4)
-                                            <img src=" {{ asset($theme->value) }}" height="100" width="300"
-                                            style="border:solid">
+                                            <img src="{{ asset(file_exists($theme->value) ? $theme->value : 'assets/images/MainPageBanner.png') }}" height="100" width="300" style="border:solid">
                                             @elseif ($theme->id == 5)
-                                            <img src=" {{ asset($theme->value) }}" height="100" width="100"
-                                            style="border:solid">
+                                            <img src="{{ asset(file_exists($theme->value) ? $theme->value : 'assets/images/MainPageBackground.png') }}" height="100" width="100" style="border:solid">
                                             @else
                                             {{ $theme->value }}
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('theme.edit', $theme) }}"><i class="far fa-edit"
-                                                    title="更改资料"></i></a>
-                                            <a href="{{ route('theme.show', $theme) }}"><i class="fas fa-eye"
-                                                    title="查看资料"></i></a>
-                                            <form>
+                                            <a href="{{ route('theme.edit', $theme) }}">
+                                                <i class="far fa-edit" title="更改资料"></i>
+                                            </a>
+                                            @if (Auth::user()->role == 'superadmin')
+                                            <a href="{{ route('theme.show', $theme) }}">
+                                                <i class="fas fa-eye" title="查看资料"></i>
+                                            </a>
+                                            @endif
                                         </td>
                                     </tr>
                                 </tbody>

@@ -40,9 +40,6 @@ Route::group(['namespace' => 'user'], function () {
     Route::get('rules', function () {
         return view('user.rules');
     })->name('user.rules');
-    // Route::get('job', function () {
-    //     return view('user.job');
-    // })->name('user.job');
     Route::get('notice', function () {
         return view('user.notice');
     })->name('user.notice');
@@ -52,9 +49,6 @@ Route::group(['namespace' => 'user'], function () {
     Route::get('/', function () {
         return view('user.home');
     })->name('user.home');
-    // Route::get('business', function () {
-    //     return view('user.business');
-    // })->name('user.business');
     Route::resource('search', 'SearchController');
 
     Route::get('fetch-family-list/{id}', 'ChartController@fetchfamilylist');
@@ -92,8 +86,6 @@ Route::group(['prefix' => 'admin'], function () {
 //     Auth::routes();
 // });
 Route::get('/logout', 'Auth\LoginController@logout');
-
-Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
 
 Route::resource('search', 'User\SearchController');
 Route::resource('jobList', 'User\JobListController');

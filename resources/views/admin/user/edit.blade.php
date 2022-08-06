@@ -30,14 +30,13 @@
                                 @method('PATCH')
                                 <div class="card-body">
                                     <div class="form-group row">
-                                        <label for="name"
-                                            class="col-sm-3 text-end control-label col-form-label">名称</label>
+                                        <label for="name" class="col-sm-3 text-end control-label col-form-label">名称</label>
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                 id="name" name="name"
                                                 value="{{ old('name') ? old('name') : $user->name }}"
-                                                placeholder="Name" required />
+                                                placeholder="名称" required />
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('name') }}</strong>
@@ -46,14 +45,28 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="email"
-                                            class="col-sm-3 text-end control-label col-form-label">电子邮件</label>
+                                        <label for="username" class="col-sm-3 text-end control-label col-form-label">用户名</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                                id="username" name="username"
+                                                value="{{ old('username') ? old('username') : $user->username }}"
+                                                placeholder="用户名" required disabled />
+                                            @if ($errors->has('username'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('username') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email" class="col-sm-3 text-end control-label col-form-label">电子邮件</label>
                                         <div class="col-sm-9">
                                             <input type="email"
                                                 class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                                 id="email" name="email" placeholder="电子邮件"
                                                 value="{{ old('email') ? old('email') : $user->email }}" required
-                                                autocomplete="email" />
+                                                autocomplete="email" disabled />
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -75,6 +88,19 @@
                                                     <strong>{{ $errors->first('password') }}</strong>
                                                 </span>
                                             @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="role" class="col-sm-3 text-end control-label col-form-label">权限</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-select" aria-label="" id="role" name="role">
+                                                <option @if (old('role', $user->role) == 'staff') selected @endif value="staff">
+                                                    管理员
+                                                </option>
+                                                <!-- <option @if (old('role', $user->role) == 'superadmin') selected @endif value="superadmin">
+                                                    超管
+                                                </option> -->
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

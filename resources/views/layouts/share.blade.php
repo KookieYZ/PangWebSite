@@ -52,7 +52,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
+                    <a class="navbar-brand" href="{{ route('user.index') }}">
                         <!-- Logo icon -->
                         <b class="logo-icon ps-2">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -145,51 +145,64 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt-4">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('admin.dashboard') }}" aria-expanded="false"><i
-                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">仪表板</span></a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('user.index') }}" aria-expanded="false"><i
-                                    class="mdi mdi-account-key"></i><span class="hide-menu">管理员</span></a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('relationship.index') }}" aria-expanded="false"><i
-                                    class="mdi mdi-face"></i><span class="hide-menu">人际关系管理</span></a>
-                        </li>
                         <!-- <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('page.index') }}" aria-expanded="false"><i
-                                    class="me-2 mdi mdi-calendar-text"></i><span class="hide-menu">页面管理</span></a>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('user.index') }}" aria-expanded="false">
+                                <i class="me-2 mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu">仪表板</span>
+                            </a>
                         </li> -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('business.index') }}" aria-expanded="false"><i
-                                    class="me-2 mdi mdi-home-modern"></i><span class="hide-menu">商业管理</span></a>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('relationship.index') }}" aria-expanded="false">
+                                <i class="me-2 mdi mdi-face"></i>
+                                <span class="hide-menu">人际关系管理</span>
+                            </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('job.index') }}" aria-expanded="false"><i
-                                    class="me-2 mdi mdi-tie"></i><span class="hide-menu">工作管理</span></a>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('business.index') }}" aria-expanded="false">
+                                <i class="me-2 mdi mdi-home-modern"></i>
+                                <span class="hide-menu">商业管理</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('job.index') }}" aria-expanded="false">
+                                <i class="me-2 mdi mdi-tie"></i>
+                                <span class="hide-menu">工作管理</span>
+                            </a>
                         </li>
                           <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('people_history.index') }}" aria-expanded="false"><i
-                                    class="mdi mdi-history"></i><span class="hide-menu">人物历史管理</span></a>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('people_history.index') }}" aria-expanded="false">
+                                <i class="me-2 mdi mdi-history"></i>
+                                <span class="hide-menu">事迹管理</span>
+                            </a>
                         </li>
-                        <!-- <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('blog.index') }}" aria-expanded="false"><i
-                                    class="mdi mdi-receipt"></i><span class="hide-menu">彭氏来源管理</span></a>
-                        </li> -->
+                        @if (auth()->user()->role == 'superadmin')
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('theme.index') }}" aria-expanded="false"><i
-                                    class="mdi mdi-border-inside"></i><span class="hide-menu">主题设置管理</span></a>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('theme.index') }}" aria-expanded="false">
+                                <i class="me-2 mdi mdi-border-inside"></i>
+                                <span class="hide-menu">主题设置管理</span>
+                            </a>
                         </li>
+                        @endif
+                        @if (auth()->user()->role == 'superadmin')
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('user.index') }}" aria-expanded="false">
+                                <i class="me-2 mdi mdi-account-key"></i>
+                                <span class="hide-menu">管理员</span>
+                            </a>
+                        </li>
+                        @endif
+                        <!-- <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('page.index') }}" aria-expanded="false">
+                                <i class="me-2 mdi mdi-calendar-text"></i>
+                                <span class="hide-menu">页面管理</span>
+                            </a>
+                        </li> -->
+                        <!-- <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('blog.index') }}" aria-expanded="false">
+                                <i class="me-2 mdi mdi-receipt"></i>
+                                <span class="hide-menu">彭氏来源管理</span>
+                            </a>
+                        </li> -->
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

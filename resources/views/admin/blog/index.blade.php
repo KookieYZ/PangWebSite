@@ -20,7 +20,7 @@
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <a href="{{ route('blog.create') }}"><button type="button" class="btn btn-primary">新建</button></a>
+                                    <a href="{{ route('blog.create') }}"><button type="button" class="btn btn-primary">添加</button></a>
                                 </ol>
                             </nav>
                         </div>
@@ -71,6 +71,7 @@
                                                     <a href="{{ route('blog.show', $blog) }}"><i
                                                             class="fas fa-eye" title="查看详细资料"></i></a>
 
+                                                    @if (Auth::user()->role == 'superadmin')
                                                     <form method="POST"
                                                         action="{{ route('blog.destroy', $blog->id) }}"
                                                         accept-charset="UTF-8" style="display:inline;"
@@ -86,6 +87,7 @@
                                                             <i class="me-2 mdi mdi-delete"></i>
                                                         </button>
                                                     </form>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>

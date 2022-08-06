@@ -23,8 +23,10 @@ class AdminController extends Controller
     {
         return Validator::make($data, [
             'name'        => 'required|string|max:50',
-            'email'       => 'required|email',
+            'username'    => 'required|string|max:50|unique:users',
+            'email'       => 'required|email|unique:users',
             'password'    => 'required|string',
+            'role'        => 'required|string',
         ]);
     }
 
@@ -44,8 +46,10 @@ class AdminController extends Controller
 
         $admin = new User;
         $admin->name = $request['name'];
+        $admin->username = $request['username'];
         $admin->email = $request['email'];
         $admin->password =  Hash::make($request['password']);
+        $admin->role = $request['role'];
         $admin->created_at = now();
         $admin->updated_at = now();
 
@@ -64,23 +68,25 @@ class AdminController extends Controller
         return view('admin.user.edit', compact('user'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id) {       
         $this->validate($request, [
             'name'        => 'string|max:50',
-            'email'       => 'email',
+            // 'username'    => 'required|string|max:50|unique:users',
+            // 'email'       => 'required|email|unique:users',
             'password'    => 'string',
+            'role'        => 'string',
         ]);
 
         date_default_timezone_set("Asia/Kuala_Lumpur");
 
         $user = User::find($id);
         $user->name = $request->get('name');
-        $user->email = $request->get('email');
+        // $user->username = $request->get('username');
+        // $user->email = $request->get('email');
         $user->password = Hash::make($request['password']);
-        // $user->created_at = now();
+        $user->role = $request->get('role');
         $user->updated_at = now();
         $user->save();
-
 
         return redirect()->route('user.index')->with('success', "$user->name 管理员更改成功!");
     }

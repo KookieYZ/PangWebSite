@@ -6,7 +6,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">新建管理员</h4>
+                        <h4 class="page-title">添加管理员</h4>
                     </div>
                 </div>
             </div>
@@ -29,8 +29,7 @@
                                 {!! csrf_field() !!}
                                 <div class="card-body">
                                     <div class="form-group row">
-                                        <label for="name"
-                                            class="col-sm-3 text-end control-label col-form-label">名称</label>
+                                        <label for="name" class="col-sm-3 text-end control-label col-form-label">名称</label>
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
@@ -39,6 +38,20 @@
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="username" class="col-sm-3 text-end control-label col-form-label">用户名</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                                id="username" name="username" value="{{ old('username') }}" placeholder="用户名"
+                                                required />
+                                            @if ($errors->has('username'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('username') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
@@ -71,6 +84,15 @@
                                                     <strong>{{ $errors->first('password') }}</strong>
                                                 </span>
                                             @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="role" class="col-sm-3 text-end control-label col-form-label">权限</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-select" aria-label="" id="role" name="role" required>
+                                                <option value="staff">管理员</option>
+                                                <!-- <option value="superadmin">超管</option> -->
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

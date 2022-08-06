@@ -24,7 +24,8 @@ class CreateJobsTable extends Migration
             $table->string('background')->nullable();
             $table->string('address')->nullable();
             $table->date('posted_on')->nullable();
-            $table->boolean('status')->default(1);
+            $table->boolean('is_publish')->default(1);
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

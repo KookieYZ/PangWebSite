@@ -18,7 +18,7 @@
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <a href="{{ route('job.create') }}"><button type="button" class="btn btn-primary">新建</button></a>
+                            <a href="{{ route('job.create') }}"><button type="button" class="btn btn-primary">添加</button></a>
                         </ol>
                     </nav>
                 </div>
@@ -34,6 +34,7 @@
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
+                                    <th scope="col"><b>状态</b></th>
                                     <th scope="col"><b>工作名称</b></th>
                                     <!-- <th scope="col"><b>概述</b></th>
                                     <th scope="col"><b>注意事项</b></th>
@@ -42,14 +43,15 @@
                                     <th scope="col"><b>薪水</b></th>
                                     <!-- <th scope="col"><b>公司背景</b></th> -->
                                     <th scope="col"><b>公司地址</b></th>
+                                    <th scope="col"><b>公开</b></th>
                                     <th scope="col"><b>发表于</b></th>
-                                    <!-- <th scope="col"><b>状态</b></th> -->
                                     <th scope="col"><b>控制选项</b></th>
                                 </tr>
                             </thead>
                             @foreach ($jobs as $job)
                                 <tbody class="customtable">
                                     <tr>
+                                        <td>{{ $job->status == 'pending' ? '待定' : '确认' }}</td>
                                         <td>{{ $job->name }}</td>
                                         <!-- <td>{{ $job->description }}</a></td> -->
                                         <!-- <td>{{ $job->note }}</td> -->
@@ -58,14 +60,15 @@
                                         <td>{{ $job->salary }}</td>
                                         <!-- <td>{{ $job->background }}</td> -->
                                         <td>{{ $job->address }}</td>
+                                        <td>{{ $job->is_publish == 1 ? '是' : '否' }}</td>
                                         <td>{{ $job->posted_on }}</td>
-                                        <!-- <td>{{ $job->status }}</td> -->
                                         <td>
                                             <a href="{{ route('job.edit', $job) }}"><i class="far fa-edit"
                                                     title="更改工作资料"></i></a>
                                             <a href="{{ route('job.show', $job) }}"><i class="fas fa-eye"
                                                     title="查看详细资料"></i></a>
 
+                                            @if (Auth::user()->role == 'superadmin')
                                             <form method="POST" action="{{ route('job.destroy', $job->id) }}"
                                                 accept-charset="UTF-8" style="display:inline;" title="删除工作">
                                                 {{ csrf_field() }}
@@ -79,6 +82,7 @@
                                                     <i class="me-2 mdi mdi-delete"></i>
                                                 </button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 </tbody>

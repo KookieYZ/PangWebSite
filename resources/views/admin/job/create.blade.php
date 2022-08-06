@@ -3,7 +3,7 @@
 <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">新建工作</h4>
+                <h4 class="page-title">添加工作</h4>
             </div>
         </div>
     </div>
@@ -38,7 +38,6 @@
                                     @endif
                                 </div>
                             </div>
-
                             <div class="form-group row">
                                 <label for="category" class="col-sm-3 text-end control-label col-form-label">工作种类</label>
                                 <div class="col-sm-2">
@@ -55,8 +54,6 @@
                                     @endif
                                 </div>
                             </div>
-
-                              
                             <div class="form-group row">
                                 <label for="salary" class="col-sm-3 text-end control-label col-form-label">薪水(RM)</label>
                                 <div class="col-sm-2">

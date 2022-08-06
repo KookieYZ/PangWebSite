@@ -34,7 +34,7 @@ class JobSeeder extends Seeder
                 'background' => 'Sample background data',
                 'address' => 'No 1, Address 3. Taman bangsar',
                 'posted_on' => date('Y-m-d H:i:s'),
-                'status' => true,
+                'is_publish' => true,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);

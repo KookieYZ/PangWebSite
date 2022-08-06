@@ -24,6 +24,32 @@ class People extends Model
         'family',
     ];
 
+    protected $negeriList = array(
+        'DEF'=>'--未选择--',
+        'johor' => '柔佛',
+        'kedah' => '吉打',
+        'kelatan' => '吉兰丹',
+        'malacca' => '马六甲',
+        'negeri sembilan' => '森美兰',
+        'pahang' => '彭亨',
+        'penang' => '槟城',
+        'perak' => '霹雳',
+        'perlis' => '玻璃市',
+        'selangor' => '雪兰莪',
+        'terengganu' => '登嘉楼',
+        'sabah' => '沙巴',
+        'sarawak' => '砂拉越',
+        'OTH' => '其他'
+    );
+    
+    public function getNegeriList(){
+        return $this->negeriList;
+    }
+
+    public function getFullNegeriName($negeriCode){
+        return $this->negeriList[$negeriCode];
+    }
+
     public function child()
     {
         return $this->hasMany('App\Models\People', 'parent_id');

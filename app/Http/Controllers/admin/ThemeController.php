@@ -37,7 +37,7 @@ class ThemeController extends Controller
         date_default_timezone_set("Asia/Kuala_Lumpur");
         if($id == 1 || $id == 2 || $id == 3) {
             $this->validate($request, [
-                'value'              => 'string',
+                'value' => 'string',
             ]);
 
             $theme = Variable::find($id);

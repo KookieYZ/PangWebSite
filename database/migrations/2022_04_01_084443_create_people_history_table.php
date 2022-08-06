@@ -21,6 +21,7 @@ class CreatePeopleHistoryTable extends Migration
             $table->string('image_path')->nullable();
             $table->unsignedBigInteger('people_id')->nullable();
             $table->date('incident_date');
+            $table->string('status')->default('pending');
             $table->timestamps();
             $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');
         });

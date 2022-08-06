@@ -65,8 +65,7 @@
                                                 id="value" name="value" onchange="show(this)" />
                                             <br />
                                             <br />
-                                            <img src=" {{ asset($themes->value) }}" height="130" width="350"
-                                                style="border:solid" id="display">
+                                            <img src="{{ asset(file_exists($themes->value) ? $themes->value : 'assets/images/MainPageBanner.png') }}" height="130" width="350" style="border:solid" id="display">
                                         </div>
                                         @if ($errors->has('value'))
                                             <span class="invalid-feedback" role="alert">
@@ -83,8 +82,7 @@
                                                 id="value" name="value" onchange="show(this)" />
                                             <br />
                                             <br />
-                                            <img src=" {{ asset($themes->value) }}" height="130" width="130"
-                                                style="border:solid" id="display">
+                                            <img src="{{ asset(file_exists($themes->value) ? $themes->value : 'assets/images/MainPageBackground.png') }}" height="130" width="130" style="border:solid" id="display">
                                         </div>
                                         @if ($errors->has('value'))
                                             <span class="invalid-feedback" role="alert">

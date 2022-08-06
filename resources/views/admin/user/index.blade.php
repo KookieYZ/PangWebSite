@@ -21,7 +21,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <a href="{{ route('user.create') }}"><button type="button"
-                                            class="btn btn-primary">新建</button></a>
+                                            class="btn btn-primary">添加</button></a>
                                 </ol>
                             </nav>
                         </div>
@@ -43,7 +43,9 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th scope="col"><b>名称</b></th>
+                                            <th scope="col"><b>用户名</b></th>
                                             <th scope="col"><b>电子邮件</b></th>
+                                            <th scope="col"><b>权限</b></th>
                                             <th scope="col"><b>创建时间</b></th>
                                             <th scope="col"><b>控制选项</b></th>
                                         </tr>
@@ -52,14 +54,19 @@
                                         <tbody class="customtable">
                                             <tr>
                                                 <td>{{ $admin->name }}</td>
+                                                <td>{{ $admin->username }}</td>
                                                 <td>{{ $admin->email }}</td>
+                                                <td>{{ $admin->role == 'staff' ? '管理员' : '超管' }}</td>
                                                 <td>{{ $admin->created_at->format('Y-m-d') }}</td>
                                                 <td>
+                                                    @if ($admin->role != 'superadmin')
                                                     <a href="{{ route('user.edit', $admin) }}"><i
                                                             class="far fa-edit" title="更改管理员资料"></i></a>
+                                                    @endif
                                                     <a href="{{ route('user.show', $admin) }}"><i
                                                             class="fas fa-eye" title="参考管理员资料"></i></a>
 
+                                                    @if ($admin->role != 'superadmin' && Auth::user()->role == 'superadmin')
                                                     <form method="POST"
                                                         action="{{ route('user.destroy', $admin->id) }}"
                                                         accept-charset="UTF-8" style="display:inline;"
@@ -75,6 +82,7 @@
                                                             <i class="me-2 mdi mdi-delete"></i>
                                                         </button>
                                                     </form>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>

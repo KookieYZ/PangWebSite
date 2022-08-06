@@ -16,10 +16,13 @@ use App\Services\ImageManager;
 class PersonController extends Controller
 {
     private $ImgMng;
-    public function __construct(ImageManager $imgObj)
+    private $model;
+
+    public function __construct(ImageManager $imgObj, People $peopleObj)
     {
         $this->middleware('auth');
         $this->ImgMng = $imgObj;
+        $this->model = $peopleObj;
     }
 
     protected function validator(array $data)
@@ -32,8 +35,8 @@ class PersonController extends Controller
             'gender'            => 'required|string',
             'state'             => 'string|required',
             'nationality'       => 'string|required',
-            'dob_date'          => 'required',
-            'dead_date'         => 'nullable',
+            'dob_date'          => 'date_format:"Y-m-d"|required',
+            'dead_date'         => 'date|nullable',
             'parent_id'         => 'integer|nullable',
             'era'               => 'string|required',
             'family'            => 'string|nullable'
@@ -43,19 +46,19 @@ class PersonController extends Controller
     public function index()
     {
         $persons = People::orderBy('created_at', 'DESC')->simplePaginate(10);
-        return view('admin.person.index', compact('persons'))->with('persons', $persons);
+        $negeriList = $this->model->getNegeriList();
+        return view('admin.person.index', compact('persons', 'negeriList'))->with('persons', $persons);
     }
 
     public function create()
     {
         $persons = People::orderBy('created_at', 'DESC')->get();
-
-        return view('admin.person.create', compact('persons'));
+        $negeriList = $this->model->getNegeriList();
+        return view('admin.person.create', compact('persons', 'negeriList'));
     }
 
     public function store(Request $request)
     {
-
         $this->validator($request->all())->validate();
         date_default_timezone_set("Asia/Kuala_Lumpur");
         $person = new People;
@@ -132,8 +135,9 @@ class PersonController extends Controller
         for ($i = 0; $i < count($spouseNameArr); $i++) {
             $spouseAttrList->push(['index' => $i, 'spouse_name' => $spouseNameArr[$i], 'spouse_avatar' => $spouseImgArr[$i]]);
         }
+        $negeriList = $this->model->getNegeriList();
 
-        return view('admin.person.edit', compact('person', 'persons', 'family', 'spouseAttrList'));
+        return view('admin.person.edit', compact('person', 'persons', 'family', 'spouseAttrList', 'negeriList'));
     }
 
     public function update(Request $request, $id)
@@ -144,9 +148,11 @@ class PersonController extends Controller
         $person->name = $request['name'];
         $person->avatar = $this->ImgMng->updateImage($request, $id, 'avatar', 'avatar', 'people');
         $person->gender = $request['gender'];
+        $person->negeri = $request['negeri'];
         $person->state = $request['state'];
         $person->nationality = $request['nationality'];
-        $person->dob_date = DateTime::createFromFormat('d/m/Y', $request->get('dob_date'))->format('Y-m-d');;
+        $person->dob_date = $request->dob_date;
+        $person->dead_date = $request->dead_date;
         $person->parent_id = $request->parent_id;
         $person->updated_at = now();
         $person->family = !is_null($request->parent_id) ? $person->getFamily($request->parent_id) : "F" . $request['name'];

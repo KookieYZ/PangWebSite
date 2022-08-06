@@ -6,7 +6,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">新建页面</h4>
+                <h4 class="page-title">添加页面</h4>
             </div>
         </div>
     </div>

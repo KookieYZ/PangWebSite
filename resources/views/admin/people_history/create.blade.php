@@ -3,7 +3,7 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">新建人物历史</h4>
+            <h4 class="page-title">添加事迹</h4>
         </div>
     </div>
 </div>

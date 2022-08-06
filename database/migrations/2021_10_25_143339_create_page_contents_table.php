@@ -21,6 +21,7 @@ class CreatePageContentsTable extends Migration
             $table->string('is_publish')->nullable();
             $table->integer('year');
             $table->unsignedBigInteger('page_id')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
 
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');

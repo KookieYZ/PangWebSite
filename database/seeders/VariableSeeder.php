@@ -41,17 +41,17 @@ class VariableSeeder extends Seeder
 
         DB::table('variables')->insert([
             'key' => 'facebook-link',
-            'value' => 'facebook.com/123',
+            'value' => '彭氏公会, https://www.facebook.com/friends',
         ]);
 
         DB::table('variables')->insert([
             'key' => 'messager-link',
-            'value' => 'messager.com/123',
+            'value' => '彭氏公会, messager.com/123',
         ]);
 
         DB::table('variables')->insert([
             'key' => 'whatsapp-link',
-            'value' => 'whatsapp.com/123',
+            'value' => '彭氏公会, whatsapp.com/123',
         ]);
     }
 }

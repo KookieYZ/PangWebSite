@@ -6,7 +6,7 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">新建人际关系资料</h4>
+            <h4 class="page-title">添加人际关系资料</h4>
         </div>
     </div>
 </div>
@@ -64,8 +64,7 @@
                             <div class="col-sm-9" id="dynamicAddRemove">
                                 <input type="text"
                                     class="form-control{{ $errors->has('spouse_name') ? ' is-invalid' : '' }}"
-                                    id="spouse_name" name="spouse_name[]" placeholder="配偶名称"
-                                    value="{{ old('spouse_name') }}" />
+                                    id="spouse_name" name="spouse_name[]" placeholder="配偶名称" />
                                 @if ($errors->has('spouse_name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('spouse_name') }}</strong>
@@ -100,7 +99,6 @@
                         <div id="addMoreSpouseName">
                         </div>
                         <div id="addMoreSpouseAvatar">
-
                             <div class="form-group row">
                                 <label class="col-sm-3 text-end control-label col-form-label hidden"></label>
                                 <div class="col-md-9">
@@ -108,18 +106,15 @@
                                         title="添加配偶">{{ __('添加配偶') }}</a>
                                 </div>
                             </div>
-
                             <div class="form-group row">
                                 <label class="col-sm-3 text-end control-label col-form-label hidden"></label>
                                 <div class="col-md-9">
                                     <a href="" id="cancelCurrentSpouse" name="cancelCurrentSpouse"
                                         class="link-primary disabled" style="pointer-events: none; color:grey;"
-                                        title="取消当前配偶">{{
-                                        __('取消当前配偶') }}</a>
+                                        title="移除配偶">{{
+                                        __('移除配偶') }}</a>
                                 </div>
                             </div>
-
-
                             <div class="form-group row">
                                 <label for="gender" class="col-sm-3 text-end control-label col-form-label">性别</label>
                                 <div class="col-sm-9">
@@ -130,11 +125,27 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="state" class="col-sm-3 text-end control-label col-form-label">州属</label>
+                                <label for="negeri" class="col-sm-3 text-end control-label col-form-label">州属</label>
+                                <div class="col-sm-9">
+                                    <select class="form-select" aria-label="" id="negeri" name="negeri">
+                                        @foreach ($negeriList as $key => $value)
+                                            <option value="{{$key}}" {{ $key == old('negeri') ? 'selected' : ''}}>{{$value}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('negeri'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('negeri') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="state" class="col-sm-3 text-end control-label col-form-label">区域</label>
                                 <div class="col-sm-9">
                                     <input type="text"
                                         class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}" id="state"
-                                        name="state" value="{{ old('state') }}" placeholder="州属" required />
+                                        name="state" value="{{ old('state') }}" placeholder="区域" required />
                                     @if ($errors->has('state'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('state') }}</strong>
@@ -177,8 +188,7 @@
                                 <div class="col-sm-2">
                                     <input type="date"
                                         class="form-control date-inputmask{{ $errors->has('dead_date') ? ' is-invalid' : '' }}"
-                                        id="dead_date" name="dead_date" value="{{ old('dead_date') }}" placeholder="往生日期"
-                                        required />
+                                        id="dead_date" name="dead_date" value="{{ old('dead_date') }}" placeholder="往生日期" />
                                     @if ($errors->has('dead_date'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('dead_date') }}</strong>
