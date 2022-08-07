@@ -213,14 +213,31 @@
                                 @endif
                             </div>
                             <div class="form-group row">
-                                <label for="era" class="col-sm-3 text-end control-label col-form-label">辈序</label>
+                                <label for="era" class="col-sm-3 text-end control-label col-form-label">代序</label>
+                                <div class="col-sm-9">
+                                    <select class="form-select" aria-label="" id="era" name="era" required>
+                                        <option value="第一代">第一代</option>
+                                        <option value="第二代">第二代</option>
+                                        <option value="第三代">第三代</option>
+                                        <option value="第四代">第四代</option>
+                                        <option value="第五代">第五代</option>
+                                        <option value="第六代">第六代</option>
+                                        <option value="第七代">第七代</option>
+                                        <option value="第八代">第八代</option>
+                                        <option value="第九代">第九代</option>
+                                        <option value="第十代">第十代</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="seniority" class="col-sm-3 text-end control-label col-form-label">辈分</label>
                                 <div class="col-sm-9">
                                     <input type="text"
-                                        class="form-control{{ $errors->has('era') ? ' is-invalid' : '' }}" id="era"
-                                        name="era" value="{{ old('era') }}" placeholder="辈序" required />
-                                    @if ($errors->has('era'))
+                                        class="form-control{{ $errors->has('seniority') ? ' is-invalid' : '' }}" id="seniority"
+                                        name="seniority" value="{{ old('seniority') }}" placeholder="辈分" required />
+                                    @if ($errors->has('seniority'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('era') }}</strong>
+                                        <strong>{{ $errors->first('seniority') }}</strong>
                                     </span>
                                     @endif
                                 </div>

@@ -25,6 +25,9 @@ class CreatePeopleTable extends Migration
             $table->string('nationality');
             $table->date('dob_date');
             $table->date('dead_date')->nullable();
+            $table->string('era');
+            $table->string('seniority');
+            $table->string('family')->nullable();
             $table->string('status')->default('pending');
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();

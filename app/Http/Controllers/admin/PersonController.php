@@ -39,6 +39,7 @@ class PersonController extends Controller
             'dead_date'         => 'date|nullable',
             'parent_id'         => 'integer|nullable',
             'era'               => 'string|required',
+            'seniority'         => 'string|required',
             'family'            => 'string|nullable'
         ]);
     }
@@ -76,6 +77,7 @@ class PersonController extends Controller
         $person->created_at = now();
         $person->updated_at = now();
         $person->era = $request['era'];
+        $person->seniority = $request['seniority'];
         $person->family = !is_null($request->parent_id) ? $person->getFamily($request->parent_id) : "F" . $request['name'];
         $currentTime = time(); // ensure  time wont affect by code performance.
 
@@ -155,6 +157,8 @@ class PersonController extends Controller
         $person->dead_date = $request->dead_date;
         $person->parent_id = $request->parent_id;
         $person->updated_at = now();
+        $person->era = $request['era'];
+        $person->seniority = $request['seniority'];
         $person->family = !is_null($request->parent_id) ? $person->getFamily($request->parent_id) : "F" . $request['name'];
         $currentTime = time(); // ensure  time wont affect by code performance.
 

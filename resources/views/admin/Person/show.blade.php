@@ -167,11 +167,11 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="era" class="col-sm-3 text-end control-label col-form-label">辈序</label>
+                            <label for="era" class="col-sm-3 text-end control-label col-form-label">代序</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control{{ $errors->has('era') ? ' is-invalid' : '' }}"
                                     id="era" name="era" value="{{ old('era') ? old('era') : $person->era }}"
-                                    placeholder="辈序" required disabled />
+                                    placeholder="代序" required disabled />
                                 @if ($errors->has('era'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('era') }}</strong>
@@ -179,7 +179,19 @@
                                 @endif
                             </div>
                         </div>
-
+                        <div class="form-group row">
+                            <label for="seniority" class="col-sm-3 text-end control-label col-form-label">辈分</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control{{ $errors->has('seniority') ? ' is-invalid' : '' }}"
+                                    id="seniority" name="seniority" value="{{ old('seniority') ? old('seniority') : $person->seniority }}"
+                                    placeholder="辈分" required disabled />
+                                @if ($errors->has('seniority'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('seniority') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
                         {{-- <div class="form-group row">
                             <label for="gender" class="col-sm-3 text-end control-label col-form-label">家庭</label>
                             <div class="col-sm-9">

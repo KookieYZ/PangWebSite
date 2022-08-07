@@ -18,6 +18,8 @@ class PeopleSeeder extends Seeder
     public function run()
     {
         $state = ['johor', 'malacca', 'selangor'];
+        $number = ['一', '二', '三'];
+        $seniority = ['康', '依', '序'];
         $era = '一';
         $count = 0;
         $familyID = 1;
@@ -37,10 +39,11 @@ class PeopleSeeder extends Seeder
                     'dob_date' => '2000-01-01',
                     'dead_date' => null,
                     'parent_id' => $parent_id == 0 ? null : $parent_id,
-                    'era' => '第'.($parent_id+1).'代',
+                    'era' => '第'.$number[$parent_id].'代',
+                    'seniority' => $seniority[$parent_id],
+                    'family' => '彭某1的家族',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
-                    'family' => '彭某1的家族'
                 ]);
             }
         }
@@ -62,10 +65,11 @@ class PeopleSeeder extends Seeder
                     'dob_date' => '2000-01-01',
                     'dead_date' => null,
                     'parent_id' => $parent_id == 0 ? null : $parent_id + $familyID - 1,
-                    'era' => '第'.($parent_id+1).'代',
+                    'era' => '第'.$number[$parent_id].'代',
+                    'seniority' => $seniority[$parent_id],
+                    'family' => '彭某10的家族',
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
-                    'family' => '彭某10的家族'
                 ]);
             }
         }
