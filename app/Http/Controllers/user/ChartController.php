@@ -44,7 +44,7 @@ class ChartController extends Controller
             $family->parent_id = !is_null($family->parent_id) ? $this->model->returnParentName($family->parent_id) : null; // store all parent Name to parent ID filed
             $family->gender = "1" ? "男" : "女";
             $spouse_avatar = explode('|', $family->spouse_avatar);
-            $family->spouse_avatar = $spouse_avatar[0]; // only get <f></f>irst wife avatar
+            $family->spouse_avatar = $spouse_avatar[0]; // only get First wife avatar
         }
         return $familylist;
     }
