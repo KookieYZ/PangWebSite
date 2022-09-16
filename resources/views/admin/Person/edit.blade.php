@@ -163,6 +163,26 @@
                             <div class="form-group row">
                                 <label for="parent_id" class="col-sm-3 text-end control-label col-form-label">父母</label>
                                 <div class="col-sm-9">
+                                    <div class="dropdown">
+                                        <input class="form-control dropdown-toggle" id="parent_id" name="parent_id" type="text" placeholder="Search.." data-bs-toggle="dropdown">
+                                        <ul class="dropdown-menu">
+                                            @foreach ($persons as $per)
+                                            <li onclick="picked('{{ $per->name }}')">
+                                                {{ $per->id }} - {{ $per->name }}
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @if ($errors->has('parent_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('parent_id') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <!-- <div class="form-group row">
+                                <label for="parent_id" class="col-sm-3 text-end control-label col-form-label">父母</label>
+                                <div class="col-sm-9">
                                     <select class="form-select" aria-label="" id="parent_id" name="parent_id">
                                         <option value="">---未选择---</option>
                                         @if ($person->parent_id)
@@ -174,7 +194,6 @@
                                         <option value="{{ $per->id }}">{{ $per->id }} -
                                             {{ $per->name }}</option>
                                         @endforeach
-
                                     </select>
                                     @if ($errors->has('parent_id'))
                                     <span class="invalid-feedback" role="alert">
@@ -182,42 +201,19 @@
                                     </span>
                                     @endif
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group row">
-                                <label for="era" class="col-sm-3 text-end control-label col-form-label">代序</label>
+                                <label for="era" class="col-sm-3 text-end control-label col-form-label">渡马代序</label>
                                 <div class="col-sm-9">
-                                    <select class="form-select" aria-label="" id="era" name="era">
-                                        <option @if (old('era', $person->era) == '第一代') selected @endif value="第一代">
-                                            第一代
-                                        </option>
-                                        <option @if (old('era', $person->era) == '第二代') selected @endif value="第二代">
-                                            第二代
-                                        </option>
-                                        <option @if (old('era', $person->era) == '第三代') selected @endif value="第三代">
-                                            第三代
-                                        </option>
-                                        <option @if (old('era', $person->era) == '第四代') selected @endif value="第四代">
-                                            第四代
-                                        </option>
-                                        <option @if (old('era', $person->era) == '第五代') selected @endif value="第五代">
-                                            第五代
-                                        </option>
-                                        <option @if (old('era', $person->era) == '第六代') selected @endif value="第六代">
-                                            第六代
-                                        </option>
-                                        <option @if (old('era', $person->era) == '第七代') selected @endif value="第七代">
-                                            第七代
-                                        </option>
-                                        <option @if (old('era', $person->era) == '第八代') selected @endif value="第八代">
-                                            第八代
-                                        </option>
-                                        <option @if (old('era', $person->era) == '第九代') selected @endif value="第九代">
-                                            第九代
-                                        </option>
-                                        <option @if (old('era', $person->era) == '第十代') selected @endif value="第十代">
-                                            第十代
-                                        </option>
-                                    </select>
+                                    <input type="text"
+                                        class="form-control{{ $errors->has('era') ? ' is-invalid' : '' }}" id="era"
+                                        name="era" value="{{ old('era') ? old('era') : $person->era }}" placeholder="渡马代序"
+                                        required />
+                                    @if ($errors->has('era'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('era') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -275,7 +271,33 @@
 <!-- ============================================================== -->
 <!-- End Right sidebar -->
 <!-- ============================================================== -->
-</div>
+<style>
+    .dropdown-menu {
+        max-height: 200px;
+        overflow: auto;
+    }
+    .dropdown-menu li {
+        padding: 8px;
+    }
+    .dropdown-menu li:hover {
+        background: grey;
+    }
+</style>
+
+<script>
+$(document).ready(function(){
+  $("#parent_id").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".dropdown-menu li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+function picked(text) {
+  document.getElementById("parent_id").value = text;
+} 
+</script>
 
 
 @endsection

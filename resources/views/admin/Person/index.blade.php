@@ -44,7 +44,7 @@
                                 <th scope="col"><b>国籍</b></th>
                                 {{-- <th scope="col"><b>出生日期</b></th> --}}
                                 <th scope="col"><b>父母</b></th>
-                                <th scope="col"><b>代序</b></th>
+                                <th scope="col"><b>渡马代序</b></th>
                                 <th scope="col"><b>辈分</b></th>
                                 <!-- <th scope="col"><b>家庭</b></th> -->
                                 <th scope="col"><b>控制选项</b></th>

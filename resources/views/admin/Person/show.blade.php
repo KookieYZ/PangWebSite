@@ -167,11 +167,11 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="era" class="col-sm-3 text-end control-label col-form-label">代序</label>
+                            <label for="era" class="col-sm-3 text-end control-label col-form-label">渡马代序</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control{{ $errors->has('era') ? ' is-invalid' : '' }}"
                                     id="era" name="era" value="{{ old('era') ? old('era') : $person->era }}"
-                                    placeholder="代序" required disabled />
+                                    placeholder="渡马代序" required disabled />
                                 @if ($errors->has('era'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('era') }}</strong>

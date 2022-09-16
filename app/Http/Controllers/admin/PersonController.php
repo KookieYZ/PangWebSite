@@ -155,7 +155,7 @@ class PersonController extends Controller
         $person->nationality = $request['nationality'];
         $person->dob_date = $request->dob_date;
         $person->dead_date = $request->dead_date;
-        $person->parent_id = $request->parent_id;
+        $person->parent_id = Person::where($request->parent_id);
         $person->updated_at = now();
         $person->era = $request['era'];
         $person->seniority = $request['seniority'];

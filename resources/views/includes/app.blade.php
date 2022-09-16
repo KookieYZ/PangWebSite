@@ -30,7 +30,7 @@
     @yield('css')
 </head>
 
-<body>
+<body class="d-flex flex-column justify-content-between min-vh-100">
     @extends('includes.header')
 
     @yield('content')

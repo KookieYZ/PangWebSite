@@ -1,28 +1,18 @@
 @inject('theme', 'App\Http\Controllers\User\ThemeController')
 <footer id="contact" class="">
     <div class="container-fluid" style="background-color:{{ $theme->SecondColor()->value }}">
-        <div class="row m-0">
-            <div class="col-md-6 col-md-offset-2 col-sm-offset-2 col-xl-4 col-12 py-3">
-                <!-- <div class="col-sm-12 col-xs-12 pt-2 pb-2">
-                    <a class="text-white btn_hover" href="{{ route('search.index') }}" >        
-                        <button class="btn text-white btn_hover" type="button" style="background:none; border-radius: 0px; border:none; display:block;">
-                            <i class="fa fa-search btn_hover" style="background:none; border-radius: 0px; border:none; font-size:20px;">搜索</i>
-                        </button>
-                    </a> 
-                </div> -->
-                @inject('theme', 'App\Http\Controllers\User\ThemeController')
-                <div class="col-sm-12 col-xs-12 text-left p-0">
-                    <img class="img-fluid" src="{{ asset('assets/images/Facebook.png') }}">
-                    <a class="text-white" href="{{ $theme->facebook()['link'] }}">{{ $theme->facebook()['label'] }}</a>
-                </div>
-                <div class="col-sm-12 col-xs-12 text-left p-0">
-                    <img class="img-fluid" src="{{ asset('assets/images/Message.png') }}">
-                    <a class="text-white" href="{{ $theme->message()['link'] }}">{{ $theme->message()['label'] }}</a>
-                </div>
-                <div class="col-sm-12 col-xs-12 text-left p-0 pb-2">
-                    <img class="img-fluid" src="{{ asset('assets/images/Whatapps.png') }}">
-                    <a class="text-white" href="{{ $theme->whatapps()['link'] }}">{{ $theme->whatapps()['label'] }}</a>
-                </div>
+        <div class="d-flex flex-row justify-content-center p-3" style="gap: 100px; font-size: 32">
+            <div>
+                <img class="img-fluid" src="{{ asset('assets/images/Facebook.png') }}" width="48">
+                <a class="text-white" href="{{ $theme->facebook()['link'] }}">{{ $theme->facebook()['label'] }}</a>
+            </div>
+            <div>
+                <img class="img-fluid" src="{{ asset('assets/images/Whatapps.png') }}" width="48">
+                <a class="text-white" href="{{ $theme->facebook()['link'] }}">{{ $theme->facebook()['label'] }}</a>
+            </div>
+            <div>
+                <img class="img-fluid" src="{{ asset('assets/images/Email.png') }}" width="48">
+                <a class="text-white" href="{{ $theme->facebook()['link'] }}">{{ $theme->facebook()['label'] }}</a>
             </div>
         </div>
     </div>

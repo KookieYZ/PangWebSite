@@ -21,45 +21,37 @@
 </section> -->
 @inject('theme', 'App\Http\Controllers\User\ThemeController')
 <section class="content pt-5">
-    <div class="container mt-3 mb-3 p-2 d-flex">
-        <div class="row d-flex justify-content-start">
+    <div class="container my-3 p-2">
+        <div class="d-flex flex-wrap">
             @foreach($search_persons as $search_person)
-            <div class="col-xl-3 col-md-4 col-12 p-2">
-                <a href="/chart/{{$search_person->id}}" class="text-decoration-none">
-                    <div class="card p-3 text-white" style="background-color:  {{ $theme->secondColor()->value }};">
-                        <div class="image d-flex flex-column justify-content-center align-items-center"> <img
-                                src="{{ asset('image/avatar/'.$search_person->avatar) }}" height="100" width="100" />
-                            <div class="container bg-white text-dark mt-2" style="border-radius: 20px">
-                                <div class="row d-flex justify-content-center p-2">
-                                    <div>{{ $search_person->name }}</div>
-                                </div>
+                <div class="col-xl-3 col-md-4 col-12 p-2">
+                    <a href="/chart/{{$search_person->id}}" class="text-decoration-none">
+                        <div class="card d-flex flex-column gap-2 p-3 text-white" style="background-color:  {{ $theme->secondColor()->value }};">
+                            <div class="d-flex flex-row justify-content-center">
+                                <img src="{{ asset('image/avatar/'.$search_person->avatar) }}" height="100" width="100" />
                             </div>
-                        </div>
-                        <div class="container bg-white text-dark mt-2">
-                            <div class="row text-justify p-2">
+                            <div class="bg-white text-dark py-2 px-3" style="border-radius: 20px">
+                                <span>{{ $search_person->name }}</span>
+                            </div>
+                            <div class="d-flex flex-column gap-2 bg-white text-dark py-2 px-3 mt-2">
                                 <div>
-                                    @if($search_person->gender == 1)
-                                    <b>性别 :</b> 男
+                                    <b>性别 :</b> {{ $search_person->gender == 1 ? '男' : '女'}}
                                 </div>
-                                @else
-                                <b>性别 :</b> 女
+                                <div>
+                                    <b>渡马代序 :</b> {{ $search_person->era }}
+                                </div>
+                                <div>
+                                    <b>州属 :</b> {{ $search_person->state }}
+                                </div>
+                                <div>
+                                    <b>年份 :</b> {{ $search_person->dob_date }} ～ {{ $search_person->dead_date }}
+                                </div>
                             </div>
-                            @endif
                         </div>
-                        <div class="row text-justify p-2">
-                            <div><b>代序 :</b> {{ $search_person->era }}</div>
-                        </div>
-                        <div class="row text-justify p-2">
-                            <div><b>州属 :</b> {{ $search_person->state }}</div>
-                        </div>
-                        <div class="row text-justify p-2">
-                            <div><b>年份 :</b> {{ $search_person->dob_date }} ～ {{ $search_person->dead_date }}</div>
-                        </div>
-                    </div>
-            </div>
-            </a>
+                    </a>
+                </div>
+            @endforeach
         </div>
-        @endforeach
         {{-- <div>{{ $search_persons->render() }}</div> --}}
     </div>
     </div>
