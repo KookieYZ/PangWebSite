@@ -34,7 +34,12 @@ class People_History extends Model
       $people_history = $this->find($id);
       $people_history->updated_at = now();
       $people_history->image_path = $imgService->updateImage($request, $id, 'image_path', 'people_history', 'people_history');
-      $people_history->media_path = $mediaService->updateVideo($request, $id, 'people_history', 'people_history');
+     
+      if ($request->isDeletePreviousVideo && $request->isDeletePreviousVideo == 'true') {
+        $people_history->media_path = null;
+      } else {
+        $people_history->media_path = $mediaService->updateVideo($request, $id, 'people_history', 'people_history');
+      }
       return $this->toDTO($people_history, $request)->save();
     }
     //Create

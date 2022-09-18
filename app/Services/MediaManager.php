@@ -31,8 +31,5 @@ class MediaManager
             $filename = $this->saveToFolder($request,$folder);
             return $filename;     
         }
-        else{
-            return "video.mp4";
-        }
     }
 }
