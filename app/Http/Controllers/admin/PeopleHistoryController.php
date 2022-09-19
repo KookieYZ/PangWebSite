@@ -21,9 +21,10 @@ class PeopleHistoryController extends Controller
     public $imgService;
     public $mediaService;
 
-    public function __construct(People_History $obj, ImageManager $imgObj, MediaManager $medObj) {
+    public function __construct(People_History $obj, ImageManager $imgObj, MediaManager $medObj)
+    {
         $this->middleware('auth');
-        $this->model = $obj;  
+        $this->model = $obj;
         $this->imgService = $imgObj;
         $this->mediaService = $medObj;
     }
@@ -31,20 +32,20 @@ class PeopleHistoryController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'history_name'=> 'required',
-            'image_path'=>'mimes:jpeg,jpg,png,gif|max:10000',
+            'history_name' => 'required',
+            'image_path' => 'mimes:jpeg,jpg,png,gif|max:10000',
             'incident_date' => 'required',
-            'people_id' =>'required'
+            'incident_person' => 'required'
         ]);
     }
     public function index()
     {
         $people_history = $this->model::orderBy('created_at', 'DESC')->simplePaginate(10);
-        foreach($people_history as $ppl){    
+        foreach ($people_history as $ppl) {
             $currentPerson = People::find($ppl->people_id);
             $ppl->people_id = $currentPerson->name;
         }
-        return view('admin.people_history.index', compact('people_history'))->with('people_history',$people_history);  
+        return view('admin.people_history.index', compact('people_history'))->with('people_history', $people_history);
     }
 
     /**
@@ -54,9 +55,9 @@ class PeopleHistoryController extends Controller
      */
     public function create()
     {
-        $pplNameArr = People::select('name','id')->get();
+        $pplNameArr = People::select('name', 'id')->get();
         $selectedPerson = null;
-        return view('admin.people_history.create',compact('pplNameArr','selectedPerson'));
+        return view('admin.people_history.create', compact('pplNameArr', 'selectedPerson'));
     }
 
     /**
@@ -67,12 +68,13 @@ class PeopleHistoryController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validator($request->all())->validate();    
-         $isCreated = $this->model->create_update($request,null,$this->imgService,$this->mediaService);
-         if($isCreated){
-             return redirect()->route('people_history.index')->with('success', '事迹创建成功!');
-         }
-            return redirect()->route('people_history.index')->with('error', "Somethings went wrong");
+        $this->validator($request->all())->validate();
+        $request->people_id = People::where('name', $request->incident_person)->value('id');
+        $isCreated = $this->model->create_update($request, null, $this->imgService, $this->mediaService);
+        if ($isCreated) {
+            return redirect()->route('people_history.index')->with('success', '事迹创建成功!');
+        }
+        return redirect()->route('people_history.index')->with('error', "Somethings went wrong");
     }
 
     /**
@@ -84,8 +86,8 @@ class PeopleHistoryController extends Controller
     public function show($id)
     {
         $people_history = People_History::find($id);
-        $pplNameArr = People::select('name','id')->get();
-        return view('admin.people_history.show', compact('people_history','pplNameArr'));
+        $pplNameArr = People::select('name', 'id')->get();
+        return view('admin.people_history.show', compact('people_history', 'pplNameArr'));
     }
 
     /**
@@ -97,8 +99,13 @@ class PeopleHistoryController extends Controller
     public function edit($id)
     {
         $people_history = People_History::find($id);
-        $pplNameArr = People::select('name','id')->get();
-        return view('admin.people_history.edit', compact('people_history','pplNameArr'));
+        $pplNameArr = People::select('name', 'id')->get();
+        foreach ($pplNameArr as $ppl) {
+            if ($ppl->id == $people_history->people_id) {
+                $incident_person_name = $ppl->name;
+            }
+        }
+        return view('admin.people_history.edit', compact('people_history', 'pplNameArr', 'incident_person_name'));
     }
 
     /**
@@ -110,13 +117,14 @@ class PeopleHistoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $this->validator($request->all())->validate();
-         $isUpdated = $this->model->create_update($request,$id,$this->imgService,$this->mediaService);
-         if($isUpdated){
-             return redirect()->route('people_history.index')->with('success', '事迹更改成功!');
-         }
-            return redirect()->route('people_history.index')->with('error', "Somethings went wrong");
-            
+
+        $this->validator($request->all())->validate();
+        $request->people_id = People::where('name', $request->incident_person)->value('id');
+        $isUpdated = $this->model->create_update($request, $id, $this->imgService, $this->mediaService);
+        if ($isUpdated) {
+            return redirect()->route('people_history.index')->with('success', '事迹更改成功!');
+        }
+        return redirect()->route('people_history.index')->with('error', "Somethings went wrong");
     }
 
     /**
@@ -127,11 +135,11 @@ class PeopleHistoryController extends Controller
      */
     public function destroy($id)
     {
-         $isDeleted = $this->model->deleteRecord($id);
-         $people_history_name = $this->model->history_name;
-          if($isDeleted){
-              return redirect()->route('people_history.index')->with('success', "$people_history_name 资料删除成功!");
-         }
-              return redirect()->route('people_history.index')->with('error', "Somethings went wrong");    
+        $isDeleted = $this->model->deleteRecord($id);
+        $people_history_name = $this->model->history_name;
+        if ($isDeleted) {
+            return redirect()->route('people_history.index')->with('success', "$people_history_name 资料删除成功!");
+        }
+        return redirect()->route('people_history.index')->with('error', "Somethings went wrong");
     }
 }

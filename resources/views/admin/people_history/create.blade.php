@@ -116,13 +116,20 @@
                                 <label for="people_id"
                                     class="col-sm-3 text-end control-label col-form-label">事件人物</label>
                                 <div class="col-sm-2">
-                                    <select class="form-select" aria-label="" id="people_id" required name="people_id">
+                                     <input list="incident_person" type="text" name="incident_person" class="form-control" >
+                                    <datalist id="incident_person" class="dropdown-menu">
+                                        @foreach ($pplNameArr as $ppl)
+                                             <option value="{{ $ppl->name }}"></option>
+                                        @endforeach
+                                    </datalist>
+
+                                    {{-- <select class="form-select" aria-label="" id="people_id" required name="people_id">
                                         <option value="" selected>---未选择---</option>
                                         @foreach ($pplNameArr as $ppl)
                                         <option value="{{ $ppl->id}}" {{($ppl->id == $selectedPerson) ? 'selected' :
                                             ''}}>{{ $ppl->name }}</option>
                                         @endforeach
-                                    </select>
+                                    </select> --}}
                                     @if ($errors->has('people_id'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('people_id') }}</strong>
