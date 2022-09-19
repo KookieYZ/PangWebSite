@@ -31,7 +31,7 @@ function fetchFamiliyList(id) {
             } else {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
-            console.warn(msg);
+            console.log(msg);
         }
     });
 }

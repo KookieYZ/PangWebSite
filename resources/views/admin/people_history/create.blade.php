@@ -168,15 +168,15 @@ image_path.onchange = evt => {
   }
 }
 
-incident_date.onclick = evt => {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
+// incident_date.onclick = evt => {
+//         var today = new Date();
+//         var dd = String(today.getDate()).padStart(2, '0');
+//         var mm = String(today.getMonth() + 1).padStart(2, '0');
+//         var yyyy = today.getFullYear();
 
-        today = yyyy + '-' + mm + '-' + dd;
-        $('#incident_date').attr('min',today);
-}   
+//         today = yyyy + '-' + mm + '-' + dd;
+//         $('#incident_date').attr('min',today);
+// }   
 
 
 $(document).on("change", "#media_path", function(evt) { // Video Preview
