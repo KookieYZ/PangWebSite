@@ -21,6 +21,9 @@ class ImageManager
 
     public function updateImage($request, $id, $attributes, $folder, $table_name)
     {
+        if(!is_int($id)){ //To Int If the Var is String
+            $id = (int)$id;       
+        }      
         if ($id && $request->hasFile($attributes)) {
             $filename = $this->saveToFolder($request, $attributes, $folder);
             return $filename;

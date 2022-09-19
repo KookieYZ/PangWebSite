@@ -128,8 +128,10 @@ class PersonController extends Controller
     public function edit($id)
     {
         $person = People::find($id);
-        $persons = People::orderBy('id', 'ASC')->get()->except($person->parent_id);
+        // $persons = People::orderBy('id', 'ASC')->get()->except($person->parent_id);
         $family = People::get()->pluck('family')->unique();
+        $persons = People::orderBy('id', 'ASC')->get();
+        $parent_name = $this->model->returnParentNameByParentID($person->parent_id);
 
         $spouseNameArr = explode('|', $person->spouse_name);
         $spouseImgArr = explode('|', $person->spouse_avatar);
@@ -139,7 +141,7 @@ class PersonController extends Controller
         }
         $negeriList = $this->model->getNegeriList();
 
-        return view('admin.person.edit', compact('person', 'persons', 'family', 'spouseAttrList', 'negeriList'));
+        return view('admin.person.edit', compact('person', 'persons', 'family', 'spouseAttrList', 'negeriList', 'parent_name'));
     }
 
     public function update(Request $request, $id)
@@ -155,13 +157,12 @@ class PersonController extends Controller
         $person->nationality = $request['nationality'];
         $person->dob_date = $request->dob_date;
         $person->dead_date = $request->dead_date;
-        $person->parent_id = Person::where($request->parent_id);
+        $person->parent_id = $this->model->getParentIDByParentName($request->parent);
         $person->updated_at = now();
         $person->era = $request['era'];
         $person->seniority = $request['seniority'];
         $person->family = !is_null($request->parent_id) ? $person->getFamily($request->parent_id) : "F" . $request['name'];
         $currentTime = time(); // ensure  time wont affect by code performance.
-
         // Check Spouse Array Empty or not
         if ($request->has('spouse_name') && $request->has('storeSpouseImgSrc')) {
             $person->spouse_name = implode('|', $request->get('spouse_name'));

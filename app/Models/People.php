@@ -60,7 +60,7 @@ class People extends Model
         return $this->belongsTo('App\Models\People', 'parent_id');
     }
 
-    public function returnParentName($parentID)
+    public function returnParentNameByParentID($parentID)
     {
         return $this->where('id', $parentID)->value('name');
     }
@@ -92,5 +92,10 @@ class People extends Model
     public function getFamily($parentId)
     {
         return $this->where('id', $parentId)->value('family');
+    }
+
+    public function getParentIDByParentName($parentName)
+    {
+        return $this->where('name', $parentName)->value('id');
     }
 }
