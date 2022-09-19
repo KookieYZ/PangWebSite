@@ -72,8 +72,8 @@ class PersonController extends Controller
         $person->nationality = $request['nationality'];
         // $person->dob_date = DateTime::createFromFormat('d/m/Y', $request->get('dob_date'))->format('Y-m-d');
         $person->dob_date = $request->dob_date;
-        $person->dead_date = $request->dead_date;
-        $person->parent_id = $request->parent_id;
+        $person->dead_date = $request->dead_date;  
+        $person->parent_id = $this->model->getParentIDByParentName($request->parent);;
         $person->created_at = now();
         $person->updated_at = now();
         $person->era = $request['era'];

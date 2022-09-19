@@ -199,12 +199,19 @@
                             <div class="form-group row">
                                 <label for="parent_id" class="col-sm-3 text-end control-label col-form-label">父母</label>
                                 <div class="col-sm-9">
-                                    <select class="form-select" aria-label="" id="parent_id" name="parent_id">
+                                    <input list="parent" type="text" name="parent" class="form-control" >
+                                    <datalist id="parent" class="dropdown-menu">
+                                        @foreach ($persons as $per)
+                                             <option value="{{ $per->name }}"></option>
+                                        @endforeach
+                                    </datalist>
+
+                                    {{-- <select class="form-select" aria-label="" id="parent_id" name="parent_id">
                                         <option value="" selected>---未选择---</option>
                                         @foreach ($persons as $person)
                                         <option value="{{ $person->id }}">{{ $person->name }}</option>
                                         @endforeach
-                                    </select>
+                                    </select> --}}
                                 </div>
                                 @if ($errors->has('parent_id'))
                                 <span class="invalid-feedback" role="alert">
@@ -245,6 +252,8 @@
                             <button type="submit" id="btnSubmit" class="btn btn-primary">
                                 提交
                             </button>
+                             <a href="{{ route('relationship.index') }}" class="btn btn-primary"
+                            id="back">{{ __('返回') }}</a>
                         </div>
                     </div>
                 </form>
