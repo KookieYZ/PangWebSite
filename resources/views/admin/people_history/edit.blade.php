@@ -110,7 +110,12 @@
 
 
                                     </div>
-                                    <button id="delete_video_btn">Delete This Video</button>
+                                    @if ($people_history->media_path)
+                                        <button id="delete_video_btn">删除此视频</button>
+                                    @else
+                                        <button id="delete_video_btn" disabled="disabled">删除此视频</button>
+                                    @endif
+
                                     <input type='hidden' value='false' id="isDeletePreviousVideoHiddenField"
                                         name="isDeletePreviousVideo" />
                                     @if ($errors->has('media_path'))
@@ -205,12 +210,14 @@
                         $('input#media_path').attr('type', 'file');
                         // $("source").attr('src','mov_bbb.mp4');
                         alert('只有视频是被允许的');
+                        $('#delete_video_btn').prop('disabled', true);
                         return;
                     }
                 }
                 var $source = $('#video_here');
                 $source[0].src = URL.createObjectURL(this.files[0]);
                 $source.parent()[0].load();
+                $('#delete_video_btn').prop('disabled', false);
             });
 
             $('#delete_video_btn').click(function(e) {
@@ -226,11 +233,12 @@
                         source.setAttribute('src', '');
                         videoElement.load();
                         $('#isDeletePreviousVideoHiddenField').val(true);
+                        $('#delete_video_btn').prop('disabled', true);
                     }
                 }
             });
             $('#media_path').click(function(e) {
-                 $('#isDeletePreviousVideoHiddenField').val(false);
+                $('#isDeletePreviousVideoHiddenField').val(false);
             });
         </script>
     @endsection
