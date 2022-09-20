@@ -10,7 +10,7 @@ class JobListController extends Controller
 {
     public function index()
     {
-        $jobList = Job::orderBy('created_at', 'DESC')->where('status', 1)->get();   
+        $jobList = Job::orderBy('created_at', 'DESC')->where('is_publish', 1)->get();   
         foreach($jobList as $job){$job->category = $job->getFullCategoryName($job->category);} 
         return view('user.job', compact('jobList'));  
     }
