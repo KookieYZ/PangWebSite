@@ -88,9 +88,8 @@ class PersonController extends Controller
             if ($value == 'noimage.jpg') {
                 $imageNameArray[] = 'noimage.jpg';
             } else {
-                $file = explode('.', $value);
-                $fileName = $file[0];
-                $extension = $file[1];
+                $fileName = pathinfo($value, PATHINFO_FILENAME);  // Get File Name           
+                $extension = pathinfo($value, PATHINFO_EXTENSION); // get Extension
                 $filenameSaved = $fileName . '_' . $currentTime . '.' . $extension;
                 $imageNameArray[] = $filenameSaved;
             }
@@ -176,9 +175,8 @@ class PersonController extends Controller
                     $i++;
                 } else {
                     if ($value != '') {
-                        $file = explode('.', $value);
-                        $fileName = $file[0];
-                        $extension = $file[1];
+                        $fileName = pathinfo($value, PATHINFO_FILENAME);  // Get File Name           
+                        $extension = pathinfo($value, PATHINFO_EXTENSION); // get Extension
                         $filenameSaved = $fileName . '_' . $currentTime . '.' . $extension;
                         $imageNameArray[] = $filenameSaved;
                     } else {
